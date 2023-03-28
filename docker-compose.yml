@@ -1,0 +1,6 @@
+version: "3.3"    
+services:
+  reactapp:
+    image: buildonculture/onculture:latest
+    ports:
+      - "80:80"
