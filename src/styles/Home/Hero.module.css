@@ -113,6 +113,7 @@
     text-align: center;
     justify-content: center;
     gap: 20rem;
+    margin-top: -3rem;
   }
 
   .leftContent {
