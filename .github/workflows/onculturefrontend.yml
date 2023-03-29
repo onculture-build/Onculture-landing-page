@@ -34,9 +34,29 @@ jobs:
           echo REACT_APP_DROPLET_NAME=${{secrets.REACT_APP_DROPLET_NAME}} >> .env
           echo REACT_APP_API_PROXY=${{secrets.REACT_APP_API_PROXY}} >> .env
           cat .env
+
+      - name: Log into Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.REACT_APP_DOCKER_USERNAME }}
+          password: ${{ secrets.REACT_APP_DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t buildonculture/landingpage:latest .
+          docker push buildonculture/landingpage:latest
+
+      - name: Deploy to Digital Ocean
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.REACT_APP_DIGITALOCEAN_ACCESS_TOKEN }}
+          run-command: |
+            docker pull buildonculture/landingpage:latest
+            docker stop onculture-landing || true
+            docker rm onculture-landing || true
+            docker run -d -p 3000:80 --name onculture-landing --env-file .env buildonculture/landingpage:latest
+
       - run: |
-          npm install --force
-          npm run build
           pm2 stop 0
           pm2 start 0
           pm2 save
