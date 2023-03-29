@@ -1,6 +1,5 @@
 name: Onculture CI
 
-
 on:
   push:
     branches: [master]
