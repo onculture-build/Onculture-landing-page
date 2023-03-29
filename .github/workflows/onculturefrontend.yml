@@ -35,7 +35,7 @@ jobs:
           echo REACT_APP_API_PROXY=${{secrets.REACT_APP_API_PROXY}} >> .env
           cat .env
       - run: |
-          npm i
+          npm install --force
           npm run build
           pm2 stop 0
           pm2 start 0
