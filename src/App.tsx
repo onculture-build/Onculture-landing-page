@@ -8,32 +8,32 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
-import Faq from "./pages/Faq";
+// import Faq from "./pages/Faq";
 import Home from "./pages/Home";
 import SignIn from "./pages/Signin";
-import SignUp from "./pages/Signup";
-import Pricing from "./pages/Pricing";
-import Contact from "./pages/Contact";
+// import SignUp from "./pages/Signup";
+// import Pricing from "./pages/Pricing";
+// import Contact from "./pages/Contact";
 import Templates from "./pages/Templates";
-import Book from "./pages/Resources/Book/Book";
+// import Book from "./pages/Resources/Book/Book";
 import ScrollToTop from "./components/ScrollToTop";
-import Resources from "./pages/Resources/Resources";
-import ForgotPassword from "./pages/ForgotPassword";
-import VerifyPassword from "./pages/VerifyPassword";
-import Article from "./pages/Resources/Article/Article";
-import CompanyOnBoarding from "./pages/CompanyOnBoarding";
-import Resource from "./pages/Resources/resource/resource";
+// import Resources from "./pages/Resources/Resources";
+// import ForgotPassword from "./pages/ForgotPassword";
+// import VerifyPassword from "./pages/VerifyPassword";
+// import Article from "./pages/Resources/Article/Article";
+// import CompanyOnBoarding from "./pages/CompanyOnBoarding";
+// import Resource from "./pages/Resources/resource/resource";
 import FeaturedProgram from "./layouts/Home/FeaturedProgram";
 import TemplateFeature from "./layouts/Templates/templateFeature";
 import TemplateCategory from "./layouts/Templates/templateCategory";
 import ProtectedRoute from "./components/ProtectedRoute";
-import adminProtectedRoutes from "./routes/admin-routes/admin-routes";
-import AdminDashboardLayout from "./pages/AdminDashboard/admin-dashboard-layout";
+// import adminProtectedRoutes from "./routes/admin-routes/admin-routes";
+// import AdminDashboardLayout from "./pages/AdminDashboard/admin-dashboard-layout";
 
-import EmployeeDashboard from "./pages/EmployeeDashboard";
-import CoursePage from "./layouts/EmployeeDashboard/CoursePage";
-import EmployeeCourses from "./layouts/EmployeeDashboard/EmployeeCourses";
-import EditEmployeeProfile from "./layouts/EmployeeDashboard/EditEmployeeProfile";
+// import EmployeeDashboard from "./pages/EmployeeDashboard";
+// import CoursePage from "./layouts/EmployeeDashboard/CoursePage";
+// import EmployeeCourses from "./layouts/EmployeeDashboard/EmployeeCourses";
+// import EditEmployeeProfile from "./layouts/EmployeeDashboard/EditEmployeeProfile";
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { getUserDetails } from "./redux/actions/usersAction";
@@ -87,17 +87,17 @@ function App() {
               {/* Home */}
               <Route path="/" element={<Home userToken={storeToken} />} />
 
-              <Route path="faq" element={<Faq />} />
+              {/* <Route path="faq" element={<Faq />} /> */}
 
               {/* TODO: move to protected route */}
               {/* <Route path='test' element={<CompanyOnBoarding />} /> */}
 
-              <Route path="signup" element={<SignUp />} />
+              {/* <Route path="signup" element={<SignUp />} /> */}
               <Route path="login" element={<SignIn />} />
-              <Route path="reset-password" element={<ForgotPassword />} />
-              <Route path="verify/:token" element={<VerifyPassword />} />
+              {/* <Route path="reset-password" element={<ForgotPassword />} /> */}
+              {/* <Route path="verify/:token" element={<VerifyPassword />} />
               <Route path="contact" element={<Contact />} />
-              <Route path="pricing" element={<Pricing />} />
+              <Route path="pricing" element={<Pricing />} /> */}
 
               <Route path="templates" element={<Templates />} />
               <Route path="templates/:id" element={<TemplateFeature />} />
@@ -106,21 +106,21 @@ function App() {
                 element={<TemplateCategory />}
               />
               <Route path="programs/:id" element={<FeaturedProgram />} />
-              <Route path="/resource" element={<Resources />}>
-                <Route path="" element={<Resource />} />
+              {/* <Route path="/resource" element={<Resources />}> */}
+                {/* <Route path="" element={<Resource />} />
                 <Route path="book/:id" element={<Book />} />
                 <Route path="article/:id" element={<Article />} />
-              </Route>
+              </Route> */}
 
               <Route
                 path="/dashboard"
                 element={
                   <RequireAdminAuth userToken={storeToken} user={storeDetails}>
-                    <AdminDashboardLayout />
+                    {/* <AdminDashboardLayout /> */}
                   </RequireAdminAuth>
                 }
               >
-                {adminProtectedRoutes.map((route, i) => {
+                {/* {adminProtectedRoutes.map((route, i) => {
                   return (
                     <Route
                       key={i}
@@ -139,17 +139,17 @@ function App() {
                         </>
                       )}
                     </Route>
-                  );
-                })}
+                  ); */}
+                {/* })} */}
               </Route>
 
               <Route element={<ProtectedRoute />}>
-                <Route
+                {/* <Route
                   path="company-onboarding"
                   element={<CompanyOnBoarding />}
-                />
+                /> */}
 
-                <Route
+                {/* <Route
                   path="/employeeDashboard"
                   element={<EmployeeDashboard />}
                 >
@@ -157,10 +157,10 @@ function App() {
                 </Route>
                 <Route
                   path="edit-employeeProfile"
-                  element={<EditEmployeeProfile />}
-                />
+                  element={<EditEmployeeProfile />} */}
+                {/* /> */}
 
-                <Route path="coursePage" element={<CoursePage />} />
+                {/* <Route path="coursePage" element={<CoursePage />} /> */}
               </Route>
             </Routes>
           </ScrollToTop>

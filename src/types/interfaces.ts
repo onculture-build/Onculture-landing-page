@@ -1,5 +1,5 @@
 import { string } from "yup";
-import { ISubCourse } from "../layouts/CompanyForms/SubscriptionCourse";
+// import { ISubCourse } from "../layouts/CompanyForms/SubscriptionCourse";
 
 export interface AdminSignup {
   firstName: string;
