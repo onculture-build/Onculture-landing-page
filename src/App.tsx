@@ -35,7 +35,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 // import EmployeeCourses from "./layouts/EmployeeDashboard/EmployeeCourses";
 // import EditEmployeeProfile from "./layouts/EmployeeDashboard/EditEmployeeProfile";
 
-import { GoogleOAuthProvider } from "@react-oauth/google";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 import { getUserDetails } from "./redux/actions/usersAction";
 import { RootState, useAppDispatch, useAppSelector } from "./redux/store";
 import { ToastContainer } from "react-toastify";
@@ -77,9 +77,9 @@ function App() {
 
   return (
     <>
-      <GoogleOAuthProvider
+      {/* <GoogleOAuthProvider
         clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
-      >
+      > */}
         <ToastContainer />
         <Router>
           <ScrollToTop>
@@ -165,7 +165,7 @@ function App() {
             </Routes>
           </ScrollToTop>
         </Router>
-      </GoogleOAuthProvider>
+      {/* </GoogleOAuthProvider> */}
     </>
   );
 }
