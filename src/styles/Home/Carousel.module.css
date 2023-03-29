@@ -20,16 +20,26 @@
 }
 
 .pText {
-  max-width: 565px;
+  max-width: 390px;
   margin: 0 auto 30px;
   text-align: center;
+  line-height: 24px;
+  font-weight: 400;
 }
 
 .gridContainer {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns:  repeat(3, 1fr);
   grid-column-gap: 3rem;
   grid-row-gap: 2rem;
+  justify-items: center;
+}
+.gridContainer:last-child{
+  justify-self: center;
+}
+.lastItemGrid{
+  grid-column: 2 / span 1;
+ 
 }
 
 /* .bgObjectline {

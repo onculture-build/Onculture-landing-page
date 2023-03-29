@@ -9,18 +9,18 @@ const FeaturedPrograms = () => {
       <div className={fProgramStyles.content_container}>
         <h2>Our Pillars</h2>
         <p>
-          Through 4 Culture Pillars, OnCulture shapes employees to improve
-          synergy and drive overall performance.
+          Through 4 Culture Pillars, OnCulture shapes employees to drive synergy and performance.
         </p>
         <div className={fProgramStyles.tags}>
           <Tags
-            mainTxt="Harassment in the Workplace"
+            mainTxt="Preventing Harassment at Work"
             subText="Sexual and Non-sexual"
             to="/programs/harrassment-in-the-workplace"
           />
-          <Tags mainTxt="Everyday Culture" subText="Coming soon" to="/" />
+          <Tags mainTxt="Everyday Culture" subText="Process 
+Automation Templates" to="/" />
           <Tags
-            mainTxt="Culture Clinic"
+            mainTxt="Driving Culture at Work"
             subText="Coming soon"
             to="/programs/culture-clinic"
           />

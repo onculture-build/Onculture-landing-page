@@ -8,17 +8,28 @@
 .heroContent {
   box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
-  padding: 20px 2rem 48px;
+  justify-content: center;
+  /* padding: 20px 2rem 48px; */
   width: 100%;
-  max-width: 1330px;
-  margin: 0 auto;
+  height: 80%;
+  /* max-width: 1330px; */
+  margin: auto;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  text-align: center;
   /* border: 1px solid red; */
 }
 .leftContent {
   max-width: 650px;
+  display: flex;
   width: 100%;
-  padding-top: 90px;
+  flex-direction: column;
+  /* padding-top: 120px; */
+  align-content: center;
+  align-items: center;
+  gap: 10px;
+  /* margin-top: 20px; */
   /* border: 1px solid red; */
 }
 
@@ -32,8 +43,8 @@
   /* height: 245px; */
   font-size: 50px;
   font-weight: 600;
-  letter-spacing: -2px;
-  line-height: 55.6px;
+  /* letter-spacing: -2px; */
+  /* line-height: 55.6px; */
   margin: 0;
   max-width: 480px;
   width: 100%;
@@ -41,8 +52,10 @@
 }
 
 .leftContent p {
-  font-weight: 400;
+  font-weight: 300;
   font-size: 20px;
+  font-style: normal;
+
 }
 
 .heroBtn {

@@ -12,9 +12,7 @@ const BrowseTemplates = () => {
     <div className={sectionStyle.section_container}>
       <h2>Templates</h2>
       <p className={sectionStyle.intro}>
-        Build a Culture of performance and synergy through our productivity,
-        engagement, and recognition templates and tools, all integrated with
-        Slack, Teams and Google Workspace.{" "}
+        Build and drive a culture of performance and synergy through our <span style={{fontStyle:'italic', fontWeight:'bold'}}>productivity, engagement, and recognition templates </span> and tools, all integrated with Slack, Teams and Google Workspace. 
       </p>
       <div className={sectionStyle.templatelist_container}>
         {templatesPreview.map((template, i) => {

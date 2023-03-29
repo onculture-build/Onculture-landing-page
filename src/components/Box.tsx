@@ -3,14 +3,15 @@ import groupIcon from '../Assets/Images/group-icon.png'
 import boxStyle from '../styles/Home/Box.module.css'
 
 type BoxProp = {
-    data: { head: string, content: string, imgSource: any }
+    data: { head: string, content: string, imgSource: any },
+
 }
 
 
 const Box = ({ data }: BoxProp) => {
     const [hover, setHover] = useState<boolean>(false)
     return (
-        <div
+        <div 
             className={`${boxStyle.mainBox} ${hover && boxStyle.boxHoverEfx}`}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}>
