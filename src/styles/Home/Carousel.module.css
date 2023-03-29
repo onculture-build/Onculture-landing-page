@@ -61,7 +61,8 @@
 
 @media all and (max-width: 900px) {
   .gridContainer {
-    grid-template-columns: auto auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .content {

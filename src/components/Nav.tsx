@@ -63,41 +63,46 @@ const Nav = ({ pure, board, showButton = true }: NavProp) => {
       <div className={navStyle.sidebar}>
         <div className={navStyle.logoSide}>
           <img src={OncultureLogo} alt="onculture logo" />
-          {sidebar ? (
-            <IoCloseSharp onClick={showSideBar} />
-          ) : (
-            <FaBars onClick={showSideBar} />
-          )}
+          {
+          //   sidebar ? (
+          //   <IoCloseSharp onClick={showSideBar} />
+          // ) : (
+          //   <FaBars onClick={showSideBar} />
+          //   )
+          }
         </div>
-        {sidebar && (
-          <div className={navStyle.activateSide}>
-            {/* <div> */}
-            <div className={navStyle.linkSide}>
-              <ul className={navStyle.linksElementSide}>
-                {navData.map((navs, index) => (
-                  <li key={index}>
-                    <Link to={navs.to} className={navStyle.linkTo}>
-                      {navs.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className={navStyle.buttonSide}>
-              <div>
-                <Link to="/signup">
-                  <Button className={navStyle.signUpBtn}>Sign up</Button>
-                </Link>
-              </div>
-              <div>
-                <Link to="/login">
-                  <Button className={navStyle.bookADemo}>Login</Button>
-                </Link>
-              </div>
-            </div>
-            {/* </div> */}
-          </div>
-        )}
+        {
+          // sidebar
+          // && (
+          // <div className={navStyle.activateSide}>
+          //   {/* <div> */}
+          //   <div className={navStyle.linkSide}>
+          //     <ul className={navStyle.linksElementSide}>
+          //       {navData.map((navs, index) => (
+          //         <li key={index}>
+          //           <Link to={navs.to} className={navStyle.linkTo}>
+          //             {navs.title}
+          //           </Link>
+          //         </li>
+          //       ))}
+          //     </ul>
+          //   </div>
+          //   <div className={navStyle.buttonSide}>
+          //     <div>
+          //       <Link to="/signup">
+          //         <Button className={navStyle.signUpBtn}>Sign up</Button>
+          //       </Link>
+          //     </div>
+          //     <div>
+          //       <Link to="/login">
+          //         <Button className={navStyle.bookADemo}>Login</Button>
+          //       </Link>
+          //     </div>
+          //   </div>
+          //   {/* </div> */}
+          // </div>
+          // )
+        }
       </div>
     </>
   );
