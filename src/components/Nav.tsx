@@ -10,8 +10,9 @@ import { IoCloseSharp } from "react-icons/io5";
 type NavProp = {
   pure?: boolean;
   board?: boolean;
+  showButton?:boolean
 };
-const Nav = ({ pure, board }: NavProp) => {
+const Nav = ({ pure, board, showButton = true }: NavProp) => {
   const [sidebar, setSideBar] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Nav = ({ pure, board }: NavProp) => {
           </div>
           {!pure && (
             <>
-              <div className={navStyle.links}>
+              {/* <div className={navStyle.links}>
                 <ul className={navStyle.linksElement}>
                   {navData.map((navs, index) => (
                     <li key={index}>
@@ -42,17 +43,17 @@ const Nav = ({ pure, board }: NavProp) => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </div> */}
               <div className={navStyle.buttons}>
-                <div>
+                {/* <div>
                   <Link to="/signup">
                     <Button className={navStyle.signUpBtn}>Sign up</Button>
                   </Link>
-                </div>
+                </div> */}
                 <div>
-                  <Link to="/login">
-                    <Button className={navStyle.bookADemo}>Login</Button>
-                  </Link>
+                  {showButton && <Link to="/login">
+                    <Button className={navStyle.bookADemo}>Join the waitlist</Button>
+                  </Link>}
                 </div>
               </div>
             </>

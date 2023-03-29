@@ -1,5 +1,5 @@
 import { number } from "yup";
-import { ISubCourse } from "../layouts/CompanyForms/SubscriptionCourse";
+// import { ISubCourse } from "../layouts/CompanyForms/SubscriptionCourse";
 
 export const  capitalizeFirstLetter = (str:string) => {
 
@@ -9,11 +9,11 @@ export const  capitalizeFirstLetter = (str:string) => {
     return capitalized;
 }
 
-export const calculateTotalSelect = (data: ISubCourse[]) => {
+// export const calculateTotalSelect = (data: ISubCourse[]) => {
    
-    return data.reduce((prev, curr)=> prev + curr.amount, 0)
+//     return data.reduce((prev, curr)=> prev + curr.amount, 0)
     
-}
+// }
 
 export const getColorGrade = (value: number):string => {
     if (value <= 44) {

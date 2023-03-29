@@ -29,34 +29,40 @@ export const boxData = [
     imgSource: groupIcon,
   },
   {
-    head: "Solid Culture Framework",
+    head: "Data-Driven Insights and Analytics ",
     content:
       "Expose teams to the culture framework and guide them in how they apply this new knowledge to their company and their behaviours",
-    imgSource: notesIcon,
-  },
-  {
-    head: "Diverse perspectives",
-    content:
-      "Have groups of people with different experience and thought processes contribute their interpretation of the company's legacy, mission and values",
     imgSource: arrowIcon,
   },
   {
-    head: "Onboarding",
+    head: "Solid Culture Framework",
+    content:
+      "Have groups of people with different experience and thought processes contribute their interpretation of the company's legacy, mission and values",
+    imgSource: notesIcon,
+  },
+  {
+    head: "Tighten Onboarding",
     content:
       "Add a culture-fit layer to your already existing onboarding process",
-    imgSource: starIcon,
+    imgSource: plusIcon,
   },
   {
     head: "Recognize Value Stars",
     content:
       "Identify employees who demonstrate each company value, using examples.",
-    imgSource: plusIcon,
+    imgSource: starIcon,
   },
   {
     head: "Workplace Harassment Awareness",
     content:
       "Educate employees on forms and types of workplace harassment(Sexual and Non Sexual)",
     imgSource: speakerIcon,
+  },
+  {
+    head: "Diverse perspectives",
+    content:
+      "Educate employees on forms and types of workplace harassment(Sexual and Non Sexual)",
+    imgSource: arrowIcon,
   },
 ];
 
@@ -103,13 +109,13 @@ export const reviewData = [
     author: "Jane Cooper",
     companyRole: "CEO, ABC Corporation",
   },
-  {
-    title: "Dependable, Responsive, Professional Partner",
-    content:
-      "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
-    author: "Jane Cooper",
-    companyRole: "CEO, ABC Corporation",
-  },
+  // {
+  //   title: "Dependable, Responsive, Professional Partner",
+  //   content:
+  //     "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+  //   author: "Jane Cooper",
+  //   companyRole: "CEO, ABC Corporation",
+  // },
 ];
 
 export const navData = [
@@ -2287,8 +2293,8 @@ export const TemplateList = [
       "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
   },
   {
-    icon: pencil,
-    title: "Anonymous Complaint and suggestion box",
+    icon: speechBalloon,
+    title: "Spark",
     slug: "suggestion",
     tag: "Engagements",
     description:

@@ -8,14 +8,17 @@ const Carousel = () => {
   return (
     <div className={carouselStyle.main}>
       <div className={carouselStyle.content}>
-        <h3>Align your employees with your workplace culture</h3>
+        <h3>Why OnCulture?</h3>
         <p className={carouselStyle.pText}>
-          Here is where Onculture comes in. We help you shape the shared
-          behaviors of your entire company, while promoting practices like;
+          We help you shape the shared behaviours of your entire company, while promoting practices.
+          Benefits are:
         </p>
         <div className={carouselStyle.gridContainer}>
           {boxData.map((data, index) => (
-            <Box key={index} data={data} />
+            <div className={`${index === boxData.length - 1 ? carouselStyle.lastItemGrid:''}`}>
+              <Box key={index} data={data} />
+            </div>
+           
           ))}
         </div>
         {/* <div className={carouselStyle.bgObjectline}>

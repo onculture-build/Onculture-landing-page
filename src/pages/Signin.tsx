@@ -24,9 +24,11 @@ export const SIGNIN_FORM_SCHEMA = yup.object().shape({
   email: yup
     .string()
     .trim()
-    .required("Email is required")
-    .email("Invalid email address"),
-  password: yup.string().required("Password is required"),
+    .required("Fullname is required"),
+  password: yup.string()
+    .trim()
+    .required("email is required")
+    .email("Invalid email address"), 
 });
 
 const SignIn = () => {
@@ -43,27 +45,18 @@ const SignIn = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        `${process.env.REACT_APP_API_PROXY}/users/login`,
+        `${process.env.REACT_APP_API_PROXY}/waitlist/join`,
         {
-          username: email,
-          password,
+          fullName: email,
+          email:password,
         }
       );
       console.log(data, "login");
 
       if (data.success) {
-        const { payload } = data;
-        localStorage.setItem("userDetails", JSON.stringify(payload));
-        localStorage.setItem("userToken", payload.accessToken);
-        dispatch(updateUserToken(payload.accessToken));
-        toast("Log in successful");
-        if (payload.user.isEmployee) {
-          navigate("/employeeDashboard/courses");
-        } else if (payload.user.isAdmin && payload.user.regCompany) {
-          navigate("/dashboard/overview");
-        } else {
-          navigate("/company-onboarding");
-        }
+        toast(data.message);
+        navigate("/");
+       
       } else {
         navigate("/");
       }
@@ -77,9 +70,9 @@ const SignIn = () => {
   };
   return (
     <>
-      <Nav />
+      <Nav showButton={false}/>
       <div className={Styles.mainBox}>
-        <h4>Log In</h4>
+        <h4>Be the First to know when we launch</h4>
 
         <Formik
           validationSchema={SIGNIN_FORM_SCHEMA}
@@ -91,13 +84,13 @@ const SignIn = () => {
               <form onSubmit={handleSubmit}>
                 <div className={Styles.formInput}>
                   <label htmlFor="email">
-                    Email Address<sup>*</sup>
+                    Your Fullname
                   </label>
                   <input
                     type="text"
                     name="email"
                     id="email"
-                    placeholder="Email Address"
+                    placeholder="Fullname"
                     value={values.email}
                     onChange={handleChange}
                   />
@@ -107,16 +100,17 @@ const SignIn = () => {
                   )}
                 </div>
                 <div className={Styles.formInput}>
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">Email Address<sup>*</sup></label>
                   <div className={Styles.passwordInput}>
                     <input
-                      type={showPassword ? "text" : "password"}
+                      type="text"
                       name="password"
                       id="password"
                       value={values.password}
                       onChange={handleChange}
+                      placeholder="Email Address"
                     />
-                    <span>
+                    {/* <span>
                       {showPassword ? (
                         <FiEye
                           className={Styles.eyeForm}
@@ -128,19 +122,19 @@ const SignIn = () => {
                           onClick={() => setShowPassword(!showPassword)}
                         />
                       )}
-                    </span>
+                    </span> */}
                   </div>
                   {touched.password && !!errors.password && (
                     <span className={Styles.errorMsg}>{errors.password}</span>
                   )}
                 </div>
 
-                <span
+                {/* <span
                   className={Styles.forgotPassword}
                   onClick={() => navigate("/reset-password")}
                 >
                   Forgot your password?
-                </span>
+                </span> */}
 
                 <div className={Styles.submitBtn}>
                   <button disabled={loading} type="submit">
@@ -155,7 +149,7 @@ const SignIn = () => {
                         visible={true}
                       />
                     ) : (
-                      "Log In"
+                      "Submit"
                     )}
                   </button>
                 </div>
@@ -164,7 +158,7 @@ const SignIn = () => {
           }}
         </Formik>
 
-        <div className={Styles.formBtns}>
+        {/* <div className={Styles.formBtns}>
           <GoogleLogin
             clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
             onSuccess={(res) => {
@@ -186,7 +180,7 @@ const SignIn = () => {
             uxMode={"redirect"}
             redirectUri={"https://onculture.io/company-onboarding"}
           />
-        </div>
+        </div> */}
       </div>
     </>
   );

@@ -2,7 +2,7 @@ import { Action, configureStore } from "@reduxjs/toolkit";
 import userReducer from "./users";
 import companyonboardReducer from "./companyonboard";
 import subscriptionReducer from "./subscription";
-import courseReducer from "./courses";
+// import courseReducer from "./courses";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
@@ -12,7 +12,7 @@ const store = configureStore({
     user: userReducer,
     companyonboard: companyonboardReducer,
     subscription: subscriptionReducer,
-    courses: courseReducer,
+    // courses: courseReducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
