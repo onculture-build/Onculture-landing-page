@@ -1,4 +1,4 @@
-name: Onculture CI
+name: OncultureCI
 
 on:
   push:
