@@ -28,7 +28,7 @@ const ProtectedRoute = () => {
 
   // show unauthorized screen if no user is found in redux store
   if (!userToken) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/jointhewaitlist" replace />;
   }
 
   // returns child route elements
