@@ -24,11 +24,13 @@ export const SIGNIN_FORM_SCHEMA = yup.object().shape({
   email: yup
     .string()
     .trim()
-    .required("Fullname is required"),
+    .required("email is required")
+    .email("Invalid email address")
+   ,
   password: yup.string()
     .trim()
-    .required("email is required")
-    .email("Invalid email address"), 
+    .required("Fullname is required")
+    , 
 });
 
 const SignIn = () => {
@@ -47,8 +49,8 @@ const SignIn = () => {
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_PROXY}/waitlist/join`,
         {
-          fullName: email,
-          email:password,
+          fullName: password,
+          email,
         }
       );
       console.log(data, "login");
@@ -61,7 +63,7 @@ const SignIn = () => {
         navigate("/");
       }
     } catch (err) {
-      toast("Email or Password incorrect");
+      toast("Sorry An error occurred");
       console.log(err);
       setLoading(false);
     } finally {
@@ -83,15 +85,15 @@ const SignIn = () => {
             return (
               <form onSubmit={handleSubmit}>
                 <div className={Styles.formInput}>
-                  <label htmlFor="email">
+                  <label htmlFor="password">
                     Your Fullname
                   </label>
                   <input
                     type="text"
-                    name="email"
-                    id="email"
+                    name="password"
+                    id="password"
                     placeholder="Fullname"
-                    value={values.email}
+                    value={values.password}
                     onChange={handleChange}
                   />
 
@@ -100,13 +102,13 @@ const SignIn = () => {
                   )}
                 </div>
                 <div className={Styles.formInput}>
-                  <label htmlFor="password">Email Address<sup>*</sup></label>
+                  <label htmlFor="email">Email Address<sup>*</sup></label>
                   <div className={Styles.passwordInput}>
                     <input
                       type="text"
-                      name="password"
-                      id="password"
-                      value={values.password}
+                      name="email"
+                      id="email"
+                      value={values.email}
                       onChange={handleChange}
                       placeholder="Email Address"
                     />
