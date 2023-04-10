@@ -93,7 +93,7 @@ function App() {
               {/* <Route path='test' element={<CompanyOnBoarding />} /> */}
 
               {/* <Route path="signup" element={<SignUp />} /> */}
-              <Route path="login" element={<SignIn />} />
+            <Route path="jointhewaitlist" element={<SignIn />} />
               {/* <Route path="reset-password" element={<ForgotPassword />} /> */}
               {/* <Route path="verify/:token" element={<VerifyPassword />} />
               <Route path="contact" element={<Contact />} />
@@ -176,7 +176,7 @@ function RequireAdminAuth({ children, userToken, user }: any) {
   let isAdmin = JSON.parse(user)?.user?.isAdmin;
 
   if (!isAdmin || !userToken) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/jointhewaitlist" replace />;
   }
 
   return children;

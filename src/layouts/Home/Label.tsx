@@ -10,7 +10,7 @@ const Label = () => {
                 Get Onculture
             </h1>
             <div className={labelStyle.labelBtns}>
-                <Link to="/login">
+                <Link to="/jointhewaitlist">
                     <Button className={labelStyle.btnWhite}>
                         Join the waitlist
                     </Button>

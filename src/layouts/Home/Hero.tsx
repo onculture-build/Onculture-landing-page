@@ -15,7 +15,7 @@ const Hero = () => {
             OnCulture improves companies’ culture by driving performance and synergy through learning, process automation and community.
           </p>
 
-          <Link to="/login">
+          <Link to="/jointhewaitlist">
             <Button className={heroStyles.heroBtn}>Join the waitlist</Button>
           </Link>
           

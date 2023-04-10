@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import navStyle from "../styles/Home/Nav.module.css";
-import OncultureLogo from "../Assets/Images/oncultureLogo.svg";
+import OncultureLogo from "../Assets/Images/Onculture-13 2.png";
 import Button from "./Button";
 import { Link, useNavigate } from "react-router-dom";
 import { navData } from "../constants/data";
@@ -51,7 +51,7 @@ const Nav = ({ pure, board, showButton = true }: NavProp) => {
                   </Link>
                 </div> */}
                 <div>
-                  {showButton && <Link to="/login">
+                  {showButton && <Link to="/jointhewaitlist">
                     <Button className={navStyle.bookADemo}>Join the waitlist</Button>
                   </Link>}
                 </div>
