@@ -5,50 +5,46 @@ import { Formik } from "formik";
 import Nav from "../components/Nav";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { FiEye, FiEyeOff } from "react-icons/fi";
-import { ThreeDots } from "react-loader-spinner";
-import { GoogleLogin } from "react-google-login";
-import googleIcon from "../Assets/Images/google-auth.svg";
-import { useAppDispatch } from "../redux/store";
-import { updateUserToken } from "../redux/users";
-import useGoogleAuthentication from "../hooks/useGoogleAuthentication";
-import { getUserDetails, googleLogin } from "../redux/actions/usersAction";
+// import { FiEye, FiEyeOff } from "react-icons/fi";
+// import { ThreeDots } from "react-loader-spinner";
+// import { GoogleLogin } from "react-google-login";
+// import googleIcon from "../Assets/Images/google-auth.svg";
+// import { useAppDispatch } from "../redux/store";
+// import { updateUserToken } from "../redux/users";
+// import useGoogleAuthentication from "../hooks/useGoogleAuthentication";
+// import { getUserDetails, googleLogin } from "../redux/actions/usersAction";
 import Styles from "../styles/FAQ/FormSignup.module.css";
+import FormInput from "../components/form-input";
+import CustomButton from "../components/custom-button";
 
 interface SignInProps {
+  fullName: string;
   email: string;
-  password: string;
 }
 
 export const SIGNIN_FORM_SCHEMA = yup.object().shape({
+  fullName: yup.string().trim().required("Fullname is required"),
   email: yup
     .string()
     .trim()
-    .required("Fullname is required"),
-  password: yup.string()
-    .trim()
     .required("email is required")
-    .email("Invalid email address"), 
+    .email("Invalid email address"),
 });
 
 const SignIn = () => {
-  const [showPassword, setShowPassword] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState<boolean>(false);
 
-  const { handleSuccess } = useGoogleAuthentication();
-
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleSignin = async (values: SignInProps) => {
-    const { email, password } = values;
+    const { fullName, email } = values;
     try {
       setLoading(true);
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_PROXY}/waitlist/join`,
         {
-          fullName: email,
-          email:password,
+          fullName,
+          email,
         }
       );
       console.log(data, "login");
@@ -56,7 +52,6 @@ const SignIn = () => {
       if (data.success) {
         toast(data.message);
         navigate("/");
-       
       } else {
         navigate("/");
       }
@@ -70,88 +65,54 @@ const SignIn = () => {
   };
   return (
     <>
-      <Nav showButton={false}/>
+      <Nav showButton={false} />
       <div className={Styles.mainBox}>
         <h4>Be the First to know when we launch</h4>
 
         <Formik
           validationSchema={SIGNIN_FORM_SCHEMA}
-          initialValues={{ email: "", password: "" }}
-          onSubmit={handleSignin}
+          initialValues={{ fullName: "", email: "" }}
+          // onSubmit={handleSignin}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
         >
           {({ values, errors, touched, handleChange, handleSubmit }) => {
             return (
               <form onSubmit={handleSubmit}>
                 <div className={Styles.formInput}>
-                  <label htmlFor="email">
-                    Your Fullname
-                  </label>
-                  <input
+                  <FormInput
+                    label="Your Fullname*"
                     type="text"
-                    name="email"
-                    id="email"
+                    name="fullName"
                     placeholder="Fullname"
-                    value={values.email}
+                    value={values.fullName}
+                    isInvalid={touched.fullName && !!errors.fullName}
+                    validationMessage={touched.fullName && errors.fullName}
                     onChange={handleChange}
                   />
-
-                  {touched.email && !!errors.email && (
-                    <span className={Styles.errorMsg}>{errors.email}</span>
-                  )}
                 </div>
-                <div className={Styles.formInput}>
-                  <label htmlFor="password">Email Address<sup>*</sup></label>
-                  <div className={Styles.passwordInput}>
-                    <input
-                      type="text"
-                      name="password"
-                      id="password"
-                      value={values.password}
-                      onChange={handleChange}
-                      placeholder="Email Address"
-                    />
-                    {/* <span>
-                      {showPassword ? (
-                        <FiEye
-                          className={Styles.eyeForm}
-                          onClick={() => setShowPassword(!showPassword)}
-                        />
-                      ) : (
-                        <FiEyeOff
-                          className={Styles.eyeForm}
-                          onClick={() => setShowPassword(!showPassword)}
-                        />
-                      )}
-                    </span> */}
-                  </div>
-                  {touched.password && !!errors.password && (
-                    <span className={Styles.errorMsg}>{errors.password}</span>
-                  )}
-                </div>
-
-                {/* <span
-                  className={Styles.forgotPassword}
-                  onClick={() => navigate("/reset-password")}
-                >
-                  Forgot your password?
-                </span> */}
+                <FormInput
+                  label="Email Address*"
+                  type="text"
+                  name="email"
+                  placeholder="Email Address"
+                  value={values.email}
+                  isInvalid={touched.email && !!errors.email}
+                  validationMessage={touched.email && errors.email}
+                  onChange={handleChange}
+                  autoComplete="on"
+                />
 
                 <div className={Styles.submitBtn}>
-                  <button disabled={loading} type="submit">
-                    {loading ? (
-                      <ThreeDots
-                        height="20"
-                        width="40"
-                        radius="9"
-                        color="#fff"
-                        ariaLabel="three-dots-loading"
-                        wrapperClass={Styles.loaders}
-                        visible={true}
-                      />
-                    ) : (
-                      "Submit"
-                    )}
-                  </button>
+                  <CustomButton
+                    look="primary"
+                    disabled={loading}
+                    type="submit"
+                    loading={loading}
+                  >
+                    Submit
+                  </CustomButton>
                 </div>
               </form>
             );
