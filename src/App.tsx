@@ -41,7 +41,6 @@ import { RootState, useAppDispatch, useAppSelector } from "./redux/store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 function App() {
   const { userInfo, userToken, profileInfo } = useAppSelector(
     (state: RootState) => state.user
@@ -80,47 +79,47 @@ function App() {
       {/* <GoogleOAuthProvider
         clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
       > */}
-        <ToastContainer />
-        <Router>
-          <ScrollToTop>
-            <Routes>
-              {/* Home */}
-              <Route path="/" element={<Home userToken={storeToken} />} />
+      <ToastContainer />
+      <Router>
+        <ScrollToTop>
+          <Routes>
+            {/* Home */}
+            <Route path="/" element={<Home userToken={storeToken} />} />
 
-              {/* <Route path="faq" element={<Faq />} /> */}
+            {/* <Route path="faq" element={<Faq />} /> */}
 
-              {/* TODO: move to protected route */}
-              {/* <Route path='test' element={<CompanyOnBoarding />} /> */}
+            {/* TODO: move to protected route */}
+            {/* <Route path='test' element={<CompanyOnBoarding />} /> */}
 
-              {/* <Route path="signup" element={<SignUp />} /> */}
-            <Route path="jointhewaitlist" element={<SignIn />} />
-              {/* <Route path="reset-password" element={<ForgotPassword />} /> */}
-              {/* <Route path="verify/:token" element={<VerifyPassword />} />
+            {/* <Route path="signup" element={<SignUp />} /> */}
+            <Route path="join-the-waitlist" element={<SignIn />} />
+            {/* <Route path="reset-password" element={<ForgotPassword />} /> */}
+            {/* <Route path="verify/:token" element={<VerifyPassword />} />
               <Route path="contact" element={<Contact />} />
               <Route path="pricing" element={<Pricing />} /> */}
 
-              <Route path="templates" element={<Templates />} />
-              <Route path="templates/:id" element={<TemplateFeature />} />
-              <Route
-                path="templates/category/:id"
-                element={<TemplateCategory />}
-              />
-              <Route path="programs/:id" element={<FeaturedProgram />} />
-              {/* <Route path="/resource" element={<Resources />}> */}
-                {/* <Route path="" element={<Resource />} />
+            <Route path="templates" element={<Templates />} />
+            <Route path="templates/:id" element={<TemplateFeature />} />
+            <Route
+              path="templates/category/:id"
+              element={<TemplateCategory />}
+            />
+            <Route path="programs/:id" element={<FeaturedProgram />} />
+            {/* <Route path="/resource" element={<Resources />}> */}
+            {/* <Route path="" element={<Resource />} />
                 <Route path="book/:id" element={<Book />} />
                 <Route path="article/:id" element={<Article />} />
               </Route> */}
 
-              <Route
-                path="/dashboard"
-                element={
-                  <RequireAdminAuth userToken={storeToken} user={storeDetails}>
-                    {/* <AdminDashboardLayout /> */}
-                  </RequireAdminAuth>
-                }
-              >
-                {/* {adminProtectedRoutes.map((route, i) => {
+            <Route
+              path="/dashboard"
+              element={
+                <RequireAdminAuth userToken={storeToken} user={storeDetails}>
+                  {/* <AdminDashboardLayout /> */}
+                </RequireAdminAuth>
+              }
+            >
+              {/* {adminProtectedRoutes.map((route, i) => {
                   return (
                     <Route
                       key={i}
@@ -140,16 +139,16 @@ function App() {
                       )}
                     </Route>
                   ); */}
-                {/* })} */}
-              </Route>
+              {/* })} */}
+            </Route>
 
-              <Route element={<ProtectedRoute />}>
-                {/* <Route
+            <Route element={<ProtectedRoute />}>
+              {/* <Route
                   path="company-onboarding"
                   element={<CompanyOnBoarding />}
                 /> */}
 
-                {/* <Route
+              {/* <Route
                   path="/employeeDashboard"
                   element={<EmployeeDashboard />}
                 >
@@ -158,13 +157,13 @@ function App() {
                 <Route
                   path="edit-employeeProfile"
                   element={<EditEmployeeProfile />} */}
-                {/* /> */}
+              {/* /> */}
 
-                {/* <Route path="coursePage" element={<CoursePage />} /> */}
-              </Route>
-            </Routes>
-          </ScrollToTop>
-        </Router>
+              {/* <Route path="coursePage" element={<CoursePage />} /> */}
+            </Route>
+          </Routes>
+        </ScrollToTop>
+      </Router>
       {/* </GoogleOAuthProvider> */}
     </>
   );
@@ -176,7 +175,7 @@ function RequireAdminAuth({ children, userToken, user }: any) {
   let isAdmin = JSON.parse(user)?.user?.isAdmin;
 
   if (!isAdmin || !userToken) {
-    return <Navigate to="/jointhewaitlist" replace />;
+    return <Navigate to="/join-the-waitlist" replace />;
   }
 
   return children;
