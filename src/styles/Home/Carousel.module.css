@@ -1,10 +1,9 @@
 .main {
-  padding: 0 0 7rem;
+  padding: 2rem 0 4rem;
   position: relative;
 }
 
 .content {
-  box-sizing: border-box;
   max-width: 1300px;
   width: 100%;
   margin: 0 auto;
@@ -14,32 +13,31 @@
 .content h3 {
   font-weight: 700;
   font-size: 32px;
-  max-width: 450px;
   text-align: center;
-  margin: 0 auto 20px;
+  margin: 0 auto 1rem;
+}
+
+.content p {
+  text-align: center;
+  font-size: 1rem;
 }
 
 .pText {
-  max-width: 390px;
-  margin: 0 auto 30px;
-  text-align: center;
-  line-height: 24px;
-  font-weight: 400;
+  max-width: 425px;
+  margin: 0 auto 2px;
 }
 
 .gridContainer {
-  display: grid;
-  grid-template-columns:  repeat(3, 1fr);
+  /* display: grid;
+  grid-template-columns: auto auto auto;
   grid-column-gap: 3rem;
-  grid-row-gap: 2rem;
-  justify-items: center;
-}
-.gridContainer:last-child{
-  justify-self: center;
-}
-.lastItemGrid{
-  grid-column: 2 / span 1;
- 
+  grid-row-gap: 2rem; */
+  display: flex;
+  row-gap: 1.5rem;
+  column-gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
 }
 
 /* .bgObjectline {
@@ -61,8 +59,7 @@
 
 @media all and (max-width: 900px) {
   .gridContainer {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: auto auto;
   }
 
   .content {

@@ -1,34 +1,32 @@
 .main {
-  padding: 4rem 3rem 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  height: 400px;
+  padding: 7rem 2rem 7rem;
 }
 
 .main h4 {
   font-weight: 700;
   font-size: 24px;
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 .logos {
   display: flex;
-  gap: 0.1rem;
-  justify-content: space-evenly;
-  width: 90%;
+  gap: 1rem;
+  justify-content: space-between;
   align-items: center;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 @media all and (max-width: 900px) {
   .main {
-    padding: 3rem;
-    display: flex;
+    padding: 4rem 2rem;
   }
   .logos {
-    display: grid;
-    grid-template-columns: auto auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
   }
   .logos img {
     max-width: 137px;
