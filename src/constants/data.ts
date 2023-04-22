@@ -17,9 +17,13 @@ import uuid from "react-uuid";
 import sportsMedal from "../Assets/Images/SportsMedal.svg";
 import rocket from "../Assets/Images/Rocket.svg";
 import pencil from "../Assets/Images/Pencil.svg";
+import managerIcon from "../Assets/Images/managerIcon.svg";
 import glowingStar from "../Assets/Images/GlowingStar.svg";
 import speechBalloon from "../Assets/Images/SpeechBalloon.svg";
 import handshake from "../Assets/Images/Handshake.svg";
+import teamSumupSlack from "../Assets/Images/team-sumup-slack.svg";
+import sparkSlack from "../Assets/Images/spark-slack.svg";
+import shoutOutSlack from "../Assets/Images/shout-out-slack.svg";
 
 export const boxData = [
   {
@@ -31,15 +35,21 @@ export const boxData = [
   {
     head: "Data-Driven Insights and Analytics ",
     content:
-      "Expose teams to the culture framework and guide them in how they apply this new knowledge to their company and their behaviours",
+      "Have groups of people with different experience and thought processes contribute their interpretation of the company's legacy, mission and values",
     imgSource: arrowIcon,
   },
   {
     head: "Solid Culture Framework",
     content:
-      "Have groups of people with different experience and thought processes contribute their interpretation of the company's legacy, mission and values",
+      "Expose teams to the culture framework and guide them in how they apply this new knowledge to their company and their behaviours",
     imgSource: notesIcon,
   },
+  // {
+  //   head: "Diverse perspectives",
+  //   content:
+  //     "Have groups of people with different experience and thought processes contribute their interpretation of the company's legacy, mission and values",
+  //   imgSource: arrowIcon,
+  // },
   {
     head: "Tighten Onboarding",
     content:
@@ -59,7 +69,7 @@ export const boxData = [
     imgSource: speakerIcon,
   },
   {
-    head: "Diverse perspectives",
+    head: "Diverse Perspective",
     content:
       "Educate employees on forms and types of workplace harassment(Sexual and Non Sexual)",
     imgSource: arrowIcon,
@@ -88,27 +98,27 @@ export const reviewData = [
     author: "Jane Cooper",
     companyRole: "CEO, ABC Corporation",
   },
-  {
-    title: "Dependable, Responsive, Professional Partner",
-    content:
-      "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
-    author: "Jane Cooper",
-    companyRole: "CEO, ABC Corporation",
-  },
-  {
-    title: "Dependable, Responsive, Professional Partner",
-    content:
-      "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
-    author: "Jane Cooper",
-    companyRole: "CEO, ABC Corporation",
-  },
-  {
-    title: "Dependable, Responsive, Professional Partner",
-    content:
-      "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
-    author: "Jane Cooper",
-    companyRole: "CEO, ABC Corporation",
-  },
+  // {
+  //   title: "Dependable, Responsive, Professional Partner",
+  //   content:
+  //     "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+  //   author: "Jane Cooper",
+  //   companyRole: "CEO, ABC Corporation",
+  // },
+  // {
+  //   title: "Dependable, Responsive, Professional Partner",
+  //   content:
+  //     "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+  //   author: "Jane Cooper",
+  //   companyRole: "CEO, ABC Corporation",
+  // },
+  // {
+  //   title: "Dependable, Responsive, Professional Partner",
+  //   content:
+  //     "We had an incredible experience working with this tool and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.",
+  //   author: "Jane Cooper",
+  //   companyRole: "CEO, ABC Corporation",
+  // },
   // {
   //   title: "Dependable, Responsive, Professional Partner",
   //   content:
@@ -301,7 +311,7 @@ export const subScriptionCourse = [
 //   { title: "subscription", path: "/subscription" },
 // ];
 
-export const employeeLinks = ["courses"];
+export const employeeLinks = ["Courses"];
 
 export const resourceLinks = ["articles", "books"];
 
@@ -2290,47 +2300,181 @@ export const TemplateList = [
     slug: "team-sum-up",
     tag: "Productivity",
     description:
-      "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+      "Track tasks and plans; Address blockers; and Focus on improvement areas.",
+    body: {
+      image: teamSumupSlack,
+      intro: [
+        "Get your teams more productive.",
+        "Track and tweak your employees' progress to drive performance.",
+        "Use automated task planners and templates to tweak employees’ progress, and drive productivity.",
+      ],
+      through: true,
+      firstList: [
+        "Sum Ups - Track tasks and plans.",
+        "Address blockers and underperformance early, within teams.",
+        "Focus Improvement Areas - Identify areas that need improvement.",
+      ],
+      secondList: [
+        "Daily Task completion rates",
+        "Blocker rates",
+        "Performance rates",
+        "Engagement and attitude to work",
+      ],
+    },
   },
   {
     icon: speechBalloon,
     title: "Spark",
-    slug: "suggestion",
-    tag: "Engagements",
+    slug: "spark",
+    tag: "Engagement",
     description:
-      "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+      "Spark conversations across teams; Create shared interests; Introduce icebreakers and Unite employees across teams. ",
+    body: {
+      image: sparkSlack,
+      intro: [
+        "Get and keep your teams connected, in a creative way.",
+        "Foster strong connections and build synergy early, by:",
+      ],
+      through: false,
+      firstList: [
+        "Sparking conversations across teams",
+        "Creating shared interests",
+        "Introducing icebreakers",
+        "Uniting employees across teams",
+      ],
+      secondList: [
+        "Engagement (Pulse Checkers)",
+        "Social network (Culture Ambassadors)",
+        "Diversity and Inclusion",
+      ],
+    },
   },
   {
     icon: glowingStar,
-    title: "Shout-outs (with company value)",
+    title: "Shout-outs",
     slug: "shout-outs",
     tag: "Motivation",
     description:
-      "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+      "Recognise achievements and successes of individuals or teams; Highlight and celebrate behaviours and actions that align with the company's mission and values.",
+    body: {
+      image: shoutOutSlack,
+
+      intro: [
+        " Keep your teams motivated to perform and behave better.",
+        "Reinforce your culture and values in a fun way by:",
+      ],
+      through: false,
+      firstList: [
+        "Recognising achievements and successes of individuals or teams",
+        "Highlighting and celebrating behaviours and actions that align with the company's mission and values.",
+        "Promoting certain skills and efforts",
+        "Communicating important milestones and information",
+      ],
+      secondList: ["Recognition", "Feedback", "Value Alignment"],
+    },
   },
   {
     icon: handshake,
     title: "Peer 1:1",
     slug: "peer",
-    tag: "Engagements",
+    tag: "Engagement",
     description:
       "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    body: {
+      image: teamSumupSlack,
+      intro: [
+        " Build stronger connections, improve collaboration and foster continuous learning among employees. Magical for distributed and remote teams!",
+
+        "Through regular check-ins to:",
+      ],
+      through: true,
+      firstList: [
+        "Share knowledge, discuss challenges, and offer feedback.",
+        "Explore new ideas and share experiences.",
+        "Encourage each other to grow and set goals.",
+        "Encourage each other to grow and set goals.",
+      ],
+      secondList: [
+        "Meeting frequency and duration.",
+        "Feedback quality.",
+        "Professional development progress.",
+      ],
+    },
   },
   {
-    icon: speechBalloon,
-    title: "Fireside Chats/Spark",
-    slug: "fireside-chats",
-    tag: "Engagements",
+    icon: pencil,
+    title: "Feedback Hub",
+    slug: "feedback",
+    tag: "Engagement",
     description:
       "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    body: {
+      image: teamSumupSlack,
+      intro: [
+        "Drive continuous improvement and create a culture of feedback with our anonymous start-stop-change system.",
+      ],
+      through: true,
+      firstList: [
+        "Anonymous Feedback - Provide a safe, confidential way for employees to share their thoughts and ideas.",
+        "Actionable Insights - Identify key areas to focus on, based on patterns and trends in feedback.",
+        "Continuous Improvement - Encourage action and follow-through on suggested changes.",
+      ],
+      secondList: [
+        "Participation rates",
+        "Frequency of things mentioned",
+        "Progress on suggested changes.",
+      ],
+    },
   },
+
   {
     icon: sportsMedal,
-    title: "Value star votes",
-    slug: "value-star-votes",
+    title: "Value star",
+    slug: "value-star",
     tag: "Motivation",
     description:
       "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    body: {
+      image: teamSumupSlack,
+      intro: [
+        "Strengthen your company’s culture by highlighting the values and behaviours you value most.",
+
+        "Build a supportive work culture and foster recognition and community.",
+      ],
+      through: true,
+      firstList: [
+        "Public nominations of employees who embody your company's values and behaviours",
+        "Positive Reinforcement by celebrating Value Stars and sharing their examples to reinforce positive behaviour.",
+      ],
+      secondList: ["Participation rates.", "Vote counts linked to Value Stars"],
+    },
+  },
+
+  {
+    icon: managerIcon,
+    title: "Managers 1:1",
+    slug: "manager1-1",
+    tag: "Engagement",
+    description:
+      "Empower managers to succeed with our templates and checklists",
+    body: {
+      image: teamSumupSlack,
+      intro: [
+        "Empower your managers, through our templates and checklists, to drive a culture of performance and engagement, and build connections with their teams.",
+      ],
+      through: true,
+      firstList: [
+        "1:1s - Regular check-ins to discuss progress and feedback with team members.",
+        "Performance - Identify and address challenges early to avoid roadblocks and enhance productivity.",
+        "Career Growth - Identify opportunities and provide support for personal and professional growth.",
+      ],
+      secondList: [
+        "Meeting frequency and duration.",
+        "Feedback quality.",
+        "Progress on goals",
+        "Employee engagement and satisfaction",
+      ],
+    },
   },
 ];
 
@@ -2363,34 +2507,39 @@ export const TemplateCategories = {
 
 export const ProgramSummary = [
   {
-    title: "Harassment in the Workplace.",
+    title: "Preventing Harassment at Work",
     path: "/programs/harrassment-in-the-workplace",
     // path: "/programs/sexual",
     intro: [
-      "A safe and healthy workplace is a productive one.",
+      " When you think of harassment at work, what typically comes to mind?",
 
-      "A lack of awareness and silence around workplace harassment has significantly impacted employee mental health and well-being, leading to reduced productivity and retention rates.",
+      "I suspect allegations of sexual misconduct between coworkers, or between coworkers and their employers.",
 
-      "How do you create a safe and healthy workplace?",
+      "While sexual harassment has been the subject of the most media attention, and deservedly so, harassment of a non-sexual nature is just as prevalent.",
 
-      "This is where OnCulture comes in.",
+      "Some forms of harassment are clear, but many others are not. Most times, victims may be unaware or not have enough information to label it as harassment. In a few cases, harassers themselves may not recognise some behaviours as inappropriate.",
+
+      "The thing to know is that; workplace harassment, whether obvious or not, has a devastating impact on the productivity and performance of individuals and teams, as well as on the profitability of companies. Furthermore, claims of harassment are costly, financially and reputation-wise. ",
     ],
+    qa: {
+      ques: "How do you create a productive and toxic-free workplace?",
+      ans: "This is where the ‘Preventing Harassment in the Workplace’ course comes in.",
+    },
     subs: [
       {
-        title: "In this interactive course, you will learn to:",
+        title: "In this interactive course, Employees will learn to:",
         items: [
           "Identify sexual and non-sexual types of harassment in the workplace.",
-          "Prevent workplace harassment.",
-          "Develop comprehensive responsive measures around workplace harassment.",
+          "Identify ways to prevent workplace harassment.",
+          "Develop responsive measures for combating workplace harassment.",
         ],
       },
       {
-        title: "Through relatable:",
+        title: "Through:",
         items: [
-          "Videos.",
-          "Real-life scenarios.",
-          "Case studies.",
-          "Interactive quizzes.",
+          "On-demand virtual lessons and quizzes",
+          "Course-relevant real-life scenarios and dialogue",
+          "Interactive and animated videos in an easy-to-understand way",
         ],
       },
       {
@@ -2398,14 +2547,15 @@ export const ProgramSummary = [
         items: [
           "A toxic-free company.",
           "Employee behaviors that buttress company values.",
-          "A happier and more productive workforce.",
+          "A more engaged and productive workforce.",
+          "Higher retention rates",
         ],
       },
     ],
   },
 
   {
-    title: "Culture Clinic",
+    title: "Driving Culture at Work",
     path: "/programs/culture-clinic",
     intro: [
       " Companies with aligned, positive cultures improve work lives, retain the best people, and generally perform better.",
@@ -2518,5 +2668,4 @@ export const pricingData = [
   },
 ];
 
-
-const savel = 'fgfgfgfg'
+// const savel = "fgfgfgfg";

@@ -8,17 +8,15 @@ const Carousel = () => {
   return (
     <div className={carouselStyle.main}>
       <div className={carouselStyle.content}>
-        <h3>Why OnCulture?</h3>
-        <p className={carouselStyle.pText}>
-          We help you shape the shared behaviours of your entire company, while promoting practices.
-          Benefits are:
+        <h3>Benefits of OnCulture</h3>
+        {/* <p className={carouselStyle.pText}>
+          We help you shape the shared behaviours of your entire company, while
+          promoting practices.
         </p>
+        <p>Benefits are:</p> */}
         <div className={carouselStyle.gridContainer}>
           {boxData.map((data, index) => (
-            <div className={`${index === boxData.length - 1 ? carouselStyle.lastItemGrid:''}`}>
-              <Box key={index} data={data} />
-            </div>
-           
+            <Box key={index} data={data} />
           ))}
         </div>
         {/* <div className={carouselStyle.bgObjectline}>

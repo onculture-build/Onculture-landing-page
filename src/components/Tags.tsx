@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import tagImae from "../Assets/Images/tags.png";
-import Button from "./Button";
+import React from "react";
+import { Link } from "react-router-dom";
+import CustomButton from "./custom-button";
 import tagsStyle from "../styles/Home/Tags.module.css";
-import { Link, useNavigate } from "react-router-dom";
 
 type TagProps = {
   mainTxt: string;
   subText: string;
   to: string;
+  image?: any;
 };
-const Tags = ({ mainTxt, subText, to }: TagProps) => {
+const Tags = ({ mainTxt, subText, to, image }: TagProps) => {
   //   const [hover, setHover] = useState<boolean>(true);
   return (
     //   <div className={tagsStyle.main}
@@ -30,16 +30,20 @@ const Tags = ({ mainTxt, subText, to }: TagProps) => {
     // </div>
     <div className={tagsStyle.main}>
       <div className={tagsStyle.tagImage}>
-        <img src={tagImae} alt="onculture-tag" />
+        <img src={image} alt="onculture-tag" />
       </div>
       <div className={tagsStyle.txtContent}>
         <div>
           <h4>{mainTxt}</h4>
-          <h5>{subText}</h5>
         </div>
-        <Link to={to}>
-          <Button className={tagsStyle.contentBtn}>See details</Button>
-        </Link>
+        <div>
+          <h5>{subText}</h5>
+          <Link to={to}>
+            <CustomButton look="primary" className={tagsStyle.contentBtn}>
+              See details
+            </CustomButton>
+          </Link>
+        </div>
       </div>
     </div>
   );

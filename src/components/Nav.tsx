@@ -10,7 +10,7 @@ import { IoCloseSharp } from "react-icons/io5";
 type NavProp = {
   pure?: boolean;
   board?: boolean;
-  showButton?:boolean
+  showButton?: boolean;
 };
 const Nav = ({ pure, board, showButton = true }: NavProp) => {
   const [sidebar, setSideBar] = useState<boolean>(false);
@@ -51,9 +51,13 @@ const Nav = ({ pure, board, showButton = true }: NavProp) => {
                   </Link>
                 </div> */}
                 <div>
-                  {showButton && <Link to="/jointhewaitlist">
-                    <Button className={navStyle.bookADemo}>Join the waitlist</Button>
-                  </Link>}
+                  {showButton && (
+                    <Link to="/join-the-waitlist">
+                      <Button className={navStyle.bookADemo}>
+                        Join the waitlist
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </>
@@ -64,11 +68,11 @@ const Nav = ({ pure, board, showButton = true }: NavProp) => {
         <div className={navStyle.logoSide}>
           <img src={OncultureLogo} alt="onculture logo" />
           {
-          //   sidebar ? (
-          //   <IoCloseSharp onClick={showSideBar} />
-          // ) : (
-          //   <FaBars onClick={showSideBar} />
-          //   )
+            //   sidebar ? (
+            //   <IoCloseSharp onClick={showSideBar} />
+            // ) : (
+            //   <FaBars onClick={showSideBar} />
+            //   )
           }
         </div>
         {

@@ -1,6 +1,6 @@
 import React from "react";
 import Styles from "../styles/components/form-input.module.css";
-import { BsExclamationCircleFill } from 'react-icons/bs'
+import { BsExclamationCircleFill } from "react-icons/bs";
 interface InputProps {
   type: string;
   label?: string;
@@ -14,7 +14,8 @@ interface InputProps {
   height?: string;
   width?: string;
   backendError?: string;
-  isTouched?:boolean
+  isTouched?: boolean;
+  autoComplete?: string;
 }
 
 const FormInput = ({
@@ -30,7 +31,8 @@ const FormInput = ({
   height,
   width,
   backendError,
-  isTouched
+  isTouched,
+  autoComplete = "off",
 }: InputProps) => {
   const styles = {
     extra: {
@@ -39,7 +41,11 @@ const FormInput = ({
     },
   };
   return (
-    <div className={`${backendError ? Styles.backendErrorMsgInput : Styles.formInput}`}>
+    <div
+      className={`${
+        backendError ? Styles.backendErrorMsgInput : Styles.formInput
+      }`}
+    >
       {label && <label>{label}</label>}
       <input
         type={type}
@@ -47,7 +53,8 @@ const FormInput = ({
         name={name}
         value={value}
         placeholder={placeholder}
-        autoComplete="off"
+        autoComplete={autoComplete}
+        min={1}
         // className={className}
         // onFocus={onFocus}
         onChange={onChange}
@@ -58,14 +65,14 @@ const FormInput = ({
       {isInvalid && validationMessage && (
         <p className={Styles.errorMsg}> {validationMessage}</p>
       )}
-      {
-        isTouched && backendError && (
-          <div className={Styles.backendErrorMsg}>
-            <p><BsExclamationCircleFill /></p>
-            <p>{backendError}</p>
-          </div>
-        )
-      }
+      {isTouched && backendError && (
+        <div className={Styles.backendErrorMsg}>
+          <p>
+            <BsExclamationCircleFill />
+          </p>
+          <p>{backendError}</p>
+        </div>
+      )}
     </div>
   );
 };
