@@ -72,10 +72,7 @@ const SignIn = () => {
         <Formik
           validationSchema={SIGNIN_FORM_SCHEMA}
           initialValues={{ fullName: "", email: "" }}
-          // onSubmit={handleSignin}
-          onSubmit={(values) => {
-            console.log(values);
-          }}
+          onSubmit={handleSignin}
         >
           {({ values, errors, touched, handleChange, handleSubmit }) => {
             return (
