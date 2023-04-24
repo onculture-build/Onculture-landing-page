@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Nav from "../../components/Nav";
-import sectionStyle from "../../styles/Template/templateCategory.module.css";
 import { TemplateCategories } from "../../constants/data";
+import sectionStyle from "../../styles/Template/templateCategory.module.css";
 
 interface TemplateFeatureData {
   data: TemplateFeature;
@@ -24,15 +24,15 @@ const TemplateCategory = () => {
 
   function renderView() {
     switch (params.id) {
-      case "Productivity":
+      case "productivity":
         return (
           <TemplateCategoryPreview data={TemplateCategories.Productivity} />
         );
 
-      case "Engagements":
+      case "engagement":
         return <TemplateCategoryPreview data={TemplateCategories.Engagement} />;
 
-      case "Motivation":
+      case "motivation":
         return <TemplateCategoryPreview data={TemplateCategories.Motivation} />;
 
       default:

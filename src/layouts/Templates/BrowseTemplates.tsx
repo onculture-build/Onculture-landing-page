@@ -1,9 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button";
-import { TemplateList } from "../../constants/data";
-import sectionStyle from "../../styles/Template/browseTemplates.module.css";
 import { FiArrowRight } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import { TemplateList } from "../../constants/data";
+import CustomButton from "../../components/custom-button";
+import sectionStyle from "../../styles/Template/browseTemplates.module.css";
 
 const BrowseTemplates = () => {
   const navigate = useNavigate();
@@ -12,7 +12,9 @@ const BrowseTemplates = () => {
     <div className={sectionStyle.section_container}>
       <h2>Templates</h2>
       <p className={sectionStyle.intro}>
-        Build and drive a culture of performance and synergy through our <span style={{fontStyle:'italic', fontWeight:'bold'}}>productivity, engagement, and recognition templates </span> and tools, all integrated with Slack, Teams and Google Workspace. 
+        Build and drive a culture of performance and synergy through our
+        <span> productivity, engagement, and recognition templates</span> and
+        tools, all integrated with Slack, Teams and Google Workspace.
       </p>
       <div className={sectionStyle.templatelist_container}>
         {templatesPreview.map((template, i) => {
@@ -26,7 +28,9 @@ const BrowseTemplates = () => {
                 <span
                   className={sectionStyle.template_tag}
                   onClick={() =>
-                    navigate(`/templates/category/${template.tag}`)
+                    navigate(
+                      `/templates/category/${template.tag.toLowerCase()}`
+                    )
                   }
                 >
                   {template.tag}
@@ -34,24 +38,26 @@ const BrowseTemplates = () => {
                 <p>{template.description}</p>
               </div>
 
-              <Button
+              <CustomButton
+                look="primary"
                 className={sectionStyle.template_CardBtn}
                 onClick={() => navigate(`/templates/${template.slug}`)}
               >
                 See details
-              </Button>
+              </CustomButton>
             </div>
           );
         })}
       </div>
       <div className={sectionStyle.browseBtnContainer}>
-        <Button
-          className={sectionStyle.browseBtn}
+        <CustomButton
+          look="primary"
           onClick={() => navigate("/templates")}
+          className={sectionStyle.browseBtn}
         >
           <span> Browse all templates</span>
           <FiArrowRight fontSize={25} />
-        </Button>
+        </CustomButton>
       </div>
     </div>
   );

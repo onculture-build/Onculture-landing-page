@@ -32,7 +32,7 @@
   padding-top: 5px;
   font-weight: 400;
   font-size: 14px;
-  color: #bbc4d9;
+  color: #fff;
 }
 
 .socialIcons {
@@ -40,10 +40,6 @@
   gap: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-
-.companyEmail {
-  color: #ffffff !important;
 }
 
 .contact {
@@ -70,7 +66,7 @@
   font-weight: 400;
   margin-top: 0.75rem;
   cursor: pointer;
-  color: #bbc4d9;
+  color: #fff;
 }
 
 @media all and (max-width: 900px) {

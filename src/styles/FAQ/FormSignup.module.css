@@ -1,7 +1,7 @@
 .mainBox {
   max-width: 480px;
   margin: 0 auto;
-  padding: 1rem 2rem 0;
+  padding: 3rem 2rem 0;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -10,61 +10,17 @@
 .mainBox h4 {
   font-size: 32px;
   font-weight: 600;
-  margin: 20px 0 10px;
+  margin: 20px 0 1.6rem;
 }
 
 .formInput {
-  display: flex;
+  margin-bottom: 1rem;
+  /* display: flex;
   flex-direction: column;
   font-size: 14px;
   font-weight: 400;
   margin-top: 1.5rem;
-  box-sizing: border-box;
-}
-
-.formInput input {
-  border-radius: 4px;
-  border: 1px solid #8790a3;
-  height: 48px;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 1rem;
-  margin-top: 0.5rem;
-  font-weight: 600;
-  font-family: "Inter", sans-serif;
-}
-
-.passwordInput {
-  position: relative;
-}
-
-.passwordInput span {
-  margin: 0;
-}
-
-.eyeForm {
-  position: absolute;
-  right: 1rem;
-  top: 1.5rem;
-  cursor: pointer;
-  color: #8790a3;
-  font-size: 1rem;
-}
-
-.forgotPassword {
-  display: block;
-  font-weight: 500;
-  font-size: 13px;
-  text-align: right;
-  color: #5c00dd;
-  cursor: pointer;
-  margin: 8px 0 0;
-}
-
-.formBtns {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  box-sizing: border-box; */
 }
 
 .formBtns button {
@@ -72,7 +28,7 @@
   height: 56px;
   font-weight: 600;
   font-size: 16px;
-  font-family: "Inter", sans-serif;
+  margin-top: 1rem;
 }
 
 .formBtns button:hover {
@@ -82,18 +38,10 @@
 
 .submitBtn button {
   width: 100%;
-  font-weight: 600;
   font-size: 16px;
-  font-family: "Inter", sans-serif;
-  background: #5c00dd;
-  border-radius: 4px;
-  outline: none;
-  border: none;
-  color: #ffffff;
-  padding: 1rem;
   margin-bottom: 1rem;
   margin-top: 1.5rem;
-  cursor: pointer;
+  height: 50px;
 }
 
 .errorMsg {

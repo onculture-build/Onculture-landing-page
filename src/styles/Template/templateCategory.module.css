@@ -4,7 +4,7 @@
 
 .main {
   box-sizing: border-box;
-  max-width: 1300px;
+  max-width: 1330px;
   width: 100%;
   margin: 0 auto;
   padding: 0 2rem;
@@ -29,10 +29,11 @@
 
 .tag_card {
   display: flex;
+  align-items: center;
   gap: 10px;
   background: #f5f8fe;
   border-radius: 4px;
-  padding: 0px 2rem;
+  padding: 0.5rem 2rem;
   margin-bottom: 15px;
   max-width: 500px;
 }

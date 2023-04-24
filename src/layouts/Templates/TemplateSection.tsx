@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button";
 import { TemplateList } from "../../constants/data";
+import CustomButton from "../../components/custom-button";
 import sectionStyle from "../../styles/Template/templateSection.module.css";
 
 const TemplateSection = () => {
@@ -26,7 +26,9 @@ const TemplateSection = () => {
                 <span
                   className={sectionStyle.template_tag}
                   onClick={() =>
-                    navigate(`/templates/category/${template.tag}`)
+                    navigate(
+                      `/templates/category/${template.tag.toLowerCase()}`
+                    )
                   }
                 >
                   {template.tag}
@@ -34,12 +36,13 @@ const TemplateSection = () => {
                 <p>{template.description}</p>
               </div>
 
-              <Button
+              <CustomButton
+                look="primary"
                 className={sectionStyle.template_CardBtn}
                 onClick={() => navigate(`/templates/${template.slug}`)}
               >
                 See details
-              </Button>
+              </CustomButton>
             </div>
           );
         })}
