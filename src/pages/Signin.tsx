@@ -17,6 +17,8 @@ import Styles from "../styles/FAQ/FormSignup.module.css";
 import FormInput from "../components/form-input";
 import CustomButton from "../components/custom-button";
 
+const MailerLite = require('mailerlite-api-v2-node').default
+
 interface SignInProps {
   fullName: string;
   email: string;
@@ -36,27 +38,31 @@ const SignIn = () => {
 
   const navigate = useNavigate();
 
+
   const handleSignin = async (values: SignInProps) => {
     const { fullName, email } = values;
+    const ml = MailerLite('');
+
     try {
       setLoading(true);
       const { data } = await axios.post(
-        `${process.env.REACT_APP_API_PROXY}/waitlist/join`,
+        `${process.env.REACT_APP_API_PROXY}/v2/groups/86642834692637967/subscribers`,
         {
-          fullName,
           email,
+          name: fullName
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-MailerLite-ApiKey': `${process.env.REACT_APP_MAILER_LITE_KEY}`,
+          }
         }
       );
-      console.log(data, "login");
+      navigate('/success-waitlist')
 
-      if (data.success) {
-        toast(data.message);
-        navigate("/");
-      } else {
-        navigate("/");
-      }
+
     } catch (err) {
-      toast("Email or Password incorrect");
+      toast("Sorry!,an error occurred");
       console.log(err);
       setLoading(false);
     } finally {

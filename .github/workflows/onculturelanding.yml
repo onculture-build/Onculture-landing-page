@@ -33,6 +33,7 @@ jobs:
           echo REACT_APP_DIGITALOCEAN_ACCESS_TOKEN=${{secrets.REACT_APP_DIGITALOCEAN_ACCESS_TOKEN}} >> .env
           echo REACT_APP_DROPLET_NAME=${{secrets.REACT_APP_DROPLET_NAME}} >> .env
           echo REACT_APP_API_PROXY=${{secrets.REACT_APP_API_PROXY}} >> .env
+          echo REACT_APP_MAILER_LITE_KEY=${{secrets.REACT_APP_MAILER_LITE_KEY}} >> .env
           cat .env
 
       - name: Log into Docker Hub

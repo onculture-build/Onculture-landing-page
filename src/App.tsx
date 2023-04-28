@@ -40,6 +40,7 @@ import { getUserDetails } from "./redux/actions/usersAction";
 import { RootState, useAppDispatch, useAppSelector } from "./redux/store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SuccessJoinList from "./pages/SuccessJoinList";
 
 function App() {
   const { userInfo, userToken, profileInfo } = useAppSelector(
@@ -93,6 +94,7 @@ function App() {
 
             {/* <Route path="signup" element={<SignUp />} /> */}
             <Route path="join-the-waitlist" element={<SignIn />} />
+            <Route path="success-waitlist" element={<SuccessJoinList />} />
             {/* <Route path="reset-password" element={<ForgotPassword />} /> */}
             {/* <Route path="verify/:token" element={<VerifyPassword />} />
               <Route path="contact" element={<Contact />} />
