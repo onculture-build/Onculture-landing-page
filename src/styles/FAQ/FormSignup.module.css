@@ -6,13 +6,92 @@
   flex-direction: column;
   box-sizing: border-box;
 }
+.content{
+ background: url("../../Assets/Images/line.svg");
+   background-repeat: no-repeat;
+  background-position: 0px 440px;
+  height: 100vh;
+}
+.mainBox2 {
+  max-width: 480px;
+  margin: 0 auto;
+  /* padding: 3rem 2rem 0; */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  
+}
 
-.mainBox h4 {
+
+.mainBox h4, .mainBox2 h4 {
   font-size: 32px;
   font-weight: 600;
   margin: 20px 0 1.6rem;
 }
 
+.mainBox2 div>h1{
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.mainBox2 div>p{
+  font-size: 20px;
+  font-weight: 400;
+text-align: center;
+color: #8790A3;
+line-height: 30px;
+width: 553px;
+height: 90px;
+}
+
+.mainBox2Img {
+  background-image: url('../../Assets/Images/confettiList.svg');
+  width: 378.72px;
+  height: 283.91px;
+  align-items: center;
+  text-align: center;
+}
+
+.mainBox2Img img{
+  margin:auto;
+  display: block;
+  transform: translateY(55%);
+}
+
+.socials{
+  margin-top: 20%;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socialIcos{
+display: flex;
+gap: 3rem;
+}
+
+.bgIcos{
+  background-color: rgba(92, 0, 221, 0.323);
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* opacity: 10%; */
+}
+.bgIcos img{
+  /* margin: 0.1px auto; */
+  width: 17.07px;
+  height: 17.07px;
+}
 .formInput {
   margin-bottom: 1rem;
   /* display: flex;
