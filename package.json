@@ -1,6 +1,6 @@
 {
   "name": "onculture-frontend",
-  "proxy": "https://api.mailerlite.com",
+  "proxy": "https://api.mailerlite.com/api",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

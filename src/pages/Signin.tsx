@@ -45,8 +45,10 @@ const SignIn = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_API_PROXY}/v2/groups/${process.env.REACT_APP_MAILERLITE_GROUP_ID}/subscribers`,
+      const url = `${process.env.REACT_APP_API_PROXY}/v2/groups/${process.env.REACT_APP_MAILERLITE_GROUP_ID}/subscribers`
+      console.log(url, URL)
+      const { data } = await axios.post( url
+       ,
         {
           email,
           name: fullName
