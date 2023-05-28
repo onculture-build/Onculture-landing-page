@@ -18,6 +18,8 @@ import FormInput from "../components/form-input";
 import CustomButton from "../components/custom-button";
 import WaitlistSuccess from "./waitlist-success";
 
+const MailerLite = require('mailerlite-api-v2-node').default
+
 interface SignInProps {
   fullName: string;
   email: string;
@@ -34,33 +36,36 @@ export const SIGNIN_FORM_SCHEMA = yup.object().shape({
 
 const SignIn = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [success, setSuccess] = React.useState(false)
 
   const navigate = useNavigate();
 
+
   const handleSignin = async (values: SignInProps) => {
     const { fullName, email } = values;
+    const ml = MailerLite('');
+
     try {
       setLoading(true);
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_API_PROXY}/waitlist/join`,
+      const url = `${process.env.REACT_APP_API_PROXY}/v2/groups/${process.env.REACT_APP_MAILERLITE_GROUP_ID}/subscribers`
+      console.log(url, URL)
+      const { data } = await axios.post(url
+        ,
         {
-          fullName,
           email,
+          name: fullName
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-MailerLite-ApiKey': `${process.env.REACT_APP_MAILER_LITE_KEY}`,
+          }
         }
       );
-      console.log(data, "login");
+      navigate('/success-waitlist')
 
-      if (data.success) {
-        toast(data.message);
-        // navigate("/");
-        setSuccess(true)
-      }
-      // else {
-      //   navigate("/");
-      // }
+
     } catch (err) {
-      toast("Email or Password incorrect");
+      toast("Sorry!,an error occurred");
       console.log(err);
       setLoading(false);
     } finally {
@@ -70,58 +75,57 @@ const SignIn = () => {
   return (
     <>
       <Nav showButton={false} />
-      {success ? <WaitlistSuccess /> :
-        <div className={Styles.mainBox}>
-          <h4>Be the First to know when we launch</h4>
+      <div className={Styles.mainBox}>
+        <h4>Be the First to know when we launch</h4>
 
-          <Formik
-            validationSchema={SIGNIN_FORM_SCHEMA}
-            initialValues={{ fullName: "", email: "" }}
-            onSubmit={handleSignin}
-          >
-            {({ values, errors, touched, handleChange, handleSubmit }) => {
-              return (
-                <form onSubmit={handleSubmit}>
-                  <div className={Styles.formInput}>
-                    <FormInput
-                      label="Your Fullname*"
-                      type="text"
-                      name="fullName"
-                      placeholder="Fullname"
-                      value={values.fullName}
-                      isInvalid={touched.fullName && !!errors.fullName}
-                      validationMessage={touched.fullName && errors.fullName}
-                      onChange={handleChange}
-                    />
-                  </div>
+        <Formik
+          validationSchema={SIGNIN_FORM_SCHEMA}
+          initialValues={{ fullName: "", email: "" }}
+          onSubmit={handleSignin}
+        >
+          {({ values, errors, touched, handleChange, handleSubmit }) => {
+            return (
+              <form onSubmit={handleSubmit}>
+                <div className={Styles.formInput}>
                   <FormInput
-                    label="Email Address*"
+                    label="Your Fullname*"
                     type="text"
-                    name="email"
-                    placeholder="Email Address"
-                    value={values.email}
-                    isInvalid={touched.email && !!errors.email}
-                    validationMessage={touched.email && errors.email}
+                    name="fullName"
+                    placeholder="Fullname"
+                    value={values.fullName}
+                    isInvalid={touched.fullName && !!errors.fullName}
+                    validationMessage={touched.fullName && errors.fullName}
                     onChange={handleChange}
-                    autoComplete="on"
                   />
+                </div>
+                <FormInput
+                  label="Email Address*"
+                  type="text"
+                  name="email"
+                  placeholder="Email Address"
+                  value={values.email}
+                  isInvalid={touched.email && !!errors.email}
+                  validationMessage={touched.email && errors.email}
+                  onChange={handleChange}
+                  autoComplete="on"
+                />
 
-                  <div className={Styles.submitBtn}>
-                    <CustomButton
-                      look="primary"
-                      disabled={loading}
-                      type="submit"
-                      loading={loading}
-                    >
-                      Submit
-                    </CustomButton>
-                  </div>
-                </form>
-              );
-            }}
-          </Formik>
+                <div className={Styles.submitBtn}>
+                  <CustomButton
+                    look="primary"
+                    disabled={loading}
+                    type="submit"
+                    loading={loading}
+                  >
+                    Submit
+                  </CustomButton>
+                </div>
+              </form>
+            );
+          }}
+        </Formik>
 
-          {/* <div className={Styles.formBtns}>
+        {/* <div className={Styles.formBtns}>
         <GoogleLogin
           clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
           onSuccess={(res) => {
@@ -144,8 +148,7 @@ const SignIn = () => {
           redirectUri={"https://onculture.io/company-onboarding"}
         />
       </div> */}
-        </div>
-      }
+      </div>
 
     </>
   );

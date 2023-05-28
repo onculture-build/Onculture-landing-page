@@ -33,6 +33,8 @@ jobs:
           echo REACT_APP_DIGITALOCEAN_ACCESS_TOKEN=${{secrets.REACT_APP_DIGITALOCEAN_ACCESS_TOKEN}} >> .env
           echo REACT_APP_DROPLET_NAME=${{secrets.REACT_APP_DROPLET_NAME}} >> .env
           echo REACT_APP_API_PROXY=${{secrets.REACT_APP_API_PROXY}} >> .env
+          echo REACT_APP_MAILER_LITE_KEY=${{secrets.REACT_APP_MAILER_LITE_KEY}} >> .env
+          echo REACT_APP_MAILERLITE_GROUP_ID=${{secrets.REACT_APP_MAILERLITE_GROUP_ID}} >> .env
           cat .env
 
       - name: Log into Docker Hub
@@ -54,7 +56,7 @@ jobs:
             docker pull buildonculture/landingpage:latest
             docker stop onculture-landing || true
             docker rm onculture-landing || true
-            docker run -d -p 3000:80 --name onculture-landing --env-file .env buildonculture/landingpage:latest
+            docker run -d -p 3000:3000 --name onculture-landing --env-file .env buildonculture/landingpage:latest
 
       - run: |
           pm2 stop 0
@@ -64,6 +66,6 @@ jobs:
           docker pull buildonculture/landingpage:latest
           docker stop onculture-landing || true
           docker rm onculture-landing || true
-          docker run -d -p 3000:80 --name onculture-landing buildonculture/landingpage:latest
+          docker run -d -p 3000:3000 --name onculture-landing buildonculture/landingpage:latest
 
 

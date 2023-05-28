@@ -12,9 +12,9 @@ EXPOSE 3000
 
 CMD ["npm", "start"]
 
-# Pull NGINX image
-FROM nginx:1.15
-# Move all build files to NGINX serve folder
-COPY --from=build /build /usr/share/nginx/html
-# Setup NGINX with config
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+# # Pull NGINX image
+# FROM nginx:1.15
+# # Move all build files to NGINX serve folder
+# COPY --from=build /build /usr/share/nginx/html
+# # Setup NGINX with config
+# COPY ./nginx.conf /etc/nginx/conf.d/default.conf

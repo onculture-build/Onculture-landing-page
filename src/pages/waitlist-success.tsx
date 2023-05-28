@@ -1,4 +1,5 @@
 import React from 'react'
+import Nav from "../components/Nav";
 import WaitlistSvg from '../Assets/Images/waitlist-success.svg'
 import { RiLinkedinBoxLine, RiInstagramLine } from 'react-icons/ri'
 import { BsTwitter } from 'react-icons/bs'
@@ -8,6 +9,7 @@ import Style from '../styles/Home/waitlist-success.module.css'
 const WaitlistSuccess = () => {
     return (
         <>
+            <Nav showButton={false} />
             <div className={Style.waitlist}>
                 <div className={Style.container}>
                     <img src={WaitlistSvg} alt="waitlist" />

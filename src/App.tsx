@@ -40,6 +40,8 @@ import { getUserDetails } from "./redux/actions/usersAction";
 import { RootState, useAppDispatch, useAppSelector } from "./redux/store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SuccessJoinList from "./pages/SuccessJoinList";
+import WaitlistSuccess from "./pages/waitlist-success";
 
 function App() {
   const { userInfo, userToken, profileInfo } = useAppSelector(
@@ -51,28 +53,28 @@ function App() {
     ? localStorage.getItem("userToken")
     : null;
 
-  const storeDetails = localStorage.getItem("userDetails")
-    ? localStorage.getItem("userDetails")
-    : null;
+  // const storeDetails = localStorage.getItem("userDetails")
+  //   ? localStorage.getItem("userDetails")
+  //   : null;
 
   // automatically authenticate user if token is found
-  React.useEffect(() => {
-    const handleTabClose = () => {
-      localStorage.clear();
-    };
+  // React.useEffect(() => {
+  //   const handleTabClose = () => {
+  //     localStorage.clear();
+  //   };
 
-    if (
-      userToken === null ||
-      userToken === "undefined" ||
-      JSON.stringify(storeDetails) === null
-    ) {
-      localStorage.clear();
-    }
+  //   if (
+  //     userToken === null ||
+  //     userToken === "undefined" ||
+  //     JSON.stringify(storeDetails) === null
+  //   ) {
+  //     localStorage.clear();
+  //   }
 
-    if (userToken || storeToken) {
-      dispatch(getUserDetails());
-    }
-  }, [storeToken, storeDetails]);
+  //   if (userToken || storeToken) {
+  //     dispatch(getUserDetails());
+  //   }
+  // }, [storeToken, storeDetails]);
 
   return (
     <>
@@ -93,6 +95,8 @@ function App() {
 
             {/* <Route path="signup" element={<SignUp />} /> */}
             <Route path="join-the-waitlist" element={<SignIn />} />
+            {/* <Route path="success-waitlist" element={<SuccessJoinList />} /> */}
+            <Route path="success-waitlist" element={<WaitlistSuccess />} />
             {/* <Route path="reset-password" element={<ForgotPassword />} /> */}
             {/* <Route path="verify/:token" element={<VerifyPassword />} />
               <Route path="contact" element={<Contact />} />
@@ -111,15 +115,15 @@ function App() {
                 <Route path="article/:id" element={<Article />} />
               </Route> */}
 
-            <Route
+            {/* <Route
               path="/dashboard"
               element={
                 <RequireAdminAuth userToken={storeToken} user={storeDetails}>
-                  {/* <AdminDashboardLayout /> */}
+                  <AdminDashboardLayout />
                 </RequireAdminAuth>
               }
-            >
-              {/* {adminProtectedRoutes.map((route, i) => {
+            > */}
+            {/* {adminProtectedRoutes.map((route, i) => {
                   return (
                     <Route
                       key={i}
@@ -139,8 +143,8 @@ function App() {
                       )}
                     </Route>
                   ); */}
-              {/* })} */}
-            </Route>
+            {/* })} */}
+            {/* </Route> */}
 
             <Route element={<ProtectedRoute />}>
               {/* <Route
