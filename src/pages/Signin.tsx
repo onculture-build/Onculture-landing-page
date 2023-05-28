@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import Styles from "../styles/FAQ/FormSignup.module.css";
 import FormInput from "../components/form-input";
 import CustomButton from "../components/custom-button";
+import WaitlistSuccess from "./waitlist-success";
 
 interface SignInProps {
   fullName: string;
@@ -33,6 +34,7 @@ export const SIGNIN_FORM_SCHEMA = yup.object().shape({
 
 const SignIn = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
+  const [success, setSuccess] = React.useState(false)
 
   const navigate = useNavigate();
 
@@ -51,10 +53,12 @@ const SignIn = () => {
 
       if (data.success) {
         toast(data.message);
-        navigate("/");
-      } else {
-        navigate("/");
+        // navigate("/");
+        setSuccess(true)
       }
+      // else {
+      //   navigate("/");
+      // }
     } catch (err) {
       toast("Email or Password incorrect");
       console.log(err);
@@ -66,80 +70,83 @@ const SignIn = () => {
   return (
     <>
       <Nav showButton={false} />
-      <div className={Styles.mainBox}>
-        <h4>Be the First to know when we launch</h4>
+      {success ? <WaitlistSuccess /> :
+        <div className={Styles.mainBox}>
+          <h4>Be the First to know when we launch</h4>
 
-        <Formik
-          validationSchema={SIGNIN_FORM_SCHEMA}
-          initialValues={{ fullName: "", email: "" }}
-          onSubmit={handleSignin}
-        >
-          {({ values, errors, touched, handleChange, handleSubmit }) => {
-            return (
-              <form onSubmit={handleSubmit}>
-                <div className={Styles.formInput}>
+          <Formik
+            validationSchema={SIGNIN_FORM_SCHEMA}
+            initialValues={{ fullName: "", email: "" }}
+            onSubmit={handleSignin}
+          >
+            {({ values, errors, touched, handleChange, handleSubmit }) => {
+              return (
+                <form onSubmit={handleSubmit}>
+                  <div className={Styles.formInput}>
+                    <FormInput
+                      label="Your Fullname*"
+                      type="text"
+                      name="fullName"
+                      placeholder="Fullname"
+                      value={values.fullName}
+                      isInvalid={touched.fullName && !!errors.fullName}
+                      validationMessage={touched.fullName && errors.fullName}
+                      onChange={handleChange}
+                    />
+                  </div>
                   <FormInput
-                    label="Your Fullname*"
+                    label="Email Address*"
                     type="text"
-                    name="fullName"
-                    placeholder="Fullname"
-                    value={values.fullName}
-                    isInvalid={touched.fullName && !!errors.fullName}
-                    validationMessage={touched.fullName && errors.fullName}
+                    name="email"
+                    placeholder="Email Address"
+                    value={values.email}
+                    isInvalid={touched.email && !!errors.email}
+                    validationMessage={touched.email && errors.email}
                     onChange={handleChange}
+                    autoComplete="on"
                   />
-                </div>
-                <FormInput
-                  label="Email Address*"
-                  type="text"
-                  name="email"
-                  placeholder="Email Address"
-                  value={values.email}
-                  isInvalid={touched.email && !!errors.email}
-                  validationMessage={touched.email && errors.email}
-                  onChange={handleChange}
-                  autoComplete="on"
-                />
 
-                <div className={Styles.submitBtn}>
-                  <CustomButton
-                    look="primary"
-                    disabled={loading}
-                    type="submit"
-                    loading={loading}
-                  >
-                    Submit
-                  </CustomButton>
-                </div>
-              </form>
-            );
-          }}
-        </Formik>
-
-        {/* <div className={Styles.formBtns}>
-          <GoogleLogin
-            clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
-            onSuccess={(res) => {
-              dispatch(googleLogin(res));
-              dispatch(getUserDetails());
+                  <div className={Styles.submitBtn}>
+                    <CustomButton
+                      look="primary"
+                      disabled={loading}
+                      type="submit"
+                      loading={loading}
+                    >
+                      Submit
+                    </CustomButton>
+                  </div>
+                </form>
+              );
             }}
-            cookiePolicy={"single_host_origin"}
-            render={(renderProps) => (
-              <button
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-                className={Styles.gbtn}
-              >
-                <img src={googleIcon} alt="google-onculture" /> Log In with
-                Google
-              </button>
-            )}
-            isSignedIn={false}
-            uxMode={"redirect"}
-            redirectUri={"https://onculture.io/company-onboarding"}
-          />
-        </div> */}
-      </div>
+          </Formik>
+
+          {/* <div className={Styles.formBtns}>
+        <GoogleLogin
+          clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
+          onSuccess={(res) => {
+            dispatch(googleLogin(res));
+            dispatch(getUserDetails());
+          }}
+          cookiePolicy={"single_host_origin"}
+          render={(renderProps) => (
+            <button
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+              className={Styles.gbtn}
+            >
+              <img src={googleIcon} alt="google-onculture" /> Log In with
+              Google
+            </button>
+          )}
+          isSignedIn={false}
+          uxMode={"redirect"}
+          redirectUri={"https://onculture.io/company-onboarding"}
+        />
+      </div> */}
+        </div>
+      }
+
     </>
   );
 };
