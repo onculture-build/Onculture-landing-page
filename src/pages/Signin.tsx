@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import Styles from "../styles/FAQ/FormSignup.module.css";
 import FormInput from "../components/form-input";
 import CustomButton from "../components/custom-button";
+import WaitlistSuccess from "./waitlist-success";
 
 const MailerLite = require('mailerlite-api-v2-node').default
 
@@ -47,8 +48,8 @@ const SignIn = () => {
       setLoading(true);
       const url = `${process.env.REACT_APP_API_PROXY}/v2/groups/${process.env.REACT_APP_MAILERLITE_GROUP_ID}/subscribers`
       console.log(url, URL)
-      const { data } = await axios.post( url
-       ,
+      const { data } = await axios.post(url
+        ,
         {
           email,
           name: fullName
@@ -125,29 +126,30 @@ const SignIn = () => {
         </Formik>
 
         {/* <div className={Styles.formBtns}>
-          <GoogleLogin
-            clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
-            onSuccess={(res) => {
-              dispatch(googleLogin(res));
-              dispatch(getUserDetails());
-            }}
-            cookiePolicy={"single_host_origin"}
-            render={(renderProps) => (
-              <button
-                onClick={renderProps.onClick}
-                disabled={renderProps.disabled}
-                className={Styles.gbtn}
-              >
-                <img src={googleIcon} alt="google-onculture" /> Log In with
-                Google
-              </button>
-            )}
-            isSignedIn={false}
-            uxMode={"redirect"}
-            redirectUri={"https://onculture.io/company-onboarding"}
-          />
-        </div> */}
+        <GoogleLogin
+          clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
+          onSuccess={(res) => {
+            dispatch(googleLogin(res));
+            dispatch(getUserDetails());
+          }}
+          cookiePolicy={"single_host_origin"}
+          render={(renderProps) => (
+            <button
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+              className={Styles.gbtn}
+            >
+              <img src={googleIcon} alt="google-onculture" /> Log In with
+              Google
+            </button>
+          )}
+          isSignedIn={false}
+          uxMode={"redirect"}
+          redirectUri={"https://onculture.io/company-onboarding"}
+        />
+      </div> */}
       </div>
+
     </>
   );
 };
