@@ -52,7 +52,7 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.REACT_APP_DIGITALOCEAN_ACCESS_TOKEN }}
-          run-command: |
+      - run: |
             docker pull buildonculture/landingpage:latest
             docker stop onculture-landing || true
             docker rm onculture-landing || true

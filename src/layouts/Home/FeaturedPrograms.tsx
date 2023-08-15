@@ -18,7 +18,7 @@ const FeaturedPrograms = () => {
         <div className={fProgramStyles.tags}>
           <Tags
             mainTxt="Preventing Harassment at Work"
-            subText="Sexual and Non-sexual"
+            subText="Interactive course"
             to="/programs/harrassment-in-the-workplace"
             image={HaraassmentImg}
           />
@@ -31,13 +31,13 @@ const FeaturedPrograms = () => {
           <Tags
             mainTxt="Driving Culture
             at Work"
-            subText="Coming soon"
+            subText="Interactive Course"
             to="/programs/culture-clinic"
             image={DrivingCultureImg}
           />
           <Tags
             mainTxt="Leadership Amp"
-            subText="Coming soon"
+            subText="Automated tools & resources"
             to="/"
             image={LeadershipAmpImg}
           />
