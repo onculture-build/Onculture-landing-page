@@ -11,7 +11,7 @@ const TemplateSection = () => {
       <h2>Templates</h2>
       <p className={sectionStyle.intro}>
         Build a Culture of performance and synergy through our productivity,
-        engagement, and recognition templates and tools, all integrated with
+        engagement, and recognition templates and tools,<br/> all integrated with
         Slack, Teams and Google Workspace.{" "}
       </p>
       <div className={sectionStyle.templatelist_container}>

@@ -29,13 +29,13 @@ export const boxData = [
   {
     head: "Team Connection and Collaboration",
     content:
-      "Connect people to work on culture exercises together, regardless of geographical location or unit",
+      "Connect employees together, regardless of location or unit.",
     imgSource: groupIcon,
   },
   {
-    head: "Data-Driven Insights and Analytics ",
+    head: "Unlock Leadership Potential",
     content:
-      "Have groups of people with different experience and thought processes contribute their interpretation of the company's legacy, mission and values",
+      "Empower your leaders with automated tools and resources to help boost their management skills.",
     imgSource: arrowIcon,
   },
   {
@@ -44,34 +44,40 @@ export const boxData = [
       "Expose teams to the culture framework and guide them in how they apply this new knowledge to their company and their behaviours",
     imgSource: notesIcon,
   },
-  // {
-  //   head: "Diverse perspectives",
-  //   content:
-  //     "Have groups of people with different experience and thought processes contribute their interpretation of the company's legacy, mission and values",
-  //   imgSource: arrowIcon,
-  // },
   {
-    head: "Tighten Onboarding",
+    head: "Boost Productivity Levels",
     content:
-      "Add a culture-fit layer to your already existing onboarding process",
+      "Use automated task planners and templates to tweak employees’ progress, and drive productivity",
+    imgSource: arrowIcon,
+  },
+  {
+    head: "Live Your Values, Daily",
+    content:
+      "Expose your teams to the culture framework and have them champion and live out your company values, every day.",
     imgSource: plusIcon,
   },
   {
-    head: "Recognize Value Stars",
+    head: "Data-Driven Insights and Analytics",
     content:
-      "Identify employees who demonstrate each company value, using examples.",
+      "Use data to track metrics like productivity, engagement, attendance, and well-being; and make informed decisions to optimise teams.",
     imgSource: starIcon,
   },
   {
-    head: "Workplace Harassment Awareness",
+    head: "Tightened Onboarding",
     content:
-      "Educate employees on forms and types of workplace harassment(Sexual and Non Sexual)",
+      "Onboard new employees, creatively, on your Mission and Values. Add a culture-fit layer to your existing onboarding process.",
     imgSource: speakerIcon,
   },
   {
-    head: "Diverse Perspective",
+    head: "Recognise Stars",
     content:
-      "Educate employees on forms and types of workplace harassment(Sexual and Non Sexual)",
+      "Identify employees who demonstrate laudable behaviours and actions",
+    imgSource: arrowIcon,
+  },
+  {
+    head: "Prevent Harassment at Work",
+    content:
+      "Educate employees on appropriate workplace conduct and keep workplace harassment-free.",
     imgSource: arrowIcon,
   },
 ];
@@ -2300,7 +2306,7 @@ export const TemplateList = [
     slug: "team-sum-up",
     tag: "Productivity",
     description:
-      "Track tasks and plans; Address blockers; and Focus on improvement areas.",
+      "Track and tweak employees' progress with automated task planners and templates",
     body: {
       image: teamSumupSlack,
       intro: [
@@ -2328,7 +2334,7 @@ export const TemplateList = [
     slug: "spark",
     tag: "Engagement",
     description:
-      "Spark conversations across teams; Create shared interests; Introduce icebreakers and Unite employees across teams. ",
+      "Get and keep your teams connected with interesting conversations-starters",
     body: {
       image: sparkSlack,
       intro: [
@@ -2355,7 +2361,7 @@ export const TemplateList = [
     slug: "shout-outs",
     tag: "Motivation",
     description:
-      "Recognise achievements and successes of individuals or teams; Highlight and celebrate behaviours and actions that align with the company's mission and values.",
+      "Reinforce your culture and values in a relatable way by highlighting and celebrating stand-out behaviours.",
     body: {
       image: shoutOutSlack,
 
