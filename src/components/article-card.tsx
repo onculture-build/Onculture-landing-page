@@ -11,7 +11,7 @@ interface IArticle {
   type: 'article' | 'book';
 }
 
-const ArticleCard = ({ title, tag, url, cover, type }: IArticle) => {
+const ArticleCard = ({ id, title, tag, url, cover, type }: IArticle) => {
   return (
     <Card w={'100%'} maxW={'365px'} h={'100%'} bg={'brand.gray.600'}>
       <Stack alignItems={'center'} gap={5} h={'100%'}>
@@ -52,7 +52,11 @@ const ArticleCard = ({ title, tag, url, cover, type }: IArticle) => {
             {title}
           </Heading>
           <Box mt={'auto'}>
-            <Link to={url!} target='_blank' referrerPolicy='no-referrer'>
+            <Link
+              to={type === 'article' ? url! : `/resources/book/${id}`}
+              target={type === 'article' ? '_blank' : '_self'}
+              referrerPolicy='no-referrer'
+            >
               <Flex
                 color={'brand.secondary.600'}
                 _hover={{ color: 'brand.primary.600' }}

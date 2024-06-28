@@ -50,7 +50,7 @@ const Navbar = () => {
               fontWeight={'medium'}
               padding={'1.5rem 3rem'}
               w={'100%'}
-              onClick={() => navigate(``)}
+              onClick={() => {}}
             >
               Join Waitlist
             </CustomButton>

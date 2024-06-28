@@ -27,11 +27,11 @@ const Footer = () => {
         <Grid
           py={{ base: 20, md: 28 }}
           px={{ base: '2rem', lg: '0' }}
-          templateColumns={{ base: 'repeat(4, 1fr)', md: 'repeat(12, 1fr)' }}
+          templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }}
           justifyContent={'space-between'}
           gap={{ base: 20, md: 10 }}
         >
-          <GridItem colSpan={4} order={{ base: 3, lg: 1 }}>
+          <GridItem order={{ base: 3, lg: 1 }}>
             <Image src={'/assets/images/Onculture.png'} alt='onculture-logo' />
             <Flex direction={'column'}>
               <Text fontSize={'label'} mt={5}>
@@ -48,10 +48,7 @@ const Footer = () => {
               <Text fontSize={'label'}>Get@OnCulture.io</Text>
             </Flex>
           </GridItem>
-          <GridItem
-            colSpan={{ base: 2, md: 3, lg: 4 }}
-            order={{ base: 1, lg: 2 }}
-          >
+          <GridItem order={{ base: 1, lg: 2 }}>
             <Heading as={'h5'} fontSize={'heading5'}>
               Company
             </Heading>
@@ -67,10 +64,7 @@ const Footer = () => {
               </Link> */}
             </Stack>
           </GridItem>
-          <GridItem
-            colSpan={{ base: 2, md: 3, lg: 4 }}
-            order={{ base: 2, lg: 3 }}
-          >
+          <GridItem order={{ base: 2, lg: 3 }}>
             <Heading as={'h5'} fontSize={'heading5'}>
               Support
             </Heading>

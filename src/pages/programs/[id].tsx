@@ -57,9 +57,7 @@ const ProgramInfo = () => {
                     {programInfo.title}
                   </Heading>
                   <Box>
-                    <CustomButton onClick={() => navigate('/pricing')}>
-                      Subscribe
-                    </CustomButton>
+                    <CustomButton onClick={() => {}}>Subscribe</CustomButton>
                   </Box>
                 </Flex>
                 <Box w={'100%'} mb={10} hideFrom={'1024px'}>

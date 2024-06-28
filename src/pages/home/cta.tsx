@@ -79,19 +79,17 @@ const CallToAction = () => {
                 Book a Demo
               </CustomButton>
             </Link>
-            <Link to={'/pricing'}>
-              <CustomButton
-                variant='primary-outline'
-                bgColor={'brand.white'}
-                color={'brand.primary.600'}
-                _hover={{
-                  color: 'brand.white',
-                  backgroundColor: 'brand.primary.600',
-                }}
-              >
-                See our Pricing
-              </CustomButton>
-            </Link>
+            <CustomButton
+              variant='primary-outline'
+              bgColor={'brand.white'}
+              color={'brand.primary.600'}
+              _hover={{
+                color: 'brand.white',
+                backgroundColor: 'brand.primary.600',
+              }}
+            >
+              Join Waitlist
+            </CustomButton>
           </Flex>
         </Flex>
       </ViewPortContainer>
