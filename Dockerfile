@@ -1,20 +1,11 @@
-# Base image
-FROM node:12-alpine as build 
-WORKDIR /
-# Install npm packages and cache this layer
-COPY package*.json /
+FROM node:18-alpine3.17 
+WORKDIR /app
+COPY package.json yarn.lock /
 RUN npm install
 # Build copy all source files and build React app
-COPY ./ /
-RUN npm run build
+COPY . .
+RUN yarn run build
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
-
-# # Pull NGINX image
-# FROM nginx:1.15
-# # Move all build files to NGINX serve folder
-# COPY --from=build /build /usr/share/nginx/html
-# # Setup NGINX with config
-# COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+CMD ["yarn", "start"]
