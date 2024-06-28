@@ -31,7 +31,7 @@ const SingleArticle = () => {
         <Box>
           <Image src={content.cover} w={'100%'} />
         </Box>
-        <Text fontSize={{ md: 'heading5' }}>{content.content}</Text>
+        {/* <Text fontSize={{ md: 'heading5' }}>{content.}</Text> */}
       </Stack>
       <Stack my={'30rem'}>
         <Link to={'/resources'}>

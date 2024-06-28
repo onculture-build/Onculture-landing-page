@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
@@ -18,13 +19,21 @@
     "types": ["vite/client", "vite-plugin-svgr/client"],
     "paths": {
       "@@/*": [
-        "./src/*"
+        "/*"
       ],
       "@@pages/*": [
-        "./src/pages/*"
-      ]
+        "pages/*"
+      ],
+        "@@lib/*": [
+          "lib/*"
+        ],
     }
   },
-  "include": ["src"],
- 
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

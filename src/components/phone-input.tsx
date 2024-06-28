@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import PhoneInput from 'react-phone-number-input';
 import { Controller } from 'react-hook-form';
-import themes from '@@utils/lib/constants/theme';
+import themes from '@@lib/theme';
 import 'react-phone-number-input/style.css';
 
 interface PropType {
