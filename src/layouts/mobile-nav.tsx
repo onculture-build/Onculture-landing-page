@@ -73,7 +73,7 @@ const MobileNavigation = () => {
                   onClose();
                 }}
               >
-                Sign up
+                Join Waitlist
               </CustomButton>
               <CustomButton
                 fontSize={'paragraph'}

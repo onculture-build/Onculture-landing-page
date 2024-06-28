@@ -28,10 +28,10 @@ const Resources: { menu: string; component: ReactNode }[] = [
 const ResourcesPage = () => {
   return (
     <ViewPortContainer>
-      <Stack py={40} px={{ base: '2rem', lg: '0' }}>
+      <Stack py={{ base: 20, md: 40 }} px={{ base: '2rem', lg: '0' }}>
         <Heading
           as={'h2'}
-          fontSize={'heading1'}
+          fontSize={{ base: 'heading2', md: 'heading1' }}
           fontWeight={'semiBold'}
           mt={10}
           w={{ md: '50%' }}

@@ -9,14 +9,18 @@ import {
   Switch,
   Text,
 } from '@chakra-ui/react';
-import PricingList from '../../lib/db/pricing.json';
 import './pricing.css';
 import PricingCard from './pricing-card';
 import ViewPortContainer from '../../layouts/container';
-import ErrorPage from '../ErrorPage';
+import { useGetSubscriptionPlans } from '../../services/queries/subscriptions.query';
+import LoadingSpinner from '../../components/spinner';
+import { AppUtilities } from '../../app.utiilities';
+import EmptyDataState from '../../components/empty-state';
 
 const Pricing = () => {
   const [isMonthly, setisMonthly] = React.useState<boolean>(false);
+
+  const { data: AllPlans, isLoading } = useGetSubscriptionPlans();
 
   return (
     <ViewPortContainer>
@@ -63,21 +67,26 @@ const Pricing = () => {
             templateColumns={{ base: 'repeat(3, 1fr)', lg: 'repeat(12, 1fr)' }}
             gap={10}
           >
-            {PricingList?.length ? (
-              PricingList.map((pricing) => {
+            {isLoading ? (
+              <GridItem colSpan={12}>
+                <Flex
+                  justifyContent={'center'}
+                  alignItems={'center'}
+                  w={'100%'}
+                >
+                  <LoadingSpinner />
+                </Flex>
+              </GridItem>
+            ) : AllPlans?.length ? (
+              (AllPlans || []).map((plan: any) => {
                 return (
-                  <GridItem
-                    key={pricing.id}
-                    position={'relative'}
-                    h={'100%'}
-                    colSpan={3}
-                  >
+                  <GridItem key={plan.id} position={'relative'} h={'100%'}>
                     <PricingCard
-                      recommended={pricing.recommended}
-                      name={pricing.planName}
-                      description={pricing.intro}
-                      price={Number(pricing.price)}
-                      benefits={pricing.benefits}
+                      recommended={plan.recommend}
+                      name={AppUtilities.capitalize(plan.planName)}
+                      description={plan.intro}
+                      price={plan.price}
+                      benefits={plan.benefits}
                       type={isMonthly ? 'month' : 'year'}
                     />
                   </GridItem>
@@ -85,10 +94,7 @@ const Pricing = () => {
               })
             ) : (
               <GridItem colSpan={12}>
-                <ErrorPage
-                  errorTitle='Error fetching our prices'
-                  errorText='We are unable to fetch our prices at the moment. Try again later'
-                />
+                <EmptyDataState message='Unable to fetch subscriptions. Try again later' />
               </GridItem>
             )}
           </Grid>

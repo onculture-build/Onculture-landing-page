@@ -56,15 +56,15 @@ const Footer = () => {
               Company
             </Heading>
             <Stack mt={5} gap={4}>
-              <Link to={PageRoutes.about} style={{ fontSize: '1.5rem' }}>
+              <Link to={PageRoutes.home} style={{ fontSize: '1.5rem' }}>
                 About ThePeoplePractice
               </Link>
               <Link to={PageRoutes.faq} style={{ fontSize: '1.5rem' }}>
                 FAQ
               </Link>
-              <Link to={PageRoutes.pricing} style={{ fontSize: '1.5rem' }}>
+              {/* <Link to={PageRoutes.pricing} style={{ fontSize: '1.5rem' }}>
                 Pricing
-              </Link>
+              </Link> */}
             </Stack>
           </GridItem>
           <GridItem

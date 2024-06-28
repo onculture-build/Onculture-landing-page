@@ -15,6 +15,7 @@ const AllArticles = () => {
               id={article.id}
               title={article.title}
               tag={article.tag}
+              url={article.url}
               cover={article.image}
               type='article'
             />

@@ -52,7 +52,7 @@ const Navbar = () => {
               w={'100%'}
               onClick={() => navigate(``)}
             >
-              Sign up
+              Join Waitlist
             </CustomButton>
             <CustomButton
               fontSize={'small'}
