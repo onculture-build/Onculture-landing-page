@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "type": "Email",
+    "url": null,
+    "name": "Get@OnCulture.io",
+    "footerIcon": null,
+    "icon": "/assets/images/email.png"
+  },
+  {
+    "id": 2,
+    "type": "LinkedIn",
+    "url": "https://www.linkedin.com/company/onculture-global/",
+    "name": "OnCulture",
+    "footerIcon": "/assets/svg/socials/linkedin.svg",
+    "icon": "/assets/images/linkedin.png"
+  },
+  {
+    "id": 3,
+    "type": "Instagram",
+    "url": "https://www.instagram.com/onculture_/",
+    "name": "OnCulture.io",
+    "footerIcon": "/assets/svg/socials/instagram.svg",
+    "icon": "/assets/images/instagram.png"
+  },
+  {
+    "id": 4,
+    "type": "X (FKA Twitter)",
+    "url": "https://x.com/OnCulture_'",
+    "name": "OnCulture",
+    "footerIcon": "/assets/svg/socials/twitter.svg",
+    "icon": "/assets/images/x.png"
+  }
+]

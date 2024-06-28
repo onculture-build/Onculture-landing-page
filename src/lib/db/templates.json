@@ -1,0 +1,168 @@
+[
+  {
+    "id": "2a065953-6d67-4d6f-8401-eee851edd7b0",
+    "icon": "/assets/svg/rocket.svg",
+    "title": "Team Sum-Up",
+    "slug": "team-sum-up",
+    "tag": "Productivity",
+    "isReady": true,
+    "description": "Track and tweak employees' progress with automated task planners and templates",
+    "body": {
+      "id": "6db8ae7a-cc38-419d-a0aa-0371efc14c9b",
+      "image": "/assets/images/peer.png",
+      "intro": [
+        "Get your teams more productive.",
+        "Track and tweak your employees' progress to drive performance.",
+        "Use automated task planners and templates to tweak employees' progress, and drive productivity."
+      ],
+      "through": true,
+      "firstList": [
+        "Sum Ups - Track tasks and plans.",
+        "Address blockers and underperformance early, within teams.",
+        "Focus Improvement Areas - Identify areas that need improvement."
+      ],
+      "secondList": [
+        "Daily Task completion rates",
+        "Blocker rates",
+        "Performance rates",
+        "Engagement and attitude to work"
+      ]
+    }
+  },
+  {
+    "id": "43bfc6af-4884-4c13-a3fb-741de929e68f",
+    "icon": "/assets/svg/glowing-star.svg",
+    "title": "Shout Out",
+    "slug": "shout-outs",
+    "tag": "Motivation",
+    "isReady": true,
+    "description": "Reinforce your culture and values in a relatable way by highlighting and celebrating stand-out behaviours.",
+    "body": {
+      "id": "164aa378-aacf-4d12-b27d-267675604960",
+      "image": "/assets/images/spark.png",
+      "intro": [
+        " Keep your teams motivated to perform and behave better.",
+        "Reinforce your culture and values in a fun way by:"
+      ],
+      "through": false,
+      "firstList": [
+        "Recognising achievements and successes of individuals or teams",
+        "Highlighting and celebrating behaviours and actions that align with the company's mission and values.",
+        "Promoting certain skills and efforts",
+        "Communicating important milestones and information"
+      ],
+      "secondList": ["Recognition", "Feedback", "Value Alignment"]
+    }
+  },
+  {
+    "id": "a0c6c744-dc8b-428f-b6d6-e041a3158ec3",
+    "icon": "/assets/svg/pencil.svg",
+    "title": "Feedback Hub",
+    "slug": "feedback",
+    "tag": "Engagement",
+    "isReady": true,
+    "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "body": {
+      "id": "43865edf-62f9-4bc5-a064-577a857867c5",
+      "image": "/assets/images/feedback.png",
+      "intro": [
+        "Drive continuous improvement and create a culture of feedback with our anonymous start-stop-change system."
+      ],
+      "through": true,
+      "firstList": [
+        "Anonymous Feedback - Provide a safe, confidential way for employees to share their thoughts and ideas.",
+        "Actionable Insights - Identify key areas to focus on, based on patterns and trends in feedback.",
+        "Continuous Improvement - Encourage action and follow-through on suggested changes."
+      ],
+      "secondList": [
+        "Participation rates",
+        "Frequency of things mentioned",
+        "Progress on suggested changes."
+      ]
+    }
+  },
+  {
+    "id": "aba136d9-4d37-4b1b-8bfa-aa49bc4137a6",
+    "icon": "/assets/svg/speech-balloon.svg",
+    "title": "Spark",
+    "slug": "spark",
+    "tag": "Engagement",
+    "isReady": false,
+    "description": "Get and keep your teams connected with interesting conversations-starters",
+    "body": {
+      "id": "92690803-bec7-46c2-8e78-a0cba3d1bdf5",
+      "image": "/assets/images/spark.png",
+      "intro": [
+        "Get and keep your teams connected, in a creative way.",
+        "Foster strong connections and build synergy early, by:"
+      ],
+      "through": false,
+      "firstList": [
+        "Sparking conversations across teams",
+        "Creating shared interests",
+        "Introducing icebreakers",
+        "Uniting employees across teams"
+      ],
+      "secondList": [
+        "Engagement (Pulse Checkers)",
+        "Social network (Culture Ambassadors)",
+        "Diversity and Inclusion"
+      ]
+    }
+  },
+  {
+    "id": "9f5c3d16-cfb2-428c-9246-a102e67bfb2d",
+    "icon": "/assets/svg/handshake.svg",
+    "title": "Peer 1:1",
+    "slug": "peer",
+    "tag": "Engagement",
+    "isReady": false,
+    "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "body": {
+      "id": "5d85115c-6098-420c-8f10-87269fd3c9b6",
+      "image": "/assets/images/peer.png",
+      "intro": [
+        " Build stronger connections, improve collaboration and foster continuous learning among employees. Magical for distributed and remote teams!",
+        "Through regular check-ins to:"
+      ],
+      "through": true,
+      "firstList": [
+        "Share knowledge, discuss challenges, and offer feedback.",
+        "Explore new ideas and share experiences.",
+        "Encourage each other to grow and set goals.",
+        "Encourage each other to grow and set goals."
+      ],
+      "secondList": [
+        "Meeting frequency and duration.",
+        "Feedback quality.",
+        "Professional development progress."
+      ]
+    }
+  },
+  {
+    "id": "764dd4b7-b1ad-48b2-af16-b2eb5c22cf4e",
+    "icon": "/assets/svg/sports-medal.svg",
+    "title": "Value Star Vote",
+    "slug": "value-star",
+    "tag": "Motivation",
+    "isReady": false,
+    "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "body": {
+      "id": "71cdb0a5-5598-41b0-b4ce-0696d180ae78",
+      "image": "/assets/images/valuestar.png",
+      "intro": [
+        "Strengthen your company's culture by highlighting the values and behaviours you value most.",
+        "Build a supportive work culture and foster recognition and community."
+      ],
+      "through": true,
+      "firstList": [
+        "Public nominations of employees who embody your company's values and behaviours",
+        "Positive Reinforcement by celebrating Value Stars and sharing their examples to reinforce positive behaviour."
+      ],
+      "secondList": [
+        "Participation rates.",
+        "Vote counts linked to Value Stars"
+      ]
+    }
+  }
+]

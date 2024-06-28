@@ -1,0 +1,12 @@
+.pillars-page {
+  background-image: url(/assets/images/bg-gradient-mid-left.png),
+    url(/assets/images/bg-gradient-mid-right.png);
+  background-repeat: no-repeat, no-repeat;
+  background-position: left bottom, right 20%;
+}
+
+@media (max-width: 480px) {
+  .pillars-page {
+    background-size: contain;
+  }
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "planName": "Free",
+    "price": "$0",
+    "user": "per user per month",
+    "intro": "For teams looking for better data visualization and customization",
+    "benefits": [
+      "Team sum-up",
+      "Blog Articles",
+      "No of Sum-ups",
+      "List of sum-ups"
+    ],
+    "recommended": false
+  },
+  {
+    "id": 2,
+    "planName": "Basic",
+    "price": "$1",
+    "user": "per user per month",
+    "intro": "For teams looking for better data visualization and customization",
+    "benefits": [
+      "Team sum-up",
+      "Peer 1:1",
+      "Fireside Spark",
+      "No of Sum-ups",
+      "List of sum-ups",
+      "Mood checker",
+      "Absenteeism rate"
+    ],
+    "recommended": false
+  },
+  {
+    "id": 3,
+    "planName": "Standard",
+    "price": "$2",
+    "user": "per user per month",
+    "intro": "For teams looking for better data visualization and customization",
+    "benefits": [
+      "Sexual Harassment Course",
+      "Team sum-up",
+      "Peer 1:1",
+      "Fireside Spark",
+      "No of Sum-ups",
+      "List of sum-ups",
+      "Mood checker",
+      "Absenteeism rate"
+    ],
+    "recommended": true
+  },
+  {
+    "id": 4,
+    "planName": "Premium",
+    "price": "$3.5",
+    "user": "per user per month",
+    "intro": "For teams looking for better data visualization and customization",
+    "benefits": [
+      "Culture clinic",
+      "Sexual Harassment Course",
+      "Team sum-up",
+      "Peer 1:1",
+      "Fireside Spark",
+      "Complain box",
+      "Value star votes",
+      "Peer Shout Out",
+      "Avg sentiment",
+      "Mood checker",
+      "Engagement rate",
+      "Absenteeism rate",
+      "Recommendations"
+    ],
+    "recommended": false
+  }
+]

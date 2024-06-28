@@ -1,0 +1,28 @@
+.pricing-card {
+  transition: 0.6s;
+}
+
+.pricing-card:hover {
+  background-color: rgba(92, 0, 221, 1);
+  color: white;
+}
+
+.pricing-card:hover .badge {
+  background-color: rgba(245, 248, 254, 1);
+  color: rgba(92, 0, 221, 1);
+}
+
+.pricing-card:hover .plan-name {
+  color: rgba(255, 34, 255, 1);
+}
+
+.pricing-card:hover .amount,
+.pricing-card:hover .duration,
+.pricing-card:hover .desc {
+  color: white;
+}
+
+.pricing-card:hover .btn {
+  background-color: white;
+  color: rgba(92, 0, 221, 1);
+}
