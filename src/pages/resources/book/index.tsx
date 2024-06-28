@@ -23,6 +23,7 @@ const Book = () => {
               id={book.id}
               title={book.title}
               cover={book.cover}
+              url={book.url}
               type='book'
             />
           </GridItem>

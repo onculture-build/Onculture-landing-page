@@ -52,11 +52,7 @@ const ArticleCard = ({ id, title, tag, url, cover, type }: IArticle) => {
             {title}
           </Heading>
           <Box mt={'auto'}>
-            <Link
-              to={type === 'article' ? url! : `/resources/book/${id}`}
-              target={type === 'article' ? '_blank' : '_self'}
-              referrerPolicy='no-referrer'
-            >
+            <Link to={url!} target={'_blank'} referrerPolicy='no-referrer'>
               <Flex
                 color={'brand.secondary.600'}
                 _hover={{ color: 'brand.primary.600' }}
@@ -66,7 +62,7 @@ const ArticleCard = ({ id, title, tag, url, cover, type }: IArticle) => {
                 mb={10}
                 mt={'auto'}
               >
-                Read <FaArrowRightLong />
+                {type === 'book' ? 'Buy Now' : 'Read'} <FaArrowRightLong />
               </Flex>
             </Link>
           </Box>
