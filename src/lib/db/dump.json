@@ -1,0 +1,30 @@
+[
+  {
+    "id": "81309c78-36da-407b-87ec-0ce5db4251d2",
+    "icon": "/assets/svg/manager-icon.svg",
+    "title": "Managers 1:1",
+    "slug": "managers1-1",
+    "tag": "Engagement",
+    "isReady": false,
+    "description": "Empower managers to succeed with our templates and checklists",
+    "body": {
+      "id": "22301a51-ea95-4ef8-ba6e-4ec2c45acb74",
+      "image": "/assets/images/managers.png",
+      "intro": [
+        "Empower your managers, through our templates and checklists, to drive a culture of performance and engagement, and build connections with their teams."
+      ],
+      "through": true,
+      "firstList": [
+        "1:1s - Regular check-ins to discuss progress and feedback with team members.",
+        "Performance - Identify and address challenges early to avoid roadblocks and enhance productivity.",
+        "Career Growth - Identify opportunities and provide support for personal and professional growth."
+      ],
+      "secondList": [
+        "Meeting frequency and duration.",
+        "Feedback quality.",
+        "Progress on goals",
+        "Employee engagement and satisfaction"
+      ]
+    }
+  }
+]

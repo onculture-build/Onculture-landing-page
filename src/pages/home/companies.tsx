@@ -1,13 +1,5 @@
-import ViewPortContainer from '@@/layout/container';
-import {
-  Box,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  Image,
-  Stack,
-} from '@chakra-ui/react';
+import { Grid, GridItem, Heading, Image, Stack } from '@chakra-ui/react';
+import ViewPortContainer from '../../layouts/container';
 
 const Companies = () => {
   return (

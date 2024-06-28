@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import TemplateList from '@@lib/db/templates.json';
+import TemplateList from '../../lib/db/templates.json';
 import {
   Box,
   Flex,
@@ -11,9 +11,9 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import TemplateCard from '@@/components/template-card';
-import CustomButton from '@@/components/custom-button';
-import ViewPortContainer from '@@/layout/container';
+import CustomButton from '../../components/custom-button';
+import TemplateCard from '../../components/template-card';
+import ViewPortContainer from '../../layouts/container';
 
 const BrowseTemplates = () => {
   const navigate = useNavigate();

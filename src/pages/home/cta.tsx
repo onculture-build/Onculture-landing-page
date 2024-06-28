@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
-import CustomButton from '@@/components/custom-button';
-import ViewPortContainer from '@@/layout/container';
 import { Link } from 'react-router-dom';
+import CustomButton from '../../components/custom-button';
+import ViewPortContainer from '../../layouts/container';
 
 const CallToAction = () => {
   const texts = ['GET', 'STAY', 'BE'];

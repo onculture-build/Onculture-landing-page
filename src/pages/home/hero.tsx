@@ -1,10 +1,9 @@
-import React from 'react';
-import HeroVideo from '../../../components/hero-video';
-import { PageRoutes } from '@@/utils/lib/constants/data';
 import { useNavigate } from 'react-router-dom';
-import CustomButton from '@@/components/custom-button';
 import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import ViewPortContainer from '@@/layout/container';
+import CustomButton from '../../components/custom-button';
+import HeroVideo from '../../components/hero-video';
+import ViewPortContainer from '../../layouts/container';
+import { PageRoutes } from '../../lib/constants';
 
 const Hero = () => {
   const navigate = useNavigate();

@@ -1,14 +1,6 @@
-import {
-  Box,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  Stack,
-  Text,
-} from '@chakra-ui/react';
-import BenefitData from '@@lib/db/benefits.json';
-import BenefitCard from '@@/components/benefits-card/benefits-card';
+import { Box, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react';
+import BenefitData from '../../lib/db/benefits.json';
+import BenefitCard from '../../components/benefits-card/benefits-card';
 
 const Benefits = () => {
   return (

@@ -1,8 +1,7 @@
-import React from 'react';
-import ImageSlider from '@@/components/ImageSlider';
-import reviewData from '@@lib/db/reviews.json';
+import ImageSlider from '../../components/ImageSlider';
+import ViewPortContainer from '../../layouts/container';
+import reviewData from '../../lib/db/reviews.json';
 import { Box } from '@chakra-ui/react';
-import ViewPortContainer from '@@/layout/container';
 
 const Review = () => {
   return (

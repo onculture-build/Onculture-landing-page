@@ -1,0 +1,50 @@
+[
+  {
+    "id": "8cbe8399-8f59-46c7-9321-16a962e32ec4",
+    "title": "Team Connection and Collaboration",
+    "description": "Connect employees together, regardless of location or unit. ",
+    "img": "/assets/images/group-icon.png"
+  },
+  {
+    "id": "7e707067-70a7-4c5a-a30f-8fb5a6cdac10",
+    "title": "Unlock Leadership Potential",
+    "description": "Empower your leaders with automated tools and resources to help boost their management skills.",
+    "img": "/assets/svg/arrows-icon.svg"
+  },
+  {
+    "id": "089c2b49-2519-4449-891f-a6430810194b",
+    "title": "Boost Productivity Levels",
+    "description": "Use automated task planners and templates to tweak employees’ progress, and drive productivity.",
+    "img": "/assets/svg/notes-icon.svg"
+  },
+  {
+    "id": "432a68e3-58dd-423c-88a0-fbf3ddc182c8",
+    "title": "Prevent Harassment at Work",
+    "description": "Educate employees on appropriate workplace conduct and keep workplace harassment-free.",
+    "img": "/assets/svg/arrows-icon.svg"
+  },
+  {
+    "id": "3a0b78d9-555a-4c59-95a8-7e67e764b070",
+    "title": "Live Your Values, Daily",
+    "description": "Expose your teams to the culture framework and have them champion and live out your company values, every day.",
+    "img": "/assets/svg/plus-icon.svg"
+  },
+  {
+    "id": "3e9254bd-9029-454f-8882-c8ea69a1661f",
+    "title": "Data-Driven Insights and Analytics",
+    "description": "Use data to track metrics like productivity, engagement, attendance, and well-being; and make informed decisions to optimise teams.",
+    "img": "/assets/svg/star-icon.svg"
+  },
+  {
+    "id": "4c13e223-671e-45c3-9e01-2e95c63c66d0",
+    "title": "Tightened Onboarding",
+    "description": "Onboard new employees, creatively, on your Mission and Values. Add a culture-fit layer to your existing onboarding process.",
+    "img": "/assets/svg/speaker-icon.svg"
+  },
+  {
+    "id": "c0388117-9da6-4ab1-acbe-fefdfb017c63",
+    "title": "Recognise Stars",
+    "description": "Identify employees who demonstrate laudable behaviours and actions.",
+    "img": "/assets/svg/arrows-icon.svg"
+  }
+]

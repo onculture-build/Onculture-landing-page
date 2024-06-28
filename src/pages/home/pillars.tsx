@@ -1,7 +1,7 @@
 import { Box, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react';
-import Programs from '@@lib/db/programs.json';
-import PillarsCard from '@@/components/pillars-card';
-import ViewPortContainer from '@@/layout/container';
+import Programs from '../../lib/db/programs.json';
+import PillarsCard from '../../components/pillars-card';
+import ViewPortContainer from '../../layouts/container';
 
 const Pillars = () => {
   return (

@@ -1,8 +1,7 @@
-import React from 'react';
-import { Box, Flex, Heading, Img, Stack, Text } from '@chakra-ui/react';
+import { Box, Heading, Img, Stack, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import ViewPortContainer from '@@/layout/container';
-import CustomButton from '@@/components/custom-button';
+import CustomButton from '../components/custom-button';
+import ViewPortContainer from '../layouts/container';
 
 type ErrorPageProp = {
   errorText?: string;
