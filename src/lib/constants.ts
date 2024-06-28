@@ -1,0 +1,15 @@
+export const PageRoutes = {
+  home: '/',
+  about: 'about',
+  faq: 'faq',
+  pricing: 'pricing',
+  contact: 'contact',
+  bookDemo: 'book-demo',
+  resources: 'resources',
+  article: 'article/:id',
+  book: 'book/:id',
+  templates: 'templates',
+  template: ':id',
+  programs: 'programs/:id',
+  notFound: '*',
+};
