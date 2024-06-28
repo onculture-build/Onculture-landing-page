@@ -1,5 +1,5 @@
-import FaqData from '@@lib/db/faq.json';
-import ViewPortContainer from '@@/layout/container';
+import ViewPortContainer from '../../layouts/container';
+import FaqData from '../../lib/db/faq.json';
 import {
   Accordion,
   AccordionButton,

@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import ViewPortContainer from '../layout/container';
+import ViewPortContainer from '../layouts/container';
 
 type ImageSliderProps = {
   id: string;

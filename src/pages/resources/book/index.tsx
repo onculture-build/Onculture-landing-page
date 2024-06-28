@@ -1,5 +1,5 @@
-import Books from '@@lib/db/books.json';
-import ArticleCard from '@@/components/article-card';
+import ArticleCard from '../../../components/article-card';
+import Books from '../../../lib/db/books.json';
 import { Box, Grid, GridItem } from '@chakra-ui/react';
 
 type Content = {

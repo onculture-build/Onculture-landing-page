@@ -10,9 +10,9 @@ import {
   TabPanels,
   Tabs,
 } from '@chakra-ui/react';
-import ViewPortContainer from '@@/layout/container';
 import Book from './book';
 import AllArticles from './article';
+import ViewPortContainer from '../../layouts/container';
 
 const Resources: { menu: string; component: ReactNode }[] = [
   {

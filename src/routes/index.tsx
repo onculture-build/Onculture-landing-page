@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { RouteObject } from 'react-router-dom';
+import { Outlet, RouteObject } from 'react-router-dom';
 import { PageRoutes } from '../lib/constants';
 import Contact from '../pages/contact';
 import Faq from '../pages/faq';
@@ -12,68 +12,79 @@ import SingleBook from '../pages/resources/book/[id]';
 import TemplateInfo from '../pages/template/[id]';
 import ProgramInfo from '../pages/programs/[id]';
 import TemplatesPage from '../pages/template';
+import Layout from '../layouts/layout';
 
 const ErrorPage = lazy(() => import('../pages/ErrorPage'));
 
-const landingPageRoutes: RouteObject[] = [
+const routes: RouteObject[] = [
   {
-    index: true,
-    element: <Home />,
-  },
-  {
-    path: PageRoutes.faq,
-    element: <Faq />,
-  },
-  {
-    path: PageRoutes.templates,
+    path: '/',
+    element: (
+      <Layout>
+        <Outlet />
+      </Layout>
+    ),
     children: [
       {
         index: true,
-        element: <TemplatesPage />,
+        element: <Home />,
       },
       {
-        path: PageRoutes.template,
-        element: <TemplateInfo />,
+        path: PageRoutes.faq,
+        element: <Faq />,
+      },
+      {
+        path: PageRoutes.templates,
+        children: [
+          {
+            index: true,
+            element: <TemplatesPage />,
+          },
+          {
+            path: PageRoutes.template,
+            element: <TemplateInfo />,
+          },
+        ],
+      },
+      {
+        path: PageRoutes.pricing,
+        element: <Pricing />,
+      },
+      {
+        path: PageRoutes.contact,
+        element: <Contact />,
+      },
+      {
+        path: PageRoutes.bookDemo,
+        element: <BookDemo />,
+      },
+      {
+        path: PageRoutes.programs,
+        element: <ProgramInfo />,
+      },
+      {
+        path: PageRoutes.resources,
+        children: [
+          {
+            index: true,
+            element: <Resources />,
+          },
+          {
+            path: PageRoutes.article,
+            element: <SingleArticle />,
+          },
+          {
+            path: PageRoutes.book,
+            element: <SingleBook />,
+          },
+        ],
+      },
+      {
+        path: PageRoutes.notFound,
+        element: <ErrorPage />,
       },
     ],
-  },
-  {
-    path: PageRoutes.pricing,
-    element: <Pricing />,
-  },
-  {
-    path: PageRoutes.contact,
-    element: <Contact />,
-  },
-  {
-    path: PageRoutes.bookDemo,
-    element: <BookDemo />,
-  },
-  {
-    path: PageRoutes.programs,
-    element: <ProgramInfo />,
-  },
-  {
-    path: PageRoutes.resources,
-    children: [
-      {
-        index: true,
-        element: <Resources />,
-      },
-      {
-        path: PageRoutes.article,
-        element: <SingleArticle />,
-      },
-      {
-        path: PageRoutes.book,
-        element: <SingleBook />,
-      },
-    ],
-  },
-  {
-    path: PageRoutes.notFound,
-    element: <ErrorPage />,
   },
 ];
 
-export default landingPageRoutes;
+export default routes;

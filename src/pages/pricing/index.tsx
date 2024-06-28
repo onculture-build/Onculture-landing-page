@@ -1,5 +1,4 @@
 import React from 'react';
-import ViewPortContainer from '@@/layout/container';
 import {
   Box,
   Flex,
@@ -10,10 +9,11 @@ import {
   Switch,
   Text,
 } from '@chakra-ui/react';
-import ErrorPage from '@@/pages/ErrorPage';
-import PricingList from '@@lib/db/pricing.json';
+import PricingList from '../../lib/db/pricing.json';
 import './pricing.css';
 import PricingCard from './pricing-card';
+import ViewPortContainer from '../../layouts/container';
+import ErrorPage from '../ErrorPage';
 
 const Pricing = () => {
   const [isMonthly, setisMonthly] = React.useState<boolean>(false);
@@ -64,30 +64,25 @@ const Pricing = () => {
             gap={10}
           >
             {PricingList?.length ? (
-              PricingList.map(
-                (
-                  { recommended, planName, intro, price, benefits },
-                  i: number
-                ) => {
-                  return (
-                    <GridItem
-                      key={i}
-                      position={'relative'}
-                      h={'100%'}
-                      colSpan={3}
-                    >
-                      <PricingCard
-                        recommended={recommended}
-                        name={planName}
-                        description={intro}
-                        price={price}
-                        benefits={benefits}
-                        type={isMonthly ? 'month' : 'year'}
-                      />
-                    </GridItem>
-                  );
-                }
-              )
+              PricingList.map((pricing) => {
+                return (
+                  <GridItem
+                    key={pricing.id}
+                    position={'relative'}
+                    h={'100%'}
+                    colSpan={3}
+                  >
+                    <PricingCard
+                      recommended={pricing.recommended}
+                      name={pricing.planName}
+                      description={pricing.intro}
+                      price={Number(pricing.price)}
+                      benefits={pricing.benefits}
+                      type={isMonthly ? 'month' : 'year'}
+                    />
+                  </GridItem>
+                );
+              })
             ) : (
               <GridItem colSpan={12}>
                 <ErrorPage

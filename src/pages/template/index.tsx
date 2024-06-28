@@ -1,5 +1,4 @@
-import TemplateList from '@@lib/db/templates.json';
-import ViewPortContainer from '@@/layout/container';
+import TemplateList from '../../lib/db/templates.json';
 import {
   Box,
   Flex,
@@ -9,8 +8,9 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import TemplateCard from '@@/components/template-card';
 import './template.css';
+import TemplateCard from '../../components/template-card';
+import ViewPortContainer from '../../layouts/container';
 
 const TemplatesPage = () => {
   return (

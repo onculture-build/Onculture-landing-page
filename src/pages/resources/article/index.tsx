@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import Articles from '@@lib/db/articles.json';
+import ArticleCard from '../../../components/article-card';
+import Articles from '../../../lib/db/articles.json';
 import { Box, Grid, GridItem } from '@chakra-ui/react';
-import ArticleCard from '@@/components/article-card';
 
 const AllArticles = () => {
   return (

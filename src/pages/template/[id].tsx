@@ -1,6 +1,3 @@
-import CustomButton from '@@/components/custom-button';
-import ViewPortContainer from '@@/layout/container';
-import { AppUtilities } from '@@/utils';
 import {
   Box,
   Breadcrumb,
@@ -17,13 +14,15 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import React from 'react';
 import { MdChevronRight } from 'react-icons/md';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import TemplateData from '@@lib/db/templates.json';
-import ErrorPage from '@@/pages/ErrorPage';
+import TemplateData from '../../lib/db/templates.json';
 import { FaCircle } from 'react-icons/fa6';
 import './template.css';
+import { AppUtilities } from '../../app.utiilities';
+import CustomButton from '../../components/custom-button';
+import ViewPortContainer from '../../layouts/container';
+import ErrorPage from '../ErrorPage';
 
 const TemplateInfo = () => {
   const { id } = useParams();

@@ -1,4 +1,3 @@
-import { PageRoutes } from '@@/utils/lib/constants/data';
 import {
   Box,
   Flex,
@@ -9,10 +8,10 @@ import {
   Heading,
   Stack,
 } from '@chakra-ui/react';
-import React from 'react';
 import { Link } from 'react-router-dom';
-import ViewPortContainer from '../container';
-import SocialNetworks from '@@lib/db/social-networks.json';
+import SocialNetworks from '../lib/db/social-networks.json';
+import { PageRoutes } from '../lib/constants';
+import ViewPortContainer from './container';
 
 const Footer = () => {
   return (

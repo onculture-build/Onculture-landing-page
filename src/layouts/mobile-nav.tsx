@@ -1,4 +1,3 @@
-import CustomButton from '@@/components/custom-button';
 import {
   Box,
   Drawer,
@@ -12,28 +11,16 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react';
-import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { navLinks } from './navlinks';
-import { PageRoutes } from '@@/utils/lib/constants/data';
 import { MdMenu } from 'react-icons/md';
-import { configOptions } from '@@/services/config';
-import { useAppSelector } from '@@/redux/hooks';
-import { user } from '@@/redux/selectors';
-import { RoleType } from '@@/utils/lib/enums';
+import CustomButton from '../components/custom-button';
+import { PageRoutes } from '../lib/constants';
 
 const MobileNavigation = () => {
-  const { profileInfo, company } = useAppSelector(user);
-
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navigate = useNavigate();
-  const token = configOptions();
-
-  const handleLogout = () => {
-    window.sessionStorage.clear();
-    navigate('/');
-  };
 
   return (
     <>
@@ -82,17 +69,11 @@ const MobileNavigation = () => {
                 padding={'2rem'}
                 w={'100%'}
                 onClick={() => {
-                  navigate(
-                    !token
-                      ? `/auth/${PageRoutes.login}`
-                      : profileInfo?.role === RoleType.ADMIN
-                      ? `/dashboard/overview`
-                      : `/employee/courses`
-                  );
+                  navigate('');
                   onClose();
                 }}
               >
-                {token ? 'Dashboard' : 'Sign in'}
+                Sign up
               </CustomButton>
               <CustomButton
                 fontSize={'paragraph'}
@@ -100,11 +81,11 @@ const MobileNavigation = () => {
                 padding={'2rem 3rem'}
                 w={'100%'}
                 onClick={() => {
-                  token ? handleLogout() : navigate(`/${PageRoutes.bookDemo}`);
+                  navigate(`/${PageRoutes.bookDemo}`);
                   onClose();
                 }}
               >
-                {token ? 'Logout' : 'Book a Demo'}
+                Book a Demo
               </CustomButton>
             </Flex>
           </Stack>

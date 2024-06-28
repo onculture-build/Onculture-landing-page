@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
-import useVideoPlayer from '@@lib/hooks/useVideoPlayer';
+import useVideoPlayer from '../lib/hooks/useVideoPlayer';
 import { BsFillPlayCircleFill } from 'react-icons/bs';
 import { AspectRatio, Box, Flex, Text } from '@chakra-ui/react';
 import Vimeo from '@u-wave/react-vimeo';
-import CustomModal from '@@/components/modal';
+import CustomModal from './modal';
 
 interface VideoProps {
   url?: string;

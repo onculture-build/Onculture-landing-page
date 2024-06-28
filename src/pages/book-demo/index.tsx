@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-import ViewPortContainer from '@@/layout/container';
 import { Box, Heading, Stack } from '@chakra-ui/react';
-import CustomInput from '@@/components/custom-input';
-import CustomSelect from '@@/components/custom-select';
-import CustomButton from '@@/components/custom-button';
 import { Resolver, SubmitHandler, useForm } from 'react-hook-form';
-import { BookDemoSchema } from '@@/schemas/book-demo.schema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { BookDemoType } from '@@/utils/lib/types/book-demo.types';
+import CustomButton from '../../components/custom-button';
+import CustomInput from '../../components/custom-input';
+import CustomSelect from '../../components/custom-select';
+import ViewPortContainer from '../../layouts/container';
+import { BookDemoSchema } from '../../lib/schema/book-demo.schema';
+import { BookDemoType } from '../../lib/types/book-demo.types';
 
 const BookDemo = () => {
   const navigate = useNavigate();

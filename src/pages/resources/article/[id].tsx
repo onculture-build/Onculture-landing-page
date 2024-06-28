@@ -1,6 +1,3 @@
-import ViewPortContainer from '@@/layout/container';
-import CustomButton from '@@/components/custom-button';
-import ErrorPage from '@@/pages/ErrorPage';
 import {
   Box,
   Image,
@@ -11,8 +8,11 @@ import {
   GridItem,
 } from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
-import ApiArticles from '@@lib/db/articles.json';
-import ArticleCard from '@@/components/article-card';
+import ApiArticles from '../../../lib/db/articles.json';
+import ArticleCard from '../../../components/article-card';
+import CustomButton from '../../../components/custom-button';
+import ViewPortContainer from '../../../layouts/container';
+import ErrorPage from '../../ErrorPage';
 
 const SingleArticle = () => {
   const { id } = useParams();

@@ -1,13 +1,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
-import { Field, Form, Formik, FormikHelpers } from 'formik';
-import ViewPortContainer from '@@/layout/container';
-import FormInput from '@@/old-components/form-input';
-import FormSelectBox from '@@/old-components/form-select-box';
-import SuccessModal from '@@/pages/admin/components/SuccessModal';
-import { DayOptions } from '@@/pages/admin/enum';
-import SocialNetworks from '@@lib/db/social-networks.json';
+import SocialNetworks from '../../lib/db/social-networks.json';
 import {
   Box,
   Card,
@@ -17,10 +11,11 @@ import {
   Heading,
   Stack,
 } from '@chakra-ui/react';
-import SocialNetworkCard from '@@/components/social-network-card';
-import CustomInput from '@@/components/custom-input';
-import CustomSelect from '@@/components/custom-select';
-import CustomButton from '@@/components/custom-button';
+import CustomButton from '../../components/custom-button';
+import CustomInput from '../../components/custom-input';
+import CustomSelect from '../../components/custom-select';
+import SocialNetworkCard from '../../components/social-network-card';
+import ViewPortContainer from '../../layouts/container';
 
 const contactSchema = Yup.object().shape({
   fullName: Yup.string().required('Full name is required').nullable(),

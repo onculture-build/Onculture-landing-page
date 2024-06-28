@@ -7,7 +7,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const LandingPageLayout = ({ children }: Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <Stack minH={'100vh'} gap={0}>
       <Navbar />
@@ -17,4 +17,4 @@ const LandingPageLayout = ({ children }: Props) => {
   );
 };
 
-export default LandingPageLayout;
+export default Layout;

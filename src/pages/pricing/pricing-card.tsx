@@ -1,5 +1,3 @@
-import CustomButton from '@@/components/custom-button';
-import { AppUtilities } from '@@/utils';
 import {
   Box,
   Card,
@@ -14,13 +12,15 @@ import {
 import React from 'react';
 import { BiCheck } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
+import { AppUtilities } from '../../app.utiilities';
+import CustomButton from '../../components/custom-button';
 
 interface PricingProps {
   recommended: boolean;
   name: string;
   price: number;
   description: string;
-  benefits: Record<string, any>[];
+  benefits: Record<string, any>[] | string[];
   type: 'month' | 'year';
   isOnboardingPage?: boolean;
   onClick?: () => void;

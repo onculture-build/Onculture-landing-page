@@ -1,5 +1,4 @@
 import { Box, Flex, Image, Show, Text } from '@chakra-ui/react';
-import React from 'react';
 import { navLinks } from './navlinks';
 import { NavLink, useNavigate } from 'react-router-dom';
 import MobileNavigation from './mobile-nav';

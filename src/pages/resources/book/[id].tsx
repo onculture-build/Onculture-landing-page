@@ -1,9 +1,9 @@
 import { Link, useParams } from 'react-router-dom';
-import ApiBooks from '@@lib/db/books.json';
-import ErrorPage from '@@/pages/ErrorPage';
+import ApiBooks from '../../../lib/db/books.json';
 import { Box, Heading, Image, Stack, Text } from '@chakra-ui/react';
-import ViewPortContainer from '@@/layout/container';
-import CustomButton from '@@/components/custom-button';
+import CustomButton from '../../../components/custom-button';
+import ViewPortContainer from '../../../layouts/container';
+import ErrorPage from '../../ErrorPage';
 
 const SingleBook = () => {
   const { id } = useParams();

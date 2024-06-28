@@ -1,5 +1,3 @@
-import CustomButton from '@@/components/custom-button';
-import ViewPortContainer from '@@/layout/container';
 import {
   Box,
   Flex,
@@ -12,13 +10,14 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
-import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import Programs from '@@lib/db/programs.json';
-import ErrorPage from '@@/pages/ErrorPage';
+import Programs from '../../lib/db/programs.json';
+import ErrorPage from '../ErrorPage';
 import { FaArrowLeftLong, FaCircle } from 'react-icons/fa6';
-import HeroVideo from '@@/components/hero-video';
 import './programs.css';
+import CustomButton from '../../components/custom-button';
+import HeroVideo from '../../components/hero-video';
+import ViewPortContainer from '../../layouts/container';
 
 const ProgramInfo = () => {
   const navigate = useNavigate();
