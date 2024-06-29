@@ -1,0 +1,45 @@
+{
+  "Productivity": {
+    "id": 1,
+    "title": "Productivity and Performance",
+    "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "templates": [
+      { "id": 1, "icon": "/assets/svg/rocket.svg", "title": "Team Sum-Up" }
+    ]
+  },
+  "Engagement": {
+    "id": 2,
+    "title": "Interaction/Connection & Engagement",
+    "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "templates": [
+      { "id": 1, "icon": "/assets/svg/rocket.svg", "title": "Peer 1:1" },
+      {
+        "id": 2,
+        "icon": "/assets/svg/pencil.svg",
+        "title": "Fireside Chats/Spark"
+      },
+      {
+        "id": 3,
+        "icon": "/assets/svg/speech-balloon.svg",
+        "title": "Anonymous Complain and suggestion box"
+      }
+    ]
+  },
+  "Motivation": {
+    "id": 3,
+    "title": "Recognition & Motivation",
+    "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "templates": [
+      {
+        "id": 1,
+        "icon": "/assets/svg/glowing-star.svg",
+        "title": "Shout-outs (with company value)"
+      },
+      {
+        "id": 2,
+        "icon": "/assets/svg/sports-medal.svg",
+        "title": "Value star votes"
+      }
+    ]
+  }
+}
