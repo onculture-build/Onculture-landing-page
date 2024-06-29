@@ -2,7 +2,7 @@
   {
     "id": 1,
     "type": "Email",
-    "url": null,
+    "url": "mailto:get@onculture.io",
     "name": "Get@OnCulture.io",
     "footerIcon": null,
     "icon": "/assets/images/email.png"
@@ -25,7 +25,7 @@
   },
   {
     "id": 4,
-    "type": "X (FKA Twitter)",
+    "type": "X (Twitter)",
     "url": "https://x.com/OnCulture_'",
     "name": "OnCulture",
     "footerIcon": "/assets/svg/socials/twitter.svg",

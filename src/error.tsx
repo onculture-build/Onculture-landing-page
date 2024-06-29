@@ -22,7 +22,7 @@ const ErrorFallback = ({ error }: { error?: Error }) => {
         <Text>Sorry something went wrong but we are fixing it ⚙️ 🛠</Text>
       </Box>
       <Box mt={10}>
-        <CustomButton onClick={() => navigate(-1)}>
+        <CustomButton onClick={() => window.history.back()}>
           Return to previous page
         </CustomButton>
       </Box>

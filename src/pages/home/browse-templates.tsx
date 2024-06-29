@@ -70,8 +70,10 @@ const BrowseTemplates = () => {
           </Grid>
           <Flex alignItems={'center'} justifyContent={'center'} my={28}>
             <CustomButton onClick={() => navigate('/templates')}>
-              <span> Browse all templates</span>
-              <FiArrowRight fontSize={25} />
+              <Flex alignItems={'center'} gap={2}>
+                <span> Browse all templates</span>
+                <FiArrowRight fontSize={25} />
+              </Flex>
             </CustomButton>
           </Flex>
         </Box>
