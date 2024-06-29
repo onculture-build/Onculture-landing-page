@@ -26,7 +26,7 @@ const PillarsCard = ({ cover, title, type, slug }: PillarCardProps) => {
         <Heading as={'h5'} fontSize={'heading5'} mb={5}>
           {title}
         </Heading>
-        <Text fontSize={'label'}>{type}</Text>
+        <Text fontSize={'label'} textAlign='center'><div dangerouslySetInnerHTML={{ __html: type }} /></Text>
         <CustomButton
           mt={'auto'}
           padding={'1.5rem 1rem'}
