@@ -30,6 +30,35 @@
     }
   },
   {
+    "id": "aba136d9-4d37-4b1b-8bfa-aa49bc4137a6",
+    "icon": "/assets/svg/speech-balloon.svg",
+    "title": "Spark",
+    "slug": "spark",
+    "tag": "Engagement",
+    "isReady": true,
+    "description": "Get and keep your teams connected with interesting conversations-starters",
+    "body": {
+      "id": "92690803-bec7-46c2-8e78-a0cba3d1bdf5",
+      "image": "/assets/images/spark.png",
+      "intro": [
+        "Get and keep your teams connected, in a creative way.",
+        "Foster strong connections and build synergy early, by:"
+      ],
+      "through": false,
+      "firstList": [
+        "Sparking conversations across teams",
+        "Creating shared interests",
+        "Introducing icebreakers",
+        "Uniting employees across teams"
+      ],
+      "secondList": [
+        "Engagement (Pulse Checkers)",
+        "Social network (Culture Ambassadors)",
+        "Diversity and Inclusion"
+      ]
+    }
+  },
+  {
     "id": "43bfc6af-4884-4c13-a3fb-741de929e68f",
     "icon": "/assets/svg/glowing-star.svg",
     "title": "Shout Out",
@@ -61,7 +90,7 @@
     "slug": "feedback",
     "tag": "Engagement",
     "isReady": true,
-    "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "description": "Create a culture of feedback with our anonymous start-stop-change system.",
     "body": {
       "id": "43865edf-62f9-4bc5-a064-577a857867c5",
       "image": "/assets/images/feedback.png",
@@ -82,42 +111,13 @@
     }
   },
   {
-    "id": "aba136d9-4d37-4b1b-8bfa-aa49bc4137a6",
-    "icon": "/assets/svg/speech-balloon.svg",
-    "title": "Spark",
-    "slug": "spark",
-    "tag": "Engagement",
-    "isReady": false,
-    "description": "Get and keep your teams connected with interesting conversations-starters",
-    "body": {
-      "id": "92690803-bec7-46c2-8e78-a0cba3d1bdf5",
-      "image": "/assets/images/spark.png",
-      "intro": [
-        "Get and keep your teams connected, in a creative way.",
-        "Foster strong connections and build synergy early, by:"
-      ],
-      "through": false,
-      "firstList": [
-        "Sparking conversations across teams",
-        "Creating shared interests",
-        "Introducing icebreakers",
-        "Uniting employees across teams"
-      ],
-      "secondList": [
-        "Engagement (Pulse Checkers)",
-        "Social network (Culture Ambassadors)",
-        "Diversity and Inclusion"
-      ]
-    }
-  },
-  {
     "id": "9f5c3d16-cfb2-428c-9246-a102e67bfb2d",
     "icon": "/assets/svg/handshake.svg",
     "title": "Peer 1:1",
     "slug": "peer",
     "tag": "Engagement",
-    "isReady": false,
-    "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "isReady": true,
+    "description": "Build strong connections and collaboration through scheduled check-in sessions.",
     "body": {
       "id": "5d85115c-6098-420c-8f10-87269fd3c9b6",
       "image": "/assets/images/peer.png",
@@ -145,8 +145,34 @@
     "title": "Value Star Vote",
     "slug": "value-star",
     "tag": "Motivation",
-    "isReady": false,
+    "isReady": true,
     "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "body": {
+      "id": "71cdb0a5-5598-41b0-b4ce-0696d180ae78",
+      "image": "/assets/images/valuestar.png",
+      "intro": [
+        "Strengthen your company's culture by highlighting the values and behaviours you value most.",
+        "Build a supportive work culture and foster recognition and community."
+      ],
+      "through": true,
+      "firstList": [
+        "Public nominations of employees who embody your company's values and behaviours",
+        "Positive Reinforcement by celebrating Value Stars and sharing their examples to reinforce positive behaviour."
+      ],
+      "secondList": [
+        "Participation rates.",
+        "Vote counts linked to Value Stars"
+      ]
+    }
+  },
+  {
+    "id": "069ac132-1af2-46f4-b488-cd4432019f30",
+    "icon": "/assets/svg/manager-icon.svg",
+    "title": "Manager 1:1",
+    "slug": "manager-1:1",
+    "tag": "Productivity",
+    "isReady": false,
+    "description": "Empower managers to succeed with our templates and checklists",
     "body": {
       "id": "71cdb0a5-5598-41b0-b4ce-0696d180ae78",
       "image": "/assets/images/valuestar.png",

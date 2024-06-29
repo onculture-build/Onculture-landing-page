@@ -1,49 +1,37 @@
 import React from 'react';
-import * as Yup from 'yup';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SocialNetworks from '../../lib/db/social-networks.json';
-import {
-  Box,
-  Card,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  Stack,
-} from '@chakra-ui/react';
+import { Box, Card, Grid, GridItem, Heading, Stack } from '@chakra-ui/react';
 import CustomButton from '../../components/custom-button';
 import CustomInput from '../../components/custom-input';
 import CustomSelect from '../../components/custom-select';
 import SocialNetworkCard from '../../components/social-network-card';
 import ViewPortContainer from '../../layouts/container';
-
-const contactSchema = Yup.object().shape({
-  fullName: Yup.string().required('Full name is required').nullable(),
-  email: Yup.string()
-    .email('Not a valid email address')
-    .required('email is required')
-    .nullable(),
-  company: Yup.string().required('Company name is required').nullable(),
-  help: Yup.string().required('please tell us how to help you').nullable(),
-});
-
-interface Values {
-  fullName: string;
-  email: string;
-  company: string;
-  help: string;
-}
+import { Resolver, useForm } from 'react-hook-form';
+import { ContactType } from '../../lib/types';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { ContactSchema } from '../../lib/schema';
 
 const Contact = () => {
-  const navigate = useNavigate();
-
   const [showModal, setShowModal] = React.useState<boolean>(false);
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setShowModal(false);
-    }, 5000);
-  }, [showModal, setShowModal]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ContactType>({
+    resolver: yupResolver(ContactSchema),
+    defaultValues: {
+      fullname: '',
+      companyName: '',
+      email: '',
+      details: '',
+    },
+  } as unknown as { resolver: Resolver<ContactType> });
+
+  const submitHandler = (data: ContactType) => {
+    console.log(data);
+  };
 
   return (
     <Box className='pillars-page'>
@@ -52,6 +40,8 @@ const Contact = () => {
           p={2}
           mb={{ base: '10vh', md: '20vh' }}
           px={{ base: '2rem', lg: '0' }}
+          w={{ base: '100%', md: '45%' }}
+          mx={'auto'}
         >
           <Heading
             as={'h2'}
@@ -65,29 +55,23 @@ const Contact = () => {
           <Grid
             templateColumns={{
               base: 'repeat(1, 1fr)',
-              md: 'repeat(3, 1fr)',
+              md: 'repeat(2, 1fr)',
             }}
-            px={{ md: 20 }}
-            gap={24}
+            gap={10}
           >
-            {SocialNetworks.slice(0, SocialNetworks.length - 1).map(
-              (network) => (
-                <GridItem key={network.id}>
-                  <Link
-                    to={network.url ? network.url : `mailto:${network.name}`}
-                    target='_blank'
-                  >
-                    <SocialNetworkCard
-                      icon={network.icon}
-                      type={network.type}
-                      name={network.name}
-                    />
-                  </Link>
-                </GridItem>
-              )
-            )}
+            {SocialNetworks.map((network) => (
+              <GridItem key={network.id}>
+                <Link to={network.url} target='_blank'>
+                  <SocialNetworkCard
+                    icon={network.icon}
+                    type={network.type}
+                    name={network.name}
+                  />
+                </Link>
+              </GridItem>
+            ))}
           </Grid>
-          <Stack w={{ base: '100%', md: '45%' }} mx={'auto'} gap={20}>
+          <Stack gap={20}>
             <Heading
               as={'h4'}
               fontSize={'heading4'}
@@ -102,32 +86,35 @@ const Contact = () => {
               p={{ base: 10, md: 24 }}
               boxShadow={'-4px 1px 30px 0px rgba(28, 44, 64, 0.1)'}
             >
-              <form>
+              <form onSubmit={handleSubmit(submitHandler)}>
                 <Stack gap={10}>
                   <CustomInput
-                    name='fullname'
+                    {...register('fullname')}
                     label='Fullname'
                     isRequired
                     placeholder='Fullname'
                     p={'2rem'}
+                    errorMessage={errors.fullname?.message}
                   />
                   <CustomInput
-                    name='email'
+                    {...register('email')}
                     label='Email Address'
                     isRequired
                     type='email'
                     placeholder='Email Address'
                     p={'2rem'}
+                    errorMessage={errors.email?.message}
                   />
                   <CustomInput
-                    name='company'
+                    {...register('companyName')}
                     label='Company Name'
                     isRequired
                     placeholder='Company Name'
                     p={'2rem'}
+                    errorMessage={errors.companyName?.message}
                   />
                   <CustomSelect
-                    name='reason'
+                    {...register('details')}
                     label='How can our team help you?'
                     isRequired
                     options={[]}
@@ -135,6 +122,8 @@ const Contact = () => {
                     optionStyles={{
                       fontSize: 'paragraph',
                     }}
+                    onChange={() => {}}
+                    error={errors.details?.message}
                   />
                   <Box mt={'3vh'}>
                     <CustomButton type={'submit'} w={'100%'}>

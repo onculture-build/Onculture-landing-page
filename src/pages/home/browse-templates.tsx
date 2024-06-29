@@ -36,9 +36,9 @@ const BrowseTemplates = () => {
               Build and drive a culture of performance and synergy through our
               <Text as={'span'} fontWeight={700}>
                 {' '}
-                productivity, engagement, and recognition templates
+                productivity, engagement, and recognition 
               </Text>{' '}
-              and tools, all integrated with Slack, Teams and Google Workspace.
+              toolkits.
             </Text>
           </Box>
           <Grid
@@ -63,14 +63,17 @@ const BrowseTemplates = () => {
                   title={template.title}
                   slug={template.slug}
                   tag={template.tag}
+                  active={template.isReady}
                 />
               </GridItem>
             ))}
           </Grid>
           <Flex alignItems={'center'} justifyContent={'center'} my={28}>
             <CustomButton onClick={() => navigate('/templates')}>
-              <span> Browse all templates</span>
-              <FiArrowRight fontSize={25} />
+              <Flex alignItems={'center'} gap={2}>
+                <span> Browse all templates</span>
+                <FiArrowRight fontSize={25} />
+              </Flex>
             </CustomButton>
           </Flex>
         </Box>
