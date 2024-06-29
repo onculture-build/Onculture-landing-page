@@ -76,8 +76,8 @@ const ImageSlider = ({ images }: SliderData) => {
                     <Heading
                       as={'h5'}
                       fontSize={'heading5'}
-                      color={'brand.primary.600'}
                       textAlign={'center'}
+                      fontWeight={'semiBold'}
                     >
                       {item.title}
                     </Heading>
