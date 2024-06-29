@@ -1,20 +1,21 @@
-# Base image
-FROM node:12-alpine as build 
-WORKDIR /
-# Install npm packages and cache this layer
-COPY package*.json /
-RUN npm install
-# Build copy all source files and build React app
-COPY ./ /
-RUN npm run build
+FROM node:18-alpine AS build
+
+
+WORKDIR /app
+
+COPY package.json yarn.lock ./
+
+
+RUN yarn install --frozen-lockfile
+
+
+COPY . .
+
+
+RUN  yarn run build
+
+FROM nginx:alpine AS production
+
+COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 3000
-
-CMD ["npm", "start"]
-
-# # Pull NGINX image
-# FROM nginx:1.15
-# # Move all build files to NGINX serve folder
-# COPY --from=build /build /usr/share/nginx/html
-# # Setup NGINX with config
-# COPY ./nginx.conf /etc/nginx/conf.d/default.conf

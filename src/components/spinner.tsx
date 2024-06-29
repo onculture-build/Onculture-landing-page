@@ -1,5 +1,4 @@
-import React from 'react';
-import { Oval } from 'react-loader-spinner';
+import * as Loader from 'react-loader-spinner';
 
 interface LoadingProps {
   h?: number;
@@ -13,17 +12,17 @@ const LoadingSpinner = ({
   color = 'rgba(92, 0, 221, 1)',
 }: LoadingProps) => {
   return (
-    <Oval
+    <Loader.Hourglass
       height={h}
       width={w}
-      color={color}
+      // color={color}
       wrapperStyle={{}}
       wrapperClass=''
       visible={true}
       ariaLabel='oval-loading'
-      secondaryColor='#fff'
-      strokeWidth={4}
-      strokeWidthSecondary={4}
+      // secondaryColor='#fff'
+      // strokeWidth={4}
+      // strokeWidthSecondary={4}
     />
   );
 };

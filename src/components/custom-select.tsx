@@ -10,9 +10,14 @@ import {
   InputLeftElement,
 } from '@chakra-ui/react';
 import { OptionBase, Select } from 'chakra-react-select';
-import { SelectorOptionValue } from '@@lib/types';
+// import { SelectorOptionValue } from '@lib/types';
 import { IconType } from 'react-icons/lib';
 import React from 'react';
+
+type SelectorOptionValue = {
+  label: string;
+  value: string | number;
+};
 
 interface PropType {
   register?: any;
