@@ -36,9 +36,9 @@ const BrowseTemplates = () => {
               Build and drive a culture of performance and synergy through our
               <Text as={'span'} fontWeight={700}>
                 {' '}
-                productivity, engagement, and recognition templates
+                productivity, engagement, and recognition 
               </Text>{' '}
-              and tools, all integrated with Slack, Teams and Google Workspace.
+              toolkits.
             </Text>
           </Box>
           <Grid
@@ -63,6 +63,7 @@ const BrowseTemplates = () => {
                   title={template.title}
                   slug={template.slug}
                   tag={template.tag}
+                  active={template.isReady}
                 />
               </GridItem>
             ))}

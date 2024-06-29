@@ -9,9 +9,10 @@ interface TemplateCardProp {
   tag: string;
   intro: string;
   slug: string;
+  active: boolean;
 }
 
-const TemplateCard = ({ icon, title, tag, intro, slug }: TemplateCardProp) => {
+const TemplateCard = ({ icon, title, tag, intro, slug , active}: TemplateCardProp) => {
   const navigate = useNavigate();
   return (
     <Card
@@ -45,8 +46,9 @@ const TemplateCard = ({ icon, title, tag, intro, slug }: TemplateCardProp) => {
           mt={'auto'}
           padding={'1.5rem 1rem'}
           onClick={() => navigate(`/templates/${slug}`)}
+          disabled={!active}
         >
-          See details
+        {active ?  'See details':'Coming Soon'}
         </CustomButton>
       </Stack>
     </Card>

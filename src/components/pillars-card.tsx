@@ -9,7 +9,7 @@ interface PillarCardProps {
   slug: string;
 }
 
-const PillarsCard = ({ cover, title, type, slug }: PillarCardProps) => {
+const PillarsCard = ({ cover, title, type, slug}: PillarCardProps) => {
   const navigate = useNavigate();
   return (
     <Card h={'100%'}>
@@ -32,7 +32,7 @@ const PillarsCard = ({ cover, title, type, slug }: PillarCardProps) => {
           padding={'1.5rem 1rem'}
           onClick={() => navigate(`/programs/${slug}`)}
         >
-          See details
+        See details
         </CustomButton>
       </Flex>
     </Card>
