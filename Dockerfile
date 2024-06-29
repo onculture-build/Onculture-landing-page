@@ -1,11 +1,21 @@
-FROM node:18-alpine3.17 
+FROM node:18-alpine AS build
+
+
 WORKDIR /app
-COPY package.json yarn.lock /
-RUN yarn install
-# Build copy all source files and build React app
+
+COPY package.json yarn.lock ./
+
+
+RUN yarn install --frozen-lockfile
+
+
 COPY . .
-RUN yarn run build
+
+
+RUN  yarn run build
+
+FROM nginx:alpine AS production
+
+COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 3000
-
-CMD ["yarn", "start"]
