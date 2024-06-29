@@ -13,7 +13,7 @@ const PillarsCard = ({ cover, title, type, slug }: PillarCardProps) => {
   const navigate = useNavigate();
   return (
     <Card h={'100%'}>
-      <Box h={'200px'}>
+      <Box h={'130px'}>
         <Image src={cover} borderRadius={'4px 4px 0 0'} h={'100%'} />
       </Box>
       <Flex

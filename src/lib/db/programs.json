@@ -1,9 +1,9 @@
 [
   {
-    "title": "Preventing Harassment at Work",
-    "slug": "harassment-in-the-workplace",
-    "type": "Interactive Learning Course",
-    "image": "/assets/images/harassment-at-work.png",
+    "title": "HRIS",
+    "slug": "hris",
+    "type": "Empower your people and enable self-management",
+    "image": "/assets/images/hris.png",
     "intro": [
       " When you think of harassment at work, what typically comes to mind?",
       "I suspect allegations of sexual misconduct between coworkers, or between coworkers and their employers.",
@@ -44,10 +44,10 @@
     ]
   },
   {
-    "title": "Everyday Culture",
-    "slug": "everyday-culture",
-    "type": "Process Automation Templates",
-    "image": "/assets/images/everyday-culture.png",
+    "title": "Toolkits & Insights",
+    "slug": "toolkits-&-insights",
+    "type": "Listen to your people and empower them to achieve more",
+    "image": "/assets/images/toolkits.png",
     "intro": [
       " When you think of harassment at work, what typically comes to mind?",
       "I suspect allegations of sexual misconduct between coworkers, or between coworkers and their employers.",
@@ -88,9 +88,9 @@
     ]
   },
   {
-    "title": "Driving Culture at Work",
-    "slug": "culture-clinic",
-    "type": "Interactive Learning Course",
+    "title": "Interactive Learning course",
+    "slug": "interactive-learning-course",
+    "type": "Courses on Work, Productivity, Leadership and Corporate Culture",
     "image": "/assets/images/driving-culture.png",
     "intro": [
       " Companies with aligned, positive cultures improve work lives, retain the best people, and generally perform better.",
@@ -129,10 +129,10 @@
     ]
   },
   {
-    "title": "Leadership Amp",
-    "slug": "leadership-amp",
-    "type": "Automated tools & resources",
-    "image": "/assets/images/leadership-amp.png",
+    "title": "People Resource Bank",
+    "slug": "people-resource-bank",
+    "type": "<ArticlesChecklists Micro- Explainer Videos",
+    "image": "/assets/images/resource.png",
     "intro": [
       " When you think of harassment at work, what typically comes to mind?",
       "I suspect allegations of sexual misconduct between coworkers, or between coworkers and their employers.",

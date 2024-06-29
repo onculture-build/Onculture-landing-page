@@ -17,11 +17,10 @@ const Pillars = () => {
         <Box my={20}>
           <Stack justifyContent={'center'} alignItems={'center'} mb={20}>
             <Heading as={'h2'} fontSize={'heading2'}>
-              Our Pillars
+              Our 4 Pillars
             </Heading>
-            <Text textAlign={'center'} w={{ lg: '40%' }}>
-              OnCulture&apos;s 4 pillars shape employees to drive synergy and
-              performance
+            <Text textAlign={'center'} w={{ lg: '20%' }} fontSize={'small'}>
+              Connect, Engage, Develop, Care for, and boost your team’s productivity.
             </Text>
           </Stack>
           <Grid
