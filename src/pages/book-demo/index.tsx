@@ -8,9 +8,10 @@ import CustomSelect from '../../components/custom-select';
 import ViewPortContainer from '../../layouts/container';
 import { BookDemoSchema } from '../../lib/schema/book-demo.schema';
 import { BookDemoType } from '../../lib/types/book-demo.types';
+import { employeeCount } from '../../lib/constants';
 
 const BookDemo = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const {
     register,
@@ -79,7 +80,7 @@ const BookDemo = () => {
                 {...register('employeeCount')}
                 label='Employee Count'
                 isRequired
-                options={[]}
+                options={employeeCount}
                 h={'4rem'}
                 optionStyles={{
                   fontSize: 'paragraph',
