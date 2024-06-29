@@ -131,7 +131,7 @@
   {
     "title": "People Resource Bank",
     "slug": "people-resource-bank",
-    "type": "Articles, Checklists, Micro-Explainer Videos",
+    "type": "<li>Articles</li><li>Checklists</li><li>Micro-Explainer Videos</li>",
     "image": "/assets/images/resource.png",
     "intro": [
       " When you think of harassment at work, what typically comes to mind?",

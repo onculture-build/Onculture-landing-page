@@ -49,6 +49,7 @@ const TemplatesPage = () => {
                   title={template.title}
                   slug={template.slug}
                   tag={template.tag}
+                  active={template.isReady}
                 />
               </GridItem>
             ))}
