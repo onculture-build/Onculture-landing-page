@@ -4,29 +4,6 @@
   opacity: 0;
 }
 
-.card-inner:hover .card-front {
-  animation: fade-out 1s ease forwards;
-}
-
-.card-inner:hover .card-back {
-  animation: fade-in 1s 0.2s ease forwards;
-}
-
-.card-front:hover .image,
-.card-front:hover .title {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.card-inner:hover .card-front .image {
-  animation: move-down 0.8s ease forwards;
-}
-
-.card-inner:hover .card-front .title,
-.card-inner:hover .card-back .description {
-  animation: move-up 0.8s ease forwards;
-}
-
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -60,5 +37,30 @@
   }
   to {
     transform: translateY(100%);
+  }
+}
+
+@media (min-width: 900px) {
+  .card-inner:hover .card-front {
+    animation: fade-out 1s ease forwards;
+  }
+
+  .card-inner:hover .card-back {
+    animation: fade-in 1s 0.2s ease forwards;
+  }
+
+  .card-front:hover .image,
+  .card-front:hover .title {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .card-inner:hover .card-front .image {
+    animation: move-down 0.8s ease forwards;
+  }
+
+  .card-inner:hover .card-front .title,
+  .card-inner:hover .card-back .description {
+    animation: move-up 0.8s ease forwards;
   }
 }

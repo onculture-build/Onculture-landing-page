@@ -6,3 +6,10 @@ export type BookDemoType = {
   employeeCount: string;
   details: string;
 };
+
+export type ContactType = {
+  fullname: string;
+  companyName: string;
+  email: string;
+  details: string;
+};

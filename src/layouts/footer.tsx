@@ -38,14 +38,6 @@ const Footer = () => {
                 Copyright &copy; {new Date().getFullYear()} OnCulture.
               </Text>
               <Text fontSize={'label'}>All rights reserved</Text>
-              <Flex gap={5} my={8}>
-                {SocialNetworks.slice(1).map((network) => (
-                  <Link key={network.id} to={network.url!} target='blank'>
-                    <Image src={network.footerIcon!} alt={network.name} />
-                  </Link>
-                ))}
-              </Flex>
-              <Text fontSize={'label'}>Get@OnCulture.io</Text>
             </Flex>
           </GridItem>
           <GridItem order={{ base: 1, lg: 2 }}>
@@ -59,28 +51,18 @@ const Footer = () => {
               <Link to={PageRoutes.faq} style={{ fontSize: '1.5rem' }}>
                 FAQ
               </Link>
-              {/* <Link to={PageRoutes.pricing} style={{ fontSize: '1.5rem' }}>
-                Pricing
-              </Link> */}
             </Stack>
           </GridItem>
           <GridItem order={{ base: 2, lg: 3 }}>
             <Heading as={'h5'} fontSize={'heading5'}>
-              Support
+              Connect with us
             </Heading>
             <Stack mt={5} gap={4}>
-              <Link to={PageRoutes.home} style={{ fontSize: '1.5rem' }}>
-                Terms of service
-              </Link>
-              <Link to={PageRoutes.home} style={{ fontSize: '1.5rem' }}>
-                Legal
-              </Link>
-              <Link to={PageRoutes.home} style={{ fontSize: '1.5rem' }}>
-                Privacy policy
-              </Link>
-              <Link to={PageRoutes.home} style={{ fontSize: '1.5rem' }}>
-                Copyright
-              </Link>
+              {SocialNetworks.map((network) => (
+                <Link key={network.id} to={network.url!} target='blank'>
+                  <Text>{network.type}</Text>
+                </Link>
+              ))}
             </Stack>
           </GridItem>
         </Grid>

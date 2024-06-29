@@ -73,13 +73,14 @@ const ImageSlider = ({ images }: SliderData) => {
                     justifyContent={'space-around'}
                     _before={calloutStylesBefore}
                   >
-                    <Heading
+                    {/* <Heading
                       as={'h5'}
                       fontSize={'heading5'}
-                      color={'brand.primary.600'}
+                      textAlign={'center'}
+                      fontWeight={'semiBold'}
                     >
                       {item.title}
-                    </Heading>
+                    </Heading> */}
                     <Text fontSize={'label'}>{item.content}</Text>
                   </Flex>
                 </Box>

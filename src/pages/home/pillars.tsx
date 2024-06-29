@@ -19,8 +19,9 @@ const Pillars = () => {
             <Heading as={'h2'} fontSize={'heading2'}>
               Our 4 Pillars
             </Heading>
-            <Text textAlign={'center'} w={{ lg: '20%' }} fontSize={'small'}>
-              Connect, Engage, Develop, Care for, and boost your team’s productivity.
+            <Text textAlign={'center'} w={{ lg: '30%' }} fontSize={'label'}>
+              Connect, Engage, Develop, Care for, and boost your team's
+              productivity.
             </Text>
           </Stack>
           <Grid

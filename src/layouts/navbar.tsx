@@ -27,7 +27,7 @@ const Navbar = () => {
               w={'70%'}
             />
           </Box>
-          <Flex as={'ul'} gap={10} hideBelow={'1000px'}>
+          <Flex as={'ul'} gap={28} hideBelow={'1000px'}>
             {navLinks.map((link) => (
               <NavLink
                 key={link.id}
@@ -37,13 +37,17 @@ const Navbar = () => {
                   isActive ? { color: 'rgba(92, 0, 221, 1)' } : {}
                 }
               >
-                <Text fontSize={'label'} fontWeight={'semiBold'}>
+                <Text
+                  fontSize={'label'}
+                  fontWeight={'semiBold'}
+                  _hover={{ color: 'brand.primary.600' }}
+                >
                   {link.label}
                 </Text>
               </NavLink>
             ))}
           </Flex>
-          <Flex gap={3} hideBelow={'900px'}>
+          <Flex gap={5} hideBelow={'900px'}>
             <CustomButton
               variant='outline'
               fontSize={'small'}

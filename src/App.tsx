@@ -4,13 +4,9 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { ErrorBoundary } from 'react-error-boundary';
 import routes from './routes';
 import ScrollToTop from './components/scroll-to-top';
-import './App.css';
-import 'react-toastify/dist/ReactToastify.css';
 import OncultureLoader from './layouts/loading/onculture-loading';
 import { Flex } from '@chakra-ui/react';
 import ErrorFallback from './error';
-
-// const SignInProvider = lazy(() => import('./pages/context/signInContext'));
 
 function App() {
   const routeResult = useRoutes(routes);
