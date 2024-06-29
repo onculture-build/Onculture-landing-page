@@ -9,7 +9,7 @@ interface NavLink {
 export const navLinks: NavLink[] = [
   {
     id: 1,
-    label: 'The People Practice',
+    label: '',
     href: PageRoutes.home,
   },
   {

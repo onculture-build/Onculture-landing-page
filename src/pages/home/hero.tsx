@@ -34,7 +34,7 @@ const Hero = () => {
                   fontSize={'heading1'}
                   textAlign={{ base: 'center', lg: 'left' }}
                 >
-                  Optimising teams through Culture
+                  A People and Culture experience for <Box as='span' color={'brand.primary.600'}>YOUR</Box> people
                 </Heading>
                 <Text
                   fontSize={'paragraph'}
@@ -42,9 +42,7 @@ const Hero = () => {
                   textAlign={{ base: 'center', lg: 'left' }}
                   mt={10}
                 >
-                  OnCulture improves companies&apos; culture by driving
-                  performance and synergy through learning, process automation
-                  and community.
+                  OnCulture powers companies (people and culture) through learning and automation.
                 </Text>
                 <Box
                   w={'40%'}
