@@ -66,6 +66,10 @@ const CallToAction = () => {
             </motion.span>
             <Text as={'span'}>OnCulture</Text>
           </Heading>
+          <Text color={'brand.white'} textAlign={'center'} w={'70%'}>
+            OnCulture is creating happier, better-engaged and more productive
+            teams. You are on your way there.
+          </Text>
           <Flex gap={4}>
             <Link to={'/book-demo'}>
               <CustomButton

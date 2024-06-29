@@ -34,7 +34,7 @@ const Hero = () => {
                   fontSize={'heading1'}
                   textAlign={{ base: 'center', lg: 'left' }}
                 >
-                  A People and Culture experience for{' '}
+                  A People and Culture Experience for{' '}
                   <Text
                     as={'span'}
                     color={'brand.primary.600'}
@@ -42,7 +42,7 @@ const Hero = () => {
                   >
                     YOUR
                   </Text>{' '}
-                  people
+                  People
                 </Heading>
                 <Text
                   fontSize={'paragraph'}

@@ -6,8 +6,8 @@ import CustomButton from '../../components/custom-button';
 import CustomInput from '../../components/custom-input';
 import CustomSelect from '../../components/custom-select';
 import ViewPortContainer from '../../layouts/container';
-import { BookDemoSchema } from '../../lib/schema/book-demo.schema';
-import { BookDemoType } from '../../lib/types/book-demo.types';
+import { BookDemoSchema } from '../../lib/schema';
+import { BookDemoType } from '../../lib/types';
 import { employeeCount } from '../../lib/constants';
 
 const BookDemo = () => {

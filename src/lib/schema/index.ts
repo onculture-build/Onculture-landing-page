@@ -27,3 +27,13 @@ export const BookDemoSchema = Yup.object().shape({
     .trim()
     .required('Kindly let us know what you hope to achieve'),
 });
+
+export const ContactSchema = Yup.object().shape({
+  fullname: Yup.string().trim().required('Fullname is required'),
+  companyName: Yup.string().trim().required('Company name is required'),
+  email: Yup.string()
+    .trim()
+    .email('Invalid email!')
+    .required('Email is required!'),
+  details: Yup.string().trim(),
+});
