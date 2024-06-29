@@ -27,7 +27,10 @@ const PillarsCard = ({ cover, title, type, slug}: PillarCardProps) => {
           {title}
         </Heading>
         <Text fontSize={'label'} mb={5}>
-          {type}
+          <div
+            dangerouslySetInnerHTML={{ __html: type }}
+          />
+          
         </Text>
         <CustomButton
           mt={'auto'}
