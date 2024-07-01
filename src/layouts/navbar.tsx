@@ -20,11 +20,12 @@ const Navbar = () => {
         >
           <Box>
             <Image
-              src='/assets/images/Onculture-colored.png'
+              src='/assets/images/onculture.png'
               alt='OnCulture'
               onClick={() => navigate(PageRoutes.home)}
               cursor={'pointer'}
-              w={'70%'}
+              w={'145px'}
+              h={'30px'}
             />
           </Box>
           <Flex as={'ul'} gap={28} hideBelow={'1000px'}>

@@ -35,7 +35,7 @@ const BookDemo = () => {
 
   return (
     <ViewPortContainer>
-      <Box w={{ base: '80%', md: '50%', lg: '40%' }} mx={'auto'}>
+      <Box w={{ base: '90%', md: '50%', lg: '40%' }} mx={'auto'}>
         <Stack mt={'10vh'} mb={'20vh'}>
           <Heading as={'h2'} fontSize={'heading2'} mb={20}>
             Book a Demo

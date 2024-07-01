@@ -24,14 +24,10 @@ const Hero = () => {
             direction={{ base: 'column', lg: 'row' }}
           >
             <Stack w={'100%'} justifyContent={'center'} h={'100%'}>
-              <Box
-                h={'fit-content'}
-                maxW={'400px'}
-                mx={{ base: 'auto', lg: 0 }}
-              >
+              <Box h={'fit-content'} mx={{ base: 'auto', lg: 0 }}>
                 <Heading
                   as={'h1'}
-                  fontSize={'heading1'}
+                  fontSize={{ base: 'heading1', '2xl': '64px' }}
                   textAlign={{ base: 'center', lg: 'left' }}
                 >
                   A People and Culture Experience for{' '}
@@ -45,7 +41,8 @@ const Hero = () => {
                   People
                 </Heading>
                 <Text
-                  fontSize={'paragraph'}
+                  fontSize={{ base: 'paragraph', md: 'heading5' }}
+                  maxW={'90%'}
                   textAlign={{ base: 'center', lg: 'left' }}
                   mt={10}
                 >

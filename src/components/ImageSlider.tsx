@@ -81,7 +81,7 @@ const ImageSlider = ({ images }: SliderData) => {
                     >
                       {item.title}
                     </Heading> */}
-                    <Text fontSize={'label'}>{item.content}</Text>
+                    <Text fontSize={'label'} textAlign={'center'}>{item.content}</Text>
                   </Flex>
                 </Box>
                 <Stack
