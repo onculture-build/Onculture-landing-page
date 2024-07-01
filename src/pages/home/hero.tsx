@@ -27,7 +27,7 @@ const Hero = () => {
               <Box h={'fit-content'} mx={{ base: 'auto', lg: 0 }}>
                 <Heading
                   as={'h1'}
-                  fontSize={{ base: 'heading1', md: '64px' }}
+                  fontSize={{ base: 'heading1', '2xl': '64px' }}
                   textAlign={{ base: 'center', lg: 'left' }}
                 >
                   A People and Culture Experience for{' '}
