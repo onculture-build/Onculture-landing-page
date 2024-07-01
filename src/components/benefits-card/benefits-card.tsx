@@ -12,7 +12,6 @@ const BenefitCard = ({ title, image, description }: Benefit) => {
     <Box>
       <Box
         className={`card-inner`}
-        position={'relative'}
         h={'180px'}
         w={'100%'}
       >
