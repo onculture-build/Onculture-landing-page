@@ -1,5 +1,5 @@
 import { Box, Card, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
-import './benefits-card.css';
+import styles from './benefits-card.module.css';
 
 interface Benefit {
   title: string;
@@ -11,16 +11,21 @@ const BenefitCard = ({ title, image, description }: Benefit) => {
   return (
     <Box>
       <Box
-        className={`card-inner`}
+        className={styles['card-inner']}
+        position={'relative'}
         h={'180px'}
         w={'100%'}
       >
-        <Card p={10} h={'100%'} w={'100%'} className='card-front'>
-          <Stack gap={10} className='content'>
-            <Box className='image'>
+        <Card p={10} h={'100%'} w={'100%'} className={styles['card-front']}>
+          <Stack gap={10} className={styles['content']}>
+            <Box className={styles['image']}>
               <Image src={image} w={24} />
             </Box>
-            <Heading as={'h5'} fontSize={'heading6'} className='title'>
+            <Heading
+              as={'h5'}
+              fontSize={'heading6'}
+              className={styles['title']}
+            >
               {title}
             </Heading>
           </Stack>
@@ -30,14 +35,14 @@ const BenefitCard = ({ title, image, description }: Benefit) => {
           color={'brand.white'}
           p={10}
           h={'100%'}
-          className='card-back'
+          className={styles['card-back']}
         >
           <Flex
             gap={10}
             alignItems={'center'}
             justifyContent={'center'}
             h={'100%'}
-            className='description'
+            className={styles['description']}
           >
             <Text>{description}</Text>
           </Flex>
