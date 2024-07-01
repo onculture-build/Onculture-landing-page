@@ -22,9 +22,9 @@ const Home = () => {
         <Benefits />
       </Box>
       <CallToAction />
-      <Review />
+      {/* <Review /> */}
 
-      <Companies />
+      {/* <Companies /> */}
     </>
   );
 };

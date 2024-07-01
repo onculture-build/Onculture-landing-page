@@ -33,11 +33,7 @@ const CallToAction = () => {
   }, [index, setIndex, texts.length]);
 
   return (
-    <Box
-      bgColor={'brand.primary.600'}
-      bgImage={'url(/assets/images/dots.png)'}
-      bgPosition={'center'}
-    >
+    <Box bgColor={'brand.primary.600'}>
       <ViewPortContainer>
         <Flex
           as='section'
