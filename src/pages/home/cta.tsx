@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CustomButton from '../../components/custom-button';
 import ViewPortContainer from '../../layouts/container';
+import { PageRoutes } from '../../lib/constants';
 
 const CallToAction = () => {
+  const navigate = useNavigate();
   const texts = ['GET', 'STAY', 'BE'];
   const [index, setIndex] = React.useState(0);
   const variants = {
@@ -39,7 +41,8 @@ const CallToAction = () => {
           as='section'
           w={'90%'}
           mx={'auto'}
-          p={48}
+          py={48}
+          px={{ lg: 48 }}
           justifyContent={'center'}
           alignItems={'center'}
           gap={14}
@@ -62,23 +65,26 @@ const CallToAction = () => {
             </motion.span>
             <Text as={'span'}>OnCulture</Text>
           </Heading>
-          <Text color={'brand.white'} textAlign={'center'} w={'70%'}>
+          <Text
+            color={'brand.white'}
+            textAlign={'center'}
+            w={{ base: '100%', lg: '70%' }}
+          >
             OnCulture is creating happier, better-engaged and more productive
             teams. You are on your way there.
           </Text>
           <Flex gap={4}>
-            <Link to={'/book-demo'}>
-              <CustomButton
-                variant='primary'
-                borderColor={'brand.white'}
-                _hover={{
-                  color: 'brand.primary.600',
-                  backgroundColor: 'brand.white',
-                }}
-              >
-                Book a Demo
-              </CustomButton>
-            </Link>
+            <CustomButton
+              variant='primary'
+              borderColor={'brand.white'}
+              _hover={{
+                color: 'brand.primary.600',
+                backgroundColor: 'brand.white',
+              }}
+              onClick={() => navigate(`/${PageRoutes.bookDemo}`)}
+            >
+              Book a Demo
+            </CustomButton>
             <CustomButton
               variant='primary-outline'
               bgColor={'brand.white'}
@@ -87,6 +93,7 @@ const CallToAction = () => {
                 color: 'brand.white',
                 backgroundColor: 'brand.primary.600',
               }}
+              onClick={() => navigate(`/${PageRoutes.joinWaitlist}`)}
             >
               Join Waitlist
             </CustomButton>

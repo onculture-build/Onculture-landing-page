@@ -22,7 +22,8 @@ const Contact = () => {
   } = useForm<ContactType>({
     resolver: yupResolver(ContactSchema),
     defaultValues: {
-      fullname: '',
+      firstName: '',
+      lastName: '',
       companyName: '',
       email: '',
       details: '',
@@ -89,12 +90,19 @@ const Contact = () => {
               <form onSubmit={handleSubmit(submitHandler)}>
                 <Stack gap={10}>
                   <CustomInput
-                    {...register('fullname')}
-                    label='Fullname'
+                    {...register('firstName')}
+                    label='First Name'
                     isRequired
-                    placeholder='Fullname'
+                    placeholder='Your first name'
                     p={'2rem'}
-                    errorMessage={errors.fullname?.message}
+                    errorMessage={errors.firstName?.message}
+                  />
+                  <CustomInput
+                    {...register('lastName')}
+                    label='Last Name'
+                    placeholder='Your last name'
+                    p={'2rem'}
+                    errorMessage={errors.lastName?.message}
                   />
                   <CustomInput
                     {...register('email')}

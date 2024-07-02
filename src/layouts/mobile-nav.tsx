@@ -69,7 +69,7 @@ const MobileNavigation = () => {
                 padding={'2rem'}
                 w={'100%'}
                 onClick={() => {
-                  navigate('');
+                  navigate(`/${PageRoutes.joinWaitlist}`);
                   onClose();
                 }}
               >

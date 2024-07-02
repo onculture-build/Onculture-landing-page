@@ -55,7 +55,7 @@ const Navbar = () => {
               fontWeight={'medium'}
               padding={'1.5rem 3rem'}
               w={'100%'}
-              onClick={() => {}}
+              onClick={() => navigate(`/${PageRoutes.joinWaitlist}`)}
             >
               Join Waitlist
             </CustomButton>
