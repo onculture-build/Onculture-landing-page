@@ -11,7 +11,7 @@ const WaitlistSuccess = () => {
       bgImage={'url(/assets/svg/line.svg)'}
       bgRepeat={'no-repeat'}
       position={'relative'}
-      backgroundPosition={'-300px 200px'}
+      backgroundPosition={'-100px 200px'}
       bgSize={'contain'}
       className='page'
     >
