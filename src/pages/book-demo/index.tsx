@@ -20,7 +20,8 @@ const BookDemo = () => {
   } = useForm<BookDemoType>({
     resolver: yupResolver(BookDemoSchema),
     defaultValues: {
-      fullname: '',
+      firstName: '',
+      lastName: '',
       companyName: '',
       email: '',
       phone: '',
@@ -43,12 +44,19 @@ const BookDemo = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack gap={10}>
               <CustomInput
-                {...register('fullname')}
-                label='Your Fullname'
+                {...register('firstName')}
+                label='First Name'
                 isRequired
-                placeholder='Fullname'
+                placeholder='Your first name'
                 p={'2rem'}
-                errorMessage={errors.fullname?.message}
+                errorMessage={errors.firstName?.message}
+              />
+              <CustomInput
+                {...register('lastName')}
+                label='Last Name'
+                placeholder='Your last name'
+                p={'2rem'}
+                errorMessage={errors.lastName?.message}
               />
               <CustomInput
                 {...register('companyName')}

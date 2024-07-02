@@ -13,6 +13,8 @@ import TemplateInfo from '../pages/template/[id]';
 import ProgramInfo from '../pages/programs/[id]';
 import TemplatesPage from '../pages/template';
 import Layout from '../layouts/layout';
+import Waitlist from '../pages/waitlist';
+import WaitlistSuccess from '../pages/waitlist/success';
 
 const ErrorPage = lazy(() => import('../pages/ErrorPage'));
 
@@ -57,6 +59,19 @@ const routes: RouteObject[] = [
       {
         path: PageRoutes.bookDemo,
         element: <BookDemo />,
+      },
+      {
+        path: PageRoutes.joinWaitlist,
+        children: [
+          {
+            index: true,
+            element: <Waitlist />,
+          },
+          {
+            path: PageRoutes.WaitlistSuccess,
+            element: <WaitlistSuccess />,
+          },
+        ],
       },
       {
         path: PageRoutes.programs,
