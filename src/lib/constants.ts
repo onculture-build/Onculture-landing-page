@@ -1,3 +1,5 @@
+import WaitlistSuccess from 'pages/waitlist/success';
+
 export const PageRoutes = {
   home: '/',
   about: 'about',
@@ -12,6 +14,7 @@ export const PageRoutes = {
   template: ':id',
   programs: 'programs/:id',
   joinWaitlist: 'waitlist',
+  WaitlistSuccess: 'success',
   notFound: '*',
 };
 

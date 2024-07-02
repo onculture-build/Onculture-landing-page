@@ -6,8 +6,11 @@ import ViewPortContainer from '../../layouts/container';
 import { useForm, Resolver, SubmitHandler } from 'react-hook-form';
 import { WaitlistSchema } from '../../lib/schema';
 import { WaitlistType } from '../../lib/types';
+import { useNavigate } from 'react-router-dom';
+import { PageRoutes } from '../../lib/constants';
 
 const Waitlist = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -22,6 +25,7 @@ const Waitlist = () => {
   } as unknown as { resolver: Resolver<WaitlistType> });
 
   const onSubmit: SubmitHandler<WaitlistType> = (data: WaitlistType) => {
+    navigate(PageRoutes.WaitlistSuccess);
     console.log(data);
   };
   return (
