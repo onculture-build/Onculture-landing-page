@@ -1,5 +1,6 @@
 export type BookDemoType = {
-  fullname: string;
+  firstName: string;
+  lastName?: string;
   companyName: string;
   email: string;
   phone: string;
@@ -7,8 +8,15 @@ export type BookDemoType = {
   details: string;
 };
 
+export type WaitlistType = {
+  firstName: string;
+  lastName?: string;
+  email: string;
+};
+
 export type ContactType = {
-  fullname: string;
+  firstName: string;
+  lastName?: string;
   companyName: string;
   email: string;
   details: string;

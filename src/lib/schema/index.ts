@@ -2,7 +2,8 @@ import * as Yup from 'yup';
 import { isValidPhoneNumber } from 'react-phone-number-input';
 
 export const BookDemoSchema = Yup.object().shape({
-  fullname: Yup.string().trim().required('Fullname is required'),
+  firstName: Yup.string().trim().required('First name is required'),
+  lastName: Yup.string().trim(),
   companyName: Yup.string().trim().required('Company name is required'),
   email: Yup.string()
     .trim()
@@ -26,6 +27,15 @@ export const BookDemoSchema = Yup.object().shape({
   details: Yup.string()
     .trim()
     .required('Kindly let us know what you hope to achieve'),
+});
+
+export const WaitlistSchema = Yup.object().shape({
+  firstName: Yup.string().trim().required('Firstname is required'),
+  lastName: Yup.string().trim(),
+  email: Yup.string()
+    .trim()
+    .email('Invalid email!')
+    .required('Email is required!'),
 });
 
 export const ContactSchema = Yup.object().shape({

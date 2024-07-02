@@ -11,6 +11,7 @@ export const PageRoutes = {
   templates: 'templates',
   template: ':id',
   programs: 'programs/:id',
+  joinWaitlist: 'waitlist',
   notFound: '*',
 };
 
