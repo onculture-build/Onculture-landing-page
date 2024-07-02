@@ -45,8 +45,8 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t buildonculture/landingpage:latest .
-          docker push buildonculture/landingpage:latest
+          # docker build -t buildonculture/landingpage:latest .
+          # docker push buildonculture/landingpage:latest
 
       - name: Deploy to Digital Ocean
         uses: digitalocean/action-doctl@v2
