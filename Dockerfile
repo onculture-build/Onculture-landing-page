@@ -1,4 +1,4 @@
-FROM node:18-alpine AS build
+FROM --platform=linux/amd64 node:18-alpine AS build
 
 
 WORKDIR /app
@@ -14,7 +14,7 @@ COPY . .
 
 RUN  yarn run build
 
-FROM nginx:alpine AS production
+FROM --platform=linux/amd64 nginx:alpine AS production
 
 COPY --from=build /app/dist /usr/share/nginx/html
 
