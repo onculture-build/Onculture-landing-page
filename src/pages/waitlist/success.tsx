@@ -3,10 +3,18 @@ import ViewPortContainer from '../../layouts/container';
 import { FaCircleCheck } from 'react-icons/fa6';
 import SocialNetworks from '../../lib/db/social-networks.json';
 import { Link } from 'react-router-dom';
+import '../template/template.css';
 
 const WaitlistSuccess = () => {
   return (
-    <Box>
+    <Box
+      bgImage={'url(/assets/svg/line.svg)'}
+      bgRepeat={'no-repeat'}
+      position={'relative'}
+      backgroundPosition={'-300px 200px'}
+      bgSize={'contain'}
+      className='page'
+    >
       <ViewPortContainer>
         <Stack
           justifyContent={'center'}
