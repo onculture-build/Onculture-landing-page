@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
 import CustomButton from '../../components/custom-button';
-import HeroVideo from '../../components/hero-video';
+// import HeroVideo from '../../components/hero-video';
 import ViewPortContainer from '../../layouts/container';
 import { PageRoutes } from '../../lib/constants';
 
@@ -14,6 +14,7 @@ const Hero = () => {
       backgroundSize={'100% 100%'}
       backgroundRepeat={'no-repeat'}
       backgroundPosition={'0px 40px'}
+      minH={'80vh'}
     >
       <ViewPortContainer>
         <Box my={28} px={{ base: '2rem', lg: '0' }}>
@@ -29,20 +30,21 @@ const Hero = () => {
                   as={'h1'}
                   fontSize={{ base: 'heading1', '2xl': '64px' }}
                   textAlign={{ base: 'center', lg: 'left' }}
+                  fontWeight={'semiBold'}
+                  maxW={{ md: '80%' }}
                 >
-                  A People and Culture Experience for{' '}
-                  <Text
-                    as={'span'}
-                    color={'brand.primary.600'}
-                    fontWeight={'bold'}
-                  >
-                    YOUR
+                  <Text as={'span'} color={'brand.primary.600'}>
+                    Find, Grow,
                   </Text>{' '}
-                  People
+                  and{' '}
+                  <Text as={'span'} color={'brand.primary.600'}>
+                    Engage
+                  </Text>{' '}
+                  your Employees
                 </Heading>
                 <Text
                   fontSize={{ base: 'paragraph', md: 'heading5' }}
-                  maxW={'90%'}
+                  maxW={{ base: '90%', md: '70%' }}
                   textAlign={{ base: 'center', lg: 'left' }}
                   mt={10}
                 >
@@ -63,8 +65,31 @@ const Hero = () => {
                 </Box>
               </Box>
             </Stack>
-            <Box w={'100%'}>
-              <HeroVideo />
+            <Box w={'100%'} position={'relative'} h={'100%'}>
+              <Box
+                position={'relative'}
+                right={{ md: '-120px' }}
+                h={'100%'}
+                boxShadow={' -10px 1px 50px 0px #1C2C401A'}
+              >
+                <Image src='/assets/images/hero-dashboard.png' />
+              </Box>
+              <Flex
+                gap={5}
+                position={'absolute'}
+                bottom={{ base: '-50px', md: '-100px' }}
+                left={{ base: '20px', md: '-50px' }}
+                w={{ base: '90%', md: '100%' }}
+              >
+                <Image
+                  src='/assets/images/dashboard-mood.png'
+                  boxShadow={' -10px 1px 50px 0px #1C2C401A'}
+                />
+                <Image
+                  src='/assets/images/dashboard-sumup.png'
+                  boxShadow={' -10px 1px 50px 0px #1C2C401A'}
+                />
+              </Flex>
             </Box>
           </Stack>
         </Box>
