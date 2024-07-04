@@ -10,6 +10,7 @@ export const useAddToWaitlist = () =>
       const res = await axios.post(URLS.addToWaitlist, data, {
         headers: {
           'Content-Type': 'application/json',
+          mode: 'cors',
           'X-MailerLite-ApiKey': import.meta.env.VITE_APP_MAILER_LITE_KEY,
         },
       });
