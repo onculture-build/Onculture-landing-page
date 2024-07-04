@@ -60,7 +60,7 @@ jobs:
             docker pull buildonculture/landingpage:latest
             docker stop onculture-landing || true
             docker rm onculture-landing || true
-            docker run -d -p 3000:3000 --name onculture-landing buildonculture/landingpage:latest
+            docker run -d -p 3000:3000 --name onculture-landing --env-file .env buildonculture/landingpage:latest
 
       # - run: |
       #     pm2 stop 0
