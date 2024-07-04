@@ -7,7 +7,7 @@ interface IContainerProps {
 
 const ViewPortContainer = ({ children }: IContainerProps) => {
   return (
-    <Box w={'100%'} px={{ base: 4, sm: 8, lg: 10 }} maxW={'1440px'} mx={'auto'}>
+    <Box w={'100%'} px={{ base: 4, sm: 8, lg: 10 }} maxW={'1520px'} mx={'auto'}>
       {children}
     </Box>
   );
