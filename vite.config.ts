@@ -9,9 +9,10 @@ export default defineConfig({
     port: 3000,
     host: true,
     hmr: false,
-    watch: {
-      usePolling: true,
-    },
+    watch:{},
+  },
+  define: {
+    global: 'globalThis',
   },
   build: {
     minify: 'esbuild',
