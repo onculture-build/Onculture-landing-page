@@ -9,7 +9,14 @@ export default defineConfig({
     port: 3000,
     host: true,
     hmr: false,
-    watch:{},
+    watch: {},
+    proxy: {
+      '/api': {
+        target: 'https://api.mailerlite.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/api/v2'),
+      },
+    },
   },
   define: {
     global: 'globalThis',
