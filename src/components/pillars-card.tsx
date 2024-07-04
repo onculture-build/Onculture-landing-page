@@ -20,9 +20,8 @@ const PillarsCard = ({ cover, title, type, slug }: PillarCardProps) => {
         direction={'column'}
         textAlign={'center'}
         px={{ base: 4, md: 8 }}
-        py={{ base: 8, md: 12 }}
+        pt={{ base: 8, md: 10 }}
         h={'100%'}
-        justifyContent={'space-between'}
       >
         <Heading as={'h5'} fontSize={'heading5'} mb={5}>
           {title}

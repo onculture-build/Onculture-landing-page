@@ -35,7 +35,7 @@ const CallToAction = () => {
   }, [index, setIndex, texts.length]);
 
   return (
-    <Box bgColor={'brand.primary.600'}>
+    <Box bgColor={'brand.gray.500'}>
       <ViewPortContainer>
         <Flex
           as='section'
@@ -47,13 +47,14 @@ const CallToAction = () => {
           alignItems={'center'}
           gap={14}
           direction={'column'}
+          color={'brand.black.600'}
         >
           <Heading
             as={'h2'}
             fontSize={'heading1'}
-            color={'brand.white'}
             display={'flex'}
             gap={4}
+            color={'brand.primary.600'}
           >
             <motion.span
               variants={variants}
@@ -63,13 +64,11 @@ const CallToAction = () => {
             >
               {texts[index]}
             </motion.span>
-            <Text as={'span'}>OnCulture</Text>
+            <Text as={'span'} color={'brand.black.600'}>
+              OnCulture
+            </Text>
           </Heading>
-          <Text
-            color={'brand.white'}
-            textAlign={'center'}
-            w={{ base: '100%', lg: '70%' }}
-          >
+          <Text textAlign={'center'} w={{ base: '100%', lg: '70%' }}>
             OnCulture is creating happier, better-engaged and more productive
             teams. You are on your way there.
           </Text>

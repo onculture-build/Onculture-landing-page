@@ -11,6 +11,7 @@ const Pillars = () => {
       backgroundPosition={'0px 180px'}
       bgSize={'contain'}
       paddingInline={20}
+      mt={'5vh'}
     >
       <ViewPortContainer>
         <Box my={20}>

@@ -1,6 +1,12 @@
+.card-inner {
+  position: relative;
+  height: 180px;
+  width: 100%;
+}
+
 .card-back {
   position: absolute;
-  top: -100%;
+  top: 0%;
   opacity: 0;
   width: 100%;
 }

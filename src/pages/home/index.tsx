@@ -10,7 +10,7 @@ import { Box } from '@chakra-ui/react';
 
 const Home = () => {
   return (
-    <>
+    <Box overflowX={'hidden'}>
       <Hero />
       <Box className='pillars'>
         <Pillars />
@@ -25,7 +25,7 @@ const Home = () => {
       {/* <Review /> */}
 
       {/* <Companies /> */}
-    </>
+    </Box>
   );
 };
 
