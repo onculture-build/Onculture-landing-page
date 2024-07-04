@@ -1,4 +1,4 @@
-FROM node:12-alpine as build 
+FROM node:18-alpine
 WORKDIR /
 # Install npm packages and cache this layer
 COPY package*.json /
@@ -9,9 +9,9 @@ RUN yarn run build
 
 EXPOSE 3000
 
-# Pull NGINX image
-FROM nginx:1.15
-# Move all build files to NGINX serve folder
-COPY --from=build /build /usr/share/nginx/html
-# Setup NGINX with config
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+# # Pull NGINX image
+# FROM nginx:1.15
+# # Move all build files to NGINX serve folder
+# COPY --from=build /app/dist /usr/share/nginx/html
+# # Setup NGINX with config
+# COPY ./nginx.conf /etc/nginx/conf.d/default.conf
