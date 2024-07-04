@@ -40,7 +40,7 @@ const MobileNavigation = () => {
           <Flex alignItems={'center'}>
             <Box>
               <Image
-                src={'/assets/images/Onculture-colored.png'}
+                src={'/assets/images/Onculture-logo.png'}
                 alt='OnCulture'
                 w={'70%'}
               />

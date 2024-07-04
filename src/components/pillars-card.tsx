@@ -22,6 +22,7 @@ const PillarsCard = ({ cover, title, type, slug }: PillarCardProps) => {
         px={{ base: 4, md: 8 }}
         py={{ base: 8, md: 12 }}
         h={'100%'}
+        justifyContent={'space-between'}
       >
         <Heading as={'h5'} fontSize={'heading5'} mb={5}>
           {title}
@@ -32,13 +33,13 @@ const PillarsCard = ({ cover, title, type, slug }: PillarCardProps) => {
             dangerouslySetInnerHTML={{ __html: type }}
           />
         </Text>
-        <CustomButton
+        {/* <CustomButton
           mt={'auto'}
           padding={'1.5rem 1rem'}
           onClick={() => navigate(`/programs/${slug}`)}
         >
           See details
-        </CustomButton>
+        </CustomButton> */}
       </Flex>
     </Card>
   );
