@@ -25,19 +25,19 @@ jobs:
       - name: 'Create env file'
         run: |
           touch .env
-          echo REACT_APP_GOOGLE_CLIENT_ID=${{secrets.REACT_APP_GOOGLE_CLIENT_ID}} >> .env
-          echo REACT_APP_BACKEND=${{secrets.REACT_APP_BACKEND}} >> .env
+          echo VITE_APP_GOOGLE_CLIENT_ID=${{secrets.REACT_APP_GOOGLE_CLIENT_ID}} >> .env
+          echo VITE_APP_BACKEND=${{secrets.REACT_APP_BACKEND}} >> .env
           echo DANGEROUSLY_DISABLE_HOST_CHECK=${{secrets.DANGEROUSLY_DISABLE_HOST_CHECK}} >> .env
-          echo REACT_APP_SANITY_DATASET=${{secrets.REACT_APP_SANITY_DATASET}} >> .env
-          echo REACT_APP_SANITY_PROJECT_ID=${{secrets.REACT_APP_SANITY_PROJECT_ID}} >> .env
-          echo REACT_APP_DOCKER_USERNAME=${{secrets.REACT_APP_DOCKER_USERNAME}} >> .env
-          echo REACT_APP_DOCKER_PASSWORD=${{secrets.REACT_APP_DOCKER_PASSWORD}} >> .env
-          echo REACT_APP_SSH_PRIVATE_KEY=${{secrets.REACT_APP_SSH_PRIVATE_KEY}} >> .env
-          echo REACT_APP_DIGITALOCEAN_ACCESS_TOKEN=${{secrets.REACT_APP_DIGITALOCEAN_ACCESS_TOKEN}} >> .env
-          echo REACT_APP_DROPLET_NAME=${{secrets.REACT_APP_DROPLET_NAME}} >> .env
-          echo REACT_APP_API_PROXY=${{secrets.REACT_APP_API_PROXY}} >> .env
-          echo REACT_APP_MAILER_LITE_KEY=${{secrets.REACT_APP_MAILER_LITE_KEY}} >> .env
-          echo REACT_APP_MAILERLITE_GROUP_ID=${{secrets.REACT_APP_MAILERLITE_GROUP_ID}} >> .env
+          echo VITE_APP_SANITY_DATASET=${{secrets.REACT_APP_SANITY_DATASET}} >> .env
+          echo VITE_APP_SANITY_PROJECT_ID=${{secrets.REACT_APP_SANITY_PROJECT_ID}} >> .env
+          echo VITE_APP_DOCKER_USERNAME=${{secrets.REACT_APP_DOCKER_USERNAME}} >> .env
+          echo VITE_APP_DOCKER_PASSWORD=${{secrets.REACT_APP_DOCKER_PASSWORD}} >> .env
+          echo VITE_APP_SSH_PRIVATE_KEY=${{secrets.REACT_APP_SSH_PRIVATE_KEY}} >> .env
+          echo VITE_APP_DIGITALOCEAN_ACCESS_TOKEN=${{secrets.REACT_APP_DIGITALOCEAN_ACCESS_TOKEN}} >> .env
+          echo VITE_APP_DROPLET_NAME=${{secrets.REACT_APP_DROPLET_NAME}} >> .env
+          echo VITE_APP_API_PROXY=${{secrets.REACT_APP_API_PROXY}} >> .env
+          echo VITE_APP_MAILER_LITE_KEY=${{secrets.REACT_APP_MAILER_LITE_KEY}} >> .env
+          echo VITE_APP_MAILERLITE_GROUP_ID=${{secrets.REACT_APP_MAILERLITE_GROUP_ID}} >> .env
           # echo "DOCKER_DEFAULT_PLATFORM=linux/amd64" >> $GITHUB_ENV
           cat .env
 

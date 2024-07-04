@@ -11,6 +11,7 @@ export const useAddToWaitlist = () =>
         headers: {
           'Content-Type': 'application/json',
           mode: 'cors',
+          "Cache-control": "no-cache",
           'X-MailerLite-ApiKey': import.meta.env.VITE_APP_MAILER_LITE_KEY,
         },
       });
