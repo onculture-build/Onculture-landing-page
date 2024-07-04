@@ -1,4 +1,4 @@
-import { Stack, Heading, Box, Text } from '@chakra-ui/react';
+import { Stack, Heading, Box, Text, Flex, Spinner } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import CustomButton from '../../components/custom-button';
 import CustomInput from '../../components/custom-input';
@@ -8,9 +8,13 @@ import { WaitlistSchema } from '../../lib/schema';
 import { WaitlistType } from '../../lib/types';
 import { useNavigate } from 'react-router-dom';
 import { PageRoutes } from '../../lib/constants';
+import { IAddToWaitlist } from '../../lib/interfaces';
+import { useAddToWaitlist } from '../../services/mutations';
+import toast from 'react-hot-toast';
 
 const Waitlist = () => {
   const navigate = useNavigate();
+  const { mutate: addToWaitList, isPending } = useAddToWaitlist();
   const {
     register,
     handleSubmit,
@@ -25,9 +29,26 @@ const Waitlist = () => {
   } as unknown as { resolver: Resolver<WaitlistType> });
 
   const onSubmit: SubmitHandler<WaitlistType> = (data: WaitlistType) => {
-    navigate(PageRoutes.WaitlistSuccess);
-    console.log(data);
+    const payload: IAddToWaitlist = {
+      email: data.email,
+      fields: {
+        first_name: data.firstName,
+        last_name: data.lastName,
+      },
+    };
+
+    addToWaitList(payload, {
+      onSuccess: () => {
+        toast.success('You have been added to the waitlist!');
+        navigate(PageRoutes.WaitlistSuccess);
+      },
+      onError: (error) => {
+        toast.error('Failed to add to waitlist');
+        console.error(error);
+      },
+    });
   };
+
   return (
     <ViewPortContainer>
       <Box w={{ base: '90%', md: '50%', lg: '40%' }} mx={'auto'}>
@@ -68,7 +89,10 @@ const Waitlist = () => {
               />
               <Box mt={'3vh'}>
                 <CustomButton type={'submit'} w={'100%'}>
-                  Submit
+                  <Flex alignItems={'center'} gap={2}>
+                    {isPending && <Spinner size={'md'} />}
+                    {isPending ? 'Submitting...' : 'Submit'}
+                  </Flex>
                 </CustomButton>
               </Box>
             </Stack>
