@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     port: 3000,
     host: true,
-    hmr: true,
+    hmr: false,
     watch: {
       usePolling: true,
     },
@@ -16,6 +16,6 @@ export default defineConfig({
   build: {
     minify: 'esbuild',
     sourcemap: false,
-    chunkSizeWarningLimit: 200000000000,
+    chunkSizeWarningLimit: 500000,
   }
 });
