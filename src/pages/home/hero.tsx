@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Box, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
 import CustomButton from '../../components/custom-button';
-// import HeroVideo from '../../components/hero-video';
 import ViewPortContainer from '../../layouts/container';
 import { PageRoutes } from '../../lib/constants';
 
@@ -14,7 +13,8 @@ const Hero = () => {
       backgroundSize={'100% 100%'}
       backgroundRepeat={'no-repeat'}
       backgroundPosition={'0px 40px'}
-      minH={'80vh'}
+      minH={'90vh'}
+      h={'fit-content'}
     >
       <ViewPortContainer>
         <Box my={28} px={{ base: '2rem', lg: '0' }}>
@@ -77,17 +77,19 @@ const Hero = () => {
               <Flex
                 gap={5}
                 position={'absolute'}
-                bottom={{ base: '-50px', md: '-100px' }}
+                bottom={{ base: '-50px', md: '-50px' }}
                 left={{ base: '20px', md: '-50px' }}
                 w={{ base: '90%', md: '100%' }}
               >
                 <Image
                   src='/assets/images/dashboard-mood.png'
                   boxShadow={' -10px 1px 50px 0px #1C2C401A'}
+                  w={'30%'}
                 />
                 <Image
                   src='/assets/images/dashboard-sumup.png'
                   boxShadow={' -10px 1px 50px 0px #1C2C401A'}
+                  w={'30%'}
                 />
               </Flex>
             </Box>

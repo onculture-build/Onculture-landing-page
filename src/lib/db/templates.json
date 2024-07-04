@@ -9,7 +9,7 @@
     "description": "Track and tweak employees' progress with automated task planners and templates",
     "body": {
       "id": "6db8ae7a-cc38-419d-a0aa-0371efc14c9b",
-      "image": "/assets/images/peer.png",
+      "image": "/assets/images/team-sumup.png",
       "intro": [
         "Get your teams more productive.",
         "Track and tweak your employees' progress to drive performance.",
@@ -68,7 +68,7 @@
     "description": "Reinforce your culture and values in a relatable way by highlighting and celebrating stand-out behaviours.",
     "body": {
       "id": "164aa378-aacf-4d12-b27d-267675604960",
-      "image": "/assets/images/spark.png",
+      "image": "/assets/images/shoutout.png",
       "intro": [
         " Keep your teams motivated to perform and behave better.",
         "Reinforce your culture and values in a fun way by:"

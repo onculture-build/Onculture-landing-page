@@ -5,6 +5,7 @@ import {
   Grid,
   GridItem,
   Heading,
+  Spinner,
   Stack,
   Switch,
   Text,
@@ -13,7 +14,6 @@ import './pricing.css';
 import PricingCard from './pricing-card';
 import ViewPortContainer from '../../layouts/container';
 import { useGetSubscriptionPlans } from '../../services/queries/subscriptions.query';
-import LoadingSpinner from '../../components/spinner';
 import { AppUtilities } from '../../app.utiilities';
 import EmptyDataState from '../../components/empty-state';
 
@@ -74,7 +74,7 @@ const Pricing = () => {
                   alignItems={'center'}
                   w={'100%'}
                 >
-                  <LoadingSpinner />
+                  <Spinner />
                 </Flex>
               </GridItem>
             ) : AllPlans?.length ? (
