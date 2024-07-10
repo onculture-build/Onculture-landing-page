@@ -1,7 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialNetworks from '../../lib/db/social-networks.json';
-import { Box, Card, Grid, GridItem, Heading, Stack } from '@chakra-ui/react';
+import {
+  Box,
+  Card,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  Spinner,
+  Stack,
+  Text,
+} from '@chakra-ui/react';
 import CustomButton from '../../components/custom-button';
 import CustomInput from '../../components/custom-input';
 import CustomSelect from '../../components/custom-select';
@@ -15,10 +25,12 @@ import { useContactUs } from '../../services/mutations';
 import { IContactUs } from '../../lib/interfaces';
 import toast from 'react-hot-toast';
 import { contactUsReasons } from '../../lib/constants';
+import CustomModal from '../../components/modal';
+import { FaCircleCheck } from 'react-icons/fa6';
 
 const Contact = () => {
   const [showModal, setShowModal] = React.useState<boolean>(false);
-
+  const navigate = useNavigate();
   const { mutate: submitContactUs, isPending } = useContactUs();
 
   const {
@@ -159,7 +171,10 @@ const Contact = () => {
                   />
                   <Box mt={'3vh'}>
                     <CustomButton type={'submit'} w={'100%'}>
-                      Submit
+                      <Flex alignItems={'center'} gap={2}>
+                        {isPending && <Spinner size={'md'} />}
+                        {isPending ? 'Submitting...' : 'Submit'}
+                      </Flex>
                     </CustomButton>
                   </Box>
                 </Stack>
@@ -168,6 +183,35 @@ const Contact = () => {
           </Stack>
         </Stack>
       </ViewPortContainer>
+      <CustomModal onClose={() => setShowModal(!showModal)} isOpen={showModal}>
+        <Stack
+          alignItems={'center'}
+          justifyContent={'space-around'}
+          py={20}
+          gap={20}
+          border={'1px solid red'}
+        >
+          <Flex color={'brand.primary.600'}>
+            <FaCircleCheck fontSize={'64px'} />
+          </Flex>
+          <Stack textAlign={'center'} h={'100%'}>
+            <Heading as={'h3'} fontSize={'heading3'}>
+              Message Sent Successfully!
+            </Heading>
+            <Text maxW={{ base: '100%', md: '70%' }} mx={'auto'}>
+              Thank you for reaching out to us. A representative will be in
+              touch with you as soon as possible.
+            </Text>
+          </Stack>
+          <CustomButton
+            onClick={() => navigate('/')}
+            w={'fit-content'}
+            mx={'auto'}
+          >
+            Continue
+          </CustomButton>
+        </Stack>
+      </CustomModal>
     </Box>
   );
 };
