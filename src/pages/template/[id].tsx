@@ -105,11 +105,11 @@ const TemplateInfo = () => {
                       </Box>
                     </Stack>
                   </Flex>
-                  <Box>
+                  {/* <Box>
                     <CustomButton disabled={!templateInfo.isReady}>
                       {templateInfo.isReady ? 'Get Started' : 'Coming Soon'}
                     </CustomButton>
-                  </Box>
+                  </Box> */}
                 </Flex>
                 <Stack py={10} gap={6}>
                   {templateInfo.body.intro.map((i, idx) => (

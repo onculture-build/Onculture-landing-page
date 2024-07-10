@@ -10,12 +10,7 @@ interface Benefit {
 const BenefitCard = ({ title, image, description }: Benefit) => {
   return (
     <Box>
-      <Box
-        className={styles['card-inner']}
-        position={'relative'}
-        h={'180px'}
-        w={'100%'}
-      >
+      <Box className={styles['card-inner']}>
         <Card p={10} h={'100%'} w={'100%'} className={styles['card-front']}>
           <Stack gap={10} className={styles['content']}>
             <Box className={styles['image']}>

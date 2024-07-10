@@ -20,7 +20,7 @@ const Navbar = () => {
         >
           <Box>
             <Image
-              src='/assets/images/onculture.png'
+              src='/assets/images/Onculture-logo.png'
               alt='OnCulture'
               onClick={() => navigate(PageRoutes.home)}
               cursor={'pointer'}

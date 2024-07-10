@@ -1,0 +1,74 @@
+name: OncultureCI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Use Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{matrix.node-version}}
+
+      - name: Remove .docker/config.json
+        run: rm -f ~/.docker/config.json
+
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo VITE_APP_GOOGLE_CLIENT_ID=${{secrets.REACT_APP_GOOGLE_CLIENT_ID}} >> .env
+          echo VITE_APP_BACKEND=${{secrets.REACT_APP_BACKEND}} >> .env
+          echo DANGEROUSLY_DISABLE_HOST_CHECK=${{secrets.DANGEROUSLY_DISABLE_HOST_CHECK}} >> .env
+          echo VITE_APP_SANITY_DATASET=${{secrets.REACT_APP_SANITY_DATASET}} >> .env
+          echo VITE_APP_SANITY_PROJECT_ID=${{secrets.REACT_APP_SANITY_PROJECT_ID}} >> .env
+          echo VITE_APP_DOCKER_USERNAME=${{secrets.REACT_APP_DOCKER_USERNAME}} >> .env
+          echo VITE_APP_DOCKER_PASSWORD=${{secrets.REACT_APP_DOCKER_PASSWORD}} >> .env
+          echo VITE_APP_DIGITALOCEAN_ACCESS_TOKEN=${{secrets.REACT_APP_DIGITALOCEAN_ACCESS_TOKEN}} >> .env
+          echo VITE_APP_DROPLET_NAME=${{secrets.REACT_APP_DROPLET_NAME}} >> .env
+          echo VITE_APP_API_PROXY=${{secrets.REACT_APP_API_PROXY}} >> .env
+          echo VITE_APP_MAILER_LITE_KEY=${{secrets.REACT_APP_MAILER_LITE_KEY}} >> .env
+          echo VITE_APP_MAILERLITE_WAITLIST_GROUP_ID=${{secrets.REACT_APP_MAILERLITE_GROUP_ID}} >> .env
+          echo VITE_APP_MAILERLITE_CONTACT_GROUP_ID=${{secrets.MAILERLITE_CONTACT_GROUP_ID}} >> .env
+          echo VITE_APP_MAILERLITE_BOOKDEMO_GROUP_ID=${{secrets.MAILERLITE_BOOKDEMO_GROUP_ID}} >> .env
+          # echo "DOCKER_DEFAULT_PLATFORM=linux/amd64" >> $GITHUB_ENV
+          cat .env
+
+      - name: Log into Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.REACT_APP_DOCKER_USERNAME }}
+          password: ${{ secrets.REACT_APP_DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t buildonculture/landingpage:latest .
+          docker push buildonculture/landingpage:latest
+
+      - name: Deploy to Digital Ocean
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.REACT_APP_DIGITALOCEAN_ACCESS_TOKEN }}
+      - run: |
+          docker pull buildonculture/landingpage:latest
+          docker stop onculture-landing || true
+          docker rm onculture-landing || true
+          docker run -d -p 3000:3000 --name onculture-landing --env-file .env buildonculture/landingpage:latest
+
+      # - run: |
+      #     pm2 stop 0
+      #     pm2 start 0
+      #     pm2 save
+      #     sudo service nginx restart
+      #     docker pull buildonculture/landingpage:latest
+      #     docker stop onculture-landing || true
+      #     docker rm onculture-landing || true
+      #     docker run -d -p 3000:3000 --name onculture-landing buildonculture/landingpage:latest
