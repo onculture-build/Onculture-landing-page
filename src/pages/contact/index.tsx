@@ -11,9 +11,15 @@ import { Resolver, useForm } from 'react-hook-form';
 import { ContactType } from '../../lib/types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ContactSchema } from '../../lib/schema';
+import { useContactUs } from '../../services/mutations';
+import { IContactUs } from '../../lib/interfaces';
+import toast from 'react-hot-toast';
+import { contactUsReasons } from '../../lib/constants';
 
 const Contact = () => {
   const [showModal, setShowModal] = React.useState<boolean>(false);
+
+  const { mutate: submitContactUs, isPending } = useContactUs();
 
   const {
     register,
@@ -26,12 +32,30 @@ const Contact = () => {
       lastName: '',
       companyName: '',
       email: '',
-      details: '',
+      reason: '',
     },
   } as unknown as { resolver: Resolver<ContactType> });
 
   const submitHandler = (data: ContactType) => {
-    console.log(data);
+    const postData: IContactUs = {
+      email: data.email,
+      fields: {
+        first_name: data.firstName,
+        last_name: data.lastName,
+        company_name: data.companyName,
+        reason: data.reason,
+        message: data.message,
+      },
+    };
+    submitContactUs(postData, {
+      onSuccess: (res) => {
+        setShowModal(true);
+      },
+      onError: (err) => {
+        toast.error('Error submitting form. Please try again.');
+        console.error(err);
+      },
+    });
   };
 
   return (
@@ -122,16 +146,16 @@ const Contact = () => {
                     errorMessage={errors.companyName?.message}
                   />
                   <CustomSelect
-                    {...register('details')}
+                    {...register('reason')}
                     label='How can our team help you?'
                     isRequired
-                    options={[]}
+                    options={contactUsReasons}
                     h={'4rem'}
                     optionStyles={{
                       fontSize: 'paragraph',
                     }}
                     onChange={() => {}}
-                    error={errors.details?.message}
+                    error={errors.reason?.message}
                   />
                   <Box mt={'3vh'}>
                     <CustomButton type={'submit'} w={'100%'}>

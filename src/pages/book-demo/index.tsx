@@ -9,9 +9,16 @@ import ViewPortContainer from '../../layouts/container';
 import { BookDemoSchema } from '../../lib/schema';
 import { BookDemoType } from '../../lib/types';
 import { employeeCount } from '../../lib/constants';
+import { IBookADemo } from '../../lib/interfaces';
+import { useBookADemo } from '../../services/mutations';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const BookDemo = () => {
   // const navigate = useNavigate();
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  const { mutate: submitBookDemo, isPending } = useBookADemo();
 
   const {
     register,
@@ -26,11 +33,31 @@ const BookDemo = () => {
       email: '',
       phone: '',
       employeeCount: '',
-      details: '',
+      message: '',
     },
   } as unknown as { resolver: Resolver<BookDemoType> });
 
   const onSubmit: SubmitHandler<BookDemoType> = (data: BookDemoType) => {
+    const postData: IBookADemo = {
+      email: data.email,
+      fields: {
+        first_name: data.firstName,
+        last_name: data.lastName,
+        phone_number: data.phone,
+        company_name: data.companyName,
+        employee_count: data.employeeCount,
+        message: data.message,
+      },
+    };
+    submitBookDemo(postData, {
+      onSuccess: (res) => {
+        setShowModal(true);
+      },
+      onError: (err) => {
+        toast.error('Error submitting form. Please try again.');
+        console.error(err);
+      },
+    });
     console.log(data);
   };
 
@@ -97,7 +124,7 @@ const BookDemo = () => {
                 error={errors.employeeCount?.message}
               />
               <CustomInput
-                {...register('details')}
+                {...register('message')}
                 label='What are you hoping to achieve with OnCulture'
                 isRequired
                 isTextArea
@@ -108,7 +135,7 @@ const BookDemo = () => {
                   fontSize: 'label',
                   color: 'brand.gray.800',
                 }}
-                errorMessage={errors.details?.message}
+                errorMessage={errors.message?.message}
               />
               <Box mt={'3vh'}>
                 <CustomButton type={'submit'} w={'100%'}>
