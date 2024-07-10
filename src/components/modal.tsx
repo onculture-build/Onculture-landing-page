@@ -1,5 +1,4 @@
 import {
-  Box,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -26,8 +25,8 @@ const CustomModal = ({
   onClose,
   size = '6xl',
   header,
-  w,
-  h,
+  w = 'fit-content',
+  h = 'fit-content',
   p = 4,
   children,
 }: CustomModalProps) => {

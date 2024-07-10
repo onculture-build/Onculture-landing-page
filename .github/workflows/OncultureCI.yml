@@ -36,7 +36,9 @@ jobs:
           echo VITE_APP_DROPLET_NAME=${{secrets.REACT_APP_DROPLET_NAME}} >> .env
           echo VITE_APP_API_PROXY=${{secrets.REACT_APP_API_PROXY}} >> .env
           echo VITE_APP_MAILER_LITE_KEY=${{secrets.REACT_APP_MAILER_LITE_KEY}} >> .env
-          echo VITE_APP_MAILERLITE_GROUP_ID=${{secrets.REACT_APP_MAILERLITE_GROUP_ID}} >> .env
+          echo VITE_APP_MAILERLITE_WAITLIST_GROUP_ID=${{secrets.REACT_APP_MAILERLITE_GROUP_ID}} >> .env
+          echo VITE_APP_MAILERLITE_CONTACT_GROUP_ID=${{secrets.MAILERLITE_CONTACT_GROUP_ID}} >> .env
+          echo VITE_APP_MAILERLITE_BOOKDEMO_GROUP_ID=${{secrets.MAILERLITE_BOOKDEMO_GROUP_ID}} >> .env
           # echo "DOCKER_DEFAULT_PLATFORM=linux/amd64" >> $GITHUB_ENV
           cat .env
 
@@ -56,10 +58,10 @@ jobs:
         with:
           token: ${{ secrets.REACT_APP_DIGITALOCEAN_ACCESS_TOKEN }}
       - run: |
-            docker pull buildonculture/landingpage:latest
-            docker stop onculture-landing || true
-            docker rm onculture-landing || true
-            docker run -d -p 3000:3000 --name onculture-landing --env-file .env buildonculture/landingpage:latest
+          docker pull buildonculture/landingpage:latest
+          docker stop onculture-landing || true
+          docker rm onculture-landing || true
+          docker run -d -p 3000:3000 --name onculture-landing --env-file .env buildonculture/landingpage:latest
 
       # - run: |
       #     pm2 stop 0
@@ -70,5 +72,3 @@ jobs:
       #     docker stop onculture-landing || true
       #     docker rm onculture-landing || true
       #     docker run -d -p 3000:3000 --name onculture-landing buildonculture/landingpage:latest
-
-

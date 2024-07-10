@@ -1,3 +1,8 @@
+export type SelectorOptionValue = {
+  label: string;
+  value: string | number;
+};
+
 export type BookDemoType = {
   firstName: string;
   lastName?: string;
@@ -5,7 +10,7 @@ export type BookDemoType = {
   email: string;
   phone: string;
   employeeCount: string;
-  details: string;
+  message: string;
 };
 
 export type WaitlistType = {
@@ -19,5 +24,6 @@ export type ContactType = {
   lastName?: string;
   companyName: string;
   email: string;
-  details: string;
+  reason: string;
+  message?: string;
 };
