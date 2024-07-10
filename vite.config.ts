@@ -8,14 +8,22 @@ export default defineConfig({
   server: {
     port: 3000,
     host: true,
-    hmr: true,
-    watch: {
-      usePolling: true,
+    hmr: false,
+    watch: {},
+    proxy: {
+      '/api': {
+        target: 'https://api.mailerlite.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '/api/v2'),
+      },
     },
+  },
+  define: {
+    global: 'globalThis',
   },
   build: {
     minify: 'esbuild',
     sourcemap: false,
-    chunkSizeWarningLimit: 200000000000,
+    chunkSizeWarningLimit: 500000,
   }
 });
