@@ -1,0 +1,18 @@
+.pillars {
+  background-image: url(/assets/images/bg-gradient-mid-left.png);
+  background-repeat: no-repeat;
+  background-position: left 50%;
+  background-size: contain;
+}
+
+.templates {
+  background-image: url(/assets/images/bg-gradient-center.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.benefits {
+  background-image: url(/assets/images/bg-gradient-mid-right.png);
+  background-repeat: no-repeat;
+  background-position: right 50%;
+}

@@ -1,0 +1,67 @@
+.loader {
+  --r1: 154%;
+  --r2: 68.5%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(
+      var(--r1) var(--r2) at top,
+      #0000 79.5%,
+      rgba(92, 0, 221, 1) 80%
+    ),
+    radial-gradient(
+      var(--r1) var(--r2) at bottom,
+      rgba(92, 0, 221, 1) 79.5%,
+      #0000 80%
+    ),
+    radial-gradient(
+      var(--r1) var(--r2) at top,
+      #0000 79.5%,
+      rgba(92, 0, 221, 1) 80%
+    ),
+    #e4e4ed;
+  background-size: 50.5% 220%;
+  background-position: -100% 0%, 0% 0%, 100% 0%;
+  background-repeat: no-repeat;
+  animation: p9 4s infinite linear;
+}
+@keyframes p9 {
+  33% {
+    background-position: 0% 33%, 100% 33%, 200% 33%;
+  }
+  66% {
+    background-position: -100% 66%, 0% 66%, 100% 66%;
+  }
+  100% {
+    background-position: 0% 100%, 100% 100%, 200% 100%;
+  }
+}
+
+.loading-container {
+  position: relative;
+}
+
+.loading-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.9) 50%,
+    transparent 100%
+  );
+  animation: slideFilter 3s infinite linear;
+}
+
+@keyframes slideFilter {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}

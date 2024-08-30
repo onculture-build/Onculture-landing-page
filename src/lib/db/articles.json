@@ -1,0 +1,38 @@
+[
+  {
+    "id": "fafce0ac-d30f-40f3-b292-c61ab5753c86",
+    "tag": "Culture",
+    "image": "/assets/images/what-is-culture.webp",
+    "title": "What is and isn't culture?",
+    "url": "https://www.thepeoplepractice.io/post/what-is-and-what-isn-t-culture",
+    "cover": "/assets/images/meeting-room.png"
+  },
+  {
+    "id": "875d17fb-93df-47df-81a2-4fe6077af238",
+    "tag": "Diversity & Inclusion",
+    "image": "/assets/images/align-culture.webp",
+    "title": "Is your team culture aligned?",
+    "url": "https://www.thepeoplepractice.io/post/is-your-team-culture-aligned"
+  },
+  {
+    "id": "422f5612-2a51-49c5-a239-a84f3d9485c9",
+    "tag": "Workplace values",
+    "image": "/assets/images/transparent-workplace.webp",
+    "title": "How transparent is your workplace?",
+    "url": "https://www.thepeoplepractice.io/post/how-transparent-is-your-workplace"
+  },
+  {
+    "id": "cf70e525-8925-4966-80e8-3018145639c3",
+    "tag": "Workplace values",
+    "image": "/assets/images/toxic-workplace.webp",
+    "title": "Are you in a toxic workplace?",
+    "url": "https://www.thepeoplepractice.io/post/are-you-in-a-toxic-workplace"
+  },
+  {
+    "id": "49171c75-5e7c-47f7-97ec-8a543a856c7f",
+    "tag": "Diversity & Inclusion",
+    "image": "/assets/images/workplace-bullies.webp",
+    "title": "Workplace bullies and what to do",
+    "url": "https://www.thepeoplepractice.io/post/workplace-bullies-and-what-to-do"
+  }
+]

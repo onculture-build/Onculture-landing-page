@@ -1,0 +1,56 @@
+[
+  {
+    "id": "8cbe8399-8f59-46c7-9321-16a962e32ec4",
+    "title": "Clear Focus on Your People",
+    "description": "Prioritise their employee experience in a simple and transparent way.",
+    "img": "/assets/svg/capture.svg"
+  },
+  {
+    "id": "7e707067-70a7-4c5a-a30f-8fb5a6cdac10",
+    "title": "Reinforce Your Culture and Values",
+    "description": "Highlight and celebrate employee stand-out behaviours and actions, in line with values and goals.",
+    "img": "/assets/svg/pin.svg"
+  },
+  {
+    "id": "089c2b49-2519-4449-891f-a6430810194b",
+    "title": "Anticipate and Make People Decisions",
+    "description": "Empower your leaders with automated tools and resources to help boost their management skills. ",
+    "img": "/assets/svg/bub.svg"
+  },
+  {
+    "id": "432a68e3-58dd-423c-88a0-fbf3ddc182c8",
+    "title": "Boost Productivity Levels",
+    "description": "Use automation and templates to drive productivity.",
+    "img": "/assets/svg/plot.svg"
+  },
+  {
+    "id": "3a0b78d9-555a-4c59-95a8-7e67e764b070",
+    "title": "Create and Empower Leaders",
+    "description": "Empower your leaders with resources and toolkits.",
+    "img": "/assets/svg/badge.svg"
+  },
+  {
+    "id": "3e9254bd-9029-454f-8882-c8ea69a1661f",
+    "title": "Team Connection and Collaboration",
+    "description": "Connect employees together, regardless of location or unit.",
+    "img": "/assets/svg/group.svg"
+  },
+  {
+    "id": "4c13e223-671e-45c3-9e01-2e95c63c66d0",
+    "title": "Harassment-free workplace",
+    "description": "Educate employees on appropriate conduct at work and ensure a harassment-free workplace",
+    "img": "/assets/svg/locate.svg"
+  },
+  {
+    "id": "c0388117-9da6-4ab1-acbe-fefdfb017c63",
+    "title": "Compact Courses",
+    "description": "Courses on professional development and soft skills that develop your team and drive instant results.",
+    "img": "/assets/svg/play.svg"
+  },
+  {
+    "id": "c0388117-9da6-4ab1-acbe-fefdfb017c73",
+    "title": "Enhanced Onboarding",
+    "description": "Onboard new employees creatively. Add a culture- fit layer to your onboarding process",
+    "img": "/assets/svg/avatarico.svg"
+  }
+]

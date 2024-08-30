@@ -1,0 +1,23 @@
+.page {
+  background-image: url(/assets/images/bg-gradient-bottom-left.png),
+    url(/assets/images/bg-gradient-bottom-right.png);
+  background-repeat: no-repeat, no-repeat;
+  background-position: left bottom, right bottom;
+}
+
+.all-templates {
+  background-image: url(/assets/images/bg-gradient-mid-left.png),
+    url(/assets/images/bg-gradient-mid-right.png);
+  background-repeat: no-repeat, no-repeat;
+  background-position: left 30%, right 30%;
+}
+
+@media (max-width: 480px) {
+  .page {
+    background-size: contain;
+  }
+
+  .all-templates {
+    background-size: contain;
+  }
+}
