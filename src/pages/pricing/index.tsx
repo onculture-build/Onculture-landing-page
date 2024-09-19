@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import './pricing.css';
 import PricingCard from './pricing-card';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 import { useGetSubscriptionPlans } from '../../services/queries/subscriptions.query';
 import { AppUtilities } from '../../app.utiilities';
 import EmptyDataState from '../../components/empty-state';
@@ -23,7 +23,7 @@ const Pricing = () => {
   const { data: AllPlans, isLoading } = useGetSubscriptionPlans();
 
   return (
-    <ViewPortContainer>
+    <ViewportContainer>
       <Stack my={64} px={{ base: '2rem', lg: '0' }}>
         <Flex
           justifyContent={'center'}
@@ -100,7 +100,7 @@ const Pricing = () => {
           </Grid>
         </Box>
       </Stack>
-    </ViewPortContainer>
+    </ViewportContainer>
   );
 };
 

@@ -11,7 +11,7 @@ import {
 import { Link } from 'react-router-dom';
 import SocialNetworks from '../lib/db/social-networks.json';
 import { PageRoutes } from '../lib/constants';
-import ViewPortContainer from './container';
+import ViewportContainer from './container';
 
 const Footer = () => {
   return (
@@ -23,7 +23,7 @@ const Footer = () => {
       bgPosition={'center'}
       mt={'auto'}
     >
-      <ViewPortContainer>
+      <ViewportContainer>
         <Grid
           py={{ base: 20, md: 28 }}
           px={{ base: '2rem', lg: '0' }}
@@ -66,7 +66,7 @@ const Footer = () => {
             </Stack>
           </GridItem>
         </Grid>
-      </ViewPortContainer>
+      </ViewportContainer>
     </Box>
   );
 };

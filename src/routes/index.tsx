@@ -15,6 +15,10 @@ import TemplatesPage from '../pages/template';
 import Layout from '../layouts/layout';
 import Waitlist from '../pages/waitlist';
 import WaitlistSuccess from '../pages/waitlist/success';
+import SignUp from '../pages/auth/signup';
+import CompanyOnboarding from '../pages/auth/company';
+import SignupSuccess from '../pages/auth/signup-success';
+import SignupFailure from '../pages/auth/signup-fail';
 
 const ErrorPage = lazy(() => import('../pages/ErrorPage'));
 
@@ -68,7 +72,7 @@ const routes: RouteObject[] = [
             element: <Waitlist />,
           },
           {
-            path: PageRoutes.WaitlistSuccess,
+            path: PageRoutes.waitlistSuccess,
             element: <WaitlistSuccess />,
           },
         ],
@@ -93,6 +97,22 @@ const routes: RouteObject[] = [
             element: <SingleBook />,
           },
         ],
+      },
+      {
+        path: PageRoutes.signup,
+        element: <SignUp />,
+      },
+      {
+        path: PageRoutes.signupSuccess,
+        element: <SignupSuccess />,
+      },
+      {
+        path: PageRoutes.signupFailure,
+        element: <SignupFailure />,
+      },
+      {
+        path: PageRoutes.companyOnboarding,
+        element: <CompanyOnboarding />,
       },
       {
         path: PageRoutes.notFound,

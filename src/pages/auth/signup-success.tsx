@@ -1,13 +1,9 @@
-import { Box, Heading, Img, Stack, Text } from '@chakra-ui/react';
+import CustomButton from '../../components/custom-button';
+import ViewportContainer from '../../layouts/container';
+import { Box, Stack, Image, Heading, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import CustomButton from '../components/custom-button';
-import ViewportContainer from '../layouts/container';
 
-type ErrorPageProp = {
-  errorText?: string;
-  errorTitle?: string;
-};
-const ErrorPage = ({ errorText, errorTitle }: ErrorPageProp) => {
+const SignupSuccess = () => {
   const navigate = useNavigate();
   return (
     <ViewportContainer>
@@ -17,10 +13,12 @@ const ErrorPage = ({ errorText, errorTitle }: ErrorPageProp) => {
         alignSelf='center'
         alignItems='center'
         gap='10'
+        maxW={{ base: '100%', md: '70%', xl: '50%' }}
+        mx={'auto'}
         py={40}
       >
         <Box>
-          <Img src={'/assets/svg/coffetable.svg'} />
+          <Image src={'/assets/images/confetti.png'} />
         </Box>
         <Heading
           as={'h2'}
@@ -28,10 +26,13 @@ const ErrorPage = ({ errorText, errorTitle }: ErrorPageProp) => {
           fontWeight='600'
           textAlign={'center'}
         >
-          {errorTitle || 'Page not Found!'}
+          Welcome to OnCulture.
         </Heading>
         <Box textAlign='center'>
-          <Text>{errorText}</Text>
+          <Text>You have signed up successfully</Text>
+          <Text>
+            We will send an email shortly to complete your onboarding.
+          </Text>
         </Box>
         <Box>
           <CustomButton
@@ -39,7 +40,7 @@ const ErrorPage = ({ errorText, errorTitle }: ErrorPageProp) => {
               navigate('/');
             }}
           >
-            Go to Home Page
+            Return to Homepage
           </CustomButton>
         </Box>
       </Stack>
@@ -47,4 +48,4 @@ const ErrorPage = ({ errorText, errorTitle }: ErrorPageProp) => {
   );
 };
 
-export default ErrorPage;
+export default SignupSuccess;

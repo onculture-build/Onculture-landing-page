@@ -1,7 +1,7 @@
 import { Box, Grid, GridItem, Heading, Stack, Text } from '@chakra-ui/react';
 import Programs from '../../lib/db/programs.json';
 import PillarsCard from '../../components/pillars-card';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 const Pillars = () => {
   return (
     <Stack
@@ -13,7 +13,7 @@ const Pillars = () => {
       paddingInline={20}
       mt={'5vh'}
     >
-      <ViewPortContainer>
+      <ViewportContainer>
         <Box my={20}>
           <Stack justifyContent={'center'} alignItems={'center'} mb={20}>
             <Heading as={'h2'} fontSize={'heading2'}>
@@ -49,7 +49,7 @@ const Pillars = () => {
             ))}
           </Grid>
         </Box>
-      </ViewPortContainer>
+      </ViewportContainer>
     </Stack>
   );
 };

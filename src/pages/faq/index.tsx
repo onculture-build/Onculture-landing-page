@@ -1,4 +1,4 @@
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 import FaqData from '../../lib/db/faq.json';
 import {
   Accordion,
@@ -15,7 +15,7 @@ import {
 
 const Faq = () => {
   return (
-    <ViewPortContainer>
+    <ViewportContainer>
       <Stack
         justifyContent={'center'}
         alignItems={'center'}
@@ -74,7 +74,7 @@ const Faq = () => {
           </Accordion>
         </Box>
       </Stack>
-    </ViewPortContainer>
+    </ViewportContainer>
   );
 };
 

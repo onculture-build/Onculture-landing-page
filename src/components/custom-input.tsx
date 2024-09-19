@@ -153,7 +153,6 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             backgroundColor={isValue ? 'brand.primary.100' : 'brand.white'}
             focusBorderColor='brand.primary.500'
             id={id}
-            {...register}
             placeholder={placeholder}
             defaultValue={defaultValue}
             _placeholder={{
@@ -162,11 +161,12 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
               fontSize: 'label',
               fontWeight: 'normal',
             }}
+            {...rest}
             onChange={handleTextAreaChange}
             fontSize={'paragraph'}
             outlineOffset={'none'}
             variant={variant}
-            {...rest}
+            {...register}
           />
         ) : isDate ? (
           <Input
@@ -182,10 +182,10 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             }}
             type={type || 'date'}
             max={maxDate}
-            {...register}
             defaultValue={defaultValue}
             placeholder={placeholder}
             onChange={handleChange}
+            {...register}
           />
         ) : !!icon || type === 'password' ? (
           <InputGroup size='lg'>

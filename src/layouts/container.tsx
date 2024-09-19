@@ -5,7 +5,7 @@ interface IContainerProps {
   children: React.ReactNode;
 }
 
-const ViewPortContainer = ({ children }: IContainerProps) => {
+const ViewportContainer = ({ children }: IContainerProps) => {
   return (
     <Box w={'100%'} px={{ base: 4, sm: 8, lg: 10 }} maxW={'1440px'} mx={'auto'}>
       {children}
@@ -13,4 +13,4 @@ const ViewPortContainer = ({ children }: IContainerProps) => {
   );
 };
 
-export default ViewPortContainer;
+export default ViewportContainer;

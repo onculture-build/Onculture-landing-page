@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Text, Stack, Image } from '@chakra-ui/react';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 import { FaCircleCheck } from 'react-icons/fa6';
 import SocialNetworks from '../../lib/db/social-networks.json';
 import { Link } from 'react-router-dom';
@@ -15,7 +15,7 @@ const WaitlistSuccess = () => {
       bgSize={'contain'}
       className='page'
     >
-      <ViewPortContainer>
+      <ViewportContainer>
         <Stack
           justifyContent={'center'}
           alignItems={'center'}
@@ -55,7 +55,7 @@ const WaitlistSuccess = () => {
             </Flex>
           </Stack>
         </Stack>
-      </ViewPortContainer>
+      </ViewportContainer>
     </Box>
   );
 };
