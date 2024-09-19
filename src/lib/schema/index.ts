@@ -49,3 +49,20 @@ export const ContactSchema = Yup.object().shape({
     .required('Kindly specify the reason for contacting us'),
   message: Yup.string().trim(),
 });
+
+export const UserSignUpSchema = Yup.object().shape({
+  firstName: Yup.string().trim().required('First name is required'),
+  lastName: Yup.string().trim().required('Last name is required'),
+  email: Yup.string()
+    .trim()
+    .email('Invalid email!')
+    .required('Email is required!'),
+});
+
+export const CompanySchema = Yup.object().shape({
+  name: Yup.string().trim().required('Company name is required'),
+  email: Yup.string()
+    .trim()
+    .email('Invalid email!')
+    .required('Email is required!'),
+});

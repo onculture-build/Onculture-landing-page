@@ -27,3 +27,21 @@ export type ContactType = {
   reason: string;
   message?: string;
 };
+
+export type UserSignUpType = {
+  firstName: string;
+  lastName: string;
+  email: string;
+};
+
+export type CompanySignupType = {
+  name: string;
+  code: string;
+  email: string;
+  values?: Record<'value', string>[];
+};
+
+export type AuthType = {
+  userInfo: UserSignUpType;
+  companyInfo: CompanySignupType;
+};

@@ -14,7 +14,12 @@ export const PageRoutes = {
   template: ':id',
   programs: 'programs/:id',
   joinWaitlist: 'waitlist',
-  WaitlistSuccess: 'success',
+  waitlistSuccess: 'success',
+  signup: 'register',
+  signupSuccess: 'register/success',
+  signupFailure: 'register/not-allowed',
+  companyOnboarding: 'register/company',
+  login: 'login',
   notFound: '*',
 };
 

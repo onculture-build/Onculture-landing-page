@@ -1,7 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
+import axios from '../axios';
 import URLS from '../urls';
 import { IAddToWaitlist, IBookADemo, IContactUs } from '../../lib/interfaces';
+import { AuthType, UserSignUpType } from '@@/lib/types';
 
 export const useAddToWaitlist = () =>
   useMutation({
@@ -49,6 +50,26 @@ export const useBookADemo = () =>
           'X-MailerLite-ApiKey': import.meta.env.VITE_APP_MAILER_LITE_KEY,
         },
       });
+
+      return res.data;
+    },
+  });
+
+export const useCheckAllowedUser = () =>
+  useMutation({
+    mutationKey: ['checkAllowedUser'],
+    mutationFn: async (data: UserSignUpType) => {
+      const res = await axios.post(URLS.checkAllowedUser, data);
+
+      return res.data;
+    },
+  });
+
+export const useRegisterCompany = () =>
+  useMutation({
+    mutationKey: ['signup'],
+    mutationFn: async (data: AuthType) => {
+      const res = await axios.post(URLS.signup, data);
 
       return res.data;
     },

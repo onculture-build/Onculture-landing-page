@@ -40,7 +40,7 @@ const Waitlist = () => {
     addToWaitList(payload, {
       onSuccess: () => {
         toast.success('You have been added to the waitlist!');
-        navigate(PageRoutes.WaitlistSuccess);
+        navigate(PageRoutes.waitlistSuccess);
       },
       onError: (error) => {
         toast.error('Failed to add to waitlist');
