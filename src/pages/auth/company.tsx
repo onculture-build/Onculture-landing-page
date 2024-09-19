@@ -38,14 +38,20 @@ const CompanyOnboarding = () => {
     },
   } as unknown as { resolver: Resolver<CompanySignupType> });
 
-  const submitHandler = (data: CompanySignupType) => {
+  const submitHandler = ({ values, ...data }: CompanySignupType) => {
+    const validValues = (values || []).filter((val) => val.value !== '');
+
     const signupData: AuthType = {
       userInfo,
-      companyInfo: data,
+      companyInfo: {
+        ...data,
+        ...(validValues.length && { values: validValues }),
+      },
     };
     signup(signupData, {
       onSuccess: (res) => {
         navigate(`/${PageRoutes.signupSuccess}`);
+        sessionStorage.removeItem('auth');
       },
       onError: (err) => {
         console.error(err.message);
