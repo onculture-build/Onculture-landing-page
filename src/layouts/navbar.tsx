@@ -2,7 +2,7 @@ import { Box, Flex, Image, Show, Text } from '@chakra-ui/react';
 import { navLinks } from './navlinks';
 import { NavLink, useNavigate } from 'react-router-dom';
 import MobileNavigation from './mobile-nav';
-import ViewPortContainer from './container';
+import ViewportContainer from './container';
 import { PageRoutes } from '../lib/constants';
 import CustomButton from '../components/custom-button';
 
@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <Flex as={'nav'}>
-      <ViewPortContainer>
+      <ViewportContainer>
         <Flex
           justifyContent={'space-between'}
           alignItems={'center'}
@@ -73,7 +73,7 @@ const Navbar = () => {
             <MobileNavigation />
           </Show>
         </Flex>
-      </ViewPortContainer>
+      </ViewportContainer>
     </Flex>
   );
 };

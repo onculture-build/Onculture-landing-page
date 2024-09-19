@@ -5,7 +5,7 @@ export type SelectorOptionValue = {
 
 export type BookDemoType = {
   firstName: string;
-  lastName?: string;
+  lastName: string;
   companyName: string;
   email: string;
   phone: string;

@@ -17,7 +17,7 @@ import { FaArrowLeftLong, FaCircle } from 'react-icons/fa6';
 import './programs.css';
 import CustomButton from '../../components/custom-button';
 import HeroVideo from '../../components/hero-video';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 
 const ProgramInfo = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const ProgramInfo = () => {
   return (
     <Box className='pillars-page'>
       {programInfo ? (
-        <ViewPortContainer>
+        <ViewportContainer>
           <Box my={'2vh'} mb={'20vh'} p={2} px={{ base: '2rem', lg: '0' }}>
             <Link to={'/'}>
               <Flex color={'brand.gray.900'} gap={2} alignItems={'center'}>
@@ -109,7 +109,7 @@ const ProgramInfo = () => {
               </GridItem>
             </Grid>
           </Box>
-        </ViewPortContainer>
+        </ViewportContainer>
       ) : (
         <ErrorPage errorTitle='Cannot find requested template' />
       )}

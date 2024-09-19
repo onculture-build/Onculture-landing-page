@@ -3,7 +3,7 @@ import { isValidPhoneNumber } from 'react-phone-number-input';
 
 export const BookDemoSchema = Yup.object().shape({
   firstName: Yup.string().trim().required('First name is required'),
-  lastName: Yup.string().trim(),
+  lastName: Yup.string().trim().required('Last name is required'),
   companyName: Yup.string().trim().required('Company name is required'),
   email: Yup.string()
     .trim()
@@ -24,14 +24,12 @@ export const BookDemoSchema = Yup.object().shape({
   employeeCount: Yup.string()
     .trim()
     .required('Kindly specify the number of employees'),
-  details: Yup.string()
-    .trim()
-    .required('Kindly let us know what you hope to achieve'),
+  message: Yup.string().trim().required('Let us know what you hope to achieve'),
 });
 
 export const WaitlistSchema = Yup.object().shape({
-  firstName: Yup.string().trim().required('Firstname is required'),
-  lastName: Yup.string().trim(),
+  firstName: Yup.string().trim().required('First name is required'),
+  lastName: Yup.string().trim().required('Last name is required'),
   email: Yup.string()
     .trim()
     .email('Invalid email!')
@@ -39,11 +37,15 @@ export const WaitlistSchema = Yup.object().shape({
 });
 
 export const ContactSchema = Yup.object().shape({
-  fullname: Yup.string().trim().required('Fullname is required'),
+  firstName: Yup.string().trim().required('First name is required'),
+  lastName: Yup.string().trim().required('Last name is required'),
   companyName: Yup.string().trim().required('Company name is required'),
   email: Yup.string()
     .trim()
     .email('Invalid email!')
     .required('Email is required!'),
-  details: Yup.string().trim(),
+  reason: Yup.string()
+    .trim()
+    .required('Kindly specify the reason for contacting us'),
+  message: Yup.string().trim(),
 });

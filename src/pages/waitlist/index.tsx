@@ -2,7 +2,7 @@ import { Stack, Heading, Box, Text, Flex, Spinner } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import CustomButton from '../../components/custom-button';
 import CustomInput from '../../components/custom-input';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 import { useForm, Resolver, SubmitHandler } from 'react-hook-form';
 import { WaitlistSchema } from '../../lib/schema';
 import { WaitlistType } from '../../lib/types';
@@ -50,7 +50,7 @@ const Waitlist = () => {
   };
 
   return (
-    <ViewPortContainer>
+    <ViewportContainer>
       <Box w={{ base: '90%', md: '50%', lg: '40%' }} mx={'auto'}>
         <Stack mt={'10vh'} mb={'20vh'}>
           <Stack textAlign={'center'} gap={10}>
@@ -99,7 +99,7 @@ const Waitlist = () => {
           </form>
         </Stack>
       </Box>
-    </ViewPortContainer>
+    </ViewportContainer>
   );
 };
 

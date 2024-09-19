@@ -7,11 +7,11 @@ import {
   Image,
   Stack,
 } from '@chakra-ui/react';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 
 const Companies = () => {
   return (
-    <ViewPortContainer>
+    <ViewportContainer>
       <Stack
         px={10}
         py={40}
@@ -46,7 +46,7 @@ const Companies = () => {
           </Box>
         </Flex>
       </Stack>
-    </ViewPortContainer>
+    </ViewportContainer>
   );
 };
 

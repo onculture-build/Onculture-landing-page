@@ -21,7 +21,7 @@ import { FaCircle } from 'react-icons/fa6';
 import './template.css';
 import { AppUtilities } from '../../app.utiilities';
 import CustomButton from '../../components/custom-button';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 import ErrorPage from '../ErrorPage';
 
 const TemplateInfo = () => {
@@ -36,7 +36,7 @@ const TemplateInfo = () => {
   return (
     <Box className='page'>
       {templateInfo ? (
-        <ViewPortContainer>
+        <ViewportContainer>
           <Box mb={'20vh'} p={2} px={{ base: '2rem', lg: '0' }}>
             <Breadcrumb
               separator={<MdChevronRight />}
@@ -157,7 +157,7 @@ const TemplateInfo = () => {
               </GridItem>
             </Grid>
           </Box>
-        </ViewPortContainer>
+        </ViewportContainer>
       ) : (
         <ErrorPage errorTitle='Cannot find requested template' />
       )}

@@ -16,7 +16,7 @@ import CustomButton from '../../components/custom-button';
 import CustomInput from '../../components/custom-input';
 import CustomSelect from '../../components/custom-select';
 import SocialNetworkCard from '../../components/social-network-card';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 import { Resolver, useForm } from 'react-hook-form';
 import { ContactType } from '../../lib/types';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -36,6 +36,7 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<ContactType>({
     resolver: yupResolver(ContactSchema),
@@ -45,6 +46,7 @@ const Contact = () => {
       companyName: '',
       email: '',
       reason: '',
+      message: '',
     },
   } as unknown as { resolver: Resolver<ContactType> });
 
@@ -72,7 +74,7 @@ const Contact = () => {
 
   return (
     <Box className='pillars-page'>
-      <ViewPortContainer>
+      <ViewportContainer>
         <Stack
           p={2}
           mb={{ base: '10vh', md: '20vh' }}
@@ -136,6 +138,7 @@ const Contact = () => {
                   <CustomInput
                     {...register('lastName')}
                     label='Last Name'
+                    isRequired
                     placeholder='Your last name'
                     p={'2rem'}
                     errorMessage={errors.lastName?.message}
@@ -166,8 +169,16 @@ const Contact = () => {
                     optionStyles={{
                       fontSize: 'paragraph',
                     }}
-                    onChange={() => {}}
+                    onChange={(e) => setValue('reason', String(e?.value)!)}
                     error={errors.reason?.message}
+                  />
+                  <CustomInput
+                    {...register('message')}
+                    placeholder='Optional message'
+                    label='Message'
+                    isTextArea
+                    p={'1rem'}
+                    h={'8rem'}
                   />
                   <Box mt={'3vh'}>
                     <CustomButton type={'submit'} w={'100%'}>
@@ -182,14 +193,13 @@ const Contact = () => {
             </Card>
           </Stack>
         </Stack>
-      </ViewPortContainer>
+      </ViewportContainer>
       <CustomModal onClose={() => setShowModal(!showModal)} isOpen={showModal}>
         <Stack
           alignItems={'center'}
           justifyContent={'space-around'}
           py={20}
           gap={20}
-          border={'1px solid red'}
         >
           <Flex color={'brand.primary.600'}>
             <FaCircleCheck fontSize={'64px'} />

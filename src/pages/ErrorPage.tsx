@@ -1,7 +1,7 @@
 import { Box, Heading, Img, Stack, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import CustomButton from '../components/custom-button';
-import ViewPortContainer from '../layouts/container';
+import ViewportContainer from '../layouts/container';
 
 type ErrorPageProp = {
   errorText?: string;
@@ -10,7 +10,7 @@ type ErrorPageProp = {
 const ErrorPage = ({ errorText, errorTitle }: ErrorPageProp) => {
   const navigate = useNavigate();
   return (
-    <ViewPortContainer>
+    <ViewportContainer>
       <Stack
         justifyContent='center'
         alignContent='center'
@@ -43,7 +43,7 @@ const ErrorPage = ({ errorText, errorTitle }: ErrorPageProp) => {
           </CustomButton>
         </Box>
       </Stack>
-    </ViewPortContainer>
+    </ViewportContainer>
   );
 };
 

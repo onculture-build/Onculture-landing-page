@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import Book from './book';
 import AllArticles from './article';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 
 const Resources: { menu: string; component: ReactNode }[] = [
   {
@@ -27,7 +27,7 @@ const Resources: { menu: string; component: ReactNode }[] = [
 
 const ResourcesPage = () => {
   return (
-    <ViewPortContainer>
+    <ViewportContainer>
       <Stack py={{ base: 20, md: 40 }} px={{ base: '2rem', lg: '0' }}>
         <Heading
           as={'h2'}
@@ -70,7 +70,7 @@ const ResourcesPage = () => {
           </Tabs>
         </Box>
       </Stack>
-    </ViewPortContainer>
+    </ViewportContainer>
   );
 };
 
