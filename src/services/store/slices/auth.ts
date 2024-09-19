@@ -29,9 +29,13 @@ const authSlice = createSlice({
     saveCompanyInfo: (state, { payload }: PayloadAction<CompanySignupType>) => {
       state.companyInfo = payload;
     },
+    clearEntries: (state) => {
+      state = initialState;
+    },
   },
 });
 
-export const { saveCompanyInfo, saveUserInfo } = authSlice.actions;
+export const { saveCompanyInfo, saveUserInfo, clearEntries } =
+  authSlice.actions;
 
 export default authSlice;

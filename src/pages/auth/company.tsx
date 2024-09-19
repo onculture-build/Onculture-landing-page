@@ -13,10 +13,11 @@ import { useAppDispatch, useAppSelector } from '../../services/store/hooks';
 import { authCompany, authUser } from '../../services/store/selectors';
 import { useRegisterCompany } from '../../services/mutations';
 import { PageRoutes } from '../../lib/constants';
+import { clearEntries } from '../../services/store/slices/auth';
 
 const CompanyOnboarding = () => {
   const navigate = useNavigate();
-
+  const dispatch = useAppDispatch();
   const userInfo = useAppSelector(authUser);
   const companyData = useAppSelector(authCompany);
 
@@ -52,6 +53,7 @@ const CompanyOnboarding = () => {
       onSuccess: (res) => {
         navigate(`/${PageRoutes.signupSuccess}`);
         sessionStorage.removeItem('auth');
+        dispatch(clearEntries);
       },
       onError: (err) => {
         console.error(err.message);
