@@ -59,6 +59,17 @@ export const UserSignUpSchema = Yup.object().shape({
     .required('Email is required!'),
 });
 
+export const UserLoginSchema = Yup.object().shape({
+  code: Yup.string().trim().required('Company domain is required'),
+});
+
+export const ForgotDomainSchema = Yup.object().shape({
+  email: Yup.string()
+    .trim()
+    .email('Invalid email!')
+    .required('Email is required!'),
+});
+
 export const CompanySchema = Yup.object().shape({
   name: Yup.string().trim().required('Company name is required'),
   email: Yup.string()
