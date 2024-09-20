@@ -9,9 +9,11 @@ import { PageRoutes } from '../../lib/constants';
 import { ForgotDomainType } from '../../lib/types';
 import { ForgotDomainSchema } from '../../lib/schema';
 import { useForgotCompanyDomain } from '../../services/mutations';
+import { useState } from 'react';
 
 const ForgotDomain = () => {
   const { mutate: forgotCompanyDomain, isPending } = useForgotCompanyDomain();
+  const [apiErrResponse, setApiErrResponse] = useState('');
 
   const navigate = useNavigate();
 
@@ -31,10 +33,11 @@ const ForgotDomain = () => {
   ) => {
     forgotCompanyDomain(data, {
       onSuccess: (res) => {
-        navigate(PageRoutes.forgotDomainSuccess);
+        navigate(`/${PageRoutes.forgotDomainSuccess}`);
       },
       onError: (err: any) => {
-        console.error(err.data.message);
+        console.error(err.data?.message);
+        setApiErrResponse(err.data?.message);
       },
     });
   };
@@ -59,14 +62,14 @@ const ForgotDomain = () => {
           Enter your email to get your company's URL
         </Text>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack mt={10} gap={10}>
+          <Stack mt={10} gap={16}>
             <CustomInput
               {...register('email')}
               placeholder='Email Address'
               label='Email Address'
               isRequired
               p={'2rem'}
-              errorMessage={errors.email?.message}
+              errorMessage={errors.email?.message || apiErrResponse}
             />
             <Box w={'fit-content'} mx={'auto'}>
               <CustomButton py={7} type={'submit'} gap={3}>

@@ -9,7 +9,7 @@ const URLS = {
   getSubscriptionPlans: '/subscription/allPlans',
   mailerLiteApi: 'https://connect.mailerlite.com/api/subscribers',
   redirectToCompany: '/companies/get-company-url',
-  forgotCompanyDomain: '',
+  forgotCompanyDomain: '/companies/user/forgot-companies',
   checkAllowedUser: `/auth/check-allowed-user`,
   signup: `/auth/signup`,
 };
