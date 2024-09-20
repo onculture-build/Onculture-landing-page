@@ -1,13 +1,15 @@
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import customAxios from '../axios';
-import URLS, {
-  MAILERLITE_BOOKDEMO_GROUP_ID,
-  MAILERLITE_CONTACT_GROUP_ID,
-  MAILERLITE_WAITLIST_GROUP_ID,
-} from '../urls';
+import URLS from '../urls';
+
 import { IAddToWaitlist, IBookADemo, IContactUs } from '../../lib/interfaces';
-import { AuthType, UserSignUpType } from '@@/lib/types';
+import {
+  AuthType,
+  ForgotDomainType,
+  UserLoginType,
+  UserSignUpType,
+} from '../../lib/types';
 
 export const useAddToWaitlist = () =>
   useMutation({
@@ -30,18 +32,14 @@ export const useContactUs = () =>
   useMutation({
     mutationKey: ['contactUs'],
     mutationFn: async (data: IContactUs) => {
-      const res = await axios.post(
-        URLS.mailerLiteApi,
-        { ...data, groups: [MAILERLITE_CONTACT_GROUP_ID] },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            mode: 'cors',
-            'Cache-control': 'no-cache',
-            Authorization: `Bearer ${import.meta.env.VITE_APP_MAILER_LITE_KEY}`,
-          },
-        }
-      );
+      const res = await axios.post(URLS.mailerLiteApi, data, {
+        headers: {
+          'Content-Type': 'application/json',
+          mode: 'cors',
+          'Cache-control': 'no-cache',
+          Authorization: `Bearer ${import.meta.env.VITE_APP_MAILER_LITE_KEY}`,
+        },
+      });
 
       return res.data;
     },
@@ -51,18 +49,14 @@ export const useBookADemo = () =>
   useMutation({
     mutationKey: ['book_a_demo'],
     mutationFn: async (data: IBookADemo) => {
-      const res = await axios.post(
-        URLS.mailerLiteApi,
-        { ...data, groups: [MAILERLITE_BOOKDEMO_GROUP_ID] },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            mode: 'cors',
-            'Cache-control': 'no-cache',
-            Authorization: `Bearer ${import.meta.env.VITE_APP_MAILER_LITE_KEY}`,
-          },
-        }
-      );
+      const res = await axios.post(URLS.mailerLiteApi, data, {
+        headers: {
+          'Content-Type': 'application/json',
+          mode: 'cors',
+          'Cache-control': 'no-cache',
+          Authorization: `Bearer ${import.meta.env.VITE_APP_MAILER_LITE_KEY}`,
+        },
+      });
 
       return res.data;
     },
@@ -73,6 +67,26 @@ export const useCheckAllowedUser = () =>
     mutationKey: ['checkAllowedUser'],
     mutationFn: async (data: UserSignUpType) => {
       const res = await customAxios.post(URLS.checkAllowedUser, data);
+
+      return res.data;
+    },
+  });
+
+export const useLoginUser = () =>
+  useMutation({
+    mutationKey: ['loginUser'],
+    mutationFn: async (data: UserLoginType) => {
+      const res = await customAxios.post(URLS.redirectToCompany, data);
+
+      return res.data;
+    },
+  });
+
+export const useForgotCompanyDomain = () =>
+  useMutation({
+    mutationKey: ['forgotCompanyDomain'],
+    mutationFn: async (data: ForgotDomainType) => {
+      const res = await customAxios.post(URLS.forgotCompanyDomain, data);
 
       return res.data;
     },

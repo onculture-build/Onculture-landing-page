@@ -20,6 +20,8 @@ export const PageRoutes = {
   signupFailure: 'register/not-allowed',
   companyOnboarding: 'register/company',
   login: 'login',
+  forgotDomain: 'forgot-domain',
+  forgotDomainSuccess: 'forgot-domain/success',
   notFound: '*',
 };
 

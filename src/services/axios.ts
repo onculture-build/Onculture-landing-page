@@ -12,7 +12,7 @@ axios.interceptors.response.use(
   },
   async (error: any) => {
     if (error instanceof AxiosError && error.response?.status === 400) {
-      toast.error(error.response?.data?.message || error.message);
+      // toast.error(error.response?.data?.message || error.message);
       return Promise.reject(error.response);
     }
     // toast.error(error.response?.data?.message || error.message);

@@ -16,15 +16,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
-    "paths": {
-      "@@/*": ["./src/*"],
-      "@@components/*": ["./src/components/*"],
-      "@@layouts/*": ["./src/layouts/*"],
-      "@@pages/*": ["./src/pages/*"],
-      "@@services/*": ["./src/services/*"],
-      "@@lib/*": ["./src/lib/*"]
-    }
+    "jsx": "preserve"
   },
   "include": ["src", "src/components/.tsx"]
 }

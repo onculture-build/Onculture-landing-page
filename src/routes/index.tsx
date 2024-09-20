@@ -19,6 +19,9 @@ import SignUp from '../pages/auth/signup';
 import CompanyOnboarding from '../pages/auth/company';
 import SignupSuccess from '../pages/auth/signup-success';
 import SignupFailure from '../pages/auth/signup-fail';
+import Login from '../pages/auth/login';
+import ForgotDomain from '../pages/auth/forgot-domain';
+import ForgotDomainSuccess from '../pages/auth/forgot-domain-success';
 
 const ErrorPage = lazy(() => import('../pages/ErrorPage'));
 
@@ -97,6 +100,18 @@ const routes: RouteObject[] = [
             element: <SingleBook />,
           },
         ],
+      },
+      {
+        path: PageRoutes.login,
+        element: <Login />,
+      },
+      {
+        path: PageRoutes.forgotDomain,
+        element: <ForgotDomain />,
+      },
+      {
+        path: PageRoutes.forgotDomainSuccess,
+        element: <ForgotDomainSuccess />,
       },
       {
         path: PageRoutes.signup,

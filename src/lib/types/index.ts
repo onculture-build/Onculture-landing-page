@@ -34,6 +34,14 @@ export type UserSignUpType = {
   email: string;
 };
 
+export type UserLoginType = {
+  code: string;
+};
+
+export type ForgotDomainType = {
+  email: string;
+};
+
 export type CompanySignupType = {
   name: string;
   code: string;
