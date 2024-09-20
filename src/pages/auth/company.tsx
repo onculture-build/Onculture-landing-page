@@ -86,7 +86,10 @@ const CompanyOnboarding = () => {
               {...register('name', {
                 onBlur(event) {
                   const { value } = event.target;
-                  setValue('code', value.split(' ').join('-').toLowerCase());
+                  setValue(
+                    'code',
+                    value.split(' ').join('-').substring(0, 20).toLowerCase()
+                  );
                 },
               })}
               placeholder='Company Name'
@@ -103,19 +106,30 @@ const CompanyOnboarding = () => {
               p={'2rem'}
               errorMessage={errors.email?.message}
             />
-            <Flex alignItems={'end'} gap={5}>
-              <CustomInput
-                {...register('code')}
-                placeholder="Your Company's custom URL"
-                label='Company Domain'
-                isRequired
-                p={'2rem'}
-                errorMessage={errors.code?.message}
-              />
-              <Text pb={3} fontSize={'heading5'}>
-                .{companyDomain || 'onculture.io'}
-              </Text>
-            </Flex>
+            <Stack>
+              <Flex alignItems={'end'} gap={5}>
+                <CustomInput
+                  {...register('code', {
+                    onBlur(event) {
+                      const { value } = event.target;
+                      setValue(
+                        'code',
+                        value.split(' ').join('-').toLowerCase()
+                      );
+                    },
+                  })}
+                  placeholder="Your Company's custom URL"
+                  label='Company Domain (20 characters max)'
+                  isRequired
+                  p={'2rem'}
+                  errorMessage={errors.code?.message}
+                  maxLength={20}
+                />
+                <Text pb={3} fontSize={'heading5'}>
+                  .{companyDomain || 'onculture.io'}
+                </Text>
+              </Flex>
+            </Stack>
             <CompanyValuesInput
               title='values'
               label='Company Values'
