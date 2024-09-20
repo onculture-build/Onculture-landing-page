@@ -27,6 +27,7 @@ import toast from 'react-hot-toast';
 import { contactUsReasons } from '../../lib/constants';
 import CustomModal from '../../components/modal';
 import { FaCircleCheck } from 'react-icons/fa6';
+import { MAILERLITE_CONTACT_GROUP_ID } from '../../services/urls';
 
 const Contact = () => {
   const [showModal, setShowModal] = React.useState<boolean>(false);
@@ -60,7 +61,9 @@ const Contact = () => {
         reason: data.reason,
         message: data.message,
       },
+      groups: [MAILERLITE_CONTACT_GROUP_ID],
     };
+
     submitContactUs(postData, {
       onSuccess: (res) => {
         setShowModal(true);

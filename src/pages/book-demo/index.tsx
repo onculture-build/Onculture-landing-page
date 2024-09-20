@@ -15,6 +15,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import CustomModal from '../../components/modal';
 import { FaCircleCheck } from 'react-icons/fa6';
+import { MAILERLITE_BOOKDEMO_GROUP_ID } from '../../services/urls';
 
 const BookDemo = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -40,7 +41,6 @@ const BookDemo = () => {
   } as unknown as { resolver: Resolver<BookDemoType> });
 
   const onSubmit: SubmitHandler<BookDemoType> = (data: BookDemoType) => {
-    console.log('🚀 ~ BookDemo ~ data:', data);
     const postData: IBookADemo = {
       email: data.email,
       fields: {
@@ -51,18 +51,18 @@ const BookDemo = () => {
         employee_count: data.employeeCount,
         message: data.message,
       },
+      groups: [MAILERLITE_BOOKDEMO_GROUP_ID],
     };
 
-    console.log('data', postData);
-    // submitBookDemo(postData, {
-    //   onSuccess: (res) => {
-    //     setShowModal(true);
-    //   },
-    //   onError: (err) => {
-    //     toast.error('Error submitting form. Please try again.');
-    //     console.error(err);
-    //   },
-    // });
+    submitBookDemo(postData, {
+      onSuccess: (res) => {
+        setShowModal(true);
+      },
+      onError: (err) => {
+        toast.error('Error submitting form. Please try again.');
+        console.error(err);
+      },
+    });
   };
 
   return (
