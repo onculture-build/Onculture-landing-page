@@ -11,6 +11,7 @@ import { PageRoutes } from '../../lib/constants';
 import { IAddToWaitlist } from '../../lib/interfaces';
 import { useAddToWaitlist } from '../../services/mutations';
 import toast from 'react-hot-toast';
+import { MAILERLITE_WAITLIST_GROUP_ID } from '../../services/urls';
 
 const Waitlist = () => {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ const Waitlist = () => {
         first_name: data.firstName,
         last_name: data.lastName,
       },
+      groups: [MAILERLITE_WAITLIST_GROUP_ID],
     };
 
     addToWaitList(payload, {
