@@ -157,7 +157,7 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
             backgroundColor={
               errorMessage
-                ? 'brand.error.100'
+                ? 'brand.error.50'
                 : isValue
                 ? 'brand.primary.100'
                 : 'brand.white'
@@ -188,7 +188,7 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
             backgroundColor={
               errorMessage
-                ? 'brand.error.100'
+                ? 'brand.error.50'
                 : isValue
                 ? 'brand.primary.100'
                 : 'brand.white'
@@ -236,7 +236,7 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
               borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
               backgroundColor={
                 errorMessage
-                  ? 'brand.error.100'
+                  ? 'brand.error.50'
                   : isValue
                   ? 'brand.primary.100'
                   : 'brand.white'
@@ -274,7 +274,7 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
             backgroundColor={
               errorMessage
-                ? 'brand.error.100'
+                ? 'brand.error.50'
                 : isValue
                 ? 'brand.primary.100'
                 : 'brand.white'
