@@ -3,6 +3,7 @@ import {
   Flex,
   FlexProps,
   FormControl,
+  FormErrorMessage,
   FormHelperText,
   FormLabel,
   Icon,
@@ -107,7 +108,11 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
     const handleClick = () => setShow(!show);
 
     return (
-      <FormControl w={'auto'} isRequired={isRequired && isRequired}>
+      <FormControl
+        w={'auto'}
+        isRequired={isRequired && isRequired}
+        isInvalid={errorMessage}
+      >
         {label && type !== 'password' ? (
           <Flex alignItems={'baseline'} gap={1}>
             <FormLabel
@@ -150,8 +155,15 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             }}
             border={'1px solid'}
             borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
-            backgroundColor={isValue ? 'brand.primary.100' : 'brand.white'}
+            backgroundColor={
+              errorMessage
+                ? 'brand.error.100'
+                : isValue
+                ? 'brand.primary.100'
+                : 'brand.white'
+            }
             focusBorderColor='brand.primary.500'
+            errorBorderColor='brand.error.500'
             id={id}
             placeholder={placeholder}
             defaultValue={defaultValue}
@@ -174,8 +186,15 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             h={h || '3.2rem'}
             fontSize={'paragraph'}
             borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
-            backgroundColor={isValue ? 'brand.primary.100' : 'brand.white'}
+            backgroundColor={
+              errorMessage
+                ? 'brand.error.100'
+                : isValue
+                ? 'brand.primary.100'
+                : 'brand.white'
+            }
             focusBorderColor='brand.primary.500'
+            errorBorderColor='brand.error.500'
             style={{
               ...textInputStyle,
               borderColor: isValue ? 'brand.primary.600' : 'brand.gray.800',
@@ -215,12 +234,19 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
               w={w}
               height={h || '3.2rem'}
               borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
-              backgroundColor={isValue ? 'brand.primary.100' : 'brand.white'}
+              backgroundColor={
+                errorMessage
+                  ? 'brand.error.100'
+                  : isValue
+                  ? 'brand.primary.100'
+                  : 'brand.white'
+              }
               fontWeight='regular'
               _placeholder={{ fontSize: 'label', color: 'brand.gray.800' }}
               variant={variant}
               placeholder={placeholder}
               focusBorderColor='brand.primary.500'
+              errorBorderColor='brand.error.500'
               type={type !== 'password' ? 'text' : show ? 'text' : 'password'}
               {...rest}
               ref={ref}
@@ -246,12 +272,19 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
             w={w || '100%'}
             height={h || '3.2rem'}
             borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
-            backgroundColor={isValue ? 'brand.primary.100' : 'brand.white'}
+            backgroundColor={
+              errorMessage
+                ? 'brand.error.100'
+                : isValue
+                ? 'brand.primary.100'
+                : 'brand.white'
+            }
             fontWeight='regular'
             _placeholder={{ fontSize: 'label', color: 'brand.gray.800' }}
             variant={variant}
             placeholder={placeholder}
             focusBorderColor='brand.primary.500'
+            errorBorderColor='brand.error.500'
             type={type}
             {...rest}
             disabled={inputDisabled}
@@ -261,9 +294,9 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
           />
         )}
         {errorMessage && (
-          <FormHelperText fontSize='label' color='red'>
+          <FormErrorMessage fontSize='label' position={'absolute'}>
             {errorMessage}
-          </FormHelperText>
+          </FormErrorMessage>
         )}
       </FormControl>
     );

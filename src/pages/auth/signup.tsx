@@ -41,8 +41,12 @@ const SignUp = () => {
         navigate(`/${PageRoutes.companyOnboarding}`);
       },
 
-      onError: (err) => {
-        navigate(`/${PageRoutes.signupFailure}`);
+      onError: (err: any) => {
+        if (err?.status === 401) {
+          navigate(`/${PageRoutes.signupFailure}`);
+        } else {
+          console.error(err.message);
+        }
       },
     });
   };
