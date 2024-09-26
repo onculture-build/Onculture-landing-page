@@ -80,14 +80,14 @@ const ForgotDomain = () => {
           </Stack>
         </form>
         <Text textAlign={'center'} mt={10}>
-          Don't know your company's custom URL?{' '}
+          Return to{' '}
           <Text
             as={'span'}
             color={'brand.secondary.600'}
             fontWeight={'medium'}
             fontSize={'label'}
           >
-            <Link to={`/${PageRoutes.login}`}>Click here</Link>
+            <Link to={`/${PageRoutes.login}`}>Login</Link>
           </Text>
         </Text>
       </Box>

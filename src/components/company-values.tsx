@@ -13,7 +13,7 @@ import {
   useFieldArray,
   UseFormRegister,
 } from 'react-hook-form';
-import { IoTrashBinOutline } from 'react-icons/io5';
+import { DeleteIcon } from '@chakra-ui/icons';
 import { TbCirclePlus } from 'react-icons/tb';
 
 interface Props {
@@ -57,7 +57,7 @@ const CompanyValuesInput = ({
               cursor={'pointer'}
               onClick={() => remove(index)}
             >
-              <IoTrashBinOutline fontSize={18} />
+              <DeleteIcon fontSize={18} />
             </InputRightElement>
           )}
           <Box w={'100%'}>
