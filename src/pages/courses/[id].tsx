@@ -18,12 +18,7 @@ const CourseInfo = () => {
 
   return (
     <Box className="page">
-      <Box
-        position="relative"
-        w="100%"
-        maxH={{ base: "320px", md: "482px", lg: "482px" }}
-        mb={12}
-      >
+      <Box position="relative" w="100%" maxH="482px" mb={12}>
         <Image
           src={courseInfo.coverImage}
           alt={courseInfo.title}
@@ -32,8 +27,7 @@ const CourseInfo = () => {
             courseInfo.id === "course-001" ? "center" : "top center"
           }
           w="100%"
-          h="100%"
-          maxH={{ base: "320px", md: "482px", lg: "482px" }}
+          h={{ base: "320px", md: "482px" }}
         />
         <Box
           position="absolute"
