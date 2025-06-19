@@ -1,4 +1,4 @@
-import { PageRoutes } from '../lib/constants';
+import { PageRoutes } from "../lib/constants";
 
 interface NavLink {
   id: number;
@@ -14,7 +14,7 @@ export const navLinks: NavLink[] = [
   // },
   {
     id: 2,
-    label: 'Resources',
+    label: "Resources",
     href: PageRoutes.resources,
   },
   // {
@@ -24,12 +24,17 @@ export const navLinks: NavLink[] = [
   // },
   {
     id: 4,
-    label: 'Contact',
+    label: "Contact",
     href: PageRoutes.contact,
   },
   {
     id: 5,
-    label: 'FAQ',
+    label: "FAQ",
     href: PageRoutes.faq,
+  },
+  {
+    id: 6,
+    label: "Courses",
+    href: PageRoutes.courses,
   },
 ];
