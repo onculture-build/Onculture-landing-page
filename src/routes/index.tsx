@@ -1,33 +1,35 @@
-import { lazy } from 'react';
-import { Outlet, RouteObject } from 'react-router-dom';
-import { PageRoutes } from '../lib/constants';
-import Contact from '../pages/contact';
-import Faq from '../pages/faq';
-import Home from '../pages/home';
-import Pricing from '../pages/pricing';
-import Resources from '../pages/resources';
-import BookDemo from '../pages/book-demo';
-import SingleArticle from '../pages/resources/article/[id]';
-import SingleBook from '../pages/resources/book/[id]';
-import TemplateInfo from '../pages/template/[id]';
-import ProgramInfo from '../pages/programs/[id]';
-import TemplatesPage from '../pages/template';
-import Layout from '../layouts/layout';
-import Waitlist from '../pages/waitlist';
-import WaitlistSuccess from '../pages/waitlist/success';
-import SignUp from '../pages/auth/signup';
-import CompanyOnboarding from '../pages/auth/company';
-import SignupSuccess from '../pages/auth/signup-success';
-import SignupFailure from '../pages/auth/signup-fail';
-import Login from '../pages/auth/login';
-import ForgotDomain from '../pages/auth/forgot-domain';
-import ForgotDomainSuccess from '../pages/auth/forgot-domain-success';
+import { lazy } from "react";
+import { Outlet, RouteObject } from "react-router-dom";
+import { PageRoutes } from "../lib/constants";
+import Contact from "../pages/contact";
+import Faq from "../pages/faq";
+import Home from "../pages/home";
+import Pricing from "../pages/pricing";
+import Resources from "../pages/resources";
+import BookDemo from "../pages/book-demo";
+import SingleArticle from "../pages/resources/article/[id]";
+import SingleBook from "../pages/resources/book/[id]";
+import TemplateInfo from "../pages/template/[id]";
+import ProgramInfo from "../pages/programs/[id]";
+import TemplatesPage from "../pages/template";
+import CoursesPage from "../pages/courses";
+import CourseInfo from "../pages/courses/[id]";
+import Layout from "../layouts/layout";
+import Waitlist from "../pages/waitlist";
+import WaitlistSuccess from "../pages/waitlist/success";
+import SignUp from "../pages/auth/signup";
+import CompanyOnboarding from "../pages/auth/company";
+import SignupSuccess from "../pages/auth/signup-success";
+import SignupFailure from "../pages/auth/signup-fail";
+import Login from "../pages/auth/login";
+import ForgotDomain from "../pages/auth/forgot-domain";
+import ForgotDomainSuccess from "../pages/auth/forgot-domain-success";
 
-const ErrorPage = lazy(() => import('../pages/ErrorPage'));
+const ErrorPage = lazy(() => import("../pages/ErrorPage"));
 
 const routes: RouteObject[] = [
   {
-    path: '/',
+    path: "/",
     element: (
       <Layout>
         <Outlet />
@@ -52,6 +54,19 @@ const routes: RouteObject[] = [
           {
             path: PageRoutes.template,
             element: <TemplateInfo />,
+          },
+        ],
+      },
+      {
+        path: PageRoutes.courses,
+        children: [
+          {
+            index: true,
+            element: <CoursesPage />,
+          },
+          {
+            path: PageRoutes.course,
+            element: <CourseInfo />,
           },
         ],
       },
