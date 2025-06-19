@@ -10,7 +10,7 @@ import CourseListSection from "../../components/course-list-section";
 const CourseInfo = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const courseInfo = CourseData.find((course) => course.slug === id);
+  const courseInfo = CourseData?.find((course) => course?.slug === id);
 
   if (!courseInfo) {
     return <ErrorPage errorTitle="Cannot find requested course" />;
@@ -73,14 +73,14 @@ const CourseInfo = () => {
       </Box>
       <ViewportContainer>
         <Box padding={{ base: 6, md: "2rem 6rem" }}>
-          {courseInfo.intro && courseInfo.intro.length > 0 && (
+          {courseInfo?.intro?.length > 0 && (
             <Box mb={12}>
-              {courseInfo.intro.map((introText, idx) => (
+              {courseInfo?.intro?.map((introText, idx) => (
                 <Text
                   key={idx}
                   fontWeight={idx === 0 ? "bold" : "normal"}
                   fontSize={"paragraph"}
-                  mb={idx < courseInfo.intro.length - 1 ? 2 : 0}
+                  mb={idx < (courseInfo?.intro?.length ?? 0) - 1 ? 2 : 0}
                 >
                   {introText}
                 </Text>
@@ -89,14 +89,14 @@ const CourseInfo = () => {
           )}
           <CourseListSection
             title="In this interactive course, Employees will learn to:"
-            items={courseInfo.learningOutcomes}
+            items={courseInfo?.learningOutcomes ?? []}
           />
           <Box my={16}>
-            {courseInfo.videoUrl ? (
+            {courseInfo?.videoUrl ? (
               <AspectRatio ratio={16 / 9} maxW="847px" mx="auto">
                 <iframe
                   title="Course Video"
-                  src={courseInfo.videoUrl}
+                  src={courseInfo?.videoUrl}
                   allowFullScreen
                 />
               </AspectRatio>
@@ -109,7 +109,7 @@ const CourseInfo = () => {
                 overflow="hidden"
               >
                 <Image
-                  src={courseInfo.thumbnail}
+                  src={courseInfo?.thumbnail}
                   alt="Course thumbnail"
                   objectFit="cover"
                   w="100%"
@@ -136,10 +136,13 @@ const CourseInfo = () => {
             )}
           </Box>
 
-          <CourseListSection title="Through:" items={courseInfo.through} />
+          <CourseListSection
+            title="Through:"
+            items={courseInfo?.through ?? []}
+          />
           <CourseListSection
             title="What you will stand to gain:"
-            items={courseInfo.benefits}
+            items={courseInfo?.benefits ?? []}
           />
         </Box>
       </ViewportContainer>

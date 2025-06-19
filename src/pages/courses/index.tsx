@@ -10,8 +10,6 @@ import {
   Text,
   Image,
 } from "@chakra-ui/react";
-import CustomButton from "../../components/custom-button";
-import { useNavigate } from "react-router-dom";
 import ViewportContainer from "../../layouts/container";
 import CourseCard from "../../components/course-card";
 
@@ -43,15 +41,15 @@ const CoursesPage = () => {
             mt={20}
             h={"100%"}
           >
-            {CourseList.map((course) => (
-              <GridItem key={course.slug} h={"100%"}>
+            {CourseList?.map((course) => (
+              <GridItem key={course?.slug} h={"100%"}>
                 <CourseCard
-                  icon={course.icon}
-                  title={course.title}
-                  tag={course.tag}
-                  description={course.description}
-                  slug={course.slug}
-                  isReady={course.isReady}
+                  icon={course?.icon}
+                  title={course?.title}
+                  tag={course?.tag}
+                  description={course?.description}
+                  slug={course?.slug}
+                  isReady={course?.isReady}
                 />
               </GridItem>
             ))}
