@@ -73,7 +73,7 @@ const CourseInfo = () => {
       </Box>
       <ViewportContainer>
         <Box padding={{ base: 6, md: "2rem 6rem" }}>
-          {courseInfo?.intro?.length > 0 && (
+          {courseInfo?.intro?.length && (
             <Box mb={12}>
               {courseInfo?.intro?.map((introText, idx) => (
                 <Text
