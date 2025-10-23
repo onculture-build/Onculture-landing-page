@@ -20,6 +20,7 @@ const ForgotDomain = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ForgotDomainType>({
     resolver: yupResolver(ForgotDomainSchema),
@@ -33,10 +34,12 @@ const ForgotDomain = () => {
   ) => {
     forgotCompanyDomain(data, {
       onSuccess: (res) => {
-        navigate(`/${PageRoutes.forgotDomainSuccess}`);
+        reset();
+        navigate(
+          `/${PageRoutes.auth}/${PageRoutes.forgotDomain}/${PageRoutes.forgotDomainSuccess}`
+        );
       },
       onError: (err: any) => {
-        console.error(err.data?.message);
         setApiErrResponse(err.data?.message);
       },
     });
@@ -87,7 +90,7 @@ const ForgotDomain = () => {
             fontWeight={'medium'}
             fontSize={'label'}
           >
-            <Link to={`/${PageRoutes.login}`}>Login</Link>
+            <Link to={`/${PageRoutes.auth}/${PageRoutes.login}`}>Login</Link>
           </Text>
         </Text>
       </Box>

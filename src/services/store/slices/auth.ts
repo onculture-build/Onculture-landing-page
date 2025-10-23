@@ -30,7 +30,8 @@ const authSlice = createSlice({
       state.companyInfo = payload;
     },
     clearEntries: (state) => {
-      state = initialState;
+      state.userInfo = initialState.userInfo;
+      state.companyInfo = initialState.companyInfo;
     },
   },
 });

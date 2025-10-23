@@ -2,6 +2,12 @@
   "name": "onculture-landing-page",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "vite",
+    "build": "vite build --debug && echo 'Build completed successfully' && exit 0",
+    "preview": "vite preview",
+    "clear": "vite build --clearCache"
+  },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
@@ -81,12 +87,6 @@
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11",
     "zustand": "^4.1.1"
-  },
-  "scripts": {
-    "start": "vite",
-    "build": "vite build --debug && echo 'Build completed successfully' && exit 0",
-    "preview": "vite preview",
-    "clear": "vite build --clearCache"
   },
   "eslintConfig": {
     "extends": [
