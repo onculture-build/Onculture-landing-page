@@ -14,6 +14,7 @@ import { authCompany, authUser } from '../../services/store/selectors';
 import { useRegisterCompany } from '../../services/mutations';
 import { PageRoutes } from '../../lib/constants';
 import { clearEntries } from '../../services/store/slices/auth';
+import toast from 'react-hot-toast';
 
 const CompanyOnboarding = () => {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ const CompanyOnboarding = () => {
         dispatch(clearEntries);
       },
       onError: (err) => {
-        console.error(err.message);
+        toast.error(err.message);
       },
     });
   };

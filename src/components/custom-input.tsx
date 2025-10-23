@@ -1,31 +1,33 @@
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import {
   Box,
   Flex,
   FlexProps,
   FormControl,
-  FormErrorMessage,
   FormHelperText,
   FormLabel,
   Icon,
   IconButton,
   Input,
   InputGroup,
-  InputLeftElement,
   InputProps,
   InputRightElement,
   ResponsiveValue,
   Switch,
   Text,
   Textarea,
+  Tooltip,
 } from '@chakra-ui/react';
 import React, { CSSProperties, ChangeEvent, useState } from 'react';
-import { IoMdEye } from 'react-icons/io';
+import { FaRegFilePdf } from 'react-icons/fa6';
 import { IconType } from 'react-icons/lib';
-import { TbEyeClosed } from 'react-icons/tb';
-// import 'react-phone-number-input/style.css';
+import 'react-phone-number-input/style.css';
+import PhoneNumberInput from './phone-input';
+import { IoInformationCircleOutline } from 'react-icons/io5';
 
-type CustomInputProps = {
+export type CustomInputProps = {
   label?: string;
+  labelAddon?: string;
   errorMessage?: string | any;
   isRequired?: boolean;
   type?: React.HTMLInputTypeAttribute;
@@ -41,6 +43,8 @@ type CustomInputProps = {
   register?: any;
   defaultValue?: any;
   isDate?: boolean;
+  isFile?: boolean;
+  optionalFlag?: boolean;
   minDate?: string | Date;
   maxDate?: string | Date;
   variant?: ResponsiveValue<
@@ -48,38 +52,45 @@ type CustomInputProps = {
   >;
   forgotPasswordLink?: React.ReactNode;
   disabledSwitch?: boolean;
+  labelFont?: any;
 } & FlexProps &
   InputProps;
 
-const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
+const CustomInput = React.forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  CustomInputProps
+>(
   (
     {
       label,
+      labelAddon,
       errorMessage,
       isRequired,
       type,
       placeholder,
       variant,
-      control,
       defaultValue,
       id,
-      icon,
-      iconPosition,
-      h,
+      h = '3.2rem',
+      accept,
       textInputStyle,
-      w,
+      w = '100%',
       placeholderStyle,
       onChange,
-      isPhone,
       isTextArea,
       register,
-      forgotPasswordLink,
       isDate,
+      isFile,
+      isPhone,
+      fontSize = 'paragraph',
       minDate,
       maxDate,
       size = 'lg',
       isDisabled = false,
+      optionalFlag,
       disabledSwitch,
+      labelFont = 'label',
+      gap,
       ...rest
     },
     ref
@@ -97,210 +108,254 @@ const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       setIsValue(!!e.target.value.length);
-      onChange;
+      if (onChange) {
+        onChange(e);
+      }
     };
 
     const handleTextAreaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
       setIsValue(!!e.target.value.length);
-      onChange;
+      if (onChange) {
+        onChange(e as any);
+      }
     };
 
     const handleClick = () => setShow(!show);
 
     return (
-      <FormControl
-        w={'auto'}
-        isRequired={isRequired && isRequired}
-        isInvalid={errorMessage}
-      >
-        {label && type !== 'password' ? (
-          <Flex alignItems={'baseline'} gap={1}>
+      <FormControl w={w || 'auto'} isRequired={isRequired}>
+        <Flex
+          direction={type === 'checkbox' ? 'row-reverse' : 'column'}
+          gap={gap || 2}
+          alignItems={type === 'checkbox' ? 'center' : ''}
+          justifyContent={type === 'checkbox' ? 'start' : ''}
+        >
+          {label && type !== 'password' ? (
+            <Flex alignItems={'baseline'} gap={1}>
+              <FormLabel
+                htmlFor={id}
+                fontSize={labelFont}
+                fontWeight={'medium'}
+                color='brand.black.900'
+                mb={0}
+                position={'relative'}
+              >
+                {label}{' '}
+                {optionalFlag && (
+                  <Text fontSize={'small'} as={'span'} color='brand.gray.700'>
+                    (Optional)
+                  </Text>
+                )}
+                {labelAddon && (
+                  <Tooltip
+                    label={labelAddon}
+                    fontSize={'12px'}
+                    bg={'brand.gray.900'}
+                    placement={'auto-end'}
+                    hasArrow
+                  >
+                    <Box as='span' cursor={'pointer'}>
+                      <Icon
+                        as={IoInformationCircleOutline}
+                        fontSize={'label'}
+                      />
+                    </Box>
+                  </Tooltip>
+                )}
+              </FormLabel>
+              {disabledSwitch && (
+                <Box>
+                  <Switch
+                    ref={inputRef}
+                    colorScheme='brand.primary'
+                    size={size}
+                    isChecked={!isChecked}
+                    onChange={handleSwitch}
+                  />
+                </Box>
+              )}
+            </Flex>
+          ) : label && type === 'password' ? (
             <FormLabel
               htmlFor={id}
               fontSize={'label'}
               fontWeight={'medium'}
               color='brand.black.900'
+              display='flex'
             >
-              {label}
+              <Text fontSize={'label'}>{label}</Text>
             </FormLabel>
-            {disabledSwitch && (
-              <Box>
-                <Switch
-                  ref={inputRef}
-                  colorScheme='brand.primary'
-                  size={'lg'}
-                  isChecked={!isChecked}
-                  onChange={handleSwitch}
-                />
-              </Box>
-            )}
-          </Flex>
-        ) : label && type === 'password' ? (
-          <FormLabel
-            htmlFor={id}
-            fontSize={'label'}
-            fontWeight={'medium'}
-            color='brand.black.900'
-            display='flex'
-          >
-            <Text fontSize={'label'}>{label}</Text>
-          </FormLabel>
-        ) : null}
-        {isTextArea ? (
-          <Textarea
-            w={w}
-            h={h || '6rem'}
-            style={{
-              ...textInputStyle,
-            }}
-            border={'1px solid'}
-            borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
-            backgroundColor={
-              errorMessage
-                ? 'brand.error.50'
-                : isValue
-                ? 'brand.primary.100'
-                : 'brand.white'
-            }
-            focusBorderColor='brand.primary.500'
-            errorBorderColor='brand.error.500'
-            id={id}
-            placeholder={placeholder}
-            defaultValue={defaultValue}
-            _placeholder={{
-              ...placeholderStyle,
-              color: 'brand.gray.700',
-              fontSize: 'label',
-              fontWeight: 'normal',
-            }}
-            {...rest}
-            onChange={handleTextAreaChange}
-            fontSize={'paragraph'}
-            outlineOffset={'none'}
-            variant={variant}
-            {...register}
-          />
-        ) : isDate ? (
-          <Input
-            w={w}
-            h={h || '3.2rem'}
-            fontSize={'paragraph'}
-            borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
-            backgroundColor={
-              errorMessage
-                ? 'brand.error.50'
-                : isValue
-                ? 'brand.primary.100'
-                : 'brand.white'
-            }
-            focusBorderColor='brand.primary.500'
-            errorBorderColor='brand.error.500'
-            style={{
-              ...textInputStyle,
-              borderColor: isValue ? 'brand.primary.600' : 'brand.gray.800',
-            }}
-            type={type || 'date'}
-            max={maxDate}
-            defaultValue={defaultValue}
-            placeholder={placeholder}
-            onChange={handleChange}
-            {...register}
-          />
-        ) : !!icon || type === 'password' ? (
-          <InputGroup size='lg'>
-            {icon &&
-              (iconPosition === 'left' ? (
-                <InputLeftElement pointerEvents='none'>
-                  <Icon
-                    as={icon}
-                    fontSize={'paragraph'}
-                    color='brand.gray.300'
-                    mt={'.7rem'}
-                  />
-                </InputLeftElement>
-              ) : (
-                <InputRightElement pointerEvents='none'>
-                  <Icon
-                    as={icon}
-                    fontSize={'paragraph'}
-                    color='brand.gray.900'
-                    fontWeight={'bold'}
-                    mt={'.7rem'}
-                  />
-                </InputRightElement>
-              ))}
-            <Input
-              fontSize={'paragraph'}
+          ) : null}
+          {isPhone ? (
+            <PhoneNumberInput
+              id={id}
               w={w}
-              height={h || '3.2rem'}
+              h={h}
+              fontSize={fontSize}
+              borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
+              backgroundColor={isValue ? 'brand.primary.100' : 'brand.white'}
+              focusBorderColor='brand.primary.500'
+              style={{
+                ...textInputStyle,
+                borderColor: isValue ? 'brand.primary.600' : 'brand.gray.800',
+              }}
+              defaultValue={defaultValue}
+              {...register}
+              onChange={handleChange}
+              placeholder={placeholder}
+              {...rest}
+            />
+          ) : isTextArea ? (
+            <Textarea
+              w={w}
+              h={h || '6rem'}
+              style={{
+                ...textInputStyle,
+              }}
+              border={'1px solid'}
               borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
               backgroundColor={
-                errorMessage
-                  ? 'brand.error.50'
-                  : isValue
+                isValue && variant !== 'unstyled'
                   ? 'brand.primary.100'
                   : 'brand.white'
               }
-              fontWeight='regular'
-              _placeholder={{ fontSize: 'label', color: 'brand.gray.800' }}
-              variant={variant}
-              placeholder={placeholder}
               focusBorderColor='brand.primary.500'
-              errorBorderColor='brand.error.500'
-              type={type !== 'password' ? 'text' : show ? 'text' : 'password'}
+              id={id}
               {...rest}
-              ref={ref}
-              onChange={handleChange}
-              disabled={inputDisabled}
+              defaultValue={defaultValue}
+              placeholder={placeholder}
+              _placeholder={{
+                ...placeholderStyle,
+                color: 'brand.gray.700',
+                fontSize: 'label',
+                fontWeight: 'normal',
+              }}
               {...register}
+              onChange={handleTextAreaChange}
+              fontSize={fontSize}
+              outlineOffset={'none'}
+              variant={variant}
+              ref={ref}
             />
-            {type === 'password' && (
-              <InputRightElement width='4.5rem' mt='.7rem'>
-                <IconButton
-                  aria-label={show ? 'Hide password' : 'Show password'}
-                  icon={show ? <IoMdEye /> : <TbEyeClosed />}
-                  onClick={handleClick}
-                  bg='transparent'
-                  fontSize={'paragraph'}
+          ) : isDate ? (
+            <Input
+              w={w}
+              h={h}
+              fontSize={fontSize}
+              borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
+              backgroundColor={
+                isValue && variant !== 'unstyled'
+                  ? 'brand.primary.100'
+                  : 'brand.white'
+              }
+              focusBorderColor='brand.primary.500'
+              style={{
+                ...textInputStyle,
+                borderColor: isValue ? 'brand.primary.600' : 'brand.gray.800',
+              }}
+              type={'date'}
+              min={minDate}
+              max={maxDate}
+              value={rest.value ?? undefined}
+              defaultValue={defaultValue}
+              placeholder={placeholder}
+              {...register}
+              onChange={handleChange}
+            />
+          ) : isFile ? (
+            <InputGroup>
+              <input
+                type='file'
+                onChange={handleChange}
+                accept={accept}
+                ref={inputRef}
+                // {...inputProps}
+                hidden
+              />
+              <InputRightElement pointerEvents='none' h={h}>
+                <Icon
+                  as={FaRegFilePdf}
+                  boxSize={8}
+                  color='brand.gray.800'
+                  mr={4}
                 />
               </InputRightElement>
-            )}
-          </InputGroup>
-        ) : (
-          <Input
-            fontSize={'paragraph'}
-            w={w || '100%'}
-            height={h || '3.2rem'}
-            borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
-            backgroundColor={
-              errorMessage
-                ? 'brand.error.50'
-                : isValue
-                ? 'brand.primary.100'
-                : 'brand.white'
-            }
-            fontWeight='regular'
-            _placeholder={{ fontSize: 'label', color: 'brand.gray.800' }}
-            variant={variant}
-            placeholder={placeholder}
-            focusBorderColor='brand.primary.500'
-            errorBorderColor='brand.error.500'
-            type={type}
-            {...rest}
-            disabled={inputDisabled}
-            ref={ref}
-            onChange={handleChange}
-            {...register}
-          />
-        )}
+              <Input
+                placeholder={placeholder || 'Select files'}
+                onClick={() => {
+                  if (inputRef?.current) {
+                    inputRef?.current?.click();
+                  }
+                }}
+                readOnly={true}
+                {...rest}
+                {...register}
+                h={h}
+                fontSize={fontSize}
+                borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
+                backgroundColor={
+                  isValue && variant !== 'unstyled'
+                    ? 'brand.primary.100'
+                    : 'brand.white'
+                }
+                focusBorderColor='brand.primary.500'
+                style={{
+                  ...textInputStyle,
+                  borderColor: isValue ? 'brand.primary.600' : 'brand.gray.800',
+                }}
+                _placeholder={{ fontSize: 'label', color: 'brand.gray.800' }}
+                cursor={'pointer'}
+              />
+            </InputGroup>
+          ) : (
+            <InputGroup maxW={type === 'checkbox' ? 'fit-content' : 'full'}>
+              <Input
+                fontSize={fontSize}
+                w={w || '100%'}
+                height={h}
+                borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
+                backgroundColor={
+                  isValue && variant !== 'unstyled'
+                    ? 'brand.primary.100'
+                    : 'brand.white'
+                }
+                fontWeight='regular'
+                _placeholder={{ fontSize: 'label', color: 'brand.gray.800' }}
+                variant={variant}
+                placeholder={placeholder}
+                focusBorderColor='brand.primary.500'
+                type={type !== 'password' ? type : show ? 'text' : 'password'}
+                {...rest}
+                disabled={inputDisabled}
+                ref={ref}
+                {...register}
+                onChange={handleChange}
+              />
+              {type === 'password' && (
+                <InputRightElement width='4.5rem' mt='.7rem'>
+                  <IconButton
+                    aria-label={show ? 'Hide password' : 'Show password'}
+                    icon={show ? <ViewOffIcon /> : <ViewIcon />}
+                    onClick={handleClick}
+                    bg='transparent'
+                    fontSize={fontSize}
+                  />
+                </InputRightElement>
+              )}
+            </InputGroup>
+          )}
+        </Flex>
+
         {errorMessage && (
-          <FormErrorMessage fontSize='label' position={'absolute'}>
+          <FormHelperText fontSize='label' color='red'>
             {errorMessage}
-          </FormErrorMessage>
+          </FormHelperText>
         )}
       </FormControl>
     );
   }
 );
+
+CustomInput.displayName = 'CustomInput';
 
 export default CustomInput;

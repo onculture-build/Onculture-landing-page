@@ -12,6 +12,7 @@ import { useCheckAllowedUser } from '../../services/mutations';
 import { useAppDispatch, useAppSelector } from '../../services/store/hooks';
 import { authUser } from '../../services/store/selectors';
 import { saveUserInfo } from '../../services/store/slices/auth';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
   const { mutate: checkUser, isPending } = useCheckAllowedUser();
@@ -38,14 +39,14 @@ const SignUp = () => {
     checkUser(data, {
       onSuccess: (res) => {
         dispatch(saveUserInfo(data));
-        navigate(`/${PageRoutes.companyOnboarding}`);
+        navigate(`/${PageRoutes.signup}/${PageRoutes.companyOnboarding}`);
       },
 
       onError: (err: any) => {
         if (err?.status === 401) {
-          navigate(`/${PageRoutes.signupFailure}`);
+          navigate(`/${PageRoutes.signup}/${PageRoutes.signupFailure}`);
         } else {
-          console.error(err.message);
+          toast.error(err.message);
         }
       },
     });
