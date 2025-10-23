@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import ApiBooks from '../../../lib/db/books.json';
 import { Box, Heading, Image, Stack, Text } from '@chakra-ui/react';
 import CustomButton from '../../../components/custom-button';
-import ViewPortContainer from '../../../layouts/container';
+import ViewportContainer from '../../../layouts/container';
 import ErrorPage from '../../ErrorPage';
 
 const SingleBook = () => {
@@ -11,7 +11,7 @@ const SingleBook = () => {
   const content = ApiBooks.find((book) => book.id === id);
 
   return content ? (
-    <ViewPortContainer>
+    <ViewportContainer>
       <Stack my={20} gap={20} px={{ base: '2rem', lg: '0' }}>
         <Link to={'/resources'}>
           <CustomButton>Back to all resources</CustomButton>
@@ -27,7 +27,7 @@ const SingleBook = () => {
           <CustomButton>Download</CustomButton>
         </Box>
       </Stack>
-    </ViewPortContainer>
+    </ViewportContainer>
   ) : (
     <ErrorPage errorTitle='Cannot find requested resource' />
   );

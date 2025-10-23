@@ -11,7 +11,7 @@ import { Link, useParams } from 'react-router-dom';
 import ApiArticles from '../../../lib/db/articles.json';
 import ArticleCard from '../../../components/article-card';
 import CustomButton from '../../../components/custom-button';
-import ViewPortContainer from '../../../layouts/container';
+import ViewportContainer from '../../../layouts/container';
 import ErrorPage from '../../ErrorPage';
 
 const SingleArticle = () => {
@@ -20,7 +20,7 @@ const SingleArticle = () => {
   const content = ApiArticles.find((article) => article.id === id);
 
   return content ? (
-    <ViewPortContainer>
+    <ViewportContainer>
       <Stack my={20} gap={20} px={{ base: '2rem', lg: '0' }}>
         <Link to={'/resources'}>
           <CustomButton>Back to all resources</CustomButton>
@@ -62,7 +62,7 @@ const SingleArticle = () => {
           ))}
         </Grid>
       </Stack>
-    </ViewPortContainer>
+    </ViewportContainer>
   ) : (
     <ErrorPage errorTitle='Cannot find requested resource' />
   );

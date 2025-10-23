@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
-import ViewPortContainer from '../layouts/container';
+import ViewportContainer from '../layouts/container';
 
 type ImageSliderProps = {
   id: string;
@@ -56,7 +56,7 @@ const ImageSlider = ({ images }: SliderData) => {
       py={40}
       px={10}
     >
-      <ViewPortContainer>
+      <ViewportContainer>
         <Box maxW={{ md: '90%' }} mx={'auto'} my={'5vh'}>
           <Slider {...settings}>
             {images.map((item) => (
@@ -81,7 +81,9 @@ const ImageSlider = ({ images }: SliderData) => {
                     >
                       {item.title}
                     </Heading> */}
-                    <Text fontSize={'label'} textAlign={'center'}>{item.content}</Text>
+                    <Text fontSize={'label'} textAlign={'center'}>
+                      {item.content}
+                    </Text>
                   </Flex>
                 </Box>
                 <Stack
@@ -96,7 +98,7 @@ const ImageSlider = ({ images }: SliderData) => {
             ))}
           </Slider>
         </Box>
-      </ViewPortContainer>
+      </ViewportContainer>
     </Box>
   );
 };

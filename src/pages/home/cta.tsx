@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import CustomButton from '../../components/custom-button';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 import { PageRoutes } from '../../lib/constants';
 
 const CallToAction = () => {
@@ -36,7 +36,7 @@ const CallToAction = () => {
 
   return (
     <Box bgColor={'brand.gray.500'}>
-      <ViewPortContainer>
+      <ViewportContainer>
         <Flex
           as='section'
           w={'90%'}
@@ -98,7 +98,7 @@ const CallToAction = () => {
             </CustomButton>
           </Flex>
         </Flex>
-      </ViewPortContainer>
+      </ViewportContainer>
     </Box>
   );
 };

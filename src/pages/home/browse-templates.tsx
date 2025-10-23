@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import CustomButton from '../../components/custom-button';
 import TemplateCard from '../../components/template-card';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 
 const BrowseTemplates = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const BrowseTemplates = () => {
       bgSize={{ lg: '30%' }}
       p={20}
     >
-      <ViewPortContainer>
+      <ViewportContainer>
         <Box my={{ lg: 20 }}>
           <Heading as={'h2'} fontSize={'heading2'} textAlign={'center'}>
             Templates
@@ -36,7 +36,7 @@ const BrowseTemplates = () => {
               Build and drive a culture of performance and synergy through our
               <Text as={'span'} fontWeight={700}>
                 {' '}
-                productivity, engagement, and recognition 
+                productivity, engagement, and recognition
               </Text>{' '}
               toolkits.
             </Text>
@@ -77,7 +77,7 @@ const BrowseTemplates = () => {
             </CustomButton>
           </Flex>
         </Box>
-      </ViewPortContainer>
+      </ViewportContainer>
     </Stack>
   );
 };

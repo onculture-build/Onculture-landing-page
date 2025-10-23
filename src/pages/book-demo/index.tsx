@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import CustomButton from '../../components/custom-button';
 import CustomInput from '../../components/custom-input';
 import CustomSelect from '../../components/custom-select';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 import { BookDemoSchema } from '../../lib/schema';
 import { BookDemoType } from '../../lib/types';
 import { employeeCount } from '../../lib/constants';
@@ -15,6 +15,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import CustomModal from '../../components/modal';
 import { FaCircleCheck } from 'react-icons/fa6';
+import { MAILERLITE_BOOKDEMO_GROUP_ID } from '../../services/urls';
 
 const BookDemo = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -24,6 +25,7 @@ const BookDemo = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<BookDemoType>({
     resolver: yupResolver(BookDemoSchema),
@@ -49,7 +51,9 @@ const BookDemo = () => {
         employee_count: data.employeeCount,
         message: data.message,
       },
+      groups: [MAILERLITE_BOOKDEMO_GROUP_ID],
     };
+
     submitBookDemo(postData, {
       onSuccess: (res) => {
         setShowModal(true);
@@ -63,7 +67,7 @@ const BookDemo = () => {
 
   return (
     <>
-      <ViewPortContainer>
+      <ViewportContainer>
         <Box w={{ base: '90%', md: '50%', lg: '40%' }} mx={'auto'}>
           <Stack mt={'10vh'} mb={'20vh'}>
             <Heading as={'h2'} fontSize={'heading2'} mb={20}>
@@ -83,6 +87,7 @@ const BookDemo = () => {
                   {...register('lastName')}
                   label='Last Name'
                   placeholder='Your last name'
+                  isRequired
                   p={'2rem'}
                   errorMessage={errors.lastName?.message}
                 />
@@ -121,7 +126,7 @@ const BookDemo = () => {
                   optionStyles={{
                     fontSize: 'paragraph',
                   }}
-                  onChange={() => {}}
+                  onChange={(e) => setValue('employeeCount', String(e?.value)!)}
                   error={errors.employeeCount?.message}
                 />
                 <CustomInput
@@ -130,12 +135,16 @@ const BookDemo = () => {
                   isRequired
                   isTextArea
                   placeholder='What are you hoping to achieve with OnCulture'
-                  p={'2rem'}
+                  p={'1rem'}
                   h={'15rem'}
                   placeholderStyle={{
                     fontSize: 'label',
                     color: 'brand.gray.800',
                   }}
+                  // onChange={(value) => {
+                  //   console.log('🚀 ~ BookDemo ~ value:', value);
+                  //   // setValue('message', value.target.value);
+                  // }}
                   errorMessage={errors.message?.message}
                 />
                 <Box mt={'3vh'}>
@@ -150,7 +159,7 @@ const BookDemo = () => {
             </form>
           </Stack>
         </Box>
-      </ViewPortContainer>
+      </ViewportContainer>
       <CustomModal onClose={() => setShowModal(!showModal)} isOpen={showModal}>
         <Stack
           alignItems={'center'}

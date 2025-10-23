@@ -9,7 +9,6 @@ import {
 } from '@chakra-ui/react';
 import PhoneInput from 'react-phone-number-input';
 import { Controller } from 'react-hook-form';
-import themes from '@@lib/theme';
 import 'react-phone-number-input/style.css';
 
 interface PropType {
@@ -47,8 +46,8 @@ export const generalStyle = {
   border: '0.4px solid rgba(15, 99, 255, 0.08)',
   borderRadius: '4px',
   color: '#000',
-  fontSize: themes.fontSizes.label,
-  fontWeight: themes.fontWeights.regular,
+  fontSize: '14px',
+  fontWeight: 500,
   zIndex: 0,
   paddingLeft: '3px',
 };
@@ -106,8 +105,8 @@ const CustomPhoneInput: FunctionComponent<
       {label && (
         <FormLabel
           htmlFor={id}
-          fontSize={themes.fontSizes.paragraph}
-          fontWeight={themes.fontWeights.bold}
+          fontSize={'18px'}
+          fontWeight={600}
           mb={!isCheckbox ? '0.8rem' : ''}
           color='typography.gray'
           style={labelStyle}

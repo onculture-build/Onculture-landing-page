@@ -14,9 +14,6 @@ function App() {
 
   return (
     <>
-      {/* <GoogleOAuthProvider
-        clientId={`${import.meta.env.VITE_APP_GOOGLE_CLIENT_ID}`}
-      > */}
       <ErrorBoundary fallback={<ErrorFallback />}>
         <Suspense
           fallback={
@@ -33,7 +30,6 @@ function App() {
           <ScrollToTop>{routeResult}</ScrollToTop>
         </Suspense>
       </ErrorBoundary>
-      {/* </GoogleOAuthProvider> */}
     </>
   );
 }

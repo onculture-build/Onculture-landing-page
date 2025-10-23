@@ -13,8 +13,17 @@ export const PageRoutes = {
   templates: 'templates',
   template: ':id',
   programs: 'programs/:id',
+  courses: 'courses',
+  course: ':id',
   joinWaitlist: 'waitlist',
-  WaitlistSuccess: 'success',
+  waitlistSuccess: 'success',
+  signup: 'register',
+  signupSuccess: 'success',
+  signupFailure: 'not-allowed',
+  companyOnboarding: 'company',
+  login: 'login',
+  forgotDomain: 'forgot-domain',
+  forgotDomainSuccess: 'success',
   notFound: '*',
 };
 

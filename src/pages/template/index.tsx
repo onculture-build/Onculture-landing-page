@@ -10,12 +10,12 @@ import {
 } from '@chakra-ui/react';
 import './template.css';
 import TemplateCard from '../../components/template-card';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 
 const TemplatesPage = () => {
   return (
     <Box className='all-templates'>
-      <ViewPortContainer>
+      <ViewportContainer>
         <Box mt={40} mb={'20vh'} p={8} px={{ base: '2rem', lg: '0' }}>
           <Stack alignItems={'center'} gap={10}>
             <Heading as={'h2'} fontSize={'heading2'}>
@@ -55,7 +55,7 @@ const TemplatesPage = () => {
             ))}
           </Grid>
         </Box>
-      </ViewPortContainer>
+      </ViewportContainer>
     </Box>
   );
 };

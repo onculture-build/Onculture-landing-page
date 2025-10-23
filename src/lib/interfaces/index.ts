@@ -4,6 +4,7 @@ export interface IAddToWaitlist {
     first_name: string;
     last_name?: string;
   };
+  groups?: string[];
 }
 
 export interface IContactUs {
@@ -15,6 +16,7 @@ export interface IContactUs {
     reason: string;
     message?: string;
   };
+  groups?: string[];
 }
 
 export interface IBookADemo {
@@ -27,4 +29,5 @@ export interface IBookADemo {
     employee_count: string;
     message?: string;
   };
+  groups?: string[];
 }

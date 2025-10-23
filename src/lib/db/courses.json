@@ -1,0 +1,98 @@
+[
+    {
+        "id": "course-001",
+        "slug": "preventing-non-sexual-harassment",
+        "title": "Preventing Non Sexual Harassment at Work",
+        "description": "Some forms of harassment are clear, but many others are not. Most times, victims may be unaware or not have enough information to label it as harassment. In a few cases, harassers themselves may not recognise some behaviours as inappropriate.",
+        "tag": "Workplace Safety",
+        "isReady": true,
+        "icon": "/assets/images/harassment-badge.png",
+        "coverImage": "/assets/images/non-sexual-harrasment-banner.png",
+        "thumbnail": "/assets/images/harrasement-course-thumbnail.png",
+        "intro": [
+            "How do you create a productive and toxic-free workplace?",
+            "This is where the 'Preventing Harassment in the Workplace' course comes in."
+        ],
+        "learningOutcomes": [
+            "Identify sexual and non-sexual types of harassment in the workplace.",
+            "Identify ways to prevent workplace harassment.",
+            "Develop responsive measures for combating workplace harassment."
+        ],
+        "videoUrl": null,
+        "through": [
+            "On-demand virtual lessons and quizzes",
+            "Course-relevant real-life scenarios and dialogue",
+            "Interactive and animated videos in an easy-to-understand way"
+        ],
+        "benefits": [
+            "A toxic-free company.",
+            "Employee behaviors that buttress company values.",
+            "A more engaged and productive workforce.",
+            "Higher retention rates"
+        ]
+    },
+    {
+        "id": "course-002",
+        "slug": "preventing-sexual-harassment",
+        "title": "Preventing Sexual Harassment at Work",
+        "description": "Some forms of harassment are clear, but many others are not. Most times, victims may be unaware or not have enough information to label it as harassment. In a few cases, harassers themselves may not recognise some behaviours as inappropriate.",
+        "tag": "Workplace Safety",
+        "isReady": true,
+        "icon": "/assets/images/harassment-badge.png",
+        "coverImage": "/assets/images/sexual-harrasement-banner.png",
+        "thumbnail": "/assets/images/harrasement-course-thumbnail.png",
+        "intro": [
+            "How do you create a productive and toxic-free workplace?",
+            "This is where the 'Preventing Harassment in the Workplace' course comes in."
+        ],
+        "learningOutcomes": [
+            "Identify sexual and non-sexual types of harassment in the workplace.",
+            "Identify ways to prevent workplace harassment.",
+            "Develop responsive measures for combating workplace harassment."
+        ],
+        "videoUrl": null,
+        "through": [
+            "On-demand virtual lessons and quizzes",
+            "Course-relevant real-life scenarios and dialogue",
+            "Interactive and animated videos in an easy-to-understand way"
+        ],
+        "benefits": [
+            "A toxic-free company.",
+            "Employee behaviors that buttress company values.",
+            "A more engaged and productive workforce.",
+            "Higher retention rates"
+        ]
+    },
+    {
+        "id": "course-003",
+        "slug": "driving-culture-at-work",
+        "title": "Driving Culture at Work",
+        "description": "Companies with aligned, positive cultures improve work lives, retain the best people, and generally perform better. Imagine a workforce with similar values and behaviours, focused on the same business goals.",
+        "tag": "Culture & Engagement",
+        "isReady": true,
+        "icon": "/assets/images/driving-culture-badge.png",
+        "coverImage": "/assets/images/work-culture-banner.png",
+        "thumbnail": "/assets/images/workspace-course.png",
+        "intro": [],
+        "learningOutcomes": [
+            "Reinforce the company's purpose and mission.",
+            "Identify Value Stars among employees.",
+            "Influence culturally-aligned behaviours of teams.",
+            "Strengthen connections between employees as they learn together."
+        ],
+        "videoUrl": null,
+        "through": [
+            "Videos.",
+            "Real-life scenarios.",
+            "Case studies.",
+            "Interactive quizzes ."
+        ],
+        "benefits": [
+            "Better (designed) workplace culture.",
+            "Diverse, yet clearer interpretation of the company's culture.",
+            "A workforce of Culture Champions.",
+            "Stronger team collaboration and connections.",
+            "A culture-fit layer to your existing onboarding process."
+        ]
+    }
+]

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Box, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
 import CustomButton from '../../components/custom-button';
-import ViewPortContainer from '../../layouts/container';
+import ViewportContainer from '../../layouts/container';
 import { PageRoutes } from '../../lib/constants';
 
 const Hero = () => {
@@ -16,7 +16,7 @@ const Hero = () => {
       minH={'90vh'}
       h={'fit-content'}
     >
-      <ViewPortContainer>
+      <ViewportContainer>
         <Box my={28} px={{ base: '2rem', lg: '0' }}>
           <Stack
             h={'100%'}
@@ -29,7 +29,7 @@ const Hero = () => {
                 <Heading
                   as={'h1'}
                   fontSize={{ base: 'heading1', '2xl': '64px' }}
-                  textAlign={{ base: 'center', lg: 'left' }}
+                  textAlign={{ base: 'center', xl: 'left' }}
                   fontWeight={'semiBold'}
                   maxW={{ md: '80%' }}
                 >
@@ -95,7 +95,7 @@ const Hero = () => {
             </Box>
           </Stack>
         </Box>
-      </ViewPortContainer>
+      </ViewportContainer>
     </Flex>
   );
 };
