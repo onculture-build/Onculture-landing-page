@@ -39,16 +39,12 @@ const SignUp = () => {
     checkUser(data, {
       onSuccess: (res) => {
         dispatch(saveUserInfo(data));
-        navigate(
-          `/${PageRoutes.auth}/${PageRoutes.signup}/${PageRoutes.companyOnboarding}`
-        );
+        navigate(`/${PageRoutes.signup}/${PageRoutes.companyOnboarding}`);
       },
 
       onError: (err: any) => {
         if (err?.status === 401) {
-          navigate(
-            `/${PageRoutes.auth}/${PageRoutes.signup}/${PageRoutes.signupFailure}`
-          );
+          navigate(`/${PageRoutes.signup}/${PageRoutes.signupFailure}`);
         } else {
           toast.error(err.message);
         }
@@ -117,7 +113,7 @@ const SignUp = () => {
             fontWeight={'medium'}
             fontSize={'label'}
           >
-            <Link to={`/${PageRoutes.auth}/${PageRoutes.login}`}>Login </Link>
+            <Link to={`/${PageRoutes.login}`}>Login </Link>
           </Text>
         </Text>
       </Box>

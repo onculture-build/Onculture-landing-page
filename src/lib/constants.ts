@@ -17,7 +17,6 @@ export const PageRoutes = {
   course: ':id',
   joinWaitlist: 'waitlist',
   waitlistSuccess: 'success',
-  auth: 'auth',
   signup: 'register',
   signupSuccess: 'success',
   signupFailure: 'not-allowed',

@@ -36,7 +36,7 @@ const ForgotDomain = () => {
       onSuccess: (res) => {
         reset();
         navigate(
-          `/${PageRoutes.auth}/${PageRoutes.forgotDomain}/${PageRoutes.forgotDomainSuccess}`
+          `/${PageRoutes.forgotDomain}/${PageRoutes.forgotDomainSuccess}`
         );
       },
       onError: (err: any) => {
@@ -90,7 +90,7 @@ const ForgotDomain = () => {
             fontWeight={'medium'}
             fontSize={'label'}
           >
-            <Link to={`/${PageRoutes.auth}/${PageRoutes.login}`}>Login</Link>
+            <Link to={`/${PageRoutes.login}`}>Login</Link>
           </Text>
         </Text>
       </Box>
