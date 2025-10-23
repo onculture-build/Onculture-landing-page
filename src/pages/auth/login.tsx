@@ -1,6 +1,14 @@
 import CustomInput from '../../components/custom-input';
 import CustomButton from '../../components/custom-button';
-import { Heading, Stack, Text, Box, Spinner, Flex } from '@chakra-ui/react';
+import {
+  Heading,
+  Stack,
+  Text,
+  Box,
+  Spinner,
+  Flex,
+  FormHelperText,
+} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, Resolver, SubmitHandler } from 'react-hook-form';
@@ -10,6 +18,7 @@ import { UserLoginType } from '../../lib/types';
 import { UserLoginSchema } from '../../lib/schema';
 import { useLoginUser } from '../../services/mutations';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const [apiErrResponse, setApiErrResponse] = useState('');
@@ -18,7 +27,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<UserLoginType>({
     resolver: yupResolver(UserLoginSchema),
     defaultValues: {
@@ -32,7 +41,7 @@ const Login = () => {
         window.open(res.data.url, '_blank');
       },
       onError: (err: any) => {
-        console.error(err.data.message);
+        toast.error(err.data.message);
         setApiErrResponse(err.data.message);
       },
     });
@@ -58,22 +67,29 @@ const Login = () => {
         </Heading>
         <Text textAlign={'center'}>Login to OnCulture with your Workspace</Text>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack mt={10} gap={16}>
-            <Flex alignItems={'end'} justifyContent={'center'} gap={3}>
-              <CustomInput
-                {...register('code')}
-                placeholder="Your Company's custom URL"
-                label='Company Domain'
-                isRequired
-                p={'2rem'}
-                errorMessage={errors.code?.message || apiErrResponse}
-              />
-              <Text pb={3} fontSize={'heading5'}>
-                .{companyDomain || 'onculture.io'}
-              </Text>
-            </Flex>
+          <Stack mt={10} gap={10}>
+            <Stack justifyContent={'center'}>
+              <Flex alignItems={'end'} justifyContent={'center'} gap={3}>
+                <CustomInput
+                  {...register('code')}
+                  placeholder='subdomain'
+                  label='Company Domain'
+                  isRequired
+                  p={'2rem'}
+                  w={'200px'}
+                />
+                <Text pb={3} fontSize={'heading5'}>
+                  .{companyDomain || 'onculture.io'}
+                </Text>
+              </Flex>
+              {(errors.code?.message || apiErrResponse) && (
+                <Text fontSize='small' textAlign={'center'} color='red'>
+                  {errors.code?.message || apiErrResponse}
+                </Text>
+              )}
+            </Stack>
             <Box w={'fit-content'} mx={'auto'}>
-              <CustomButton py={7} type={'submit'} gap={3}>
+              <CustomButton py={7} type={'submit'} gap={3} disabled={!isValid}>
                 {isPending && <Spinner color='#FFF' speed='0.5s' />}
                 Continue
               </CustomButton>
@@ -81,14 +97,16 @@ const Login = () => {
           </Stack>
         </form>
         <Text textAlign={'center'} mt={10}>
-          Don't know your company's custom URL?{' '}
+          Don't know your company's subdomain?{' '}
           <Text
             as={'span'}
             color={'brand.secondary.600'}
             fontWeight={'medium'}
             fontSize={'label'}
           >
-            <Link to={`/${PageRoutes.forgotDomain}`}>Click here</Link>
+            <Link to={`/${PageRoutes.auth}/${PageRoutes.forgotDomain}`}>
+              Click here
+            </Link>
           </Text>
         </Text>
       </Box>

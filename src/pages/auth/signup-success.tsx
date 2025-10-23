@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SignupSuccess = () => {
   const navigate = useNavigate();
+
   return (
     <ViewportContainer>
       <Stack
