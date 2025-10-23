@@ -96,9 +96,7 @@ const Login = () => {
             fontWeight={'medium'}
             fontSize={'label'}
           >
-            <Link to={`/${PageRoutes.auth}/${PageRoutes.forgotDomain}`}>
-              Click here
-            </Link>
+            <Link to={`/${PageRoutes.forgotDomain}`}>Click here</Link>
           </Text>
         </Text>
       </Box>
