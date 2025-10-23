@@ -1,14 +1,6 @@
 import CustomInput from '../../components/custom-input';
 import CustomButton from '../../components/custom-button';
-import {
-  Heading,
-  Stack,
-  Text,
-  Box,
-  Spinner,
-  Flex,
-  FormHelperText,
-} from '@chakra-ui/react';
+import { Heading, Stack, Text, Box, Spinner, Flex } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, Resolver, SubmitHandler } from 'react-hook-form';
