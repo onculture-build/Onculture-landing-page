@@ -34,10 +34,11 @@ const Hero = () => {
                   maxW={{ md: "80%" }}
                 >
                   <Text as={"span"} color={"brand.primary.600"}>
-                    Find, Train,
+                    Find, Train,{" "}
                   </Text>
                   {"and"}
                   <Text as={"span"} color={"brand.primary.600"}>
+                    {" "}
                     Engage
                   </Text>{" "}
                   your Teams
