@@ -1,4 +1,4 @@
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
   Box,
   Flex,
@@ -17,13 +17,13 @@ import {
   Text,
   Textarea,
   Tooltip,
-} from '@chakra-ui/react';
-import React, { CSSProperties, ChangeEvent, useState } from 'react';
-import { FaRegFilePdf } from 'react-icons/fa6';
-import { IconType } from 'react-icons/lib';
-import 'react-phone-number-input/style.css';
-import PhoneNumberInput from './phone-input';
-import { IoInformationCircleOutline } from 'react-icons/io5';
+} from "@chakra-ui/react";
+import React, { CSSProperties, ChangeEvent, useState } from "react";
+import { FaRegFilePdf } from "react-icons/fa6";
+import { IconType } from "react-icons/lib";
+import "react-phone-number-input/style.css";
+import PhoneNumberInput from "./phone-input";
+import { IoInformationCircleOutline } from "react-icons/io5";
 
 export type CustomInputProps = {
   label?: string;
@@ -37,7 +37,7 @@ export type CustomInputProps = {
   isTextArea?: boolean;
   isPhone?: boolean;
   icon?: IconType;
-  iconPosition?: 'left' | 'right';
+  iconPosition?: "left" | "right";
   control?: any;
   placeholderStyle?: CSSProperties;
   register?: any;
@@ -48,7 +48,7 @@ export type CustomInputProps = {
   minDate?: string | Date;
   maxDate?: string | Date;
   variant?: ResponsiveValue<
-    (string & {}) | 'outline' | 'filled' | 'flushed' | 'unstyled'
+    (string & {}) | "outline" | "filled" | "flushed" | "unstyled"
   >;
   forgotPasswordLink?: React.ReactNode;
   disabledSwitch?: boolean;
@@ -71,10 +71,10 @@ const CustomInput = React.forwardRef<
       variant,
       defaultValue,
       id,
-      h = '3.2rem',
+      h = "3.2rem",
       accept,
       textInputStyle,
-      w = '100%',
+      w = "100%",
       placeholderStyle,
       onChange,
       isTextArea,
@@ -82,14 +82,14 @@ const CustomInput = React.forwardRef<
       isDate,
       isFile,
       isPhone,
-      fontSize = 'paragraph',
+      fontSize = "paragraph",
       minDate,
       maxDate,
-      size = 'lg',
+      size = "lg",
       isDisabled = false,
       optionalFlag,
       disabledSwitch,
-      labelFont = 'label',
+      labelFont = "label",
       gap,
       ...rest
     },
@@ -123,41 +123,41 @@ const CustomInput = React.forwardRef<
     const handleClick = () => setShow(!show);
 
     return (
-      <FormControl w={w || 'auto'} isRequired={isRequired}>
+      <FormControl w={w || "auto"} isRequired={isRequired}>
         <Flex
-          direction={type === 'checkbox' ? 'row-reverse' : 'column'}
+          direction={type === "checkbox" ? "row-reverse" : "column"}
           gap={gap || 2}
-          alignItems={type === 'checkbox' ? 'center' : ''}
-          justifyContent={type === 'checkbox' ? 'start' : ''}
+          alignItems={type === "checkbox" ? "center" : ""}
+          justifyContent={type === "checkbox" ? "start" : ""}
         >
-          {label && type !== 'password' ? (
-            <Flex alignItems={'baseline'} gap={1}>
+          {label && type !== "password" ? (
+            <Flex alignItems={"baseline"} gap={1}>
               <FormLabel
                 htmlFor={id}
                 fontSize={labelFont}
-                fontWeight={'medium'}
-                color='brand.black.900'
+                fontWeight={"medium"}
+                color="brand.black.900"
                 mb={0}
-                position={'relative'}
+                position={"relative"}
               >
-                {label}{' '}
+                {label}{" "}
                 {optionalFlag && (
-                  <Text fontSize={'small'} as={'span'} color='brand.gray.700'>
+                  <Text fontSize={"small"} as={"span"} color="brand.gray.700">
                     (Optional)
                   </Text>
                 )}
                 {labelAddon && (
                   <Tooltip
                     label={labelAddon}
-                    fontSize={'12px'}
-                    bg={'brand.gray.900'}
-                    placement={'auto-end'}
+                    fontSize={"12px"}
+                    bg={"brand.gray.900"}
+                    placement={"auto-end"}
                     hasArrow
                   >
-                    <Box as='span' cursor={'pointer'}>
+                    <Box as="span" cursor={"pointer"}>
                       <Icon
                         as={IoInformationCircleOutline}
-                        fontSize={'label'}
+                        fontSize={"label"}
                       />
                     </Box>
                   </Tooltip>
@@ -167,7 +167,7 @@ const CustomInput = React.forwardRef<
                 <Box>
                   <Switch
                     ref={inputRef}
-                    colorScheme='brand.primary'
+                    colorScheme="brand.primary"
                     size={size}
                     isChecked={!isChecked}
                     onChange={handleSwitch}
@@ -175,65 +175,56 @@ const CustomInput = React.forwardRef<
                 </Box>
               )}
             </Flex>
-          ) : label && type === 'password' ? (
+          ) : label && type === "password" ? (
             <FormLabel
               htmlFor={id}
-              fontSize={'label'}
-              fontWeight={'medium'}
-              color='brand.black.900'
-              display='flex'
+              fontSize={"label"}
+              fontWeight={"medium"}
+              color="brand.black.900"
+              display="flex"
             >
-              <Text fontSize={'label'}>{label}</Text>
+              <Text fontSize={"label"}>{label}</Text>
             </FormLabel>
           ) : null}
           {isPhone ? (
             <PhoneNumberInput
               id={id}
-              w={w}
-              h={h}
-              fontSize={fontSize}
-              borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
-              backgroundColor={isValue ? 'brand.primary.100' : 'brand.white'}
-              focusBorderColor='brand.primary.500'
-              style={{
-                ...textInputStyle,
-                borderColor: isValue ? 'brand.primary.600' : 'brand.gray.800',
-              }}
+              isPhone={true}
+              control={rest.control}
               defaultValue={defaultValue}
-              {...register}
-              onChange={handleChange}
               placeholder={placeholder}
-              {...rest}
+              errorMessage={errorMessage}
+              isRequired={isRequired}
             />
           ) : isTextArea ? (
             <Textarea
               w={w}
-              h={h || '6rem'}
+              h={h || "6rem"}
               style={{
                 ...textInputStyle,
               }}
-              border={'1px solid'}
-              borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
+              border={"1px solid"}
+              borderColor={isValue ? "brand.primary.600" : "brand.gray.800"}
               backgroundColor={
-                isValue && variant !== 'unstyled'
-                  ? 'brand.primary.100'
-                  : 'brand.white'
+                isValue && variant !== "unstyled"
+                  ? "brand.primary.100"
+                  : "brand.white"
               }
-              focusBorderColor='brand.primary.500'
+              focusBorderColor="brand.primary.500"
               id={id}
               {...rest}
               defaultValue={defaultValue}
               placeholder={placeholder}
               _placeholder={{
                 ...placeholderStyle,
-                color: 'brand.gray.700',
-                fontSize: 'label',
-                fontWeight: 'normal',
+                color: "brand.gray.700",
+                fontSize: "label",
+                fontWeight: "normal",
               }}
               {...register}
               onChange={handleTextAreaChange}
               fontSize={fontSize}
-              outlineOffset={'none'}
+              outlineOffset={"none"}
               variant={variant}
               ref={ref}
             />
@@ -242,18 +233,18 @@ const CustomInput = React.forwardRef<
               w={w}
               h={h}
               fontSize={fontSize}
-              borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
+              borderColor={isValue ? "brand.primary.600" : "brand.gray.800"}
               backgroundColor={
-                isValue && variant !== 'unstyled'
-                  ? 'brand.primary.100'
-                  : 'brand.white'
+                isValue && variant !== "unstyled"
+                  ? "brand.primary.100"
+                  : "brand.white"
               }
-              focusBorderColor='brand.primary.500'
+              focusBorderColor="brand.primary.500"
               style={{
                 ...textInputStyle,
-                borderColor: isValue ? 'brand.primary.600' : 'brand.gray.800',
+                borderColor: isValue ? "brand.primary.600" : "brand.gray.800",
               }}
-              type={'date'}
+              type={"date"}
               min={minDate}
               max={maxDate}
               value={rest.value ?? undefined}
@@ -265,23 +256,23 @@ const CustomInput = React.forwardRef<
           ) : isFile ? (
             <InputGroup>
               <input
-                type='file'
+                type="file"
                 onChange={handleChange}
                 accept={accept}
                 ref={inputRef}
                 // {...inputProps}
                 hidden
               />
-              <InputRightElement pointerEvents='none' h={h}>
+              <InputRightElement pointerEvents="none" h={h}>
                 <Icon
                   as={FaRegFilePdf}
                   boxSize={8}
-                  color='brand.gray.800'
+                  color="brand.gray.800"
                   mr={4}
                 />
               </InputRightElement>
               <Input
-                placeholder={placeholder || 'Select files'}
+                placeholder={placeholder || "Select files"}
                 onClick={() => {
                   if (inputRef?.current) {
                     inputRef?.current?.click();
@@ -292,52 +283,52 @@ const CustomInput = React.forwardRef<
                 {...register}
                 h={h}
                 fontSize={fontSize}
-                borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
+                borderColor={isValue ? "brand.primary.600" : "brand.gray.800"}
                 backgroundColor={
-                  isValue && variant !== 'unstyled'
-                    ? 'brand.primary.100'
-                    : 'brand.white'
+                  isValue && variant !== "unstyled"
+                    ? "brand.primary.100"
+                    : "brand.white"
                 }
-                focusBorderColor='brand.primary.500'
+                focusBorderColor="brand.primary.500"
                 style={{
                   ...textInputStyle,
-                  borderColor: isValue ? 'brand.primary.600' : 'brand.gray.800',
+                  borderColor: isValue ? "brand.primary.600" : "brand.gray.800",
                 }}
-                _placeholder={{ fontSize: 'label', color: 'brand.gray.800' }}
-                cursor={'pointer'}
+                _placeholder={{ fontSize: "label", color: "brand.gray.800" }}
+                cursor={"pointer"}
               />
             </InputGroup>
           ) : (
-            <InputGroup maxW={type === 'checkbox' ? 'fit-content' : 'full'}>
+            <InputGroup maxW={type === "checkbox" ? "fit-content" : "full"}>
               <Input
                 fontSize={fontSize}
-                w={w || '100%'}
+                w={w || "100%"}
                 height={h}
-                borderColor={isValue ? 'brand.primary.600' : 'brand.gray.800'}
+                borderColor={isValue ? "brand.primary.600" : "brand.gray.800"}
                 backgroundColor={
-                  isValue && variant !== 'unstyled'
-                    ? 'brand.primary.100'
-                    : 'brand.white'
+                  isValue && variant !== "unstyled"
+                    ? "brand.primary.100"
+                    : "brand.white"
                 }
-                fontWeight='regular'
-                _placeholder={{ fontSize: 'label', color: 'brand.gray.800' }}
+                fontWeight="regular"
+                _placeholder={{ fontSize: "label", color: "brand.gray.800" }}
                 variant={variant}
                 placeholder={placeholder}
-                focusBorderColor='brand.primary.500'
-                type={type !== 'password' ? type : show ? 'text' : 'password'}
+                focusBorderColor="brand.primary.500"
+                type={type !== "password" ? type : show ? "text" : "password"}
                 {...rest}
                 disabled={inputDisabled}
                 ref={ref}
                 {...register}
                 onChange={handleChange}
               />
-              {type === 'password' && (
-                <InputRightElement width='4.5rem' mt='.7rem'>
+              {type === "password" && (
+                <InputRightElement width="4.5rem" mt=".7rem">
                   <IconButton
-                    aria-label={show ? 'Hide password' : 'Show password'}
+                    aria-label={show ? "Hide password" : "Show password"}
                     icon={show ? <ViewOffIcon /> : <ViewIcon />}
                     onClick={handleClick}
-                    bg='transparent'
+                    bg="transparent"
                     fontSize={fontSize}
                   />
                 </InputRightElement>
@@ -347,7 +338,7 @@ const CustomInput = React.forwardRef<
         </Flex>
 
         {errorMessage && (
-          <FormHelperText fontSize='label' color='red'>
+          <FormHelperText fontSize="label" color="red">
             {errorMessage}
           </FormHelperText>
         )}
@@ -356,6 +347,6 @@ const CustomInput = React.forwardRef<
   }
 );
 
-CustomInput.displayName = 'CustomInput';
+CustomInput.displayName = "CustomInput";
 
 export default CustomInput;
