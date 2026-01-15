@@ -1,4 +1,4 @@
-import { useRef, CSSProperties, useEffect, FunctionComponent } from 'react';
+import { useRef, CSSProperties, useEffect, FunctionComponent } from "react";
 import {
   FormControl,
   FormHelperText,
@@ -6,10 +6,10 @@ import {
   InputProps,
   TextareaProps,
   SelectProps,
-} from '@chakra-ui/react';
-import PhoneInput from 'react-phone-number-input';
-import { Controller } from 'react-hook-form';
-import 'react-phone-number-input/style.css';
+} from "@chakra-ui/react";
+import PhoneInput from "react-phone-number-input";
+import { Controller } from "react-hook-form";
+import "react-phone-number-input/style.css";
 
 interface PropType {
   label?: string;
@@ -41,22 +41,22 @@ interface TextareaType extends PropType, TextareaProps {
 }
 
 export const generalStyle = {
-  height: '4.1rem',
-  backgroundColor: '#FCFCFC',
-  border: '0.4px solid rgba(15, 99, 255, 0.08)',
-  borderRadius: '4px',
-  color: '#000',
-  fontSize: '14px',
+  height: "4.5rem",
+  backgroundColor: "brand.white",
+  border: "0.4px solid rgba(7, 33, 83, 0.56)",
+  borderRadius: "4px",
+  color: "#000",
+  fontSize: "14px",
   fontWeight: 500,
   zIndex: 0,
-  paddingLeft: '3px',
+  padding: "6px",
 };
 
 export const focusStyle = {
-  outlineColor: 'rgba(210, 205, 205, .8)',
-  outlineStyle: 'solid',
-  outlineWidth: '1px',
-  border: 'none',
+  outlineColor: "rgba(210, 205, 205, .8)",
+  outlineStyle: "solid",
+  outlineWidth: "1px",
+  border: "none",
 };
 
 const CustomPhoneInput: FunctionComponent<
@@ -98,17 +98,17 @@ const CustomPhoneInput: FunctionComponent<
     <FormControl
       isRequired={isRequired && isRequired}
       style={style}
-      display={isHorizontal ? 'flex' : 'block'}
-      alignItems={isHorizontal ? 'center' : 'flex-start'}
-      justifyContent={isHorizontal ? 'flex-start' : 'flex-start'}
+      display={isHorizontal ? "flex" : "block"}
+      alignItems={isHorizontal ? "center" : "flex-start"}
+      justifyContent={isHorizontal ? "flex-start" : "flex-start"}
     >
       {label && (
         <FormLabel
           htmlFor={id}
-          fontSize={'18px'}
+          fontSize={"18px"}
           fontWeight={600}
-          mb={!isCheckbox ? '0.8rem' : ''}
-          color='typography.gray'
+          mb={!isCheckbox ? "0.8rem" : ""}
+          color="typography.gray"
           style={labelStyle}
         >
           {label}
@@ -116,7 +116,7 @@ const CustomPhoneInput: FunctionComponent<
       )}
       {isPhone && (
         <Controller
-          name={id ? id : ''}
+          name={id ? id : ""}
           control={control}
           render={({
             field: { onChange: onPhoneChange, value: phoneValue },
@@ -126,14 +126,14 @@ const CustomPhoneInput: FunctionComponent<
               onChange={onPhoneChange}
               value={phoneValue}
               defaultValue={defaultValue}
-              defaultCountry='NG'
+              defaultCountry="NG"
               style={{ ...generalStyle }}
             />
           )}
         />
       )}
       {errorMessage && (
-        <FormHelperText fontSize='1rem' color='red'>
+        <FormHelperText fontSize="1rem" color="red">
           {errorMessage}
         </FormHelperText>
       )}
