@@ -1,21 +1,21 @@
-import { useNavigate } from 'react-router-dom';
-import { Box, Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
-import { Resolver, SubmitHandler, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import CustomButton from '../../components/custom-button';
-import CustomInput from '../../components/custom-input';
-import CustomSelect from '../../components/custom-select';
-import ViewportContainer from '../../layouts/container';
-import { BookDemoSchema } from '../../lib/schema';
-import { BookDemoType } from '../../lib/types';
-import { employeeCount } from '../../lib/constants';
-import { IBookADemo } from '../../lib/interfaces';
-import { useBookADemo } from '../../services/mutations';
-import { useState } from 'react';
-import toast from 'react-hot-toast';
-import CustomModal from '../../components/modal';
-import { FaCircleCheck } from 'react-icons/fa6';
-import { MAILERLITE_BOOKDEMO_GROUP_ID } from '../../services/urls';
+import { useNavigate } from "react-router-dom";
+import { Box, Flex, Heading, Spinner, Stack, Text } from "@chakra-ui/react";
+import { Resolver, SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import CustomButton from "../../components/custom-button";
+import CustomInput from "../../components/custom-input";
+import CustomSelect from "../../components/custom-select";
+import ViewportContainer from "../../layouts/container";
+import { BookDemoSchema } from "../../lib/schema";
+import { BookDemoType } from "../../lib/types";
+import { employeeCount } from "../../lib/constants";
+import { IBookADemo } from "../../lib/interfaces";
+import { useBookADemo } from "../../services/mutations";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import CustomModal from "../../components/modal";
+import { FaCircleCheck } from "react-icons/fa6";
+import { MAILERLITE_BOOKDEMO_GROUP_ID } from "../../services/urls";
 
 const BookDemo = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -26,17 +26,18 @@ const BookDemo = () => {
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors },
   } = useForm<BookDemoType>({
     resolver: yupResolver(BookDemoSchema),
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      companyName: '',
-      email: '',
-      phone: '',
-      employeeCount: '',
-      message: '',
+      firstName: "",
+      lastName: "",
+      companyName: "",
+      email: "",
+      phone: "",
+      employeeCount: "",
+      message: "",
     },
   } as unknown as { resolver: Resolver<BookDemoType> });
 
@@ -59,7 +60,7 @@ const BookDemo = () => {
         setShowModal(true);
       },
       onError: (err) => {
-        toast.error('Error submitting form. Please try again.');
+        toast.error("Error submitting form. Please try again.");
         console.error(err);
       },
     });
@@ -68,78 +69,79 @@ const BookDemo = () => {
   return (
     <>
       <ViewportContainer>
-        <Box w={{ base: '90%', md: '50%', lg: '40%' }} mx={'auto'}>
-          <Stack mt={'10vh'} mb={'20vh'}>
-            <Heading as={'h2'} fontSize={'heading2'} mb={20}>
+        <Box w={{ base: "90%", md: "50%", lg: "40%" }} mx={"auto"}>
+          <Stack mt={"10vh"} mb={"20vh"}>
+            <Heading as={"h2"} fontSize={"heading2"} mb={20}>
               Book a Demo
             </Heading>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Stack gap={10}>
                 <CustomInput
-                  {...register('firstName')}
-                  label='First Name'
+                  {...register("firstName")}
+                  label="First Name"
                   isRequired
-                  placeholder='Your first name'
-                  p={'2rem'}
+                  placeholder="Your first name"
+                  p={"2rem"}
                   errorMessage={errors.firstName?.message}
                 />
                 <CustomInput
-                  {...register('lastName')}
-                  label='Last Name'
-                  placeholder='Your last name'
+                  {...register("lastName")}
+                  label="Last Name"
+                  placeholder="Your last name"
                   isRequired
-                  p={'2rem'}
+                  p={"2rem"}
                   errorMessage={errors.lastName?.message}
                 />
                 <CustomInput
-                  {...register('companyName')}
-                  label='Company Name'
+                  {...register("companyName")}
+                  label="Company Name"
                   isRequired
-                  placeholder='Company Name'
-                  p={'2rem'}
+                  placeholder="Company Name"
+                  p={"2rem"}
                   errorMessage={errors.companyName?.message}
                 />
                 <CustomInput
-                  {...register('email')}
-                  label='Email Address'
+                  {...register("email")}
+                  label="Email Address"
                   isRequired
-                  type='email'
-                  placeholder='Email Address'
-                  p={'2rem'}
+                  type="email"
+                  placeholder="Email Address"
+                  p={"2rem"}
                   errorMessage={errors.email?.message}
                 />
                 <CustomInput
-                  {...register('phone')}
-                  label='Phone Number'
+                  {...register("phone")}
+                  label="Phone Number"
                   isPhone
                   isRequired
-                  placeholder='Phone Number'
-                  p={'2rem'}
+                  placeholder="Phone Number"
+                  control={control}
+                  id="phone"
                   errorMessage={errors.phone?.message}
                 />
                 <CustomSelect
-                  {...register('employeeCount')}
-                  label='Employee Count'
+                  {...register("employeeCount")}
+                  label="Employee Count"
                   isRequired
                   options={employeeCount}
-                  h={'4rem'}
+                  h={"4rem"}
                   optionStyles={{
-                    fontSize: 'paragraph',
+                    fontSize: "paragraph",
                   }}
-                  onChange={(e) => setValue('employeeCount', String(e?.value)!)}
+                  onChange={(e) => setValue("employeeCount", String(e?.value)!)}
                   error={errors.employeeCount?.message}
                 />
                 <CustomInput
-                  {...register('message')}
-                  label='What are you hoping to achieve with OnCulture'
+                  {...register("message")}
+                  label="What are you hoping to achieve with OnCulture"
                   isRequired
                   isTextArea
-                  placeholder='What are you hoping to achieve with OnCulture'
-                  p={'1rem'}
-                  h={'15rem'}
+                  placeholder="What are you hoping to achieve with OnCulture"
+                  p={"1rem"}
+                  h={"15rem"}
                   placeholderStyle={{
-                    fontSize: 'label',
-                    color: 'brand.gray.800',
+                    fontSize: "label",
+                    color: "brand.gray.800",
                   }}
                   // onChange={(value) => {
                   //   console.log('🚀 ~ BookDemo ~ value:', value);
@@ -147,11 +149,11 @@ const BookDemo = () => {
                   // }}
                   errorMessage={errors.message?.message}
                 />
-                <Box mt={'3vh'}>
-                  <CustomButton type={'submit'} w={'100%'}>
-                    <Flex alignItems={'center'} gap={2}>
-                      {isPending && <Spinner size={'md'} />}
-                      {isPending ? 'Submitting...' : 'Submit'}
+                <Box mt={"3vh"}>
+                  <CustomButton type={"submit"} w={"100%"}>
+                    <Flex alignItems={"center"} gap={2}>
+                      {isPending && <Spinner size={"md"} />}
+                      {isPending ? "Submitting..." : "Submit"}
                     </Flex>
                   </CustomButton>
                 </Box>
@@ -162,26 +164,26 @@ const BookDemo = () => {
       </ViewportContainer>
       <CustomModal onClose={() => setShowModal(!showModal)} isOpen={showModal}>
         <Stack
-          alignItems={'center'}
-          justifyContent={'space-around'}
+          alignItems={"center"}
+          justifyContent={"space-around"}
           py={14}
           gap={20}
         >
-          <Flex color={'brand.primary.600'}>
-            <FaCircleCheck fontSize={'64px'} />
+          <Flex color={"brand.primary.600"}>
+            <FaCircleCheck fontSize={"64px"} />
           </Flex>
-          <Stack textAlign={'center'} h={'100%'}>
-            <Heading as={'h3'} fontSize={'heading3'}>
+          <Stack textAlign={"center"} h={"100%"}>
+            <Heading as={"h3"} fontSize={"heading3"}>
               Awesome!
             </Heading>
-            <Text maxW={{ base: '100%', md: '70%' }} mx={'auto'}>
+            <Text maxW={{ base: "100%", md: "70%" }} mx={"auto"}>
               A team member from OnCulture will reach out to you
             </Text>
           </Stack>
           <CustomButton
-            onClick={() => navigate('/')}
-            w={'fit-content'}
-            mx={'auto'}
+            onClick={() => navigate("/")}
+            w={"fit-content"}
+            mx={"auto"}
           >
             Go to Home Page
           </CustomButton>
