@@ -53,7 +53,7 @@ const CompanyOnboarding = () => {
     signup(signupData, {
       onSuccess: (res: any) => {
         sessionStorage.removeItem("auth");
-        dispatch(clearEntries);
+        dispatch(clearEntries());
 
         if (res.message && res.message.toLowerCase().includes("waitlist")) {
           navigate(`/${PageRoutes.signup}/${PageRoutes.signupFailure}`);
