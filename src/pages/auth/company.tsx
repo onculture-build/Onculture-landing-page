@@ -58,7 +58,7 @@ const CompanyOnboarding = () => {
         if (res.message && res.message.toLowerCase().includes("waitlist")) {
           navigate(`/${PageRoutes.signup}/${PageRoutes.signupFailure}`);
         } else {
-          navigate(`/${PageRoutes.signupSuccess}`);
+          navigate(`/${PageRoutes.signup}/${PageRoutes.signupSuccess}`);
         }
       },
       onError: (err) => {
