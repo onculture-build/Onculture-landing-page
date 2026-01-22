@@ -54,7 +54,7 @@ const CompanyOnboarding = () => {
       onSuccess: (res: any) => {
         sessionStorage.removeItem("auth");
         dispatch(clearEntries());
-        const message = res?.message || "";
+        const message = res?.data.message || "";
         if (
           message.toLowerCase().includes("waitlist") ||
           message.toLowerCase().includes("notify you when approved")
