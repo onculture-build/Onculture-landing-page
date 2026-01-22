@@ -113,7 +113,6 @@ const BookDemo = () => {
                   {...register("phone")}
                   label="Phone Number"
                   isPhone
-                  isRequired
                   placeholder="Phone Number"
                   control={control}
                   id="phone"

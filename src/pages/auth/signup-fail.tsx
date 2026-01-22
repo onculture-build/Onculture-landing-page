@@ -1,34 +1,34 @@
-import ViewportContainer from '../../layouts/container';
-import CustomButton from '../../components/custom-button';
-import { Box, Stack, Img, Heading, Text } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import ViewportContainer from "../../layouts/container";
+import CustomButton from "../../components/custom-button";
+import { Box, Stack, Img, Heading, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const SignupFailure = () => {
   const navigate = useNavigate();
   return (
     <ViewportContainer>
       <Stack
-        justifyContent='center'
-        alignContent='center'
-        alignSelf='center'
-        alignItems='center'
-        gap='10'
-        maxW={{ base: '100%', md: '70%', xl: '50%' }}
-        mx={'auto'}
+        justifyContent="center"
+        alignContent="center"
+        alignSelf="center"
+        alignItems="center"
+        gap="10"
+        maxW={{ base: "100%", md: "70%", xl: "50%" }}
+        mx={"auto"}
         py={40}
       >
         <Box>
-          <Img src={'/assets/images/checkmark.png'} />
+          <Img src={"/assets/images/checkmark.png"} />
         </Box>
         <Heading
-          as={'h2'}
-          fontSize='heading2'
-          fontWeight='600'
-          textAlign={'center'}
+          as={"h2"}
+          fontSize="heading2"
+          fontWeight="600"
+          textAlign={"center"}
         >
-          Added to Waitlist
+          You've been Added to Waitlist
         </Heading>
-        <Box textAlign='center'>
+        <Box textAlign="center">
           <Text>Thank you for signing up to OnCulture.</Text>
           <Text>
             Unfortunately, we're not open for use just yet. But Good News!
@@ -38,9 +38,9 @@ const SignupFailure = () => {
           </Text>
         </Box>
         <CustomButton
-          w={'70%'}
+          w={"70%"}
           onClick={() => {
-            navigate('/');
+            navigate("/");
           }}
         >
           Back to Homepage

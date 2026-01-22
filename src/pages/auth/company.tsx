@@ -51,10 +51,23 @@ const CompanyOnboarding = () => {
       },
     };
     signup(signupData, {
-      onSuccess: (res) => {
-        navigate(`/${PageRoutes.signup}/${PageRoutes.signupSuccess}`);
+      onSuccess: (res: any) => {
         sessionStorage.removeItem("auth");
-        dispatch(clearEntries);
+        dispatch(clearEntries());
+        const message = res?.data.message || "";
+        if (
+          message.toLowerCase().includes("waitlist") ||
+          message.toLowerCase().includes("notify you when approved")
+        ) {
+          navigate(`/${PageRoutes.signup}/${PageRoutes.signupFailure}`);
+        } else if (
+          message.toLowerCase().includes("verification email") ||
+          message.toLowerCase().includes("email has been sent")
+        ) {
+          navigate(`/${PageRoutes.signup}/${PageRoutes.signupSuccess}`);
+        } else {
+          navigate(`/${PageRoutes.signup}/${PageRoutes.signupSuccess}`);
+        }
       },
       onError: (err) => {
         toast.error(err.message);
@@ -89,7 +102,7 @@ const CompanyOnboarding = () => {
                   const { value } = event.target;
                   setValue(
                     "code",
-                    value.split(" ").join("-").substring(0, 20).toLowerCase()
+                    value.split(" ").join("-").substring(0, 20).toLowerCase(),
                   );
                 },
               })}
@@ -115,7 +128,7 @@ const CompanyOnboarding = () => {
                       const { value } = event.target;
                       setValue(
                         "code",
-                        value.split(" ").join("-").toLowerCase()
+                        value.split(" ").join("-").toLowerCase(),
                       );
                     },
                   })}
