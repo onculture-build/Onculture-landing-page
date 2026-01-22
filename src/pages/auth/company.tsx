@@ -54,9 +54,17 @@ const CompanyOnboarding = () => {
       onSuccess: (res: any) => {
         sessionStorage.removeItem("auth");
         dispatch(clearEntries());
-
-        if (res.message && res.message.toLowerCase().includes("waitlist")) {
+        const message = res?.message || "";
+        if (
+          message.toLowerCase().includes("waitlist") ||
+          message.toLowerCase().includes("notify you when approved")
+        ) {
           navigate(`/${PageRoutes.signup}/${PageRoutes.signupFailure}`);
+        } else if (
+          message.toLowerCase().includes("verification email") ||
+          message.toLowerCase().includes("email has been sent")
+        ) {
+          navigate(`/${PageRoutes.signup}/${PageRoutes.signupSuccess}`);
         } else {
           navigate(`/${PageRoutes.signup}/${PageRoutes.signupSuccess}`);
         }
