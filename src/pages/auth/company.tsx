@@ -51,10 +51,15 @@ const CompanyOnboarding = () => {
       },
     };
     signup(signupData, {
-      onSuccess: (res) => {
-        navigate(`/${PageRoutes.signup}/${PageRoutes.signupSuccess}`);
+      onSuccess: (res: any) => {
         sessionStorage.removeItem("auth");
         dispatch(clearEntries);
+
+        if (res.message && res.message.toLowerCase().includes("waitlist")) {
+          navigate(`/${PageRoutes.signup}/${PageRoutes.signupFailure}`);
+        } else {
+          navigate(`/${PageRoutes.signupSuccess}`);
+        }
       },
       onError: (err) => {
         toast.error(err.message);
@@ -89,7 +94,7 @@ const CompanyOnboarding = () => {
                   const { value } = event.target;
                   setValue(
                     "code",
-                    value.split(" ").join("-").substring(0, 20).toLowerCase()
+                    value.split(" ").join("-").substring(0, 20).toLowerCase(),
                   );
                 },
               })}
@@ -115,7 +120,7 @@ const CompanyOnboarding = () => {
                       const { value } = event.target;
                       setValue(
                         "code",
-                        value.split(" ").join("-").toLowerCase()
+                        value.split(" ").join("-").toLowerCase(),
                       );
                     },
                   })}
