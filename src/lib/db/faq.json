@@ -50,6 +50,16 @@
     "answer": "No. OnCulture comes with a lot of HRIS features like Employee profile management, Job info and management, Leave and PTO management and more."
   },
   {
+    "id": "d162da17-32f8-40f1-bf60-18485846472f",
+    "question": "Does OnCulture handle performance reviews?",
+    "answer": "Yes. You can run review cycles for your whole company or selected employees, set goals with milestones, and collect self, manager, peer and direct-report reviews. Team Sum-Up updates can also be linked to goals, so progress is visible without extra reporting."
+  },
+  {
+    "id": "be97e83f-8809-4387-8af2-8c3653133863",
+    "question": "Can employees request time off in OnCulture?",
+    "answer": "Yes. You can set up leave types and policies, and balances accrue automatically. Employees request time off in OnCulture, and each request goes through the approval workflow you choose."
+  },
+  {
     "id": "aa0ce358-ef18-402e-9a40-e69fb772830c",
     "question": "Can OnCulture integrate with other existing HR systems or tools?",
     "answer": "To connect to an existing HR system, contact our support team at get@onculture.io"

@@ -11,10 +11,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
 import CourseList from "../../lib/db/courses.json";
 import CourseCard, { CourseCategory } from "../../components/course-card";
-import { PageRoutes } from "../../lib/constants";
+import CtaBand from "../../components/cta-band";
 
 type LengthFilter = "all" | "full" | "short";
 
@@ -91,7 +90,6 @@ const TopicChip = ({
 );
 
 const CoursesPage = () => {
-  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [length, setLength] = useState<LengthFilter>("all");
   const [topic, setTopic] = useState<CourseCategory | "all">("all");
@@ -298,62 +296,10 @@ const CoursesPage = () => {
         </PageSection>
       </Box>
 
-      {/* CTA */}
-      <Box bg="brand.primary.700" py={{ base: "48px", md: "56px" }}>
-        <PageSection>
-          <Flex
-            direction={{ base: "column", md: "row" }}
-            align={{ base: "flex-start", md: "center" }}
-            justify="space-between"
-            gap="24px"
-          >
-            <Box maxW="600px">
-              <Heading
-                as="h2"
-                fontSize={{ base: "24px", md: "30px" }}
-                fontWeight="bold"
-                color="white"
-                mb="10px"
-              >
-                Bring these courses to your team
-              </Heading>
-              <Text fontSize="16px" lineHeight="26px" color="whiteAlpha.900">
-                Assign courses, track who has completed them and see quiz
-                results, all inside OnCulture.
-              </Text>
-            </Box>
-            <Flex gap="12px" flexShrink={0}>
-              <Button
-                h="46px"
-                px="22px"
-                fontSize="14px"
-                fontWeight="medium"
-                borderRadius="4px"
-                bg="white"
-                color="brand.primary.700"
-                _hover={{ bg: "brand.primary.50" }}
-                onClick={() => navigate(`/${PageRoutes.bookDemo}`)}
-              >
-                Book a Demo
-              </Button>
-              <Button
-                h="46px"
-                px="22px"
-                fontSize="14px"
-                fontWeight="medium"
-                borderRadius="4px"
-                variant="outline"
-                borderColor="whiteAlpha.700"
-                color="white"
-                _hover={{ bg: "whiteAlpha.100" }}
-                onClick={() => navigate(`/${PageRoutes.joinWaitlist}`)}
-              >
-                Join Waitlist
-              </Button>
-            </Flex>
-          </Flex>
-        </PageSection>
-      </Box>
+      <CtaBand
+        title="Bring these courses to your team"
+        description="Assign courses, track who has completed them and see quiz results, all inside OnCulture."
+      />
     </Box>
   );
 };
