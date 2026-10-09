@@ -94,7 +94,6 @@ const CoursesPage = () => {
   const [length, setLength] = useState<LengthFilter>("all");
   const [topic, setTopic] = useState<CourseCategory | "all">("all");
 
-  // Courses matching search + length; topic counts are derived from this set
   const baseMatches = useMemo(() => {
     const query = search.trim().toLowerCase();
     return courses.filter((course) => {
@@ -122,7 +121,6 @@ const CoursesPage = () => {
 
   return (
     <Box w="100%">
-      {/* Hero */}
       <Box bg="brand.primary.50" py={{ base: "48px", md: "64px" }}>
         <PageSection>
           <Text
@@ -160,7 +158,6 @@ const CoursesPage = () => {
         </PageSection>
       </Box>
 
-      {/* Filters */}
       <Box borderBottom="1px solid" borderColor="#EFEFF4" py="24px">
         <PageSection>
           <Flex gap="12px" wrap="wrap" mb="16px">
@@ -189,6 +186,9 @@ const CoursesPage = () => {
               p="4px"
               gap="2px"
               h="44px"
+              w={{ base: "100%", md: "auto" }}
+              maxW="100%"
+              overflowX="auto"
             >
               {LENGTH_OPTIONS.map((option) => {
                 const active = length === option.value;
@@ -197,8 +197,10 @@ const CoursesPage = () => {
                     key={option.value}
                     onClick={() => setLength(option.value)}
                     h="36px"
-                    px="14px"
-                    fontSize="14px"
+                    flex={{ base: 1, md: "none" }}
+                    flexShrink={0}
+                    px={{ base: "8px", md: "14px" }}
+                    fontSize={{ base: "13px", md: "14px" }}
                     fontWeight="regular"
                     borderRadius="3px"
                     bg={active ? "white" : "transparent"}
@@ -234,7 +236,6 @@ const CoursesPage = () => {
         </PageSection>
       </Box>
 
-      {/* Catalogue */}
       <Box pt="28px" pb={{ base: "64px", md: "72px" }}>
         <PageSection>
           <Text fontSize="14px" color="#5F6170" mb="20px">
