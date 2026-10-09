@@ -1,5 +1,5 @@
 import { Box, Flex, Grid, Heading, Image, Text } from '@chakra-ui/react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import Programs from '../../lib/db/programs.json';
 import ErrorPage from '../ErrorPage';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
@@ -13,11 +13,23 @@ const PageSection = ({ children }: { children: React.ReactNode }) => (
   </Box>
 );
 
+// Slugs from the previous program pages, kept so old links and bookmarks still resolve.
+const LEGACY_PROGRAM_SLUGS: Record<string, string> = {
+  hris: 'people-and-hr',
+  'toolkits-&-insights': 'performance',
+  'interactive-learning-course': 'learning',
+  'people-resource-bank': 'learning',
+};
+
 const ProgramInfo = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
   const programInfo = Programs.find((program) => program.slug === id);
+
+  if (!programInfo && id && LEGACY_PROGRAM_SLUGS[id]) {
+    return <Navigate to={`/programs/${LEGACY_PROGRAM_SLUGS[id]}`} replace />;
+  }
 
   if (!programInfo) {
     return <ErrorPage errorTitle='Cannot find requested page' />;
@@ -92,7 +104,7 @@ const ProgramInfo = () => {
                 </CustomButton>
                 {programInfo.link && (
                   <CustomButton
-                    variant='primary-outline'
+                    variant='outline'
                     fontSize='14px'
                     padding='1.4rem 2.2rem'
                     onClick={() => navigate(programInfo.link.href)}
