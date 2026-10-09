@@ -1,37 +1,5 @@
 [
     {
-        "id": "course-001",
-        "slug": "preventing-non-sexual-harassment",
-        "title": "Preventing Non Sexual Harassment at Work",
-        "description": "Some forms of harassment are clear, but many others are not. Most times, victims may be unaware or not have enough information to label it as harassment. In a few cases, harassers themselves may not recognise some behaviours as inappropriate.",
-        "tag": "Workplace Safety",
-        "isReady": true,
-        "icon": "/assets/images/harassment-badge.png",
-        "coverImage": "/assets/images/non-sexual-harrasment-banner.png",
-        "thumbnail": "/assets/images/harrasement-course-thumbnail.png",
-        "intro": [
-            "How do you create a productive and toxic-free workplace?",
-            "This is where the 'Preventing Harassment in the Workplace' course comes in."
-        ],
-        "learningOutcomes": [
-            "Identify sexual and non-sexual types of harassment in the workplace.",
-            "Identify ways to prevent workplace harassment.",
-            "Develop responsive measures for combating workplace harassment."
-        ],
-        "videoUrl": null,
-        "through": [
-            "On-demand virtual lessons and quizzes",
-            "Course-relevant real-life scenarios and dialogue",
-            "Interactive and animated videos in an easy-to-understand way"
-        ],
-        "benefits": [
-            "A toxic-free company.",
-            "Employee behaviors that buttress company values.",
-            "A more engaged and productive workforce.",
-            "Higher retention rates"
-        ]
-    },
-    {
         "id": "course-002",
         "slug": "preventing-sexual-harassment",
         "title": "Preventing Sexual Harassment at Work",
@@ -61,7 +29,51 @@
             "Employee behaviors that buttress company values.",
             "A more engaged and productive workforce.",
             "Higher retention rates"
-        ]
+        ],
+        "summary": "Recognise sexual harassment, understand your rights and know how to respond.",
+        "category": "Workplace Safety",
+        "type": "full",
+        "modules": 1,
+        "quizzes": 5,
+        "cardImage": "/assets/images/sexual-harrasement-banner.png"
+    },
+    {
+        "id": "course-001",
+        "slug": "preventing-non-sexual-harassment",
+        "title": "Preventing Non-Sexual Harassment at Work",
+        "description": "Some forms of harassment are clear, but many others are not. Most times, victims may be unaware or not have enough information to label it as harassment. In a few cases, harassers themselves may not recognise some behaviours as inappropriate.",
+        "tag": "Workplace Safety",
+        "isReady": true,
+        "icon": "/assets/images/harassment-badge.png",
+        "coverImage": "/assets/images/non-sexual-harrasment-banner.png",
+        "thumbnail": "/assets/images/harrasement-course-thumbnail.png",
+        "intro": [
+            "How do you create a productive and toxic-free workplace?",
+            "This is where the 'Preventing Harassment in the Workplace' course comes in."
+        ],
+        "learningOutcomes": [
+            "Identify sexual and non-sexual types of harassment in the workplace.",
+            "Identify ways to prevent workplace harassment.",
+            "Develop responsive measures for combating workplace harassment."
+        ],
+        "videoUrl": null,
+        "through": [
+            "On-demand virtual lessons and quizzes",
+            "Course-relevant real-life scenarios and dialogue",
+            "Interactive and animated videos in an easy-to-understand way"
+        ],
+        "benefits": [
+            "A toxic-free company.",
+            "Employee behaviors that buttress company values.",
+            "A more engaged and productive workforce.",
+            "Higher retention rates"
+        ],
+        "summary": "Spot the less obvious forms of harassment and help keep your workplace safe.",
+        "category": "Workplace Safety",
+        "type": "full",
+        "modules": 3,
+        "quizzes": 5,
+        "cardImage": "/assets/images/non-sexual-harrasment-banner.png"
     },
     {
         "id": "course-003",
@@ -93,6 +105,180 @@
             "A workforce of Culture Champions.",
             "Stronger team collaboration and connections.",
             "A culture-fit layer to your existing onboarding process."
-        ]
+        ],
+        "summary": "Why aligned, positive cultures retain the best people, and how to shape yours.",
+        "category": "Culture & Engagement",
+        "type": "full",
+        "modules": 5,
+        "quizzes": 5,
+        "cardImage": "/assets/images/work-culture-banner.png"
+    },
+    {
+        "id": "course-004",
+        "slug": "leading-effectively",
+        "title": "Leading Effectively",
+        "summary": "The habits that help managers set direction, support their people and get results.",
+        "category": "Leadership",
+        "type": "full",
+        "modules": 4,
+        "quizzes": 5,
+        "cardImage": null,
+        "isReady": false
+    },
+    {
+        "id": "course-005",
+        "slug": "building-high-performing-teams",
+        "title": "Building High-Performing Teams",
+        "summary": "How strong teams are formed, and what leaders do to keep them performing.",
+        "category": "Teams & Performance",
+        "type": "full",
+        "modules": 3,
+        "quizzes": 5,
+        "cardImage": null,
+        "isReady": false
+    },
+    {
+        "id": "course-006",
+        "slug": "managing-your-onboarding",
+        "title": "Managing Your Onboarding",
+        "summary": "Make the most of your first weeks in a new role and settle in with confidence.",
+        "category": "Career & Communication",
+        "type": "full",
+        "modules": 4,
+        "quizzes": 5,
+        "cardImage": null,
+        "isReady": false
+    },
+    {
+        "id": "course-007",
+        "slug": "10-mistakes-you-are-making-as-a-leader",
+        "title": "10 Mistakes You Are Making As A Leader",
+        "summary": "Common leadership missteps that hold teams back, and what to do instead.",
+        "category": "Leadership",
+        "type": "short",
+        "modules": null,
+        "quizzes": null,
+        "cardImage": null,
+        "isReady": false
+    },
+    {
+        "id": "course-008",
+        "slug": "5-ways-to-check-if-you-are-a-good-leader",
+        "title": "5 Ways To Check If You Are A Good Leader",
+        "summary": "A quick self-check on how you lead and where you can grow.",
+        "category": "Leadership",
+        "type": "short",
+        "modules": null,
+        "quizzes": null,
+        "cardImage": null,
+        "isReady": false
+    },
+    {
+        "id": "course-009",
+        "slug": "5-steps-to-running-1-on-1-sessions",
+        "title": "5 Steps to Running 1-on-1 Sessions",
+        "summary": "A simple structure for one-on-ones your team actually finds useful.",
+        "category": "Leadership",
+        "type": "short",
+        "modules": null,
+        "quizzes": null,
+        "cardImage": "/assets/images/courses/5-steps-to-running-1-on-1-sessions.png",
+        "isReady": false
+    },
+    {
+        "id": "course-010",
+        "slug": "5-ideas-to-improve-team-management",
+        "title": "5 Ideas to Improve Team Management",
+        "summary": "Practical ideas for organising work and supporting the people you manage.",
+        "category": "Leadership",
+        "type": "short",
+        "modules": null,
+        "quizzes": null,
+        "cardImage": "/assets/images/courses/5-ideas-to-improve-team-management.png",
+        "isReady": false
+    },
+    {
+        "id": "course-011",
+        "slug": "5-steps-to-achieving-your-team-goals",
+        "title": "5 Steps to Achieving Your Team Goals",
+        "summary": "Turn team goals into a clear plan everyone can work towards.",
+        "category": "Teams & Performance",
+        "type": "short",
+        "modules": null,
+        "quizzes": null,
+        "cardImage": "/assets/images/courses/5-steps-to-achieving-your-team-goals.png",
+        "isReady": false
+    },
+    {
+        "id": "course-012",
+        "slug": "7-ways-to-build-a-culture-of-speed",
+        "title": "7 Ways to Build a Culture of Speed",
+        "summary": "Help your team move faster without losing quality or burning out.",
+        "category": "Culture & Engagement",
+        "type": "short",
+        "modules": null,
+        "quizzes": null,
+        "cardImage": "/assets/images/courses/7-ways-to-build-a-culture-of-speed.png",
+        "isReady": false
+    },
+    {
+        "id": "course-013",
+        "slug": "7-ways-to-build-a-culture-of-growth",
+        "title": "7 Ways to Build a Culture of Growth",
+        "summary": "Create a workplace where people learn, develop and step up.",
+        "category": "Culture & Engagement",
+        "type": "short",
+        "modules": null,
+        "quizzes": null,
+        "cardImage": "/assets/images/courses/7-ways-to-build-a-culture-of-growth.png",
+        "isReady": false
+    },
+    {
+        "id": "course-014",
+        "slug": "7-ways-to-build-a-culture-of-innovation",
+        "title": "7 Ways to Build a Culture of Innovation",
+        "summary": "Encourage new ideas and make it safe for your team to experiment.",
+        "category": "Culture & Engagement",
+        "type": "short",
+        "modules": null,
+        "quizzes": null,
+        "cardImage": "/assets/images/courses/7-ways-to-build-a-culture-of-innovation.png",
+        "isReady": false
+    },
+    {
+        "id": "course-015",
+        "slug": "5-ways-to-communicate-your-work-better",
+        "title": "5 Ways to Communicate Your Work Better",
+        "summary": "Share progress clearly so your work gets seen and understood.",
+        "category": "Career & Communication",
+        "type": "short",
+        "modules": null,
+        "quizzes": null,
+        "cardImage": "/assets/images/courses/5-ways-to-communicate-your-work-better.png",
+        "isReady": false
+    },
+    {
+        "id": "course-016",
+        "slug": "5-reasons-why-you-are-being-micromanaged",
+        "title": "5 Reasons Why You Are Being Micromanaged",
+        "summary": "Understand why it happens and how to earn more trust and autonomy.",
+        "category": "Career & Communication",
+        "type": "short",
+        "modules": null,
+        "quizzes": null,
+        "cardImage": null,
+        "isReady": false
+    },
+    {
+        "id": "course-017",
+        "slug": "5-reasons-you-may-not-be-a-team-favorite",
+        "title": "5 Reasons You May Not Be A Team Favorite",
+        "summary": "Honest reasons colleagues may struggle to work with you, and how to fix them.",
+        "category": "Career & Communication",
+        "type": "short",
+        "modules": null,
+        "quizzes": null,
+        "cardImage": null,
+        "isReady": false
     }
 ]

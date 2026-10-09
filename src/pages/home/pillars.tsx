@@ -20,8 +20,8 @@ const Pillars = () => {
               Our 4 Pillars
             </Heading>
             <Text textAlign={'center'} w={{ lg: '30%' }} fontSize={'label'}>
-              Connect, Engage, Develop, Care for, and boost your team's
-              productivity.
+              Everything you need to manage, develop and engage your people,
+              in one platform.
             </Text>
           </Stack>
           <Grid
@@ -43,7 +43,7 @@ const Pillars = () => {
                   title={program.title}
                   slug={program.slug}
                   cover={program.image}
-                  type={program.type}
+                  summary={program.summary}
                 />
               </GridItem>
             ))}

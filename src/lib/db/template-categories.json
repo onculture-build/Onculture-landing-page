@@ -2,7 +2,7 @@
   "Productivity": {
     "id": 1,
     "title": "Productivity and Performance",
-    "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "description": "Keep work visible with regular updates on progress, plans and blockers, so teams stay aligned and moving.",
     "templates": [
       { "id": 1, "icon": "/assets/svg/rocket.svg", "title": "Team Sum-Up" }
     ]
@@ -10,7 +10,7 @@
   "Engagement": {
     "id": 2,
     "title": "Interaction/Connection & Engagement",
-    "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "description": "Get people talking and connecting through check-ins, conversation starters and honest feedback.",
     "templates": [
       { "id": 1, "icon": "/assets/svg/rocket.svg", "title": "Peer 1:1" },
       {
@@ -28,7 +28,7 @@
   "Motivation": {
     "id": 3,
     "title": "Recognition & Motivation",
-    "description": "Team members are required to share what they worked on daily, and blockers they had and what they plan to work on the following day.",
+    "description": "Recognise colleagues for stand-out work and for living your company values.",
     "templates": [
       {
         "id": 1,
