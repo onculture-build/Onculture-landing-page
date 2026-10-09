@@ -5,40 +5,44 @@ import { useNavigate } from 'react-router-dom';
 interface PillarCardProps {
   cover: string;
   title: string;
-  type: string;
+  summary: string;
   slug: string;
 }
 
-const PillarsCard = ({ cover, title, type, slug }: PillarCardProps) => {
+const PillarsCard = ({ cover, title, summary, slug }: PillarCardProps) => {
   const navigate = useNavigate();
   return (
     <Card h={'100%'}>
       <Box h={'130px'}>
-        <Image src={cover} borderRadius={'4px 4px 0 0'} h={'100%'} />
+        <Image
+          src={cover}
+          alt=''
+          borderRadius={'4px 4px 0 0'}
+          h={'100%'}
+          w={'100%'}
+          objectFit={'cover'}
+        />
       </Box>
       <Flex
         direction={'column'}
         textAlign={'center'}
         px={{ base: 4, md: 8 }}
-        pt={{ base: 8, md: 10 }}
+        py={{ base: 8, md: 10 }}
         h={'100%'}
       >
         <Heading as={'h5'} fontSize={'heading5'} mb={5}>
           {title}
         </Heading>
-        <Box
-          listStylePosition={'inside'}
-          fontSize={'label'}
-          mb={5}
-          dangerouslySetInnerHTML={{ __html: type }}
-        />
-        {/* <CustomButton
+        <Text fontSize={'label'} mb={8}>
+          {summary}
+        </Text>
+        <CustomButton
           mt={'auto'}
           padding={'1.5rem 1rem'}
           onClick={() => navigate(`/programs/${slug}`)}
         >
           See details
-        </CustomButton> */}
+        </CustomButton>
       </Flex>
     </Card>
   );

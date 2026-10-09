@@ -1,175 +1,150 @@
 [
   {
-    "title": "HRIS",
-    "slug": "hris",
-    "type": "Empower your people and enable self-management",
+    "title": "People & HR",
+    "slug": "people-and-hr",
+    "summary": "Keep employee records, company structure, time off and policies in one place.",
     "image": "/assets/images/hris.png",
+    "tagline": "One home for your people and how your company is organised.",
     "intro": [
-      " When you think of harassment at work, what typically comes to mind?",
-      "I suspect allegations of sexual misconduct between coworkers, or between coworkers and their employers.",
-      "While sexual harassment has been the subject of the most media attention, and deservedly so, harassment of a non-sexual nature is just as prevalent.",
-      "Some forms of harassment are clear, but many others are not. Most times, victims may be unaware or not have enough information to label it as harassment. In a few cases, harassers themselves may not recognise some behaviours as inappropriate.",
-      "The thing to know is that; workplace harassment, whether obvious or not, has a devastating impact on the productivity and performance of individuals and teams, as well as on the profitability of companies. Furthermore, claims of harassment are costly, financially and reputation-wise. "
+      "OnCulture keeps your employee records, company structure and everyday HR admin together, so your team spends less time chasing information and more time on people."
     ],
-    "qa": {
-      "ques": "How do you create a productive and toxic-free workplace?",
-      "ans": "This is where the 'Preventing Harassment in the Workplace' course comes in."
-    },
-    "subs": [
+    "features": [
       {
-        "title": "In this interactive course, Employees will learn to:",
-        "items": [
-          "Identify sexual and non-sexual types of harassment in the workplace.",
-          "Identify ways to prevent workplace harassment.",
-          "Develop responsive measures for combating workplace harassment."
-        ]
+        "title": "Employee profiles",
+        "description": "Personal, job and contact details, emergency contacts and documents for every employee."
       },
       {
-        "title": "Through:",
-        "items": [
-          "On-demand virtual lessons and quizzes",
-          "Course-relevant real-life scenarios and dialogue",
-          "Interactive and animated videos in an easy-to-understand way"
-        ]
+        "title": "Org chart and structure",
+        "description": "Set up departments, branches, job roles and job levels, and see how everyone fits together."
       },
       {
-        "title": "What you will stand to gain:",
-        "items": [
-          "A toxic-free company.",
-          "Employee behaviors that buttress company values.",
-          "A more engaged and productive workforce.",
-          "Higher retention rates"
-        ]
+        "title": "Custom fields",
+        "description": "Capture the extra employee information that matters to your company."
+      },
+      {
+        "title": "CSV import",
+        "description": "Bring your whole team into OnCulture at once from a spreadsheet."
+      },
+      {
+        "title": "Time off",
+        "description": "Create leave types and policies, track balances as they accrue, and let employees request time off."
+      },
+      {
+        "title": "Approval workflows",
+        "description": "Route time-off requests through the right approvers, one step after another or in parallel."
+      },
+      {
+        "title": "Company policies",
+        "description": "Publish policy documents with their effective dates so everyone can find the latest version."
       }
     ]
   },
   {
-    "title": "Toolkits & Insights",
-    "slug": "toolkits-&-insights",
-    "type": "Listen to your people and empower them to achieve more",
+    "title": "Performance",
+    "slug": "performance",
+    "summary": "Run review cycles, set goals and connect day-to-day work to results.",
     "image": "/assets/images/toolkits.png",
+    "tagline": "Clear goals, fair reviews and work that adds up.",
     "intro": [
-      " When you think of harassment at work, what typically comes to mind?",
-      "I suspect allegations of sexual misconduct between coworkers, or between coworkers and their employers.",
-      "While sexual harassment has been the subject of the most media attention, and deservedly so, harassment of a non-sexual nature is just as prevalent.",
-      "Some forms of harassment are clear, but many others are not. Most times, victims may be unaware or not have enough information to label it as harassment. In a few cases, harassers themselves may not recognise some behaviours as inappropriate.",
-      "The thing to know is that; workplace harassment, whether obvious or not, has a devastating impact on the productivity and performance of individuals and teams, as well as on the profitability of companies. Furthermore, claims of harassment are costly, financially and reputation-wise. "
+      "Give every employee clear goals and regular, structured feedback. OnCulture runs your review cycles and links everyday work to the goals it moves forward."
     ],
-    "qa": {
-      "ques": "How do you create a productive and toxic-free workplace?",
-      "ans": "This is where the 'Preventing Harassment in the Workplace' course comes in."
-    },
-    "subs": [
+    "features": [
       {
-        "title": "In this interactive course, Employees will learn to:",
-        "items": [
-          "Identify sexual and non-sexual types of harassment in the workplace.",
-          "Identify ways to prevent workplace harassment.",
-          "Develop responsive measures for combating workplace harassment."
-        ]
+        "title": "Review cycles",
+        "description": "Run cycles for the whole company or selected employees, with approvers and clear timelines."
       },
       {
-        "title": "Through:",
-        "items": [
-          "On-demand virtual lessons and quizzes",
-          "Course-relevant real-life scenarios and dialogue",
-          "Interactive and animated videos in an easy-to-understand way"
-        ]
+        "title": "Goals and milestones",
+        "description": "Set goals, break them into milestones, and approve and track them through to completion."
       },
       {
-        "title": "What you will stand to gain:",
-        "items": [
-          "A toxic-free company.",
-          "Employee behaviors that buttress company values.",
-          "A more engaged and productive workforce.",
-          "Higher retention rates"
-        ]
+        "title": "Multi-perspective reviews",
+        "description": "Collect self, manager, peer and direct-report reviews in a single cycle."
+      },
+      {
+        "title": "Flexible reviewers",
+        "description": "Choose who reviews each person: their line manager, department lead, branch lead or a specific colleague."
+      },
+      {
+        "title": "Question bank and ratings",
+        "description": "Reuse review questions across cycles and rate performance consistently."
+      },
+      {
+        "title": "Sum-Ups linked to goals",
+        "description": "Connect Team Sum-Up updates to goals so progress is visible without extra reporting."
       }
     ]
   },
   {
-    "title": "Interactive Learning course",
-    "slug": "interactive-learning-course",
-    "type": "Courses on Work, Productivity, Leadership and Corporate Culture",
+    "title": "Engagement & Recognition",
+    "slug": "engagement-and-recognition",
+    "summary": "Keep teams connected, recognise great work and hear what your people think.",
     "image": "/assets/images/driving-culture.png",
+    "tagline": "Keep teams connected and recognise the behaviours you want to see.",
     "intro": [
-      "Companies with aligned, positive cultures improve work lives, retain the best people, and generally perform better.",
-      "Imagine a workforce with similar values and behaviors, focused on the same business goals.",
-      "This is where OnCulture comes in."
+      "Culture is built in small, regular moments. OnCulture gives your teams simple rituals for staying aligned, celebrating each other and speaking up."
     ],
-    "subs": [
+    "features": [
       {
-        "title": "In this interactive course, you will learn to:",
-        "items": [
-          "Reinforce the company's purpose and mission.",
-          "Identify Value Stars among employees. ",
-          "Influence culturally-aligned behaviours of teams.",
-          "Strengthen connections between employees as they learn together. "
-        ]
+        "title": "Team Sum-Up",
+        "description": "Regular updates on what people worked on, what is next and what is blocking them."
       },
       {
-        "title": "Through relatable:",
-        "items": [
-          "Videos.",
-          "Real-life scenarios.",
-          "Case studies.",
-          "Interactive quizzes."
-        ]
+        "title": "Shout Out",
+        "description": "Celebrate colleagues for stand-out work and tie each shout-out to a company value."
       },
       {
-        "title": "What you will stand to gain:",
-        "items": [
-          "Better (designed) workplace culture.",
-          "Diverse, yet clearer interpretation of the company's culture.",
-          "A workforce of Culture Champions.",
-          "Stronger team collaboration and connections.",
-          "A culture-fit layer to your existing onboarding process."
-        ]
+        "title": "Value Star",
+        "description": "Hold regular team votes to recognise the colleagues who best exemplify your company values."
+      },
+      {
+        "title": "Feedback Hub",
+        "description": "Give employees a safe channel to raise complaints and share suggestions."
+      },
+      {
+        "title": "Announcements and company feed",
+        "description": "Share news company-wide, collect acknowledgements, and let people react and comment."
+      },
+      {
+        "title": "Catch-ups",
+        "description": "Never miss a birthday, work anniversary or public holiday."
       }
     ]
   },
   {
-    "title": "People Resource Bank",
-    "slug": "people-resource-bank",
-    "type": "<li>Articles</li><li>Checklists</li><li>Micro-Explainer Videos</li>",
+    "title": "Learning",
+    "slug": "learning",
+    "summary": "A wide catalogue of culture courses, with progress tracking and certificates.",
     "image": "/assets/images/resource.png",
+    "tagline": "Courses that build healthier, more productive workplaces.",
     "intro": [
-      " When you think of harassment at work, what typically comes to mind?",
-      "I suspect allegations of sexual misconduct between coworkers, or between coworkers and their employers.",
-      "While sexual harassment has been the subject of the most media attention, and deservedly so, harassment of a non-sexual nature is just as prevalent.",
-      "Some forms of harassment are clear, but many others are not. Most times, victims may be unaware or not have enough information to label it as harassment. In a few cases, harassers themselves may not recognise some behaviours as inappropriate.",
-      "The thing to know is that; workplace harassment, whether obvious or not, has a devastating impact on the productivity and performance of individuals and teams, as well as on the profitability of companies. Furthermore, claims of harassment are costly, financially and reputation-wise. "
+      "Develop your people with a wide catalogue of culture courses on leadership, teamwork, communication and workplace safety. Short courses fit into one sitting, and full courses come with modules and quizzes."
     ],
-    "qa": {
-      "ques": "How do you create a productive and toxic-free workplace?",
-      "ans": "This is where the 'Preventing Harassment in the Workplace' course comes in."
-    },
-    "subs": [
+    "features": [
       {
-        "title": "In this interactive course, Employees will learn to:",
-        "items": [
-          "Identify sexual and non-sexual types of harassment in the workplace.",
-          "Identify ways to prevent workplace harassment.",
-          "Develop responsive measures for combating workplace harassment."
-        ]
+        "title": "Course catalogue",
+        "description": "Full and short courses on leadership, teams and performance, culture and engagement, workplace safety, and career and communication."
       },
       {
-        "title": "Through:",
-        "items": [
-          "On-demand virtual lessons and quizzes",
-          "Course-relevant real-life scenarios and dialogue",
-          "Interactive and animated videos in an easy-to-understand way"
-        ]
+        "title": "Assign courses",
+        "description": "Enrol your whole company or selected employees in the courses that matter to you."
       },
       {
-        "title": "What you will stand to gain:",
-        "items": [
-          "A toxic-free company.",
-          "Employee behaviors that buttress company values.",
-          "A more engaged and productive workforce.",
-          "Higher retention rates"
-        ]
+        "title": "Modules and quizzes",
+        "description": "Bite-sized lessons with quizzes that check understanding as people learn."
+      },
+      {
+        "title": "Progress tracking",
+        "description": "See who has started, who is in progress and who has completed each course."
+      },
+      {
+        "title": "Certificates",
+        "description": "Employees receive a certificate when they complete a course."
       }
-    ]
+    ],
+    "link": {
+      "label": "Browse the course catalogue",
+      "href": "/courses"
+    }
   }
 ]

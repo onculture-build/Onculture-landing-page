@@ -11,8 +11,8 @@ const Benefits = () => {
         </Heading>
         <Box w={{ lg: '40%' }} mx={'auto'} mb={30} textAlign={'center'}>
           <Text fontSize={'paragraph'} textAlign={'center'}>
-            We help you shape the shared behaviours of your entire company,
-            while promoting practices.
+            We help you shape the shared behaviours of your entire company and
+            support your people at every step.
           </Text>
           <Text fontSize={'paragraph'}>Benefits are:</Text>
         </Box>
