@@ -22,13 +22,5 @@
     "name": "OnCulture.io",
     "footerIcon": "/assets/svg/socials/instagram.svg",
     "icon": "/assets/images/instagram.png"
-  },
-  {
-    "id": 4,
-    "type": "X (Twitter)",
-    "url": "https://x.com/OnCulture_'",
-    "name": "OnCulture",
-    "footerIcon": "/assets/svg/socials/twitter.svg",
-    "icon": "/assets/images/x.png"
   }
 ]

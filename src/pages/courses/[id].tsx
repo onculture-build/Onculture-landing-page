@@ -12,7 +12,7 @@ const CourseInfo = () => {
   const navigate = useNavigate();
   const courseInfo = CourseData?.find((course) => course?.slug === id);
 
-  if (!courseInfo) {
+  if (!courseInfo?.isReady) {
     return <ErrorPage errorTitle="Cannot find requested course" />;
   }
 
