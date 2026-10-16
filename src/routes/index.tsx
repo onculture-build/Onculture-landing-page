@@ -6,6 +6,7 @@ import Home from '../pages/home';
 
 const Contact = lazy(() => import('../pages/contact'));
 const Faq = lazy(() => import('../pages/faq'));
+const PrivacyPolicy = lazy(() => import('../pages/privacy-policy'));
 const Pricing = lazy(() => import('../pages/pricing'));
 const Resources = lazy(() => import('../pages/resources'));
 const BookDemo = lazy(() => import('../pages/book-demo'));
@@ -40,6 +41,7 @@ export const routes: RouteObject[] = [
     children: [
       { index: true, element: <Home /> },
       { path: PageRoutes.faq, element: <Faq /> },
+      { path: PageRoutes.privacyPolicy, element: <PrivacyPolicy /> },
       { path: PageRoutes.pricing, element: <Pricing /> },
       { path: PageRoutes.contact, element: <Contact /> },
       { path: PageRoutes.bookDemo, element: <BookDemo /> },
