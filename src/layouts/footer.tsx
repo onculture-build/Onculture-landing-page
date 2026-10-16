@@ -51,6 +51,12 @@ const Footer = () => {
               <Link to={PageRoutes.faq} style={{ fontSize: '1.5rem' }}>
                 FAQ
               </Link>
+              <Link
+                to={`/${PageRoutes.privacyPolicy}`}
+                style={{ fontSize: '1.5rem' }}
+              >
+                Privacy Policy
+              </Link>
             </Stack>
           </GridItem>
           <GridItem order={{ base: 2, lg: 3 }}>
