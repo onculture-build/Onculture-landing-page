@@ -4,6 +4,7 @@ export const PageRoutes = {
   home: '/',
   about: 'about',
   faq: 'faq',
+  privacyPolicy: 'privacy-policy',
   pricing: 'pricing',
   contact: 'contact',
   bookDemo: 'book-demo',
