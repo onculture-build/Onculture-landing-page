@@ -132,53 +132,59 @@ const ProgramInfo = () => {
         </PageSection>
       </Box>
 
-      {/* Features */}
-      <Box py={{ base: '48px', md: '64px' }}>
-        <PageSection>
-          <Heading
-            as='h2'
-            fontSize={{ base: '22px', md: '26px' }}
-            fontWeight='bold'
-            color='#16161D'
-            mb='24px'
-          >
-            What's included
-          </Heading>
-          <Grid
-            templateColumns={{
-              base: '1fr',
-              sm: 'repeat(2, 1fr)',
-              lg: 'repeat(3, 1fr)',
-            }}
-            gap='20px'
-          >
-            {programInfo.features.map((feature) => (
-              <Box
-                key={feature.title}
-                p='22px'
-                border='1px solid'
-                borderColor='#E7E7EE'
-                borderRadius='6px'
-                borderTop='3px solid'
-                borderTopColor='brand.primary.600'
-              >
-                <Heading
-                  as='h3'
-                  fontSize='16px'
-                  fontWeight='semiBold'
-                  color='#16161D'
-                  mb='8px'
+      {/* Product screenshots */}
+      {programInfo.showcase && (
+        <Box py={{ base: '48px', md: '72px' }}>
+          <PageSection>
+            <Flex direction='column' gap={{ base: '48px', md: '72px' }}>
+              {programInfo.showcase.map((item, idx) => (
+                <Flex
+                  key={item.title}
+                  direction={{
+                    base: 'column',
+                    lg: idx % 2 === 0 ? 'row' : 'row-reverse',
+                  }}
+                  gap={{ base: '24px', lg: '56px' }}
+                  align={{ lg: 'center' }}
                 >
-                  {feature.title}
-                </Heading>
-                <Text fontSize='14px' lineHeight='22px' color='#5F6170'>
-                  {feature.description}
-                </Text>
-              </Box>
-            ))}
-          </Grid>
-        </PageSection>
-      </Box>
+                  <Box flex={{ lg: '0 0 340px' }}>
+                    <Heading
+                      as='h2'
+                      fontSize={{ base: '22px', md: '26px' }}
+                      lineHeight={1.25}
+                      fontWeight='bold'
+                      color='#16161D'
+                      mb='12px'
+                    >
+                      {item.title}
+                    </Heading>
+                    <Text fontSize='15px' lineHeight='26px' color='#4B4D5A'>
+                      {item.description}
+                    </Text>
+                  </Box>
+                  <Box
+                    flex={1}
+                    bg='brand.primary.50'
+                    borderRadius='12px'
+                    p={{ base: '12px', md: '24px' }}
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      w='100%'
+                      borderRadius='8px'
+                      border='1px solid'
+                      borderColor='#E7E7EE'
+                      boxShadow='0 12px 32px rgba(66, 82, 118, 0.12)'
+                      loading='lazy'
+                    />
+                  </Box>
+                </Flex>
+              ))}
+            </Flex>
+          </PageSection>
+        </Box>
+      )}
 
       {/* Other pillars */}
       <Box pb={{ base: '56px', md: '72px' }}>
