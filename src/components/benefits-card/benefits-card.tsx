@@ -30,6 +30,11 @@ const BenefitCard = ({ title, image, description }: Benefit) => {
           color={'brand.white'}
           p={10}
           h={'100%'}
+          w={'100%'}
+          // Set here rather than in the CSS module, where Chakra's Card styles override it
+          position={'absolute'}
+          top={0}
+          left={0}
           className={styles['card-back']}
         >
           <Flex
