@@ -1,50 +1,82 @@
-import { Box, Card, Flex, Heading, Image, Text } from '@chakra-ui/react';
-import CustomButton from './custom-button';
-import { useNavigate } from 'react-router-dom';
+import { Box, Flex, Heading, Icon, Link, Text } from '@chakra-ui/react';
+import { ReactNode } from 'react';
+import { IconType } from 'react-icons';
+import { FiArrowRight } from 'react-icons/fi';
+import { Link as RouterLink } from 'react-router-dom';
 
 interface PillarCardProps {
-  cover: string;
+  illustration: ReactNode;
+  icon: IconType;
   title: string;
   summary: string;
-  slug: string;
+  href: string;
 }
 
-const PillarsCard = ({ cover, title, summary, slug }: PillarCardProps) => {
-  const navigate = useNavigate();
+const PillarsCard = ({
+  illustration,
+  icon,
+  title,
+  summary,
+  href,
+}: PillarCardProps) => {
   return (
-    <Card h={'100%'}>
-      <Box h={'130px'}>
-        <Image
-          src={cover}
-          alt=''
-          borderRadius={'4px 4px 0 0'}
-          h={'100%'}
-          w={'100%'}
-          objectFit={'cover'}
-        />
-      </Box>
+    <Flex
+      direction={'column'}
+      h={'100%'}
+      bg={'brand.white'}
+      border={'1px solid'}
+      borderColor={'brand.gray.300'}
+      borderRadius={'8px'}
+      overflow={'hidden'}
+      transition={'box-shadow 0.2s ease'}
+      _hover={{ boxShadow: '0 8px 24px rgba(92, 0, 221, 0.08)' }}
+    >
       <Flex
-        direction={'column'}
-        textAlign={'center'}
-        px={{ base: 4, md: 8 }}
-        py={{ base: 8, md: 10 }}
-        h={'100%'}
+        h={'144px'}
+        bg={'brand.primary.50'}
+        alignItems={'center'}
+        justifyContent={'center'}
+        aria-hidden
       >
-        <Heading as={'h5'} fontSize={'heading5'} mb={5}>
-          {title}
-        </Heading>
-        <Text fontSize={'label'} mb={8}>
+        {illustration}
+      </Flex>
+      <Flex direction={'column'} flex={1} p={{ base: 6, md: 8 }}>
+        <Flex alignItems={'center'} gap={4} mb={5}>
+          <Flex
+            boxSize={'32px'}
+            borderRadius={'6px'}
+            bg={'brand.primary.50'}
+            alignItems={'center'}
+            justifyContent={'center'}
+            flexShrink={0}
+          >
+            <Icon as={icon} boxSize={'16px'} color={'brand.primary.600'} />
+          </Flex>
+          <Heading as={'h3'} fontSize={'heading5'} fontWeight={'semiBold'}>
+            {title}
+          </Heading>
+        </Flex>
+        <Text fontSize={'label'} color={'brand.other'} mb={6}>
           {summary}
         </Text>
-        <CustomButton
+        <Link
+          as={RouterLink}
+          to={href}
           mt={'auto'}
-          padding={'1.5rem 1rem'}
-          onClick={() => navigate(`/programs/${slug}`)}
+          display={'inline-flex'}
+          alignItems={'center'}
+          gap={2}
+          w={'fit-content'}
+          fontSize={'label'}
+          fontWeight={'semiBold'}
+          color={'brand.primary.600'}
+          _hover={{ color: 'brand.primary.800', textDecoration: 'none' }}
         >
-          See details
-        </CustomButton>
+          Explore {title}
+          <Icon as={FiArrowRight} />
+        </Link>
       </Flex>
-    </Card>
+    </Flex>
   );
 };
 

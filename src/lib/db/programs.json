@@ -8,34 +8,12 @@
     "intro": [
       "OnCulture keeps your employee records, company structure and everyday HR admin together, so your team spends less time chasing information and more time on people."
     ],
-    "features": [
+    "showcase": [
       {
-        "title": "Employee profiles",
-        "description": "Personal, job and contact details, emergency contacts and documents for every employee."
-      },
-      {
-        "title": "Org chart and structure",
-        "description": "Set up departments, branches, job roles and job levels, and see how everyone fits together."
-      },
-      {
-        "title": "Custom fields",
-        "description": "Capture the extra employee information that matters to your company."
-      },
-      {
-        "title": "CSV import",
-        "description": "Bring your whole team into OnCulture at once from a spreadsheet."
-      },
-      {
-        "title": "Time off",
-        "description": "Create leave types and policies, track balances as they accrue, and let employees request time off."
-      },
-      {
-        "title": "Approval workflows",
-        "description": "Route time-off requests through the right approvers, one step after another or in parallel."
-      },
-      {
-        "title": "Company policies",
-        "description": "Publish policy documents with their effective dates so everyone can find the latest version."
+        "title": "Know who's off at a glance",
+        "description": "A shared calendar of approved leave and public holidays, so teams can plan around absences without chasing anyone.",
+        "image": "/assets/images/programs/time-off-whos-off.png",
+        "alt": "OnCulture Who's Off calendar showing employees on leave and public holidays"
       }
     ]
   },
@@ -48,30 +26,18 @@
     "intro": [
       "Give every employee clear goals and regular, structured feedback. OnCulture runs your review cycles and links everyday work to the goals it moves forward."
     ],
-    "features": [
+    "showcase": [
       {
-        "title": "Review cycles",
-        "description": "Run cycles for the whole company or selected employees, with approvers and clear timelines."
+        "title": "See your whole team on a 9-box matrix",
+        "description": "Plot every employee by performance and company values after each review cycle. Spot your stars, find the people who need support and plan growth with real data.",
+        "image": "/assets/images/programs/performance-matrix.png",
+        "alt": "OnCulture 9-box performance matrix grouping employees from Emerging Talent to Star"
       },
       {
-        "title": "Goals and milestones",
-        "description": "Set goals, break them into milestones, and approve and track them through to completion."
-      },
-      {
-        "title": "Multi-perspective reviews",
-        "description": "Collect self, manager, peer and direct-report reviews in a single cycle."
-      },
-      {
-        "title": "Flexible reviewers",
-        "description": "Choose who reviews each person: their line manager, department lead, branch lead or a specific colleague."
-      },
-      {
-        "title": "Question bank and ratings",
-        "description": "Reuse review questions across cycles and rate performance consistently."
-      },
-      {
-        "title": "Sum-Ups linked to goals",
-        "description": "Connect Team Sum-Up updates to goals so progress is visible without extra reporting."
+        "title": "Goals everyone can follow",
+        "description": "Give each goal owners, a timeline and clear milestones. Progress updates as milestones are completed, so everyone can see how work is moving.",
+        "image": "/assets/images/programs/performance-goals.png",
+        "alt": "OnCulture goal details showing owners, timeline, progress and milestones"
       }
     ]
   },
@@ -84,30 +50,30 @@
     "intro": [
       "Culture is built in small, regular moments. OnCulture gives your teams simple rituals for staying aligned, celebrating each other and speaking up."
     ],
-    "features": [
+    "showcase": [
       {
-        "title": "Team Sum-Up",
-        "description": "Regular updates on what people worked on, what is next and what is blocking them."
+        "title": "Know how every team is really doing",
+        "description": "Team Sum Up collects regular updates on what people worked on, what's next and what's in their way, alongside an overall mood check for the team.",
+        "image": "/assets/images/programs/engage-team-sum-up.png",
+        "alt": "OnCulture Team Sum Up dashboard showing responses, blockers, overall mood and recent sum ups"
       },
       {
-        "title": "Shout Out",
-        "description": "Celebrate colleagues for stand-out work and tie each shout-out to a company value."
+        "title": "Updates linked to the goals they move",
+        "description": "Each sum up shows past work, plans and blockers in one place, and can link to a goal so progress is visible without extra reporting.",
+        "image": "/assets/images/programs/engage-sum-up-detail.png",
+        "alt": "A single Team Sum Up showing completed work, next steps, a blocker and a linked goal"
       },
       {
-        "title": "Value Star",
-        "description": "Hold regular team votes to recognise the colleagues who best exemplify your company values."
+        "title": "Recognition tied to your values",
+        "description": "See who is being recognised, who gives the most appreciation and which company values show up most across the team.",
+        "image": "/assets/images/programs/engage-shout-out.png",
+        "alt": "OnCulture Shout Out summary with top recognised members, appreciation gurus and company values"
       },
       {
-        "title": "Feedback Hub",
-        "description": "Give employees a safe channel to raise complaints and share suggestions."
-      },
-      {
-        "title": "Announcements and company feed",
-        "description": "Share news company-wide, collect acknowledgements, and let people react and comment."
-      },
-      {
-        "title": "Catch-ups",
-        "description": "Never miss a birthday, work anniversary or public holiday."
+        "title": "Give a Shout Out in seconds",
+        "description": "Thank one or more colleagues, add a personal note and pick the values they showed. Send it with your name or anonymously.",
+        "image": "/assets/images/programs/engage-give-shout-out.png",
+        "alt": "Give a Shout Out form with recipients, personal note, company values and an anonymous option"
       }
     ]
   },
@@ -120,26 +86,18 @@
     "intro": [
       "Develop your people with a wide catalogue of culture courses on leadership, teamwork, communication and workplace safety. Short courses fit into one sitting, and full courses come with modules and quizzes."
     ],
-    "features": [
+    "showcase": [
       {
-        "title": "Course catalogue",
-        "description": "Full and short courses on leadership, teams and performance, culture and engagement, workplace safety, and career and communication."
+        "title": "Courses your team will actually finish",
+        "description": "Short video lessons sit alongside readings in clear modules, so people always know where they are and what comes next.",
+        "image": "/assets/images/programs/learning-course-player.png",
+        "alt": "OnCulture course player showing a module video with the course outline and progress alongside"
       },
       {
-        "title": "Assign courses",
-        "description": "Enrol your whole company or selected employees in the courses that matter to you."
-      },
-      {
-        "title": "Modules and quizzes",
-        "description": "Bite-sized lessons with quizzes that check understanding as people learn."
-      },
-      {
-        "title": "Progress tracking",
-        "description": "See who has started, who is in progress and who has completed each course."
-      },
-      {
-        "title": "Certificates",
-        "description": "Employees receive a certificate when they complete a course."
+        "title": "Quizzes that check understanding",
+        "description": "Each module ends with a short quiz, so learning sticks and you can see that people understood the material, not just opened it.",
+        "image": "/assets/images/programs/learning-quiz.png",
+        "alt": "OnCulture course quiz question with multiple-choice answers and the course outline alongside"
       }
     ],
     "link": {
