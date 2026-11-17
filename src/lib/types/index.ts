@@ -46,10 +46,24 @@ export type CompanySignupType = {
   name: string;
   code: string;
   email: string;
-  values?: Record<'value', string>[];
+  values?: Record<"value", string>[];
 };
 
 export type AuthType = {
+  billingInfo?: {
+    countryCode: string;
+    declaredEmployees: number;
+    contactName: string;
+    email: string;
+    address: string;
+    taxId?: string;
+    companyName?: string;
+    termsVersion: string;
+    dpaVersion: string;
+    acceptedTerms: true;
+    acceptedDpa: true;
+  };
+  selectedPriceId?: string;
   userInfo: UserSignUpType;
   companyInfo: CompanySignupType;
 };

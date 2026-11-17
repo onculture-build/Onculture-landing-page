@@ -1,7 +1,8 @@
 import CustomInput from "../../components/custom-input";
 import CustomButton from "../../components/custom-button";
 import { Heading, Stack, Text, Box, Spinner } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import SelectedPlan from "../../components/selected-plan";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Resolver, SubmitHandler } from "react-hook-form";
 import ViewportContainer from "../../layouts/container";
@@ -18,6 +19,7 @@ const SignUp = () => {
   const { mutate: checkUser, isPending } = useCheckAllowedUser();
 
   const navigate = useNavigate();
+  const [params] = useSearchParams();
   const dispatch = useAppDispatch();
 
   const userData = useAppSelector(authUser);
@@ -39,7 +41,7 @@ const SignUp = () => {
     checkUser(data, {
       onSuccess: (res) => {
         dispatch(saveUserInfo(data));
-        navigate(`/${PageRoutes.signup}/${PageRoutes.companyOnboarding}`);
+        navigate(`/${PageRoutes.signup}/${PageRoutes.companyOnboarding}?${params.toString()}`);
       },
 
       onError: (err: any) => {
@@ -67,6 +69,16 @@ const SignUp = () => {
         <Text textAlign={"center"}>
           Sign up to OnCulture with your Workspace
         </Text>
+        <SelectedPlan />
+        {!params.get("price") && (
+          <Text textAlign="center" mt={4}>
+            <Link to={`/${PageRoutes.pricing}`}>
+              <Text as="span" textDecoration="underline">
+                Choose a plan for immediate signup
+              </Text>
+            </Link>
+          </Text>
+        )}
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack mt={10} gap={10}>
             <CustomInput
