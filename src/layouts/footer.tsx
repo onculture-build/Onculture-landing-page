@@ -48,6 +48,9 @@ const Footer = () => {
               <Link to={PageRoutes.home} style={{ fontSize: '1.5rem' }}>
                 About ThePeoplePractice
               </Link>
+              <Link to={`/${PageRoutes.pricing}`} style={{ fontSize: '1.5rem' }}>
+                Pricing
+              </Link>
               <Link to={PageRoutes.faq} style={{ fontSize: '1.5rem' }}>
                 FAQ
               </Link>

@@ -1,114 +1,76 @@
+import { Card, Heading, List, ListItem, Stack, Text } from "@chakra-ui/react";
+import CustomButton from "../../components/custom-button";
 import {
-  Box,
-  Card,
-  Stack,
-  Heading,
-  List,
-  ListItem,
-  ListIcon,
-  Text,
-  Flex,
-} from '@chakra-ui/react';
-import React from 'react';
-import { BiCheck } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom';
-import { AppUtilities } from '../../app.utiilities';
-import CustomButton from '../../components/custom-button';
+  formatPlanPrice,
+  PlanPrice,
+  PublicPlan,
+} from "../../services/queries/subscriptions.query";
 
-interface PricingProps {
-  recommended: boolean;
-  name: string;
-  price: number;
-  description: string;
-  benefits: Record<string, any>[] | string[];
-  type: 'month' | 'year';
-  isOnboardingPage?: boolean;
-  onClick?: () => void;
-}
+type PricingProps = {
+  onClick: () => void;
+} & (
+  | { plan: PublicPlan; price: PlanPrice }
+  | { plan?: undefined; price?: undefined }
+);
 
-const PricingCard = ({
-  recommended,
-  name,
-  price,
-  description,
-  benefits,
-  type,
-  isOnboardingPage = false,
-  onClick,
-}: PricingProps) => {
-  const navigate = useNavigate();
+const customFeatures = [
+  "Pick only the modules you need",
+  "Pricing based on your team size",
+  "Monthly or yearly billing",
+  "Pay online or by invoice",
+  "A walkthrough with our team",
+];
+
+const PricingCard = ({ plan, price, onClick }: PricingProps) => {
+  const features = plan
+    ? plan.grants
+        .filter(({ capability }) => capability.moduleKey)
+        .map(({ limit, capability }) =>
+          capability.hasLimit
+            ? `${capability.name}: ${limit ?? "Unlimited"}`
+            : capability.name,
+        )
+    : customFeatures;
+
   return (
     <Card
-      h={'100%'}
-      py={16}
-      px={10}
-      position={'relative'}
-      cursor={'pointer'}
-      bgColor={'rgba(245, 248, 254, 1)'}
-      className='pricing-card'
+      className={plan ? "pricing-card" : "pricing-card pricing-custom"}
+      variant="unstyled"
     >
-      {recommended && (
-        <Box
-          bgColor={'brand.primary.600'}
-          position={'absolute'}
-          color={'brand.white'}
-          px={8}
-          py={2}
-          borderRadius={4}
-          top={-8}
-          left={{ base: '25%', md: '20%' }}
-          fontWeight={'semiBold'}
-          className='badge'
-        >
-          Recommended
-        </Box>
-      )}
-      <Stack>
-        <Text
-          as={'span'}
-          fontSize={'heading5'}
-          fontWeight={'semiBold'}
-          className='plan-name'
-        >
-          {name}
+      <Stack spacing={4}>
+        <Heading as="h3">{plan?.name ?? "Custom"}</Heading>
+        <Text className="pricing-description">
+          {plan?.description ??
+            "Choose the modules and seats you need. We’ll price a plan around your team."}
         </Text>
-        <Heading
-          as={'h2'}
-          fontSize={54}
-          fontWeight={'semiBold'}
-          color={'brand.primary.600'}
-          className='amount'
+        <div className="pricing-rate">
+          <strong>{price ? formatPlanPrice(price) : "Let’s talk"}</strong>
+          {price && (
+            <span>
+              {price.perSeat ? "per user / " : "per "}
+              {price.interval === "Monthly" ? "month" : "year"}
+            </span>
+          )}
+        </div>
+        <CustomButton
+          variant={plan ? "primary" : "primary-outline"}
+          color={plan ? undefined : "brand.primary.600"}
+          bg={plan ? undefined : "white"}
+          w="100%"
+          minH="48px"
+          onClick={onClick}
         >
-          {AppUtilities.formatAmount(price)}
-        </Heading>
-        <Text
-          fontSize={'label'}
-          fontWeight={'bold'}
-          color={'brand.primary.600'}
-          className='duration'
-        >
-          per user per {type}
-        </Text>
-        <Text fontSize={'paragraph'} color={'brand.gray.900'} className='desc'>
-          {description}
-        </Text>
-
-        <Box my={10}>
-          <CustomButton w={'100%'} className='btn' onClick={onClick}>
-            {isOnboardingPage ? 'Continue' : 'Get Started'}
-          </CustomButton>
-        </Box>
+          {plan ? "Get started" : "Talk to sales"}
+        </CustomButton>
       </Stack>
-
-      <List>
-        {benefits.map((item: any, i: number) => (
-          <ListItem key={i}>
-            <Flex alignItems={'center'}>
-              <ListIcon fontSize={'heading5'}>
-                <BiCheck />
-              </ListIcon>
-              {item.addsonTitle}
-            </Flex>
+      <Text className="pricing-includes">
+        {plan ? "Includes:" : "Built around you:"}
+      </Text>
+      <List spacing={2}>
+        {features.map((feature, index) => (
+          <ListItem key={index} className="pricing-feature">
+            <img src="/assets/pricing/31d18.svg" alt="" />
+            {feature}
           </ListItem>
         ))}
       </List>

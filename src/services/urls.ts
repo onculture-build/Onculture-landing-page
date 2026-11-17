@@ -6,7 +6,7 @@ export const MAILERLITE_BOOKDEMO_GROUP_ID = import.meta.env
   .VITE_APP_MAILERLITE_BOOKDEMO_GROUP_ID;
 
 const URLS = {
-  getSubscriptionPlans: '/subscription/allPlans',
+  getSubscriptionPlans: '/subscription-plans/public',
   mailerLiteApi: 'https://connect.mailerlite.com/api/subscribers',
   redirectToCompany: '/companies/get-company-url',
   forgotCompanyDomain: '/companies/user/forgot-companies',

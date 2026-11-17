@@ -2,7 +2,9 @@ import Axios, { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 
 const axios = Axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_URL as string,
+  baseURL:
+    import.meta.env.VITE_APP_BASE_URL?.trim() ||
+    (import.meta.env.DEV ? 'http://localhost:4000' : undefined),
   headers: { 'Content-Type': 'application/json' },
 });
 

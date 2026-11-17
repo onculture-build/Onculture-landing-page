@@ -17,11 +17,11 @@ export const navLinks: NavLink[] = [
     label: "Resources",
     href: PageRoutes.resources,
   },
-  // {
-  //   id: 3,
-  //   label: 'Pricing',
-  //   href: PageRoutes.pricing,
-  // },
+  {
+    id: 3,
+    label: "Pricing",
+    href: PageRoutes.pricing,
+  },
   {
     id: 4,
     label: "Contact",
