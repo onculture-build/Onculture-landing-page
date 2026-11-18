@@ -13,7 +13,7 @@ export default function SignupShell({
   step: number;
   title: string;
   subtitle: string;
-  wide?: boolean | "plans";
+  wide?: boolean | "plans" | "payment";
   children: ReactNode;
 }) {
   return (
@@ -43,7 +43,15 @@ export default function SignupShell({
         </Text>
       </Stack>
       <Box
-        maxW={wide === "plans" ? "1348px" : wide ? "760px" : "520px"}
+        maxW={
+          wide === "plans"
+            ? "1348px"
+            : wide === "payment"
+              ? "960px"
+              : wide
+                ? "760px"
+                : "520px"
+        }
         w="full"
         mx="auto"
       >

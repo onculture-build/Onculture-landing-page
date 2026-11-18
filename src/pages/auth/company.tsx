@@ -264,7 +264,7 @@ export default function CompanyOnboarding() {
               ? "Your Free plan does not require payment."
               : "Your workspace opens as soon as payment goes through"
       }
-      wide={step === 2 ? "plans" : step > 1}
+      wide={step === 2 ? "plans" : step === 3 ? "payment" : step > 1}
     >
       {(error || status.isError) && (
         <Text role="alert" color="red.600" bg="red.50" p={3} mb={4}>

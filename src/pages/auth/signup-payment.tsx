@@ -30,6 +30,7 @@ export default function SignupPayment({
   seats,
   refresh,
   onDone,
+  onBack,
 }: {
   token: string;
   state: any;
@@ -38,6 +39,7 @@ export default function SignupPayment({
   seats: number;
   refresh: () => unknown;
   onDone: () => void;
+  onBack: () => void;
 }) {
   const [method, setMethod] = useState("Online");
   const [busy, setBusy] = useState(false);
@@ -249,7 +251,14 @@ export default function SignupPayment({
           {signupError(quote.error)}
         </Text>
       )}
-      <SimpleGrid columns={{ base: 1, md: 2 }} gap={5}>
+      <SimpleGrid
+        columns={{ base: 1, md: 2 }}
+        templateColumns={{
+          base: "1fr",
+          md: "minmax(0, 2fr) minmax(260px, 1fr)",
+        }}
+        gap={5}
+      >
         <Box as="form" onSubmit={pay}>
           <Text fontSize="14px" mb={3}>
             How would you like to pay?
@@ -278,7 +287,10 @@ export default function SignupPayment({
                   {price.currency === "NGN" ? "Paystack" : "Stripe"}
                 </Radio>
                 <Text ml={6} mt={1} fontSize="14px" color="gray.600">
-                  Your workspace opens as soon as payment is confirmed.
+                  {price.currency === "NGN"
+                    ? "Pay using the available card, bank transfer or USSD options at checkout."
+                    : "Pay securely with Stripe using the available payment methods at checkout."}{" "}
+                  Access begins after payment confirmation.
                 </Text>
               </Box>
               <Box
@@ -303,7 +315,7 @@ export default function SignupPayment({
                 </Radio>
                 <Text ml={6} mt={1} fontSize="14px" color="gray.600">
                   {state.invoiceAvailable
-                    ? "Pay by bank transfer and upload your receipt. Access begins after payment confirmation."
+                    ? "We’ll send an invoice with a reference code. Access begins after an OnCulture administrator confirms payment. Uploading a receipt does not activate your workspace."
                     : "Invoice payments are not currently available for this currency."}
                 </Text>
               </Box>
@@ -316,21 +328,40 @@ export default function SignupPayment({
               type="email"
               defaultValue={state.email}
               isRequired
-              h="44px"
+              h="4rem"
             />
-            <CustomInput label="Tax ID (optional)" name="taxId" h="44px" />
+            <CustomInput label="Tax ID (optional)" name="taxId" h="4rem" />
           </SimpleGrid>
-          <CustomButton
-            type="submit"
+          <SimpleGrid
+            columns={{
+              base: 1,
+              sm: !state.order || state.order.status === "Failed" ? 2 : 1,
+            }}
+            gap={3}
             mt={5}
-            w="full"
-            h="44px"
-            padding={2}
-            loading={busy}
-            disabled={!currentOrder && (quote.isPending || quote.isError)}
           >
-            {method === "Invoice" ? "Create invoice" : `Pay ${money}`}
-          </CustomButton>
+            {(!state.order || state.order.status === "Failed") && (
+              <CustomButton
+                type="button"
+                variant="outline"
+                h="48px"
+                padding={2}
+                onClick={onBack}
+                disabled={busy}
+              >
+                Back
+              </CustomButton>
+            )}
+            <CustomButton
+              type="submit"
+              h="48px"
+              padding={2}
+              loading={busy}
+              disabled={!currentOrder && (quote.isPending || quote.isError)}
+            >
+              {method === "Invoice" ? "Create invoice" : `Pay ${money}`}
+            </CustomButton>
+          </SimpleGrid>
         </Box>
         <Box
           bg="gray.50"
@@ -349,7 +380,7 @@ export default function SignupPayment({
               .map((g) => (
                 <Text
                   key={g.capabilityKey}
-                  fontSize="11px"
+                  fontSize="14px"
                   border="1px solid"
                   borderColor="gray.300"
                   borderRadius="2px"
