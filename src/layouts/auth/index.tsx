@@ -1,40 +1,16 @@
-import { Box, Divider, Flex, Image, Stack } from '@chakra-ui/react';
-import React, { ReactNode } from 'react';
-import ViewportContainer from '../container';
-import { Link } from 'react-router-dom';
+import { Box } from "@chakra-ui/react";
+import { ReactNode } from "react";
 
-const AuthLayout = ({ children }: { children: ReactNode }) => {
+export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <Stack
-      h={'100vh'}
-      gap={0}
-      overflowX={'hidden'}
-      overflowY={'auto'}
-      className='page'
+    <Box
+      minH="100dvh"
+      w="full"
+      bg="brand.white"
+      borderTop="1px solid"
+      borderColor="gray.100"
     >
-      <Box
-        bg={'brand.white'}
-        position={'sticky'}
-        style={{ position: '-webkit-sticky' }}
-        top={0}
-        zIndex={1000}
-      >
-        <ViewportContainer>
-          <Flex py={10} px={{ base: '2rem', lg: '0' }}>
-            <Link to={'/'}>
-              <Image src={'/assets/images/Onculture-colored.png'} w={'60%'} />
-            </Link>
-          </Flex>
-        </ViewportContainer>
-        <Divider colorScheme='brand.primary' />
-      </Box>
-      <Box>
-        <ViewportContainer>
-          <Stack>{children}</Stack>
-        </ViewportContainer>
-      </Box>
-    </Stack>
+      {children}
+    </Box>
   );
-};
-
-export default AuthLayout;
+}

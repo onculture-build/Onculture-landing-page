@@ -49,6 +49,7 @@
 }
 .pricing-grid {
   gap: 20px;
+  width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
 }
 .pricing-page .pricing-card {
@@ -60,6 +61,10 @@
 .pricing-page .pricing-card:hover,
 .pricing-page .pricing-card:focus-within {
   border-color: #8d49ff;
+  background: #f7f2fd;
+}
+.pricing-page .pricing-card.pricing-selected {
+  border-color: #5c00dd;
   background: #f7f2fd;
 }
 .pricing-card h3 {

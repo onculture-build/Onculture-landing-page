@@ -1,316 +1,323 @@
-import ViewportContainer from "../../layouts/container";
-import CustomButton from "../../components/custom-button";
-import CustomInput from "../../components/custom-input";
-import { CompanySchema } from "../../lib/schema";
-import { AuthType, CompanySignupType } from "../../lib/types";
-import { Box, Flex, Heading, Spinner, Stack, Text } from "@chakra-ui/react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import React from "react";
-import { useForm, Resolver } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { Text } from "@chakra-ui/react";
+import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import SelectedPlan from "../../components/selected-plan";
-import BillingFields, { termsVersion, dpaVersion } from "./billing-fields";
-import { useGetSubscriptionPlans } from "../../services/queries/subscriptions.query";
-import CompanyValuesInput from "../../components/company-values";
-import { useAppDispatch, useAppSelector } from "../../services/store/hooks";
-import { authCompany, authUser } from "../../services/store/selectors";
+import { useAppSelector } from "../../services/store/hooks";
+import { authUser } from "../../services/store/selectors";
 import { useRegisterCompany } from "../../services/mutations";
+import { useGetSubscriptionPlans } from "../../services/queries/subscriptions.query";
+import {
+  signupError,
+  signupRequest,
+} from "../../services/queries/signup-checkout";
+import axios from "../../services/axios";
+import SignupShell from "./signup-shell";
+import { termsVersion, dpaVersion } from "./billing-fields";
 import { PageRoutes } from "../../lib/constants";
-import { clearEntries } from "../../services/store/slices/auth";
-import toast from "react-hot-toast";
+import CompanyDetailsStep from "./components/company-details-step";
+import PlanSelectionStep from "./components/plan-selection-step";
+import PaymentStep from "./components/payment-step";
+import SignupComplete from "./components/signup-complete";
 
-const CompanyOnboarding = () => {
+const readDraft = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem("signup-workspace-draft") || "{}");
+  } catch {
+    return {};
+  }
+};
+const industries = [
+  "Agriculture",
+  "Education",
+  "Financial services",
+  "Healthcare",
+  "Hospitality",
+  "Manufacturing",
+  "Non-profit",
+  "Professional services",
+  "Retail",
+  "Technology",
+  "Other",
+];
+const ranges = ["1–10", "11–50", "51–200", "201–500", "501–1,000", "1,001+"];
+
+export default function CompanyOnboarding() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const dispatch = useAppDispatch();
-  const userInfo = useAppSelector(authUser);
-  const companyData = useAppSelector(authCompany);
-  const [country, setCountry] = React.useState("");
-  const [employees, setEmployees] = React.useState(1);
-  const formRef = React.useRef<HTMLFormElement>(null);
-  const { data: plans } = useGetSubscriptionPlans();
-  const selectedPriceId = params.get("price");
-
-  const { mutate: signup, isPending } = useRegisterCompany();
-
-  const {
-    register,
-    setValue,
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<CompanySignupType>({
-    resolver: yupResolver(CompanySchema),
-    defaultValues: {
-      name: companyData.name,
-      code: companyData.code,
-      email: companyData.email,
-      values: companyData.values,
-    },
-  } as unknown as { resolver: Resolver<CompanySignupType> });
-
-  const draftKey = `subscription-signup:${userInfo.email}`;
-  React.useEffect(() => {
-    try {
-      const draft = JSON.parse(sessionStorage.getItem(draftKey) || "null");
-      if (!draft || typeof draft !== "object") return;
-      for (const field of ["name", "code", "email"] as const) {
-        if (typeof draft[field] === "string") setValue(field, draft[field]);
-      }
-      if (typeof draft.billingCountry === "string")
-        setCountry(draft.billingCountry);
-      if (Number(draft.billingEmployees) > 0)
-        setEmployees(Number(draft.billingEmployees));
-      for (const field of [
-        "billingContact",
-        "billingEmail",
-        "billingAddress",
-        "billingTaxId",
-      ]) {
-        const input = formRef.current?.elements.namedItem(field);
-        if (
-          input instanceof HTMLInputElement &&
-          typeof draft[field] === "string"
-        )
-          input.value = draft[field];
-      }
-    } catch {
-      /* Storage can be unavailable; registration still works. */
-    }
-  }, [draftKey, setValue]);
-
-  const saveDraft = () => {
-    if (!formRef.current) return;
-    const fields = new FormData(formRef.current);
-    const names = [
-      "name",
-      "code",
-      "email",
-      "billingCountry",
-      "billingEmployees",
-      "billingContact",
-      "billingEmail",
-      "billingAddress",
-      "billingTaxId",
-    ];
-    try {
-      sessionStorage.setItem(
-        draftKey,
-        JSON.stringify(
-          Object.fromEntries(
-            names.map((name) => [name, fields.get(name) ?? ""]),
-          ),
-        ),
-      );
-    } catch {
-      /* Do not block submission if storage is unavailable. */
-    }
-  };
-
-  const submitHandler = ({ values, ...data }: CompanySignupType) => {
-    if (isPending) return;
-    let billingInfo;
-    if (selectedPriceId) {
-      const plan = plans?.find((item) =>
-        item.prices.some((price) => price.id === selectedPriceId),
-      );
-      const price = plan?.prices.find((item) => item.id === selectedPriceId);
-      if (!plan || !price) {
-        toast.error("Please select an available plan.");
-        return;
-      }
-      if (!country || price.currency !== (country === "NG" ? "NGN" : "USD")) {
-        toast.error("Please choose a plan in your country's billing currency.");
-        return;
-      }
-      const cap = plan.grants.find(
-        (grant) => grant.capabilityKey === "emp.seats",
-      )?.limit;
-      if (cap != null && employees > cap) {
-        toast.error(
-          `This plan allows at most ${cap} active employees. Please choose another plan.`,
-        );
-        return;
-      }
-      const fields = new FormData(formRef.current!);
-      if (!fields.has("acceptedTerms") || !fields.has("acceptedDpa")) {
-        toast.error("Please accept both agreements.");
-        return;
-      }
-      billingInfo = {
-        countryCode: country,
-        declaredEmployees: employees,
-        contactName: String(fields.get("billingContact") || "").trim(),
-        email: String(fields.get("billingEmail") || "").trim(),
-        address: String(fields.get("billingAddress") || "").trim(),
-        taxId: String(fields.get("billingTaxId") || "").trim(),
-        companyName: data.name,
-        termsVersion,
-        dpaVersion,
-        acceptedTerms: true as const,
-        acceptedDpa: true as const,
-      };
-    }
-    const validValues = (values || []).filter((val) => val.value !== "");
-
-    const signupData: AuthType = {
-      ...(params.get("price") && { selectedPriceId: params.get("price")! }),
-      userInfo,
-      ...(billingInfo && { billingInfo }),
-      companyInfo: {
-        ...data,
-        ...(validValues.length && { values: validValues }),
-      },
-    };
-    signup(signupData, {
-      onSuccess: (res: any) => {
-        sessionStorage.removeItem(draftKey);
-        sessionStorage.removeItem("auth");
-        dispatch(clearEntries());
-        const message = res?.data.message || "";
-        if (
-          message.toLowerCase().includes("waitlist") ||
-          message.toLowerCase().includes("notify you when approved")
-        ) {
-          navigate(`/${PageRoutes.signup}/${PageRoutes.signupFailure}`);
-        } else if (
-          message.toLowerCase().includes("verification email") ||
-          message.toLowerCase().includes("email has been sent")
-        ) {
-          navigate(`/${PageRoutes.signup}/${PageRoutes.signupSuccess}`);
-        } else {
-          navigate(`/${PageRoutes.signup}/${PageRoutes.signupSuccess}`);
-        }
-      },
-      onError: (err: any) => {
-        const message = err?.data?.message ?? err?.message;
-        toast.error(
-          typeof message === "string"
-            ? message
-            : "Unable to register. Please try again.",
-        );
-      },
-    });
-  };
-
-  const companyDomain = import.meta.env.VITE_COMPANY_DOMAIN;
-
-  return (
-    <ViewportContainer>
-      <Box
-        p={{ base: 10, md: 24 }}
-        maxW={{ base: "100%", md: "70%", xl: "50%" }}
-        mx={"auto"}
-        my={"10vh"}
-      >
-        <Heading
-          textAlign="center"
-          fontSize={"heading2"}
-          fontWeight={"bold"}
-          mb={5}
-        >
-          Create Company Profile
-        </Heading>
-        <Text textAlign={"center"}>Enter your company's information</Text>
-        <SelectedPlan />
-        <form
-          ref={formRef}
-          onChange={saveDraft}
-          onSubmit={handleSubmit(submitHandler)}
-        >
-          <Stack mt={20} gap={10}>
-            <CustomInput
-              {...register("name", {
-                onBlur(event) {
-                  const { value } = event.target;
-                  setValue(
-                    "code",
-                    value.split(" ").join("-").substring(0, 20).toLowerCase(),
-                  );
-                },
-              })}
-              placeholder="Company Name"
-              label="Company Name"
-              isRequired
-              p={"2rem"}
-              errorMessage={errors.name?.message}
-            />
-            <CustomInput
-              {...register("email")}
-              placeholder="Email Address"
-              label="Email Address"
-              isRequired
-              p={"2rem"}
-              errorMessage={errors.email?.message}
-            />
-            <Stack>
-              <Flex alignItems={"end"} gap={5}>
-                <CustomInput
-                  {...register("code", {
-                    onBlur(event) {
-                      const { value } = event.target;
-                      setValue(
-                        "code",
-                        value.split(" ").join("-").toLowerCase(),
-                      );
-                    },
-                  })}
-                  placeholder="Your Company's custom URL"
-                  label="Company Domain (20 characters max)"
-                  isRequired
-                  p={"2rem"}
-                  errorMessage={errors.code?.message}
-                  maxLength={20}
-                />
-                <Text pb={3} fontSize={"heading5"}>
-                  .{companyDomain || "onculture.io"}
-                </Text>
-              </Flex>
-            </Stack>
-            {selectedPriceId && (
-              <BillingFields
-                name={`${userInfo.firstName} ${userInfo.lastName}`}
-                email={userInfo.email}
-                country={country}
-                onCountry={setCountry}
-                employees={employees}
-                onEmployees={setEmployees}
-              />
-            )}
-            <CompanyValuesInput
-              title="values"
-              label="Company Values"
-              errors={errors}
-              register={register}
-              control={control}
-            />
-
-            <Flex mt={12} w={{ md: "80%" }} mx={"auto"} gap={4}>
-              <CustomButton
-                type="button"
-                variant="outline"
-                py={7}
-                onClick={() => navigate(-1)}
-                w={"100%"}
-              >
-                Back
-              </CustomButton>
-              <CustomButton
-                type="submit"
-                py={7}
-                w={"100%"}
-                gap={3}
-                isDisabled={isPending}
-              >
-                {isPending && <Spinner color="#FFF" speed="0.5s" />}
-                Next
-              </CustomButton>
-            </Flex>
-          </Stack>
-        </form>
-      </Box>
-    </ViewportContainer>
+  const user = useAppSelector(authUser);
+  const [draft, setDraft] = useState(readDraft);
+  const [step, setStep] = useState(() =>
+    sessionStorage.getItem("signup-checkout-token") ? 3 : 1,
   );
-};
-
-export default CompanyOnboarding;
+  const [token, setToken] = useState(
+    () => sessionStorage.getItem("signup-checkout-token") || "",
+  );
+  const [priceId, setPriceId] = useState(
+    () => params.get("price") || draft.priceId || "",
+  );
+  const [seats, setSeats] = useState(() => draft.seats || 1);
+  const [currency, setCurrency] = useState(() => draft.currency || "");
+  const [interval, setInterval] = useState(() => draft.interval || "Monthly");
+  const [error, setError] = useState("");
+  const signup = useRegisterCompany();
+  const catalog = useGetSubscriptionPlans();
+  const plans = catalog.data || [];
+  const selectedPlan = plans.find((plan) =>
+    plan.prices.some((price) => price.id === priceId),
+  );
+  const selectedPrice = selectedPlan?.prices.find(
+    (price) => price.id === priceId,
+  );
+  const countryQuery = useQuery({
+    queryKey: ["signup-countries"],
+    queryFn: async () =>
+      (await axios.get("/countries?isPaginated=false&direction=asc")).data
+        .data as { id: string; iso2: string; name: string }[],
+  });
+  const country = countryQuery.data?.find(
+    (country) => country.iso2 === draft.country,
+  );
+  const [checkedCode, setCheckedCode] = useState("");
+  useEffect(() => {
+    const timer = setTimeout(() => setCheckedCode(draft.code || ""), 400);
+    return () => clearTimeout(timer);
+  }, [draft.code]);
+  const domain = useQuery({
+    queryKey: ["signup-domain", checkedCode],
+    enabled: !!checkedCode && !token,
+    queryFn: async () =>
+      (
+        await axios.get(
+          `/signup-checkout/domain/${encodeURIComponent(checkedCode)}`,
+        )
+      ).data.data as { available: boolean },
+  });
+  const status = useQuery({
+    queryKey: ["signup-checkout", token],
+    enabled: !!token,
+    queryFn: () => signupRequest(token),
+    refetchInterval: (query) =>
+      query.state.data?.status === "Active" ? false : 5000,
+    retry: false,
+  });
+  useEffect(() => {
+    if (!plans.length) return;
+    if (
+      selectedPrice &&
+      (selectedPrice.currency !== currency ||
+        selectedPrice.interval !== interval)
+    ) {
+      setCurrency(selectedPrice.currency);
+      setInterval(selectedPrice.interval);
+      return;
+    }
+    if (!currency) {
+      const options = plans.flatMap((plan) =>
+        plan.prices.map((price) => price.currency),
+      );
+      const preferred = draft.country === "NG" ? "NGN" : "USD";
+      setCurrency(
+        selectedPrice?.currency ||
+          (options.includes(preferred) ? preferred : options[0]),
+      );
+      if (selectedPrice) setInterval(selectedPrice.interval);
+      return;
+    }
+    if (
+      selectedPrice &&
+      selectedPrice.currency === currency &&
+      selectedPrice.interval === interval
+    )
+      return;
+    const match =
+      selectedPlan?.prices.find(
+        (price) => price.currency === currency && price.interval === interval,
+      ) ||
+      plans
+        .flatMap((plan) => plan.prices)
+        .find(
+          (price) => price.currency === currency && price.interval === interval,
+        );
+    if (match) setPriceId(match.id);
+    else setPriceId("");
+  }, [plans, currency, interval, selectedPrice, selectedPlan, draft.country]);
+  useEffect(() => {
+    sessionStorage.setItem(
+      "signup-workspace-draft",
+      JSON.stringify({ ...draft, priceId, seats, currency, interval }),
+    );
+  }, [draft, priceId, seats, currency, interval]);
+  useEffect(() => {
+    if (status.data?.status === "Active") setStep(4);
+  }, [status.data?.status]);
+  useEffect(() => {
+    const id = params.get("orderId");
+    if (token && id && /^[a-f0-9-]{36}$/i.test(id))
+      signupRequest(token, `/verify/${id}`, {})
+        .then(() => status.refetch())
+        .catch((error) => setError(signupError(error)));
+  }, [token, params]);
+  useEffect(() => {
+    if (!user.email && !token)
+      navigate(`/${PageRoutes.signup}`, { replace: true });
+  }, [user.email, token, navigate]);
+  const update = (key: string, value: string) =>
+    setDraft((old: any) => ({ ...old, [key]: value }));
+  const choose = (id: string) => {
+    setPriceId(id);
+    if (
+      plans.some((plan) =>
+        plan.prices.some(
+          (price) => price.id === id && price.unitAmountMinor === 0,
+        ),
+      )
+    )
+      setSeats(1);
+  };
+  const register = async () => {
+    setError("");
+    if (!selectedPlan || !selectedPrice)
+      return setError("Choose an available plan.");
+    if (!Number.isInteger(seats) || seats < 1 || seats > 1000000)
+      return setError("Enter a whole number of users between 1 and 1,000,000.");
+    const limit = selectedPlan.grants.find(
+      (grant) => grant.capabilityKey === "emp.seats",
+    )?.limit;
+    if (limit != null && seats > limit)
+      return setError(`This plan allows at most ${limit} users.`);
+    if (sessionStorage.getItem("signup-legal-accepted") !== "true")
+      return navigate(`/${PageRoutes.signup}`);
+    try {
+      if (token) {
+        await signupRequest(token, "/selection", { priceId, seats });
+        await status.refetch();
+        setStep(3);
+        return;
+      }
+      const result = await signup.mutateAsync({
+        checkoutBeforeVerification: true,
+        selectedPriceId: priceId,
+        userInfo: user,
+        companyInfo: {
+          name: draft.name.trim(),
+          code: draft.code,
+          email: user.email,
+          phone: draft.phone?.trim() || undefined,
+          industry: draft.industry,
+          employeeRange: draft.employeeRange,
+          countryId: country?.id,
+        },
+        billingInfo: {
+          countryCode: draft.country,
+          currency: selectedPrice.currency,
+          declaredEmployees: seats,
+          contactName: `${user.firstName} ${user.lastName}`,
+          email: user.email,
+          address: "",
+          termsVersion,
+          dpaVersion,
+          acceptedTerms: true,
+          acceptedDpa: true,
+        },
+      });
+      const saved = result.data?.signupToken;
+      if (!saved)
+        throw new Error(
+          "Unable to start signup checkout. Please contact support.",
+        );
+      sessionStorage.setItem("signup-checkout-token", saved);
+      setToken(saved);
+      setStep(3);
+    } catch (error) {
+      setError(signupError(error));
+    }
+  };
+  if (step === 4)
+    return (
+      <SignupComplete
+        status={status}
+        selectedPrice={selectedPrice}
+        userEmail={user.email}
+        draftCode={draft.code}
+        token={token}
+        setStep={setStep}
+      />
+    );
+  return (
+    <SignupShell
+      step={step === 3 && selectedPrice?.unitAmountMinor === 0 ? 2 : step}
+      title={
+        step === 1
+          ? "Create Company Profile"
+          : step === 2
+            ? "Choose your plan"
+            : selectedPrice?.unitAmountMinor === 0
+              ? "Creating your workspace"
+              : "Payment"
+      }
+      subtitle={
+        step === 1
+          ? "Set up your company’s workspace on OnCulture"
+          : step === 2
+            ? "Priced per user. You can upgrade or add users any time."
+            : selectedPrice?.unitAmountMinor === 0
+              ? "Your Free plan does not require payment."
+              : "Your workspace opens as soon as payment goes through"
+      }
+      wide={step === 2 ? "plans" : step > 1}
+    >
+      {(error || status.isError) && (
+        <Text role="alert" color="red.600" bg="red.50" p={3} mb={4}>
+          {error || signupError(status.error)}
+        </Text>
+      )}
+      {step === 1 && (
+        <CompanyDetailsStep
+          draft={draft}
+          update={update}
+          checkedCode={checkedCode}
+          domain={domain}
+          country={country}
+          countryQuery={countryQuery}
+          industries={industries}
+          ranges={ranges}
+          setError={setError}
+          onContinue={() => {
+            setCurrency(currency || (draft.country === "NG" ? "NGN" : "USD"));
+            setStep(2);
+          }}
+        />
+      )}
+      {step === 2 && (
+        <PlanSelectionStep
+          catalog={catalog}
+          plans={plans}
+          priceId={priceId}
+          choose={choose}
+          seats={seats}
+          setSeats={setSeats}
+          currency={currency}
+          setCurrency={setCurrency}
+          interval={interval}
+          setInterval={setInterval}
+          selectedPrice={selectedPrice}
+          signupPending={signup.isPending}
+          token={token}
+          register={register}
+          back={() => setStep(1)}
+        />
+      )}
+      {step === 3 && (
+        <PaymentStep
+          status={status}
+          selectedPlan={selectedPlan}
+          selectedPrice={selectedPrice}
+          token={token}
+          seats={seats}
+          catalogRefetch={() => catalog.refetch()}
+          setStep={setStep}
+        />
+      )}
+    </SignupShell>
+  );
+}

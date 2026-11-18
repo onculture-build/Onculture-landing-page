@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import {
-  Checkbox,
   FormControl,
   FormLabel,
   Input,
@@ -10,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import axios from "../../services/axios";
+import CustomCheckbox from "../../components/custom-checkbox";
 
 export const legalConfig = {
   termsUrl: import.meta.env.VITE_TERMS_URL as string | undefined,
@@ -17,14 +17,10 @@ export const legalConfig = {
   termsVersion: import.meta.env.VITE_TERMS_VERSION as string | undefined,
   dpaVersion: import.meta.env.VITE_DPA_VERSION as string | undefined,
 };
-const termsReady = Boolean(legalConfig.termsUrl && legalConfig.termsVersion);
-const dpaReady = Boolean(legalConfig.dpaUrl && legalConfig.dpaVersion);
-export const termsVersion = termsReady
-  ? (legalConfig.termsVersion ?? "placeholder")
-  : "placeholder";
-export const dpaVersion = dpaReady
-  ? (legalConfig.dpaVersion ?? "placeholder")
-  : "placeholder";
+export const termsVersion =
+  (legalConfig.termsVersion as string | undefined) ?? "v1";
+export const dpaVersion =
+  (legalConfig.dpaVersion as string | undefined) ?? "v1";
 
 export default function BillingFields({
   name,
@@ -117,40 +113,36 @@ export default function BillingFields({
         </FormControl>
       ))}
 
-      <Checkbox name="acceptedTerms" isRequired>
-        {termsReady ? (
-          <>
+      <CustomCheckbox
+        name="acceptedTerms"
+        required
+        label={
+          <Text fontSize="14px">
             I agree to the{" "}
-            <Link
-              href={legalConfig.termsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href="/terms" target="_blank" rel="noopener noreferrer">
               Terms of Service
             </Link>
             .
-          </>
-        ) : (
-          "I acknowledge that the Terms of Service is pending publication."
-        )}
-      </Checkbox>
-      <Checkbox name="acceptedDpa" isRequired>
-        {dpaReady ? (
-          <>
+          </Text>
+        }
+      />
+      <CustomCheckbox
+        name="acceptedDpa"
+        required
+        label={
+          <Text fontSize="14px">
             I agree to the{" "}
             <Link
-              href={legalConfig.dpaUrl}
+              href="/data-processing"
               target="_blank"
               rel="noopener noreferrer"
             >
               Data Processing Agreement
             </Link>
             .
-          </>
-        ) : (
-          "I acknowledge that the Data Processing Agreement is pending publication."
-        )}
-      </Checkbox>
+          </Text>
+        }
+      />
       <Link
         href="https://onculture.io/privacy-policy"
         target="_blank"

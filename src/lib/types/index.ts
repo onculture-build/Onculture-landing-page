@@ -43,6 +43,10 @@ export type ForgotDomainType = {
 };
 
 export type CompanySignupType = {
+  phone?: string;
+  industry?: string;
+  employeeRange?: string;
+  countryId?: string;
   name: string;
   code: string;
   email: string;
@@ -50,7 +54,9 @@ export type CompanySignupType = {
 };
 
 export type AuthType = {
+  checkoutBeforeVerification?: boolean;
   billingInfo?: {
+    currency?: string;
     countryCode: string;
     declaredEmployees: number;
     contactName: string;
