@@ -1,4 +1,13 @@
-import { Card, Heading, List, ListItem, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  Flex,
+  Heading,
+  List,
+  ListItem,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import CustomButton from "../../components/custom-button";
 import {
   formatPlanPrice,
@@ -8,6 +17,9 @@ import {
 
 type PricingProps = {
   onClick: () => void;
+  selectable?: boolean;
+  selected?: boolean;
+  actionLabel?: string;
 } & (
   | { plan: PublicPlan; price: PlanPrice }
   | { plan?: undefined; price?: undefined }
@@ -21,7 +33,14 @@ const customFeatures = [
   "A walkthrough with our team",
 ];
 
-const PricingCard = ({ plan, price, onClick }: PricingProps) => {
+const PricingCard = ({
+  plan,
+  price,
+  onClick,
+  selectable = false,
+  selected = false,
+  actionLabel,
+}: PricingProps) => {
   const features = plan
     ? plan.grants
         .filter(({ capability }) => capability.moduleKey)
@@ -34,11 +53,39 @@ const PricingCard = ({ plan, price, onClick }: PricingProps) => {
 
   return (
     <Card
-      className={plan ? "pricing-card" : "pricing-card pricing-custom"}
+      className={
+        plan
+          ? `pricing-card${selected ? " pricing-selected" : ""}`
+          : "pricing-card pricing-custom"
+      }
       variant="unstyled"
     >
       <Stack spacing={4}>
-        <Heading as="h3">{plan?.name ?? "Custom"}</Heading>
+        <Flex align="center" justify="space-between" gap={3}>
+          <Heading as="h3">{plan?.name ?? "Custom"}</Heading>
+          {selectable && plan && (
+            <Box
+              aria-hidden="true"
+              boxSize="24px"
+              border="2px solid"
+              borderColor={selected ? "brand.primary.600" : "#C9BCE0"}
+              borderRadius="full"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              flexShrink={0}
+              bg="white"
+            >
+              {selected && (
+                <Box
+                  boxSize="12px"
+                  borderRadius="full"
+                  bg="brand.primary.600"
+                />
+              )}
+            </Box>
+          )}
+        </Flex>
         <Text className="pricing-description">
           {plan?.description ??
             "Choose the modules and seats you need. We’ll price a plan around your team."}
@@ -54,13 +101,18 @@ const PricingCard = ({ plan, price, onClick }: PricingProps) => {
         </div>
         <CustomButton
           variant={plan ? "primary" : "primary-outline"}
-          color={plan ? undefined : "brand.primary.600"}
-          bg={plan ? undefined : "white"}
+          color={plan ? "brand.white" : "brand.primary.600"}
+          bg={plan ? "brand.primary.600" : "white"}
+          _hover={
+            plan
+              ? { backgroundColor: "brand.primary.700", color: "brand.white" }
+              : undefined
+          }
           w="100%"
           minH="48px"
           onClick={onClick}
         >
-          {plan ? "Get started" : "Talk to sales"}
+          {actionLabel ?? (plan ? "Get started" : "Talk to sales")}
         </CustomButton>
       </Stack>
       <Text className="pricing-includes">

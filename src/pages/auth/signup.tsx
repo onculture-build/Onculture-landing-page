@@ -1,12 +1,11 @@
+import { useState } from "react";
 import CustomInput from "../../components/custom-input";
+import CustomCheckbox from "../../components/custom-checkbox";
 import CustomButton from "../../components/custom-button";
-import { Heading, Stack, Text, Box, Spinner } from "@chakra-ui/react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import SelectedPlan from "../../components/selected-plan";
+import { Link, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm, Resolver, SubmitHandler } from "react-hook-form";
-import ViewportContainer from "../../layouts/container";
-import { PageRoutes } from "../../lib/constants";
+import { useForm, Resolver } from "react-hook-form";
 import { UserSignUpType } from "../../lib/types";
 import { UserSignUpSchema } from "../../lib/schema";
 import { useCheckAllowedUser } from "../../services/mutations";
@@ -14,119 +13,131 @@ import { useAppDispatch, useAppSelector } from "../../services/store/hooks";
 import { authUser } from "../../services/store/selectors";
 import { saveUserInfo } from "../../services/store/slices/auth";
 import toast from "react-hot-toast";
+import SignupShell, { SignupLogin } from "./signup-shell";
+import { PageRoutes } from "../../lib/constants";
 
-const SignUp = () => {
-  const { mutate: checkUser, isPending } = useCheckAllowedUser();
-
+export default function SignUp() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const dispatch = useAppDispatch();
-
-  const userData = useAppSelector(authUser);
-
+  const user = useAppSelector(authUser);
+  const [acknowledged, setAcknowledged] = useState(false);
+  const { mutate: checkUser, isPending } = useCheckAllowedUser();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<UserSignUpType>({
-    resolver: yupResolver(UserSignUpSchema),
-    defaultValues: {
-      firstName: userData.firstName,
-      lastName: userData.lastName,
-      email: userData.email,
-    },
-  } as unknown as { resolver: Resolver<UserSignUpType> });
-
-  const onSubmit: SubmitHandler<UserSignUpType> = (data: UserSignUpType) => {
+    resolver: yupResolver(
+      UserSignUpSchema,
+    ) as unknown as Resolver<UserSignUpType>,
+    defaultValues: user,
+  });
+  const submit = (data: UserSignUpType) => {
+    if (isPending) return;
+    if (!acknowledged) return;
     checkUser(data, {
-      onSuccess: (res) => {
+      onSuccess: () => {
         dispatch(saveUserInfo(data));
-        navigate(`/${PageRoutes.signup}/${PageRoutes.companyOnboarding}?${params.toString()}`);
+        sessionStorage.setItem("signup-legal-accepted", "true");
+        navigate(
+          `/${PageRoutes.signup}/${PageRoutes.companyOnboarding}?${params.toString()}`,
+        );
       },
-
-      onError: (err: any) => {
-        toast.error(err.message);
-      },
+      onError: (error: any) =>
+        toast.error(
+          error?.data?.message || "Unable to continue. Please try again.",
+        ),
     });
   };
-
   return (
-    <ViewportContainer>
-      <Box
-        p={{ base: 10, md: 24 }}
-        maxW={{ base: "100%", md: "70%", xl: "50%" }}
-        mx={"auto"}
-        my={"10vh"}
-      >
-        <Heading
-          textAlign="center"
-          fontSize={"heading2"}
-          fontWeight={"bold"}
-          mb={5}
-        >
-          Sign Up
-        </Heading>
-        <Text textAlign={"center"}>
-          Sign up to OnCulture with your Workspace
-        </Text>
-        <SelectedPlan />
-        {!params.get("price") && (
-          <Text textAlign="center" mt={4}>
-            <Link to={`/${PageRoutes.pricing}`}>
-              <Text as="span" textDecoration="underline">
-                Choose a plan for immediate signup
-              </Text>
-            </Link>
-          </Text>
-        )}
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack mt={10} gap={10}>
+    <SignupShell
+      step={0}
+      title="Sign Up"
+      subtitle="Sign up to OnCulture with your workspace"
+    >
+      <form onSubmit={handleSubmit(submit)}>
+        <Stack spacing={5}>
+          <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={4}>
             <CustomInput
+              label="First name"
+              placeholder="First name"
+              h="4rem"
               {...register("firstName")}
-              placeholder="First Name"
-              label="First Name"
-              isRequired
-              p={"2rem"}
               errorMessage={errors.firstName?.message}
+              isRequired
             />
             <CustomInput
+              label="Last name"
+              placeholder="Last name"
+              h="4rem"
               {...register("lastName")}
-              placeholder="Last Name"
-              label="Last Name"
-              isRequired
-              p={"2rem"}
               errorMessage={errors.lastName?.message}
-            />
-            <CustomInput
-              {...register("email")}
-              placeholder="Email Address"
-              label="Email Address"
               isRequired
-              p={"2rem"}
-              errorMessage={errors.email?.message}
             />
-            <Box w={"fit-content"} mx={"auto"} mt={12}>
-              <CustomButton py={7} type={"submit"} gap={3}>
-                {isPending && <Spinner color="#FFF" speed="0.5s" />}
-                Next
-              </CustomButton>
-            </Box>
-          </Stack>
-        </form>
-        <Text textAlign={"center"} mt={10}>
-          Already have an account?{" "}
-          <Text
-            as={"span"}
-            color={"brand.secondary.600"}
-            fontWeight={"medium"}
-            fontSize={"label"}
+          </SimpleGrid>
+          <CustomInput
+            label="Work email"
+            placeholder="amaka@company.com"
+            type="email"
+            h="4rem"
+            {...register("email")}
+            errorMessage={errors.email?.message}
+            isRequired
+          />
+          <CustomCheckbox
+            checked={acknowledged}
+            onChange={(event) => setAcknowledged(event.target.checked)}
+            required
+            name="signup-agreements"
+            label={
+              <Text fontSize="14px">
+                I agree to OnCulture’s{" "}
+                <Link
+                  href="/terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="brand.primary.600"
+                  textDecoration="underline"
+                >
+                  Terms of Service
+                </Link>
+                ,{" "}
+                <Link
+                  href="/privacy-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="brand.primary.600"
+                  textDecoration="underline"
+                >
+                  Privacy Policy
+                </Link>{" "}
+                and{" "}
+                <Link
+                  href="/data-processing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="brand.primary.600"
+                  textDecoration="underline"
+                >
+                  Data Processing Agreement
+                </Link>
+                .
+              </Text>
+            }
+          />
+          <CustomButton
+            type="submit"
+            w="full"
+            h="48px"
+            padding="12px"
+            loading={isPending}
           >
-            <Link to={`/${PageRoutes.login}`}>Login </Link>
-          </Text>
-        </Text>
-      </Box>
-    </ViewportContainer>
+            Continue
+          </CustomButton>
+        </Stack>
+      </form>
+      <SignupLogin />
+    </SignupShell>
   );
-};
-
-export default SignUp;
+}

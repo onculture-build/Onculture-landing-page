@@ -1,7 +1,7 @@
-import { Stack } from '@chakra-ui/react';
-import React from 'react';
-import Navbar from './navbar';
-import Footer from './footer';
+import { Stack } from "@chakra-ui/react";
+import React from "react";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
 interface Props {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   return (
-    <Stack minH={'100vh'} gap={0}>
+    <Stack minH={"100vh"} gap={0}>
       <Navbar />
       {children}
       <Footer />
