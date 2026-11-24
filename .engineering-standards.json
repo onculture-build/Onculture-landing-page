@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/onculture-build/onculture-engineering-standards",
+  "revision": "10a1bf86aab065abd82a6cd1c1f2bd7f44a3e517",
+  "version": "0.1 draft",
+  "status": "referenced-pending-owner-approval",
+  "owner": { "name": "Morenike", "github": "mo-renike" },
+  "workflows": ["skills/onculture-frontend/SKILL.md"],
+  "lockfile": "yarn.lock",
+  "pullRequestTemplate": ".github/pull_request_template.md"
+}
