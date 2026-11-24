@@ -59,6 +59,7 @@ export default function CompanyOnboarding() {
   const [currency, setCurrency] = useState(() => draft.currency || "");
   const [interval, setInterval] = useState(() => draft.interval || "Monthly");
   const [error, setError] = useState("");
+  const [setupPollingPaused, setSetupPollingPaused] = useState(false);
   const signup = useRegisterCompany();
   const catalog = useGetSubscriptionPlans();
   const plans = catalog.data || [];
@@ -96,10 +97,26 @@ export default function CompanyOnboarding() {
     queryKey: ["signup-checkout", token],
     enabled: !!token,
     queryFn: () => signupRequest(token),
-    refetchInterval: (query) =>
-      query.state.data?.status === "Active" ? false : 5000,
+    refetchInterval: (query) => {
+      if (
+        step !== 3 ||
+        query.state.status === "error" ||
+        query.state.data?.status === "Active" ||
+        query.state.data?.status === "ProvisioningFailed" ||
+        (query.state.data?.status === "Provisioning" && setupPollingPaused)
+      )
+        return false;
+      return 5000;
+    },
+    refetchOnWindowFocus: false,
     retry: false,
   });
+  useEffect(() => {
+    setSetupPollingPaused(false);
+    if (status.data?.status !== "Provisioning") return;
+    const timer = setTimeout(() => setSetupPollingPaused(true), 120_000);
+    return () => clearTimeout(timer);
+  }, [token, status.data?.status]);
   useEffect(() => {
     if (!plans.length) return;
     if (
@@ -266,9 +283,9 @@ export default function CompanyOnboarding() {
       }
       wide={step === 2 ? "plans" : step === 3 ? "payment" : step > 1}
     >
-      {(error || status.isError) && (
+      {error && (
         <Text role="alert" color="red.600" bg="red.50" p={3} mb={4}>
-          {error || signupError(status.error)}
+          {error}
         </Text>
       )}
       {step === 1 && (
@@ -310,6 +327,7 @@ export default function CompanyOnboarding() {
       {step === 3 && (
         <PaymentStep
           status={status}
+          takingLonger={setupPollingPaused}
           selectedPlan={selectedPlan}
           selectedPrice={selectedPrice}
           token={token}

@@ -201,8 +201,8 @@ export default function SignupPayment({
           </Box>
         )}
         <Text fontSize="13px" color="gray.600">
-          Uploading a receipt does not activate your workspace. An OnCulture
-          administrator must confirm payment.
+          An OnCulture administrator must confirm payment before we create your
+          workspace. We’ll email your account setup link once it’s ready.
         </Text>
         {error && (
           <Text role="alert" color="red.600">
@@ -232,8 +232,8 @@ export default function SignupPayment({
               Pay online instead
             </CustomButton>
           )}
-          <CustomButton w="full" h="44px" padding={2} onClick={onDone}>
-            Continue
+          <CustomButton w="full" h="44px" padding={2} onClick={() => refresh()}>
+            Check payment status
           </CustomButton>
         </Flex>
       </Stack>
