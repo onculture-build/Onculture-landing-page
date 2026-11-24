@@ -1,5 +1,4 @@
 import { Spinner, Stack, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 import CustomButton from "../../../components/custom-button";
 import {
   PlanPrice,
@@ -10,6 +9,7 @@ import { signupError } from "../../../services/queries/signup-checkout";
 
 export default function PaymentStep({
   status,
+  takingLonger,
   selectedPlan,
   selectedPrice,
   token,
@@ -17,6 +17,7 @@ export default function PaymentStep({
   catalogRefetch,
   setStep,
 }: {
+  takingLonger: boolean;
   status: {
     isPending: boolean;
     isError: boolean;
@@ -32,13 +33,6 @@ export default function PaymentStep({
   setStep: (step: number) => void;
 }) {
   const provisioning = status.data?.status === "Provisioning";
-  const [takingLonger, setTakingLonger] = useState(false);
-  useEffect(() => {
-    setTakingLonger(false);
-    if (!provisioning) return;
-    const timer = setTimeout(() => setTakingLonger(true), 120_000);
-    return () => clearTimeout(timer);
-  }, [provisioning]);
 
   if (
     status.data?.status === "ProvisioningFailed" ||
@@ -46,27 +40,71 @@ export default function PaymentStep({
   )
     return (
       <Stack align="center" py={10}>
-        <Text role="alert">
-          {takingLonger
-            ? "Workspace setup is taking longer than expected."
-            : "We couldn’t create your workspace."}{" "}
-          Please contact get@onculture.io with your company domain if this
-          continues.
+        <Text
+          fontSize="xl"
+          fontWeight={600}
+          role={provisioning && takingLonger ? "status" : "alert"}
+        >
+          {provisioning && takingLonger
+            ? status.data?.paymentConfirmed
+              ? "Payment confirmed. Your account is still being created"
+              : "Your account is still being created"
+            : "We couldn’t finish creating your account"}
         </Text>
+        <Text textAlign="center" color="gray.600">
+          {provisioning && takingLonger
+            ? "Setup is taking longer than expected. Automatic status checks have paused. Use the button below to check again."
+            : "Please check the setup status again. If this continues, contact get@onculture.io with your company domain."}
+        </Text>
+        <Text textAlign="center" color="gray.600">
+          You don’t need to register again. You can continue once your account
+          is ready.
+        </Text>
+        {status.data?.paymentConfirmed && (
+          <Text color="gray.600">
+            Your payment is saved. You won’t be charged again for this signup.
+          </Text>
+        )}
         <CustomButton onClick={() => status.refetch()}>
           Check setup status
         </CustomButton>
       </Stack>
     );
-  if (status.isPending || provisioning)
+  if (status.isPending)
     return (
-      <Stack align="center" py={10}>
-        <Spinner />
-        <Text>Creating your workspace…</Text>
+      <Stack align="center" py={10} spacing={4} role="status">
+        <Spinner color="brand.primary.600" />
+        <Text>Loading your checkout…</Text>
+      </Stack>
+    );
+  if (provisioning)
+    return (
+      <Stack
+        align="center"
+        py={10}
+        spacing={4}
+        role="status"
+        aria-live="polite"
+      >
+        <Spinner color="brand.primary.600" />
+        <Text fontSize="xl" fontWeight={600}>
+          {status.data?.paymentConfirmed
+            ? "Payment confirmed. Your account is being created"
+            : "Your account is currently being created"}
+        </Text>
+        <Text textAlign="center" color="gray.600">
+          This may take a few minutes. We’ll take you to the next step as soon
+          as your account is ready.
+        </Text>
+        <Text textAlign="center" color="gray.600">
+          {status.data?.paymentConfirmed
+            ? "Your payment is saved. You won’t be charged again for this signup."
+            : "You don’t need to register again or make a payment while we set things up."}
+        </Text>
       </Stack>
     );
 
-  if (status.isError)
+  if (status.isError && !status.data)
     return (
       <Stack align="center" py={10}>
         <Text role="alert">{signupError(status.error)}</Text>
@@ -93,6 +131,12 @@ export default function PaymentStep({
   if (status.data && selectedPlan && selectedPrice)
     return (
       <>
+        {status.isError && (
+          <Text role="alert" color="red.600" bg="red.50" p={3} mb={4}>
+            We couldn’t refresh your checkout status.{" "}
+            {signupError(status.error)}
+          </Text>
+        )}
         <SignupPayment
           token={token}
           state={status.data}
