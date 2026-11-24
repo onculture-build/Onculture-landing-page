@@ -191,7 +191,7 @@ export default function CompanyDetailsStep({
             Retry loading countries
           </CustomButton>
         )}
-        <Flex gap={4} mt={2}>
+        <Flex gap={4} mt={4}>
           <CustomButton
             variant="outline"
             w="full"
