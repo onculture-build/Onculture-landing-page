@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomInput from "../../components/custom-input";
 import CustomCheckbox from "../../components/custom-checkbox";
 import CustomButton from "../../components/custom-button";
 import { Link, SimpleGrid, Stack, Text } from "@chakra-ui/react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Resolver } from "react-hook-form";
 import { UserSignUpType } from "../../lib/types";
@@ -12,12 +12,16 @@ import { useCheckAllowedUser } from "../../services/mutations";
 import { useAppDispatch, useAppSelector } from "../../services/store/hooks";
 import { authUser } from "../../services/store/selectors";
 import { saveUserInfo } from "../../services/store/slices/auth";
-import toast from "react-hot-toast";
+import { signupError } from "../../services/queries/signup-checkout";
 import SignupShell, { SignupLogin } from "./signup-shell";
 import { PageRoutes } from "../../lib/constants";
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [serverError, setServerError] = useState(() =>
+    Object.values(location.state?.signupErrors ?? {}).join(" "),
+  );
   const [params] = useSearchParams();
   const dispatch = useAppDispatch();
   const user = useAppSelector(authUser);
@@ -26,6 +30,7 @@ export default function SignUp() {
   const {
     register,
     handleSubmit,
+    setError: setFormError,
     formState: { errors },
   } = useForm<UserSignUpType>({
     resolver: yupResolver(
@@ -33,9 +38,22 @@ export default function SignUp() {
     ) as unknown as Resolver<UserSignUpType>,
     defaultValues: user,
   });
+  useEffect(() => {
+    const fields = location.state?.signupErrors as
+      Record<string, string> | undefined;
+    if (!fields) return;
+    for (const field of ["firstName", "lastName", "email"] as const) {
+      const message =
+        fields[`userInfo.${field}`] ??
+        (field === "email" ? fields["companyInfo.email"] : undefined);
+      if (message)
+        setFormError(field, { type: "server", message }, { shouldFocus: true });
+    }
+  }, [location.state, setFormError]);
   const submit = (data: UserSignUpType) => {
     if (isPending) return;
     if (!acknowledged) return;
+    setServerError("");
     checkUser(data, {
       onSuccess: () => {
         dispatch(saveUserInfo(data));
@@ -44,10 +62,7 @@ export default function SignUp() {
           `/${PageRoutes.signup}/${PageRoutes.companyOnboarding}?${params.toString()}`,
         );
       },
-      onError: (error: any) =>
-        toast.error(
-          error?.data?.message || "Unable to continue. Please try again.",
-        ),
+      onError: (error: any) => setServerError(signupError(error)),
     });
   };
   return (
@@ -56,6 +71,11 @@ export default function SignUp() {
       title="Sign Up"
       subtitle="Sign up to OnCulture with your workspace"
     >
+      {serverError && (
+        <Text role="alert" color="red.600" bg="red.50" p={3} mb={4}>
+          {serverError}
+        </Text>
+      )}
       <form onSubmit={handleSubmit(submit)}>
         <Stack spacing={5}>
           <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={4}>
