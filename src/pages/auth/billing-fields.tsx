@@ -126,7 +126,7 @@ export default function BillingFields({
           </Text>
         }
       />
-      <CustomCheckbox
+      {/* <CustomCheckbox
         name="acceptedDpa"
         required
         label={
@@ -142,7 +142,7 @@ export default function BillingFields({
             .
           </Text>
         }
-      />
+      /> */}
       <Link
         href="https://onculture.io/privacy-policy"
         target="_blank"

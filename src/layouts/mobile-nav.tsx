@@ -69,11 +69,11 @@ const MobileNavigation = () => {
                 padding={'2rem'}
                 w={'100%'}
                 onClick={() => {
-                  navigate(`/${PageRoutes.joinWaitlist}`);
+                  navigate(`/${PageRoutes.signup}`);
                   onClose();
                 }}
               >
-                Join Waitlist
+                Get started
               </CustomButton>
               <CustomButton
                 fontSize={'paragraph'}

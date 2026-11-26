@@ -191,17 +191,17 @@ export default function CompanyDetailsStep({
             Retry loading countries
           </CustomButton>
         )}
-        <Flex gap={4} mt={4}>
+        <Flex gap={4} mt={8}>
           <CustomButton
             variant="outline"
             w="full"
-            h="48px"
+            h="4rem"
             padding={3}
             onClick={() => navigate(`/${PageRoutes.signup}`)}
           >
             Back
           </CustomButton>
-          <CustomButton type="submit" w="full" h="48px" padding={3}>
+          <CustomButton type="submit" w="full" h="4rem" padding={3}>
             Next
           </CustomButton>
         </Flex>

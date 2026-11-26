@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import {
   Box,
   Flex,
-  Radio,
   RadioGroup,
   SimpleGrid,
   Stack,
@@ -11,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import CustomButton from "../../components/custom-button";
 import CustomInput from "../../components/custom-input";
+import CustomRadioButton from "../../components/custom-radio-button";
 import {
   formatPlanPrice,
   PlanPrice,
@@ -71,6 +71,14 @@ export default function SignupPayment({
     price.unitAmountMinor *
       (price.perSeat ? Math.max(price.unitAmountMinor ? 3 : 1, seats) : 1);
   const money = formatPlanPrice({ ...price, unitAmountMinor: total });
+  const nextBillingDate = currentOrder?.periodEnd || quote.data?.periodEnd;
+  const formattedNextBillingDate = nextBillingDate
+    ? new Date(nextBillingDate).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      })
+    : null;
   const online = (order: any) => {
     if (order?.checkoutUrl) window.location.assign(order.checkoutUrl);
     else refresh();
@@ -85,6 +93,13 @@ export default function SignupPayment({
     } finally {
       setBusy(false);
     }
+  };
+  const selectMethod = (value: string) => {
+    if (value === method) return;
+    setMethod(value);
+    const next = crypto.randomUUID();
+    setKey(next);
+    sessionStorage.setItem("signup-payment-key", next);
   };
   const pay = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -257,67 +272,45 @@ export default function SignupPayment({
           base: "1fr",
           md: "minmax(0, 2fr) minmax(260px, 1fr)",
         }}
-        gap={5}
+        gap={"24px"}
       >
         <Box as="form" onSubmit={pay}>
-          <Text fontSize="14px" mb={3}>
+          <Text fontSize="16px" fontWeight="500" mb={3}>
             How would you like to pay?
           </Text>
-          <RadioGroup
-            value={method}
-            onChange={(value) => {
-              setMethod(value);
-              const next = crypto.randomUUID();
-              setKey(next);
-              sessionStorage.setItem("signup-payment-key", next);
-            }}
-          >
+          <RadioGroup value={method} onChange={selectMethod}>
             <Stack spacing={3}>
-              <Box
-                as="label"
-                border="1px solid"
-                borderColor={
-                  method === "Online" ? "brand.primary.600" : "gray.200"
+              <CustomRadioButton
+                value="Online"
+                variant="card"
+                isChecked={method === "Online"}
+                onChange={() => selectMethod("Online")}
+                label={`Pay online with ${
+                  price.currency === "NGN" ? "Paystack" : "Stripe"
+                }`}
+                subLabel={
+                  price.currency === "NGN"
+                    ? "Pay using the available card, bank transfer or USSD options at checkout. Access begins after payment confirmation."
+                    : "Pay securely with Stripe using the available payment methods at checkout. Access begins after payment confirmation."
                 }
-                p={4}
-                borderRadius="4px"
-              >
-                <Radio value="Online" colorScheme="purple">
-                  Pay online with{" "}
-                  {price.currency === "NGN" ? "Paystack" : "Stripe"}
-                </Radio>
-                <Text ml={6} mt={1} fontSize="14px" color="gray.600">
-                  {price.currency === "NGN"
-                    ? "Pay using the available card, bank transfer or USSD options at checkout."
-                    : "Pay securely with Stripe using the available payment methods at checkout."}{" "}
-                  Access begins after payment confirmation.
-                </Text>
-              </Box>
-              <Box
-                as="label"
-                border="1px solid"
-                borderColor={
-                  method === "Invoice" ? "brand.primary.600" : "gray.200"
-                }
-                p={4}
-                borderRadius="4px"
-                opacity={state.invoiceAvailable ? 1 : 0.6}
-              >
-                <Radio
+              />
+              <Box opacity={state.invoiceAvailable ? 1 : 0.6}>
+                <CustomRadioButton
                   value="Invoice"
-                  colorScheme="purple"
+                  variant="card"
+                  isChecked={method === "Invoice"}
+                  onChange={() => selectMethod("Invoice")}
                   isDisabled={
                     !state.invoiceAvailable ||
                     currentOrder?.status === "Pending"
                   }
-                >
-                  Pay by invoice
-                </Radio>
-                <Text ml={6} mt={1} fontSize="14px" color="gray.600">
-                  {state.invoiceAvailable
-                    ? "We’ll send an invoice with a reference code. Access begins after an OnCulture administrator confirms payment. Uploading a receipt does not activate your workspace."
-                    : "Invoice payments are not currently available for this currency."}
-                </Text>
+                  label="Pay by invoice"
+                  subLabel={
+                    state.invoiceAvailable
+                      ? "We’ll send an invoice with a reference code. Access begins after an OnCulture administrator confirms payment. Uploading a receipt does not activate your workspace."
+                      : "Invoice payments are not currently available for this currency."
+                  }
+                />
               </Box>
             </Stack>
           </RadioGroup>
@@ -364,63 +357,85 @@ export default function SignupPayment({
           </SimpleGrid>
         </Box>
         <Box
-          bg="gray.50"
-          p={5}
+          bg="#FAFAFB"
+          p={"1rem 1.5rem"}
           border="1px solid"
-          borderColor="gray.100"
+          borderColor="#EEEDF0"
           borderRadius="4px"
         >
-          <Text fontWeight={600}>{plan.name}</Text>
-          <Text fontSize="14px" color="gray.600" mt={1}>
-            Billed {price.interval === "Annual" ? "yearly" : "monthly"}
-          </Text>
-          <Flex gap={1} wrap="wrap" mt={3}>
+          <Flex justify="space-between">
+            <Text fontSize="17px" fontWeight={600}>
+              {plan.name}
+            </Text>
+            <Text fontSize="13px" color="#4A4F66" mt={1}>
+              Billed {price.interval === "Annual" ? "yearly" : "monthly"}
+            </Text>
+          </Flex>
+          <Flex gap={"7px"} wrap="wrap" my={4}>
             {plan.grants
               .filter((g) => g.capability.moduleKey)
               .map((g) => (
                 <Text
                   key={g.capabilityKey}
-                  fontSize="14px"
+                  fontSize="13px"
                   border="1px solid"
-                  borderColor="gray.300"
-                  borderRadius="2px"
-                  px={1}
+                  borderColor="#BBC4D9"
+                  borderRadius="4px"
+                  px={2}
+                  color="#425276"
+                  backgroundColor="#F3F5F7"
                 >
                   {g.capability.name}
                 </Text>
               ))}
           </Flex>
-          <Text mt={5} fontSize="13px">
-            {formatPlanPrice(price)} × {price.perSeat ? Math.max(3, seats) : 1}{" "}
-            users
-          </Text>
-          {(currentOrder?.periodStart || quote.data?.periodStart) && (
-            <Text mt={3} fontSize="14px" color="gray.600">
-              Billing period:{" "}
-              {new Date(
-                currentOrder?.periodStart || quote.data.periodStart,
-              ).toLocaleDateString()}{" "}
-              –{" "}
-              {new Date(
-                currentOrder?.periodEnd || quote.data.periodEnd,
-              ).toLocaleDateString()}
+          <hr />
+          <br />
+          <Flex justify="space-between" mt={4}>
+            <Text color={"#4A4F66"} fontSize="14px">
+              {formatPlanPrice(price)} ×{" "}
+              {price.perSeat ? Math.max(3, seats) : 1} users
             </Text>
+            <Text fontSize="14px" color="#1B1B1B" fontWeight={600}>
+              {money}
+            </Text>
+          </Flex>
+          {(currentOrder?.periodStart || quote.data?.periodStart) && (
+            <Flex justify="space-between" my={3}>
+              <Text fontSize="13px" color="#4A4F66">
+                Billing period:{" "}
+              </Text>
+              <Text fontSize="13px" color="#1B1B1B">
+                {new Date(
+                  currentOrder?.periodStart || quote.data.periodStart,
+                ).toLocaleDateString()}{" "}
+                –{" "}
+                {new Date(
+                  currentOrder?.periodEnd || quote.data.periodEnd,
+                ).toLocaleDateString()}
+              </Text>
+            </Flex>
           )}
+          <hr />
           <Flex
             justify="space-between"
             borderTop="1px solid"
-            borderColor="gray.200"
+            borderColor="#EEEDF0"
             mt={4}
             pt={4}
           >
             <Text fontWeight={600}>Due today</Text>
-            <Text color="brand.primary.600" fontSize="24px" fontWeight={600}>
+            <Text color="#5C00DD" fontSize="24px" fontWeight={700}>
               {money}
             </Text>
           </Flex>
-          <Text fontSize="14px" color="gray.600" mt={3}>
-            You can change your plan and users later from Billing &amp;
-            Subscription.
+          <Text fontSize="12px" color="#4A4F66" mt={3}>
+            {formattedNextBillingDate &&
+              `Then ${money} a ${
+                price.interval === "Annual" ? "year" : "month"
+              } from ${formattedNextBillingDate}. `}
+            Card payments are processed securely by{" "}
+            {price.currency === "NGN" ? "Paystack" : "Stripe"}.
           </Text>
         </Box>
       </SimpleGrid>

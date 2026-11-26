@@ -92,9 +92,9 @@ const CallToAction = () => {
                 color: 'brand.white',
                 backgroundColor: 'brand.primary.600',
               }}
-              onClick={() => navigate(`/${PageRoutes.joinWaitlist}`)}
+              onClick={() => navigate(`/${PageRoutes.signup}`)}
             >
-              Join Waitlist
+              Get started
             </CustomButton>
           </Flex>
         </Flex>
