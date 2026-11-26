@@ -1,11 +1,12 @@
-import { Box, Circle, Heading, Text } from "@chakra-ui/react";
-import { EmailIcon } from "@chakra-ui/icons";
+import { Box, Circle, Flex, Heading, Text } from "@chakra-ui/react";
+import { CheckIcon, WarningIcon } from "@chakra-ui/icons";
 import CustomButton from "../../../components/custom-button";
 import toast from "react-hot-toast";
 import {
   signupRequest,
   signupError,
 } from "../../../services/queries/signup-checkout";
+import { MdOutlineMail } from "react-icons/md";
 
 export default function SignupComplete({
   status,
@@ -24,30 +25,39 @@ export default function SignupComplete({
   token: string;
   setStep: (step: number) => void;
 }) {
+  const isActive = status.data?.status === "Active";
+
   return (
     <Box maxW="500px" mx="auto" px={4} py={16} textAlign="center">
-      <Circle size="96px" bg="purple.50" mx="auto" mb={6}>
-        <EmailIcon color="brand.primary.600" boxSize={9} />
+      <Circle size="96px" bg="#F7F2FD" mx="auto" mb={6}>
+        <MdOutlineMail color="#5C00DD" size="42px" />
       </Circle>
       <Text
-        bg={status.data?.status === "Active" ? "green.50" : "orange.50"}
-        color={status.data?.status === "Active" ? "green.700" : "orange.700"}
+        bg={isActive ? "#E8F9F0" : "#FCEAEE"}
+        color={isActive ? "#127A30" : "#E23A2F"}
         display="inline-block"
-        px={3}
-        py={1}
+        p={"7px 12px"}
         borderRadius="6px"
         fontSize="13px"
+        fontWeight={600}
       >
-        {status.data?.status === "Active"
-          ? selectedPrice?.unitAmountMinor
-            ? "Payment confirmed"
-            : "Your Free plan is active"
-          : "Payment confirmation pending"}
+        <Flex as="span" align="center" gap={1.5}>
+          {isActive ? (
+            <CheckIcon aria-hidden="true" boxSize="12px" />
+          ) : (
+            <WarningIcon aria-hidden="true" boxSize="12px" />
+          )}
+          {isActive
+            ? selectedPrice?.unitAmountMinor
+              ? "Payment confirmed"
+              : "Your Free plan is active"
+            : "Payment confirmation pending"}
+        </Flex>
       </Text>
       <Heading fontSize="28px" mt={5}>
         Welcome to OnCulture!
       </Heading>
-      <Text mt={5} color="gray.600">
+      <Text mt={5} fontSize="16px" color="#4A4F66">
         We’ve sent a verification link to {status.data?.email || userEmail}.
         Open it to create your password and log in to{" "}
         {status.data?.code || draftCode}.
@@ -59,12 +69,13 @@ export default function SignupComplete({
           administrator confirms your payment.
         </Text>
       )}
-      <Text mt={5} fontSize="13px">
+      <Text mt={6} fontSize="14px" color="#4A4F66">
         Didn’t receive the email?{" "}
         <CustomButton
           variant="ghost"
-          color="brand.primary.600"
-          fontSize="13px"
+          color="#5C00DD"
+          fontSize="14px"
+          fontWeight={600}
           onClick={() =>
             signupRequest(token, "/resend-verification", {})
               .then(() => toast.success("Verification email requested."))

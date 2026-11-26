@@ -93,7 +93,7 @@ export default function SignUp() {
             label={
               <Text fontSize="14px">
                 I agree to OnCulture’s{" "}
-                <Link
+                {/* <Link
                   href="/terms"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -101,8 +101,7 @@ export default function SignUp() {
                   textDecoration="underline"
                 >
                   Terms of Service
-                </Link>
-                ,{" "}
+                </Link> */}
                 <Link
                   href="/privacy-policy"
                   target="_blank"
@@ -110,26 +109,15 @@ export default function SignUp() {
                   color="brand.primary.600"
                   textDecoration="underline"
                 >
-                  Privacy Policy
+                  Privacy Policy and Terms of Service
                 </Link>{" "}
-                and{" "}
-                <Link
-                  href="/data-processing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  color="brand.primary.600"
-                  textDecoration="underline"
-                >
-                  Data Processing Agreement
-                </Link>
-                .
               </Text>
             }
           />
           <CustomButton
             type="submit"
             w="full"
-            h="48px"
+            h="4rem"
             padding="12px"
             loading={isPending}
           >

@@ -20,6 +20,11 @@ export default function SignupPlans({
   onCurrency,
   interval,
   onInterval,
+  selectedPrice,
+  signupPending,
+  token,
+  register,
+  back,
 }: {
   plans: PublicPlan[];
   priceId: string;
@@ -30,6 +35,11 @@ export default function SignupPlans({
   onCurrency: (value: string) => void;
   interval: string;
   onInterval: (value: string) => void;
+  selectedPrice?: { unitAmountMinor: number };
+  signupPending: boolean;
+  token: string;
+  register: () => void;
+  back: () => void;
 }) {
   const [custom, setCustom] = useState(false);
   const currencies = [
@@ -90,7 +100,7 @@ export default function SignupPlans({
           </Flex>
         )}
       </Flex>
-
+      <br />
       <Box>
         <Flex
           p={"20px"}
@@ -181,6 +191,28 @@ export default function SignupPlans({
             </Text>
           </Flex>
         )}
+        <Flex justifyContent={"flex-end"} mx="auto" gap={4} my={8}>
+          <CustomButton
+            variant="outline"
+            px={"4rem"}
+            h="4rem"
+            padding={2}
+            onClick={back}
+            disabled={signupPending || !!token}
+          >
+            Back
+          </CustomButton>
+          <CustomButton
+            px={"4rem"}
+            h="4rem"
+            padding={2}
+            loading={signupPending}
+            disabled={!selectedPrice}
+            onClick={register}
+          >
+            {selectedPrice?.unitAmountMinor === 0 ? "Create workspace" : "Next"}
+          </CustomButton>
+        </Flex>
       </Box>
 
       {!plans.some((item) =>

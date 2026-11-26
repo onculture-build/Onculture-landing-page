@@ -61,29 +61,12 @@ export default function PlanSelectionStep({
         onCurrency={setCurrency}
         interval={interval}
         onInterval={setInterval}
+        selectedPrice={selectedPrice}
+        signupPending={signupPending}
+        token={token}
+        register={register}
+        back={back}
       />
-      <Flex maxW="440px" mx="auto" gap={4} mt={6}>
-        <CustomButton
-          variant="outline"
-          w="full"
-          h="44px"
-          padding={2}
-          onClick={back}
-          disabled={signupPending || !!token}
-        >
-          Back
-        </CustomButton>
-        <CustomButton
-          w="full"
-          h="44px"
-          padding={2}
-          loading={signupPending}
-          disabled={!selectedPrice}
-          onClick={register}
-        >
-          {selectedPrice?.unitAmountMinor === 0 ? "Create workspace" : "Next"}
-        </CustomButton>
-      </Flex>
     </>
   );
 }

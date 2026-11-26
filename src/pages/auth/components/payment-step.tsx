@@ -9,6 +9,7 @@ import { signupError } from "../../../services/queries/signup-checkout";
 
 export default function PaymentStep({
   status,
+  confirmation,
   takingLonger,
   selectedPlan,
   selectedPrice,
@@ -18,6 +19,13 @@ export default function PaymentStep({
   setStep,
 }: {
   takingLonger: boolean;
+  confirmation?: {
+    pending: boolean;
+    paymentStatus?: string;
+    error: unknown;
+    paused: boolean;
+    recheck: () => void;
+  };
   status: {
     isPending: boolean;
     isError: boolean;
@@ -68,6 +76,63 @@ export default function PaymentStep({
         <CustomButton onClick={() => status.refetch()}>
           Check setup status
         </CustomButton>
+      </Stack>
+    );
+  // A provider return is never a new checkout. Keep the form hidden until
+  // server-side verification gives a definitive failure or setup can proceed.
+  if (
+    confirmation &&
+    !provisioning &&
+    !["Failed", "Cancelled"].includes(confirmation.paymentStatus ?? "")
+  )
+    return (
+      <Stack
+        align="center"
+        py={10}
+        spacing={4}
+        role={confirmation.error ? "alert" : "status"}
+        aria-live="polite"
+      >
+        {(confirmation.pending ||
+          (!confirmation.error &&
+            !confirmation.paused &&
+            confirmation.paymentStatus !== "Review")) && (
+          <Spinner color="brand.primary.600" />
+        )}
+        <Text fontSize="xl" fontWeight={600}>
+          {confirmation.paymentStatus === "Paid"
+            ? "Payment confirmed. We’re preparing your workspace"
+            : confirmation.error || confirmation.paused
+              ? "We’re still checking your payment"
+              : "Confirming your payment"}
+        </Text>
+        <Text textAlign="center" color="gray.600">
+          {confirmation.paymentStatus === "Paid"
+            ? "We’ll take you to the next step when your account is ready."
+            : "Please wait while OnCulture verifies the payment with your provider."}
+        </Text>
+        <Text textAlign="center" color="gray.600">
+          You don’t need to pay again or restart signup.
+        </Text>
+        {(Boolean(confirmation.error) ||
+          confirmation.paused ||
+          confirmation.paymentStatus === "Review") && (
+          <>
+            {Boolean(confirmation.error) && (
+              <Text color="red.600">{signupError(confirmation.error)}</Text>
+            )}
+            <CustomButton
+              disabled={confirmation.pending}
+              onClick={
+                confirmation.paymentStatus === "Paid"
+                  ? () => status.refetch()
+                  : confirmation.recheck
+              }
+            >
+              {confirmation.pending ? "Checking…" : "Check payment status"}
+            </CustomButton>
+          </>
+        )}
       </Stack>
     );
   if (status.isPending)

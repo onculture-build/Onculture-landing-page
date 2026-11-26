@@ -60,6 +60,12 @@ export default function CompanyOnboarding() {
   const [interval, setInterval] = useState(() => draft.interval || "Monthly");
   const [error, setError] = useState("");
   const [setupPollingPaused, setSetupPollingPaused] = useState(false);
+  const [confirmationPaused, setConfirmationPaused] = useState(false);
+  const returnedOrderId = params.get("orderId");
+  const paymentReturnId =
+    returnedOrderId && /^[a-f0-9-]{36}$/i.test(returnedOrderId)
+      ? returnedOrderId
+      : null;
   const signup = useRegisterCompany();
   const catalog = useGetSubscriptionPlans();
   const plans = catalog.data || [];
@@ -111,6 +117,40 @@ export default function CompanyOnboarding() {
     refetchOnWindowFocus: false,
     retry: false,
   });
+  const confirmation = useQuery({
+    queryKey: ["signup-payment-return", token, paymentReturnId],
+    enabled: Boolean(
+      token &&
+      paymentReturnId &&
+      step === 3 &&
+      !["Active", "Provisioning", "ProvisioningFailed"].includes(
+        status.data?.status,
+      ),
+    ),
+    queryFn: async () => {
+      const payment = await signupRequest(
+        token,
+        `/verify/${paymentReturnId}`,
+        {},
+      );
+      await status.refetch();
+      return payment as { status: string };
+    },
+    retry: false,
+    refetchOnWindowFocus: false,
+    refetchInterval: (query) =>
+      !confirmationPaused &&
+      query.state.status !== "error" &&
+      query.state.data?.status === "Pending"
+        ? 5000
+        : false,
+  });
+  useEffect(() => {
+    if (!paymentReturnId) return;
+    setConfirmationPaused(false);
+    const timer = setTimeout(() => setConfirmationPaused(true), 120_000);
+    return () => clearTimeout(timer);
+  }, [paymentReturnId]);
   useEffect(() => {
     setSetupPollingPaused(false);
     if (status.data?.status !== "Provisioning") return;
@@ -167,13 +207,6 @@ export default function CompanyOnboarding() {
   useEffect(() => {
     if (status.data?.status === "Active") setStep(4);
   }, [status.data?.status]);
-  useEffect(() => {
-    const id = params.get("orderId");
-    if (token && id && /^[a-f0-9-]{36}$/i.test(id))
-      signupRequest(token, `/verify/${id}`, {})
-        .then(() => status.refetch())
-        .catch((error) => setError(signupError(error)));
-  }, [token, params]);
   useEffect(() => {
     if (!user.email && !token)
       navigate(`/${PageRoutes.signup}`, { replace: true });
@@ -260,6 +293,16 @@ export default function CompanyOnboarding() {
         setStep={setStep}
       />
     );
+  const creatingWorkspace =
+    step === 3 &&
+    (status.data?.status === "Provisioning" ||
+      status.data?.status === "ProvisioningFailed" ||
+      confirmation.data?.status === "Paid");
+  const confirmingPayment =
+    step === 3 &&
+    Boolean(paymentReturnId) &&
+    !["Failed", "Cancelled"].includes(confirmation.data?.status ?? "") &&
+    !creatingWorkspace;
   return (
     <SignupShell
       step={step === 3 && selectedPrice?.unitAmountMinor === 0 ? 2 : step}
@@ -268,18 +311,28 @@ export default function CompanyOnboarding() {
           ? "Create Company Profile"
           : step === 2
             ? "Choose your plan"
-            : selectedPrice?.unitAmountMinor === 0
+            : creatingWorkspace
               ? "Creating your workspace"
-              : "Payment"
+              : confirmingPayment
+                ? "Confirming your payment"
+                : selectedPrice?.unitAmountMinor === 0
+                  ? "Creating your workspace"
+                  : "Payment"
       }
       subtitle={
         step === 1
           ? "Set up your company’s workspace on OnCulture"
           : step === 2
             ? "Priced per user. You can upgrade or add users any time."
-            : selectedPrice?.unitAmountMinor === 0
-              ? "Your Free plan does not require payment."
-              : "Your workspace opens as soon as payment goes through"
+            : creatingWorkspace
+              ? selectedPrice?.unitAmountMinor === 0
+                ? "Your Free plan does not require payment."
+                : "Your payment is confirmed. We’re getting your account ready."
+              : confirmingPayment
+                ? "Please wait while we check your payment securely."
+                : selectedPrice?.unitAmountMinor === 0
+                  ? "Your Free plan does not require payment."
+                  : "Your workspace opens as soon as payment goes through"
       }
       wide={step === 2 ? "plans" : step === 3 ? "payment" : step > 1}
     >
@@ -327,6 +380,19 @@ export default function CompanyOnboarding() {
       {step === 3 && (
         <PaymentStep
           status={status}
+          confirmation={
+            paymentReturnId
+              ? {
+                  pending: confirmation.isFetching,
+                  paymentStatus: confirmation.data?.status,
+                  error: confirmation.error,
+                  paused: confirmationPaused,
+                  recheck: () => {
+                    void confirmation.refetch();
+                  },
+                }
+              : undefined
+          }
           takingLonger={setupPollingPaused}
           selectedPlan={selectedPlan}
           selectedPrice={selectedPrice}
