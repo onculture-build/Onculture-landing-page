@@ -8,6 +8,7 @@ import { useRegisterCompany } from "../../services/mutations";
 import { useGetSubscriptionPlans } from "../../services/queries/subscriptions.query";
 import {
   signupError,
+  signupValidationErrors,
   signupRequest,
 } from "../../services/queries/signup-checkout";
 import axios from "../../services/axios";
@@ -59,6 +60,7 @@ export default function CompanyOnboarding() {
   const [currency, setCurrency] = useState(() => draft.currency || "");
   const [interval, setInterval] = useState(() => draft.interval || "Monthly");
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [setupPollingPaused, setSetupPollingPaused] = useState(false);
   const [confirmationPaused, setConfirmationPaused] = useState(false);
   const returnedOrderId = params.get("orderId");
@@ -211,8 +213,24 @@ export default function CompanyOnboarding() {
     if (!user.email && !token)
       navigate(`/${PageRoutes.signup}`, { replace: true });
   }, [user.email, token, navigate]);
-  const update = (key: string, value: string) =>
+  const update = (key: string, value: string) => {
     setDraft((old: any) => ({ ...old, [key]: value }));
+    setError("");
+    setFieldErrors((old) =>
+      Object.fromEntries(
+        Object.entries(old).filter(
+          ([field]) =>
+            field !== `companyInfo.${key}` &&
+            !(
+              key === "country" &&
+              ["companyInfo.countryId", "billingInfo.countryCode"].includes(
+                field,
+              )
+            ),
+        ),
+      ),
+    );
+  };
   const choose = (id: string) => {
     setPriceId(id);
     if (
@@ -226,6 +244,7 @@ export default function CompanyOnboarding() {
   };
   const register = async () => {
     setError("");
+    setFieldErrors({});
     if (!selectedPlan || !selectedPrice)
       return setError("Choose an available plan.");
     if (!Number.isInteger(seats) || seats < 1 || seats > 1000000)
@@ -279,7 +298,27 @@ export default function CompanyOnboarding() {
       setToken(saved);
       setStep(3);
     } catch (error) {
+      const fields = signupValidationErrors(error);
+      setFieldErrors(fields);
       setError(signupError(error));
+      if (
+        Object.keys(fields).some(
+          (field) =>
+            field.startsWith("userInfo.") || field === "companyInfo.email",
+        )
+      ) {
+        navigate(`/${PageRoutes.signup}?${params.toString()}`, {
+          state: { signupErrors: fields },
+        });
+      } else if (
+        Object.keys(fields).some(
+          (field) =>
+            field.startsWith("companyInfo.") ||
+            field === "billingInfo.countryCode",
+        )
+      ) {
+        setStep(1);
+      }
     }
   };
   if (step === 4)
@@ -343,6 +382,7 @@ export default function CompanyOnboarding() {
       )}
       {step === 1 && (
         <CompanyDetailsStep
+          errors={fieldErrors}
           draft={draft}
           update={update}
           checkedCode={checkedCode}

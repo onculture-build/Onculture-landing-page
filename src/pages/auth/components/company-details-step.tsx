@@ -32,6 +32,7 @@ export default function CompanyDetailsStep({
   ranges,
   onContinue,
   setError,
+  errors = {},
 }: {
   draft: SignupDraft;
   update: (key: string, value: string) => void;
@@ -52,6 +53,7 @@ export default function CompanyDetailsStep({
   ranges: string[];
   onContinue: () => void;
   setError: (value: string) => void;
+  errors?: Record<string, string>;
 }) {
   const navigate = useNavigate();
 
@@ -77,6 +79,8 @@ export default function CompanyDetailsStep({
       <Stack spacing={5}>
         <CustomInput
           label="Company name"
+          errorMessage={errors["companyInfo.name"]}
+          isInvalid={Boolean(errors["companyInfo.name"])}
           maxLength={50}
           h="4rem"
           value={draft.name || ""}
@@ -100,6 +104,8 @@ export default function CompanyDetailsStep({
           <Flex align="end" gap={3}>
             <CustomInput
               label="Company domain"
+              errorMessage={errors["companyInfo.code"]}
+              isInvalid={Boolean(errors["companyInfo.code"])}
               h="4rem"
               value={draft.code || ""}
               maxLength={20}
@@ -135,6 +141,7 @@ export default function CompanyDetailsStep({
         <SimpleGrid columns={{ base: 1, sm: 2 }} gap={3}>
           <CustomSelect
             label="Industry"
+            error={errors["companyInfo.industry"]}
             h="4rem"
             placeholder="Select industry"
             options={industries.map((value) => ({ value, label: value }))}
@@ -147,6 +154,7 @@ export default function CompanyDetailsStep({
           />
           <CustomSelect
             label="Employee count"
+            error={errors["companyInfo.employeeRange"]}
             h="4rem"
             placeholder="Select range"
             options={ranges.map((value) => ({ value, label: value }))}
@@ -161,6 +169,8 @@ export default function CompanyDetailsStep({
         <SimpleGrid columns={{ base: 1, sm: 2 }} gap={3}>
           <CustomInput
             label="Company phone"
+            errorMessage={errors["companyInfo.phone"]}
+            isInvalid={Boolean(errors["companyInfo.phone"])}
             type="tel"
             placeholder="+234 803 000 0000"
             value={draft.phone || ""}
@@ -171,6 +181,10 @@ export default function CompanyDetailsStep({
           />
           <CustomSelect
             label="Country"
+            error={
+              errors["companyInfo.countryId"] ??
+              errors["billingInfo.countryCode"]
+            }
             h="4rem"
             placeholder={
               countryQuery.isPending ? "Loading countries…" : "Select country"
