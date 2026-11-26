@@ -56,9 +56,9 @@ const CtaBand = ({ title, description }: CtaBandProps) => {
               borderColor="whiteAlpha.700"
               color="white"
               _hover={{ bg: "whiteAlpha.100" }}
-              onClick={() => navigate(`/${PageRoutes.joinWaitlist}`)}
+              onClick={() => navigate(`/${PageRoutes.signup}`)}
             >
-              Join Waitlist
+              Get started
             </Button>
           </Flex>
         </Flex>

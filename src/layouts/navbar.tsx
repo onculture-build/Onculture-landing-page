@@ -55,9 +55,9 @@ const Navbar = () => {
               fontWeight={'medium'}
               padding={'1.5rem 3rem'}
               w={'100%'}
-              onClick={() => navigate(`/${PageRoutes.joinWaitlist}`)}
+              onClick={() => navigate(`/${PageRoutes.signup}`)}
             >
-              Join Waitlist
+              Get started
             </CustomButton>
             <CustomButton
               fontSize={'small'}
