@@ -62,7 +62,7 @@ export default function PlanSelectionStep({
         interval={interval}
         onInterval={setInterval}
       />
-      <Flex maxW="440px" mx="auto" gap={4} mt={5}>
+      <Flex maxW="440px" mx="auto" gap={4} mt={6}>
         <CustomButton
           variant="outline"
           w="full"
